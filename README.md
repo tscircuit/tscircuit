@@ -41,13 +41,19 @@ const Circuit = () => (
 
 ## Getting Started
 
+You can do everything you need to do with `tscircuit` using the [`tsck`](https://github.com/tscircuit/tsck) command line tool.
+
 ```bash
 npm install -g tsck
 
 tsck init
 
 tsck dev
+
+# Open your browser to http://localhost:3020!
 ```
+
+![tsck Server Preview](./docs/example_preview.png)
 
 ## Development Sub-Projects / Organization
 
