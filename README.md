@@ -44,7 +44,7 @@ const Circuit = () => (
 You can do everything you need to do with `tscircuit` using the [`tsck`](https://github.com/tscircuit/tsck) command line tool.
 
 ```bash
-npm install -g tsck
+npm install -g @tscircuit/cli
 
 tsck init
 
