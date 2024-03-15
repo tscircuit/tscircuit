@@ -41,19 +41,19 @@ const Circuit = () => (
 
 ## Getting Started
 
-You can do everything you need to do with `tscircuit` using the [`tsck`](https://github.com/tscircuit/cli) command line tool.
+You can do everything you need to do with `tscircuit` using the [`tsci`](https://github.com/tscircuit/cli) command line tool.
 
 ```bash
 npm install -g @tscircuit/cli
 
-tsck init
+tsci init
 
-tsck dev
+tsci dev
 
 # Open your browser to http://localhost:3020!
 ```
 
-![tsck Server Preview](./docs/example_preview.png)
+![tsci Server Preview](./docs/example_preview.png)
 
 ## Development Sub-Projects / Organization
 
@@ -65,7 +65,7 @@ a quick guide to navigating all of the sub-projects:
 | Project                                                                      | Description                                                                                              |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | [@tscircuit/builder](https://github.com/tscircuit/builder)                   | A typescript-native library for building circuits (no React). Converts typescript into "the soup format" |
-| [@tscircuit/cli](https://github.com/tscircuit/cli)                           | The tscircuit command line tool `tsck` and development environment                                       |
+| [@tscircuit/cli](https://github.com/tscircuit/cli)                           | The tscircuit command line tool `tsci` and development environment                                       |
 | [@tscircuit/schematic-viewer](https://github.com/tscircuit/schematic-viewer) | The Schematic renderer                                                                                   |
 | [@tscircuit/pcb-viewer](https://github.com/tscircuit/pcb-viewer)             | The PCB renderer                                                                                         |
 
