@@ -46,12 +46,10 @@ You can do everything you need to do with `tscircuit` using the [`tsci`](https:/
 ```bash
 npm install -g @tscircuit/cli
 
-tsci init
-
 tsci dev
-
-# Open your browser to http://localhost:3020!
 ```
+
+> Now just open your browser to http://localhost:3020!
 
 ![tsci Server Preview](./docs/example_preview.png)
 
