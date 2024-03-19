@@ -49,9 +49,9 @@ npm install -g @tscircuit/cli
 tsci dev
 ```
 
-> Now just open your browser to http://localhost:3020!
+> Open your browser to http://localhost:3020!
 
-![tsci Server Preview](./docs/example_preview.png)
+> ![tsci Server Preview](./docs/example_preview.png)
 
 ## Development Sub-Projects / Organization
 
@@ -66,6 +66,7 @@ a quick guide to navigating all of the sub-projects:
 | [@tscircuit/cli](https://github.com/tscircuit/cli)                           | The tscircuit command line tool `tsci` and development environment                                       |
 | [@tscircuit/schematic-viewer](https://github.com/tscircuit/schematic-viewer) | The Schematic renderer                                                                                   |
 | [@tscircuit/pcb-viewer](https://github.com/tscircuit/pcb-viewer)             | The PCB renderer                                                                                         |
+| [@tscircuit/react-fiber](https://github.com/tscircuit/react-fiber)           | Bindings from builder to React, React types                                                              |
 
 ### Other Projects
 
