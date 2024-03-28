@@ -4,7 +4,8 @@
   "type": "module",
   "version": "0.0.14",
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "test": "ava"
   },
   "bin": {
     "tscircuit": "cli.mjs",
@@ -12,7 +13,9 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "ava": "^6.1.2",
     "esbuild": "^0.20.2",
+    "esbuild-register": "^3.5.0",
     "tsup": "^8.0.2"
   },
   "peerDependencies": {
