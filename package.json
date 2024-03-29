@@ -5,7 +5,8 @@
   "version": "0.0.22",
   "scripts": {
     "build": "tsup",
-    "test": "ava"
+    "test": "ava",
+    "update-deps": "npm add @tscircuit/builder @tscircuit/cli @tscircuit/pcb-viewer @tscircuit/react-fiber @tscircuit/schematic-viewer"
   },
   "bin": {
     "tscircuit": "cli.mjs",
@@ -22,10 +23,10 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/builder": "^1.5.5",
+    "@tscircuit/builder": "^1.5.29",
     "@tscircuit/cli": "^0.0.45",
-    "@tscircuit/pcb-viewer": "^1.2.12",
-    "@tscircuit/react-fiber": "^1.0.6",
-    "@tscircuit/schematic-viewer": "^1.1.6"
+    "@tscircuit/pcb-viewer": "^1.2.14",
+    "@tscircuit/react-fiber": "^1.0.15",
+    "@tscircuit/schematic-viewer": "^1.1.17"
   }
 }
