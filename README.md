@@ -1,6 +1,6 @@
 # ⏣ tscircuit - React for Circuits
 
-[Docs](https://docs.tscircuit.com) &middot; [tscircuit.com](https://tscircuit.com) &middot; [Twitter](https://twitter.com) &middot; [Campfire](https://tscircuit.com/community/join-redirect)
+[Docs](https://docs.tscircuit.com) &middot; [Website](https://tscircuit.com) &middot; [Twitter](https://twitter.com) &middot; [Campfire](https://tscircuit.com/community/join-redirect)
 
 Make electronics using Typescript and React.
 
