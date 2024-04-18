@@ -2,6 +2,10 @@
 
 Make electronics using Typescript and React.
 
+```
+npm install -g tscircuit
+```
+
 `tscircuit` is a library complemented by a registry, package manager, and command line tool that makes it easy to create, share, export and manufacture electronic circuits.
 
 ```tsx
