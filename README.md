@@ -34,7 +34,7 @@ const Circuit = () => (
 
 ![Example Circuit Rendering](./docs/example_render.png)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9m-bfswEv2k?si=ZD4FAyBm2ZiZ0UGa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![Video Explaining tscircuit](https://misc-assets.tscircuit.com/React%20for%20Circuits%20-%20Introduction%20to%20tscircuit.mp4)](https://www.youtube.com/watch?v=9m-bfswEv2k)
 
 ## Getting Started
 
