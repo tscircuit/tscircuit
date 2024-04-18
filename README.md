@@ -11,19 +11,10 @@ npm install -g tscircuit
 ```tsx
 const Circuit = () => (
   <>
-    <bug
+    <MySubcomponent
       name="B1"
-      port_arrangement={{ left_size: 3, right_size: 3 }}
       center={[0, 0]}
       footprint="sot236"
-      port_labels={{
-        1: "PWR",
-        2: "NC",
-        3: "RG",
-        4: "D0",
-        5: "D1",
-        6: "GND",
-      }}
     />
     <resistor
       x={2}
@@ -42,6 +33,8 @@ const Circuit = () => (
 ```
 
 ![Example Circuit Rendering](./docs/example_render.png)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9m-bfswEv2k?si=ZD4FAyBm2ZiZ0UGa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Getting Started
 
