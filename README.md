@@ -1,5 +1,7 @@
 # ⏣ tscircuit - React for Circuits
 
+[Docs](https://docs.tscircuit.com) &middot; [tscircuit.com](https://tscircuit.com) &middot; [twitter/𝕏](https://twitter.com) &middot; [chat](https://tscircuit.com/community/join-redirect)
+
 Make electronics using Typescript and React.
 
 ```
