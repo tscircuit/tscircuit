@@ -119,6 +119,22 @@ things are upside down until they're fixed.
 
 Yes! There is a [playground tool!](https://tscircuit.com/playground)
 
+### Do I have to specify the position of every component?
+
+I'm working on autolayout functionality where you will hopefully only need to
+tweak things like the spacing. The goal of anything auto
+
+### Is the auto-routing good?
+
+The auto-routing is very basic. You can adjust the paths by adding `pcb_route_hints`
+to a `<trace />`. Over time, we'll get good, fast auto-routing algorithms and also
+ways to "bake & cache" a route over a longer time period.
+
+### Can I export into other tools for routing?
+
+This isn't currently possible but a major current objective. If you're interested in writing a module that can convert [tscircuit soup JSON](https://docs.tscircuit.com/api-reference/advanced/soup)
+into another editor's format, reach out on our [campfire](https://tscircuit.com/community/join-redirect)!!
+
 ### I found a bug or have an idea for a feature, what should I do?
 
 Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
