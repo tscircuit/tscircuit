@@ -155,6 +155,8 @@ No, but AI is pretty good at generating circuits! Try it with copilot!
 - [ ] Lots of ways to use hooks to do more complex, safe circuits
 - [ ] Autolayout and autorouter improvements
 - [ ] Layout and route "baking" for more complex routes/layouts
+- [ ] Lots and lots of static analysis
+- [ ] SPICE output!
 - [ ] Less bugs! A lot less bugs! 
 
 ---
