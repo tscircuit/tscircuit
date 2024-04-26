@@ -72,14 +72,18 @@ a quick guide to navigating all of the sub-projects:
 
 | Project                                                                      | Description                                                                                              |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [tscircuit](https://github.com/tscircuit/tscircuit)                          | The main package, packages up everything into a single version                                           |
 | [@tscircuit/builder](https://github.com/tscircuit/builder)                   | A typescript-native library for building circuits (no React). Converts typescript into "the soup format" |
 | [@tscircuit/cli](https://github.com/tscircuit/cli)                           | The tscircuit command line tool `tsci` and development environment                                       |
 | [@tscircuit/schematic-viewer](https://github.com/tscircuit/schematic-viewer) | The Schematic renderer                                                                                   |
 | [@tscircuit/pcb-viewer](https://github.com/tscircuit/pcb-viewer)             | The PCB renderer                                                                                         |
 | [@tscircuit/react-fiber](https://github.com/tscircuit/react-fiber)           | Bindings from builder to React, React types                                                              |
+| [@tscircuit/routing](https://github.com/tscircuit/routing)                   | Routing algorithms for schematic and PCB traces                                                          |
+| [@tscircuit/autolayout](https://github.com/tscircuit/autolayout)             | Layout algorithms for schematics                                                                         |
 
-### Other Projects
+### Other Links
 
 - [tscircuit.com](https://tscircuit.com) - The official tscircuit website
 - [Registry](https://tscircuit.com/trending) - The official tscircuit registry that hosts re-usable tscircuit components
 - [Community Campfire](https://tscircuit.com/community/join-redirect)
+- [@seveibar](https://x.com/seveibar) - Twitter for author of tscircuit with dev sessions and upcoming features
