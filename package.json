@@ -2,7 +2,7 @@
   "name": "tscircuit",
   "main": "dist/index.js",
   "type": "module",
-  "version": "0.0.93",
+  "version": "0.0.94",
   "scripts": {
     "build": "tsup",
     "test": "ava",
