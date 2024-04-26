@@ -112,7 +112,7 @@ Yes! You can use the same trick and modify the `.npmrc` file for your project. Y
 ### Why are some things upside down?
 
 If you see something upside down, it's because mid-April the Y Axis was flipped so that "up" would mean the Y value would increase for both schematics and PCBs. In web development, the
-Y axis is negative as you go up, but [this probably wasn't a good choice an engineering tool](https://x.com/seveibar/status/1780992701800034726) so now the Y Axis is positive and some
+Y axis is negative as you go up, but [this probably isn't a good choice an engineering tool](https://x.com/seveibar/status/1780992701800034726) so now the Y Axis is positive and some
 things are upside down until they're fixed.
 
 ### Can I test this in my browser?
@@ -128,6 +128,10 @@ Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
 - [@seveibar](https://x.com/seveibar) is the main author, he tweets about tscircuit and does [development livestreams](https://www.twitch.tv/seveibar)
 - [@tscircuit](https://x.com/tscircuit) for major tscircuit releases, features and discussions
 - [tscircuit discord](https://discord.gg/6X3PYhtj) and [tscircuit campfire](https://tscircuit.com/community/join-redirect)
+
+### Does this use AI?
+
+No, but AI is pretty good at generating circuits! I'm trying to make an AI that helps bootstrap circuits!
 
 ---
 
