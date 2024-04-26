@@ -63,6 +63,58 @@ tsci dev
 - [X] Publish subpackages to the registry with `tsci publish`
 - [X] Simplified, extensible auto-routing for schematics and PCBs
 
+## FAQ
+
+### Is tscircuit free?
+
+tscircuit is completely free and MIT-licensed open-source
+
+### How does this work?
+
+tscircuit uses the same thing that React Native and [react-three-fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) use to render to mobile or 3d to render PCBs and schematics (it's called [React Fiber](https://github.com/acdlite/react-fiber-architecture)!)
+
+You can render schematics or PCBs in any React project like this:
+
+```tsx
+import { Schematic } from "@tscircuit/schematic-viewer"
+
+export const MyApp = () => (
+  <div>Regular web react here!</div>
+  <Schematic>
+   <resistor name="R1" resistance="10k" />
+  </Schematic>
+)
+```
+
+tscircuit has a bunch of extra tools and exports in the command line, so it's a bit easier to use `tsci dev` to develop circuits (you can always publish and import them later)
+
+### How does the registry work?
+
+The tscircuit registry fully implements the npm registry. When you run `tsci init` a `.npmrc` file is created in your project so that any `npm add` or `npm install` for a package starting with `@tsci/*`
+will go to the tscircuit registry instead of the npm registry.
+
+```
+# Example .npmrc
+# This line says "any package from the org @tsci should use the tscircuit registry server
+@tsci:registry=https://registry-api.tscircuit.com/npm
+```
+
+### Can I use a different registry?
+
+Yes! You can use the same trick and modify the `.npmrc` file for your project. You can run your own npm registry with [verdaccio](https://verdaccio.org/) 
+
+### Why are some things upside down?
+
+If you see something upside down, it's because mid-April the Y Axis was flipped so that "up" would mean the Y value would increase for both schematics and PCBs. In web development, the
+Y axis is negative as you go up, but [this probably wasn't a good choice an engineering tool](https://x.com/seveibar/status/1780992701800034726) so now the Y Axis is positive and some
+things are upside down until they're fixed.
+
+### How can I follow along?
+
+- [@seveibar](https://x.com/seveibar) is the main author and tweets about tscircuit
+- [@tscircuit](https://x.com/tscircuit) for major tscircuit releases, features and discussions
+- [tscircuit discord](https://discord.gg/6X3PYhtj) and [tscircuit campfire](https://tscircuit.com/community/join-redirect)
+
 ## Development Sub-Projects / Organization
 
 tscircuit includes a lot of different independently-runnable sub-projects. Here's
