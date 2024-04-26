@@ -1,6 +1,6 @@
 # ⏣ tscircuit - React for Circuits
 
-[Docs](https://docs.tscircuit.com) &middot; [Website](https://tscircuit.com) &middot; [Twitter](https://twitter.com) &middot; [Campfire](https://tscircuit.com/community/join-redirect) &middot; [Quickstart](https://docs.tscircuit.com/quickstart)
+[Docs](https://docs.tscircuit.com) &middot; [Website](https://tscircuit.com) &middot; [Twitter](https://twitter.com) &middot; [Campfire](https://tscircuit.com/community/join-redirect) &middot; [Quickstart](https://docs.tscircuit.com/quickstart) &middot; [Online Playground](https://tscircuit.com/playground)
 
 Make electronics using Typescript and React.
 
@@ -12,9 +12,9 @@ npm install -g tscircuit
 
 ```tsx
 const Circuit = () => (
-  <>
+  <board width="50mm" height="50mm" center_x={0} center_y={0}>
     <MySubcomponent
-      name="B1"
+      name="U1"
       center={[0, 0]}
       footprint="sot236"
     />
@@ -30,7 +30,7 @@ const Circuit = () => (
     <ground x={3} y={1} name="GND" />
     <trace path={[".B1 > .D0", ".R1 > .left"]} />
     <trace path={[".R1 > .right", ".GND > .gnd"]} />
-  </>
+  </board>
 )
 ```
 
