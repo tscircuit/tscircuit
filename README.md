@@ -149,6 +149,14 @@ Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
 
 No, but AI is pretty good at generating circuits! Try it with copilot!
 
+### What big features are coming?
+
+- [ ] Type-safe traces
+- [ ] Lots of ways to use hooks to do more complex, safe circuits
+- [ ] Autolayout and autorouter improvements
+- [ ] Layout and route "baking" for more complex routes/layouts
+- [ ] Less bugs! A lot less bugs! 
+
 ---
 
 ## Development Sub-Projects / Organization
