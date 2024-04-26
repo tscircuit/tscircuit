@@ -158,6 +158,7 @@ No, but AI is pretty good at generating circuits! Try it with copilot!
 - [ ] Layout and route "baking" for more complex routes/layouts
 - [ ] Lots and lots of static analysis
 - [ ] SPICE output!
+- [ ] Export to other EDA tools
 - [ ] Less bugs! A lot less bugs! 
 
 ---
