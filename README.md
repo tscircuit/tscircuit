@@ -63,6 +63,8 @@ tsci dev
 - [X] Publish subpackages to the registry with `tsci publish`
 - [X] Simplified, extensible auto-routing for schematics and PCBs
 
+---
+
 ## FAQ
 
 ### Is tscircuit free?
@@ -88,6 +90,10 @@ export const MyApp = () => (
 
 tscircuit has a bunch of extra tools and exports in the command line, so it's a bit easier to use `tsci dev` to develop circuits (you can always publish and import them later)
 
+### Is this ready for production?
+
+No! Although I've [ordered a fully assembled circuit](https://x.com/seveibar/status/1780803190101020720), this project is still very very early!
+
 ### How does the registry work?
 
 The tscircuit registry fully implements the npm registry. When you run `tsci init` a `.npmrc` file is created in your project so that any `npm add` or `npm install` for a package starting with `@tsci/*`
@@ -109,11 +115,21 @@ If you see something upside down, it's because mid-April the Y Axis was flipped 
 Y axis is negative as you go up, but [this probably wasn't a good choice an engineering tool](https://x.com/seveibar/status/1780992701800034726) so now the Y Axis is positive and some
 things are upside down until they're fixed.
 
+### Can I test this in my browser?
+
+Yes! There is a [playground tool!](https://tscircuit.com/playground)
+
+### I found a bug or have an idea for a feature, what should I do?
+
+Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
+
 ### How can I follow along?
 
-- [@seveibar](https://x.com/seveibar) is the main author and tweets about tscircuit
+- [@seveibar](https://x.com/seveibar) is the main author, he tweets about tscircuit and does [development livestreams](https://www.twitch.tv/seveibar)
 - [@tscircuit](https://x.com/tscircuit) for major tscircuit releases, features and discussions
 - [tscircuit discord](https://discord.gg/6X3PYhtj) and [tscircuit campfire](https://tscircuit.com/community/join-redirect)
+
+---
 
 ## Development Sub-Projects / Organization
 
