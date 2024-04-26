@@ -28,7 +28,7 @@ const Circuit = () => (
       pcb_y="-1mm"
     />
     <ground x={3} y={1} name="GND" />
-    <trace path={[".B1 > .D0", ".R1 > .left"]} />
+    <trace path={[".U1 > .D0", ".R1 > .left"]} />
     <trace path={[".R1 > .right", ".GND > .gnd"]} />
   </board>
 )
