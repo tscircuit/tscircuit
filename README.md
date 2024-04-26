@@ -131,7 +131,7 @@ Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
 
 ### Does this use AI?
 
-No, but AI is pretty good at generating circuits! I'm trying to make an AI that helps bootstrap circuits!
+No, but AI is pretty good at generating circuits! Try it with copilot!
 
 ---
 
