@@ -92,7 +92,7 @@ tscircuit has a bunch of extra tools and exports in the command line, so it's a 
 
 ### Is this ready for production?
 
-No! Although I've [ordered a fully assembled circuit](https://x.com/seveibar/status/1780803190101020720), this project is still very very early!
+No! Although I've [ordered a fully assembled circuit](https://x.com/seveibar/status/1780803190101020720) [(source code)](https://github.com/tscircuit/blinking-led-circuit/blob/main/lib/MyCircuit.tsx), this project is still very very early!
 
 ### How does the registry work?
 
