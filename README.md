@@ -54,6 +54,15 @@ tsci dev
 
 > ![tsci Server Preview](./docs/example_preview.png)
 
+## More Features!
+
+- [X] Preview PCBs & Schematics in your browser
+- [X] Use normal Typescript/React tooling
+- [X] Export Gerbers, Pick'n'Place and BOM for manufacturing
+- [X] Add [registry packages](https://tscircuit.com/trending) with `tsci add`
+- [X] Publish subpackages to the registry with `tsci publish`
+- [X] Simplified, extensible auto-routing for schematics and PCBs
+
 ## Development Sub-Projects / Organization
 
 tscircuit includes a lot of different independently-runnable sub-projects. Here's
@@ -72,5 +81,5 @@ a quick guide to navigating all of the sub-projects:
 ### Other Projects
 
 - [tscircuit.com](https://tscircuit.com) - The official tscircuit website
-- [registry.tscircuit.com](https://registry.tscircuit.com) - The official tscircuit registry that hosts re-usable tscircuit components
-- [Community Slack](https://tscircuit.com/slack)
+- [Registry](https://tscircuit.com/trending) - The official tscircuit registry that hosts re-usable tscircuit components
+- [Community Campfire](https://tscircuit.com/community/join-redirect)
