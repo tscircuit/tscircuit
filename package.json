@@ -24,7 +24,7 @@
   "dependencies": {
     "@tscircuit/builder": "^1.5.70",
     "@tscircuit/cli": "^0.0.88",
-    "@tscircuit/layout": "^0.0.10",
+    "@tscircuit/layout": "^0.0.11",
     "@tscircuit/pcb-viewer": "^1.2.14",
     "@tscircuit/react-fiber": "^1.0.35",
     "@tscircuit/schematic-viewer": "^1.1.17"
