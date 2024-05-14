@@ -2,8 +2,11 @@
   "name": "tscircuit",
   "main": "dist/index.js",
   "type": "module",
-  "version": "0.0.128",
-  "files": ["dist", "cli.mjs"],
+  "version": "0.0.129",
+  "files": [
+    "dist",
+    "cli.mjs"
+  ],
   "scripts": {
     "build": "tsup",
     "test": "ava",
