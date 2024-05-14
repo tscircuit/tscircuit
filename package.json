@@ -3,9 +3,7 @@
   "main": "dist/index.js",
   "type": "module",
   "version": "0.0.128",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist", "cli.mjs"],
   "scripts": {
     "build": "tsup",
     "test": "ava",
