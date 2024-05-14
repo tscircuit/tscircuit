@@ -30,7 +30,7 @@
     "@tscircuit/cli": "^0.0.89",
     "@tscircuit/layout": "^0.0.12",
     "@tscircuit/pcb-viewer": "^1.2.14",
-    "@tscircuit/react-fiber": "^1.1.12",
+    "@tscircuit/react-fiber": "^1.1.13",
     "@tscircuit/schematic-viewer": "^1.1.17"
   }
 }
