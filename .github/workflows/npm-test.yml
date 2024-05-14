@@ -29,3 +29,6 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Module can be require'd
+        run: node -e "require('.')"
