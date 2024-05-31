@@ -4,13 +4,13 @@
 
 [![NPM Version](https://img.shields.io/npm/v/tscircuit)](https://www.npmjs.com/package/tscircuit) [![](https://img.shields.io/github/stars/tscircuit/tscircuit)](https://github.com/tscircuit/tscircuit)
 
-Make electronics using Typescript and React.
+Make electronics using Typescript, React and [AI](https://text-to-footprint.tscircuit.com).
 
 ```
 npm install -g tscircuit
 ```
 
-`tscircuit` is a library complemented by a registry, package manager, and command line tool that makes it easy to create, share, export and manufacture electronic circuits. It uses
+`tscircuit` is a library complemented by a registry, package manager, command line tool and electronic design suite that makes it easy to create, share, export and manufacture electronic circuits. It uses
 [React Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to render circuits into web pages.
 
 ```tsx
@@ -65,6 +65,7 @@ tsci dev
 - [X] Add [registry packages](https://tscircuit.com/trending) with `tsci add`
 - [X] Publish subpackages to the registry with `tsci publish`
 - [X] Simplified, extensible auto-routing for schematics and PCBs
+- [X] Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com)
 
 ---
 
@@ -155,13 +156,12 @@ No, but AI is pretty good at generating circuits! Try it with copilot!
 ### What big features are coming?
 
 - [ ] Type-safe traces
-- [ ] Lots of ways to use hooks to do more complex, safe circuits
 - [ ] Autolayout and autorouter improvements
 - [ ] Layout and route "baking" for more complex routes/layouts
 - [ ] Lots and lots of static analysis
 - [ ] SPICE output!
 - [ ] Export to other EDA tools
-- [ ] Less bugs! A lot less bugs! 
+- [ ] Less bugs! A lot less bugs!
 
 ---
 
@@ -182,6 +182,7 @@ a quick guide to navigating all of the sub-projects:
 | [@tscircuit/react-fiber](https://github.com/tscircuit/react-fiber)           | Bindings from builder to React, React types                                                              |
 | [@tscircuit/routing](https://github.com/tscircuit/routing)                   | Routing algorithms for schematic and PCB traces                                                          |
 | [@tscircuit/autolayout](https://github.com/tscircuit/autolayout)             | Layout algorithms for schematics                                                                         |
+| [@tscircuit/footprinter](https://github.com/tscircuit/footprinter)             | DSL for creating footprints                                                                         |
 
 ### Other Links
 
