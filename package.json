@@ -13,7 +13,8 @@
     "update-deps": "npm add @tscircuit/builder @tscircuit/cli @tscircuit/pcb-viewer @tscircuit/react-fiber @tscircuit/schematic-viewer"
   },
   "bin": {
-    "tsci": "cli.mjs"
+    "tsci": "cli.mjs",
+    "tscircuit": "cli.mjs"
   },
   "devDependencies": {
     "@types/bun": "latest",
