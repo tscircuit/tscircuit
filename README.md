@@ -10,7 +10,7 @@ Make electronics using Typescript, React and [AI](https://text-to-footprint.tsci
 npm install -g tscircuit
 ```
 
-`tscircuit` is a library complemented by a registry, package manager, command line tool and electronic design suite that makes it easy to create, share, export and manufacture electronic circuits. It uses
+`tscircuit` is a library complemented by a registry, package manager, command line tool and AI electronic design suite that makes it easy to create, share, export and manufacture electronic circuits. It uses
 [React Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to render circuits into web pages.
 
 ```tsx
