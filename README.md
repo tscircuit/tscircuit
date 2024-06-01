@@ -188,5 +188,5 @@ a quick guide to navigating all of the sub-projects:
 
 - [tscircuit.com](https://tscircuit.com) - The official tscircuit website
 - [Registry](https://tscircuit.com/trending) - The official tscircuit registry that hosts re-usable tscircuit components
-- [Community Campfire](https://tscircuit.com/community/join-redirect)
+- [discord](https://tscircuit.com/community/join-redirect)
 - [@seveibar](https://x.com/seveibar) - Twitter for author of tscircuit with dev sessions and upcoming features
