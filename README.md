@@ -16,11 +16,7 @@ npm install -g tscircuit
 ```tsx
 const Circuit = () => (
   <board width="50mm" height="50mm" center_x={0} center_y={0}>
-    <MySubcomponent
-      name="U1"
-      center={[0, 0]}
-      footprint="sot236"
-    />
+    <MySubcomponent name="U1" center={[0, 0]} footprint="sot236" />
     <resistor
       x={2}
       y={-0.5}
@@ -39,9 +35,7 @@ const Circuit = () => (
 
 ![Example Circuit Rendering](./docs/example_render.png)
 
-
 https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4c3691e5ca9
-
 
 ## Getting Started
 
@@ -59,13 +53,13 @@ tsci dev
 
 ## More Features!
 
-- [X] Preview PCBs & Schematics in your browser
-- [X] Use normal Typescript/React tooling
-- [X] Export Gerbers, Pick'n'Place and BOM for manufacturing
-- [X] Add [registry packages](https://tscircuit.com/trending) with `tsci add`
-- [X] Publish subpackages to the registry with `tsci publish`
-- [X] Simplified, extensible auto-routing for schematics and PCBs
-- [X] Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com)
+- [x] Preview PCBs & Schematics in your browser
+- [x] Use normal Typescript/React tooling
+- [x] Export Gerbers, Pick'n'Place and BOM for manufacturing
+- [x] Add [registry packages](https://tscircuit.com/trending) with `tsci add`
+- [x] Publish subpackages to the registry with `tsci publish`
+- [x] Simplified, extensible auto-routing for schematics and PCBs
+- [x] Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com)
 
 ---
 
@@ -111,7 +105,7 @@ will go to the tscircuit registry instead of the npm registry.
 
 ### Can I use a different registry?
 
-Yes! You can use the same trick and modify the `.npmrc` file for your project. You can run your own npm registry with [verdaccio](https://verdaccio.org/) 
+Yes! You can use the same trick and modify the `.npmrc` file for your project. You can run your own npm registry with [verdaccio](https://verdaccio.org/)
 
 ### Why are some things upside down?
 
@@ -182,7 +176,8 @@ a quick guide to navigating all of the sub-projects:
 | [@tscircuit/react-fiber](https://github.com/tscircuit/react-fiber)           | Bindings from builder to React, React types                                                              |
 | [@tscircuit/routing](https://github.com/tscircuit/routing)                   | Routing algorithms for schematic and PCB traces                                                          |
 | [@tscircuit/autolayout](https://github.com/tscircuit/autolayout)             | Layout algorithms for schematics                                                                         |
-| [@tscircuit/footprinter](https://github.com/tscircuit/footprinter)             | DSL for creating footprints                                                                         |
+| [@tscircuit/footprinter](https://github.com/tscircuit/footprinter)           | DSL for creating footprints                                                                              |
+| [@tscircuit/kicad-viewer](https://github.com/tscircuit/kicad-viewer)         | View the KiCad official footprints online                                                                |
 
 ### Other Links
 
