@@ -27,11 +27,11 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/builder": "^1.5.70",
-    "@tscircuit/cli": "^0.0.99",
+    "@tscircuit/builder": "^1.5.128",
+    "@tscircuit/cli": "^0.0.100",
     "@tscircuit/layout": "^0.0.21",
-    "@tscircuit/pcb-viewer": "^1.2.14",
-    "@tscircuit/react-fiber": "^1.1.17",
-    "@tscircuit/schematic-viewer": "^1.1.17"
+    "@tscircuit/pcb-viewer": "^1.3.14",
+    "@tscircuit/react-fiber": "^1.1.29",
+    "@tscircuit/schematic-viewer": "^1.2.14"
   }
 }
