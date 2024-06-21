@@ -27,8 +27,8 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/builder": "^1.5.128",
-    "@tscircuit/cli": "^0.0.100",
+    "@tscircuit/builder": "^1.5.129",
+    "@tscircuit/cli": "^0.0.101",
     "@tscircuit/layout": "^0.0.21",
     "@tscircuit/pcb-viewer": "^1.3.14",
     "@tscircuit/react-fiber": "^1.1.29",
