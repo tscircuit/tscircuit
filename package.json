@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsup",
     "test": "ava",
-    "update-deps": "npm add @tscircuit/builder @tscircuit/cli @tscircuit/pcb-viewer @tscircuit/react-fiber @tscircuit/schematic-viewer"
+    "update-deps": "npm add @tscircuit/builder@latest @tscircuit/cli@latest @tscircuit/pcb-viewer@latest @tscircuit/react-fiber@latest @tscircuit/schematic-viewer@latest @tscircuit/layout@latest @tscircuit/schematic-autolayout@latest"
   },
   "bin": {
     "tsci": "cli.mjs",
@@ -29,9 +29,10 @@
   "dependencies": {
     "@tscircuit/builder": "^1.5.131",
     "@tscircuit/cli": "^0.0.103",
-    "@tscircuit/layout": "^0.0.21",
+    "@tscircuit/layout": "^0.0.23",
     "@tscircuit/pcb-viewer": "^1.3.14",
     "@tscircuit/react-fiber": "^1.1.29",
+    "@tscircuit/schematic-autolayout": "^0.0.5",
     "@tscircuit/schematic-viewer": "^1.2.14"
   }
 }
