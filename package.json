@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsup",
     "test": "ava",
-    "update-deps": "npm add @tscircuit/builder@latest @tscircuit/cli@latest @tscircuit/pcb-viewer@latest @tscircuit/react-fiber@latest @tscircuit/schematic-viewer@latest @tscircuit/layout@latest @tscircuit/schematic-autolayout@latest"
+    "update-deps": "npm add @tscircuit/builder@latest @tscircuit/cli@latest @tscircuit/pcb-viewer@latest @tscircuit/react-fiber@latest @tscircuit/schematic-viewer@latest @tscircuit/layout@latest @tscircuit/schematic-autolayout@latest @tscircuit/footprinter@latest"
   },
   "bin": {
     "tsci": "cli.mjs",
@@ -27,10 +27,11 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/builder": "^1.5.131",
+    "@tscircuit/builder": "^1.5.139",
     "@tscircuit/cli": "^0.0.130",
+    "@tscircuit/footprinter": "^0.0.44",
     "@tscircuit/layout": "^0.0.25",
-    "@tscircuit/pcb-viewer": "^1.3.14",
+    "@tscircuit/pcb-viewer": "^1.4.1",
     "@tscircuit/props": "^0.0.18",
     "@tscircuit/react-fiber": "^1.1.29",
     "@tscircuit/schematic-autolayout": "^0.0.5",
