@@ -29,7 +29,7 @@
   "dependencies": {
     "@tscircuit/builder": "^1.11.2",
     "@tscircuit/cli": "^0.0.168",
-    "@tscircuit/footprinter": "^0.0.51",
+    "@tscircuit/footprinter": "^0.0.53",
     "@tscircuit/layout": "^0.0.25",
     "@tscircuit/pcb-viewer": "^1.6.0",
     "@tscircuit/props": "^0.0.37",
