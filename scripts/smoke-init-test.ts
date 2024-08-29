@@ -1,13 +1,15 @@
 import { $ } from "bun";
 import { join } from "path";
 // Ensure we're in the project root
-await $`cd ${join(import.meta.dir, "..")}`;
+$.cwd(join(import.meta.dir, ".."))
 
 // Install the package globally
 await $`npm i -g .`;
 
 // Create and navigate to a test project directory
-await $`mkdir -p test-project && cd test-project`;
+await $`mkdir -p test-project`;
+
+$.cwd(join(import.meta.dir, "../test-project"))
 
 // Run tsci init
 const initResult = await $`npx tsci init`;
