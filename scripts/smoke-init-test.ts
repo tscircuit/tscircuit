@@ -19,7 +19,7 @@ if (initResult.exitCode !== 0) {
 }
 
 // Run tsci soupify
-const soupifyResult = await $`npx tsci soupify --file ./examples/MyCircuit.tsx`;
+const soupifyResult = await $`npx tsci soupify --file ./examples/MyExample.tsx`;
 if (soupifyResult.exitCode !== 0) {
   console.error("tsci soupify failed");
   process.exit(1);
