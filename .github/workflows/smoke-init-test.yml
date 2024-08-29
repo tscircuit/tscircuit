@@ -20,4 +20,4 @@ jobs:
         run: bun install
 
       - name: Run smoke test
-        run: bun run scripts/smoke-test.ts
+        run: bun run scripts/smoke-init-test.ts
