@@ -27,7 +27,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/builder": "^1.11.4",
+    "@tscircuit/builder": "^1.11.5",
     "@tscircuit/cli": "^0.0.172",
     "@tscircuit/footprinter": "^0.0.57",
     "@tscircuit/layout": "^0.0.27",
