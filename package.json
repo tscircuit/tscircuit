@@ -31,7 +31,7 @@
     "@tscircuit/cli": "^0.0.172",
     "@tscircuit/footprinter": "^0.0.57",
     "@tscircuit/layout": "^0.0.27",
-    "@tscircuit/pcb-viewer": "^1.8.1",
+    "@tscircuit/pcb-viewer": "^1.8.2",
     "@tscircuit/props": "^0.0.49",
     "@tscircuit/react-fiber": "^1.2.0",
     "@tscircuit/schematic-autolayout": "^0.0.5",
