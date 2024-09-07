@@ -36,6 +36,6 @@
     "@tscircuit/react-fiber": "^1.2.0",
     "@tscircuit/schematic-autolayout": "^0.0.5",
     "@tscircuit/schematic-viewer": "^1.2.14",
-    "@tscircuit/soup-util": "^0.0.20"
+    "@tscircuit/soup-util": "^0.0.23"
   }
 }
