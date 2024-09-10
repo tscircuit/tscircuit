@@ -2,7 +2,7 @@
   "name": "tscircuit",
   "main": "dist/index.cjs",
   "type": "module",
-  "version": "0.0.336",
+  "version": "0.0.337",
   "files": [
     "dist",
     "cli.mjs"
