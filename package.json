@@ -8,8 +8,8 @@
     "cli.mjs"
   ],
   "scripts": {
-    "build": "tsup",
-    "test": "ava",
+    "build": "tsup-node",
+    "test": "bun test",
     "update-deps": "npm add @tscircuit/builder@latest @tscircuit/cli@latest @tscircuit/pcb-viewer@latest @tscircuit/react-fiber@latest @tscircuit/schematic-viewer@latest @tscircuit/layout@latest @tscircuit/schematic-autolayout@latest @tscircuit/footprinter@latest"
   },
   "bin": {
@@ -27,15 +27,20 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/builder": "^1.11.6",
-    "@tscircuit/cli": "^0.0.196",
-    "@tscircuit/footprinter": "^0.0.59",
-    "@tscircuit/layout": "^0.0.27",
-    "@tscircuit/pcb-viewer": "^1.9.3",
+    "@tscircuit/builder": "^1.11.7",
+    "@tscircuit/cli": "^0.0.207",
+    "@tscircuit/core": "^0.0.66",
+    "@tscircuit/footprinter": "^0.0.61",
+    "@tscircuit/layout": "^0.0.28",
+    "@tscircuit/math-utils": "^0.0.4",
+    "@tscircuit/pcb-viewer": "^1.10.3",
     "@tscircuit/props": "^0.0.62",
     "@tscircuit/react-fiber": "^1.2.0",
     "@tscircuit/schematic-autolayout": "^0.0.5",
     "@tscircuit/schematic-viewer": "^1.2.14",
-    "@tscircuit/soup-util": "^0.0.23"
+    "@tscircuit/soup-util": "^0.0.23",
+    "circuit-json-to-connectivity-map": "^0.0.15",
+    "circuit-to-svg": "^0.0.33",
+    "performance-now": "^2.1.0"
   }
 }

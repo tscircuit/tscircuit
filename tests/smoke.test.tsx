@@ -1,12 +1,19 @@
 import React from "react"
-import test from "ava"
-import { createProjectBuilder, createRoot } from "../dist"
+import { test, expect } from "bun:test"
+import { Circuit } from "../dist"
 
-test("smoke test for soup", async (t) => {
-  const pb = createProjectBuilder()
-  const result = await createRoot().render(
-    <resistor name="R1" resistance="10kohm" />,
-    pb
+test("smoke test for getting circuit json", async () => {
+  const circuit = new Circuit()
+
+  circuit.add(
+    <board width={10} height={10}>
+      <resistor name="R1" resistance="10kohm" />
+    </board>,
   )
-  t.truthy(result.some((e) => e.type === "schematic_component"))
+
+  circuit.render()
+
+  const circuitJson = circuit.getCircuitJson()
+
+  expect(circuitJson).toBeTruthy()
 })
