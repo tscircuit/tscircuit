@@ -1,6 +1,6 @@
 {
   "name": "tscircuit",
-  "main": "dist/index.cjs",
+  "main": "dist/index.js",
   "type": "module",
   "version": "0.0.338",
   "files": [
@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsup-node",
     "test": "bun test",
-    "update-deps": "npm add @tscircuit/builder@latest @tscircuit/cli@latest @tscircuit/pcb-viewer@latest @tscircuit/react-fiber@latest @tscircuit/schematic-viewer@latest @tscircuit/layout@latest @tscircuit/schematic-autolayout@latest @tscircuit/footprinter@latest"
+    "update-deps": "npm add @tscircuit/core@latest @tscircuit/cli@latest @tscircuit/pcb-viewer@latest @tscircuit/react-fiber@latest @tscircuit/schematic-viewer@latest @tscircuit/layout@latest @tscircuit/schematic-autolayout@latest @tscircuit/footprinter@latest"
   },
   "bin": {
     "tsci": "cli.mjs",
@@ -21,15 +21,14 @@
     "ava": "^6.1.2",
     "esbuild": "^0.20.2",
     "esbuild-register": "^3.5.0",
-    "tsup": "^8.0.2"
+    "tsup": "^8.3.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/builder": "^1.11.7",
-    "@tscircuit/cli": "^0.0.207",
-    "@tscircuit/core": "^0.0.66",
+    "@tscircuit/cli": "^0.0.213",
+    "@tscircuit/core": "^0.0.71",
     "@tscircuit/footprinter": "^0.0.61",
     "@tscircuit/layout": "^0.0.28",
     "@tscircuit/math-utils": "^0.0.4",

@@ -1,10 +1,14 @@
-#!/usr/bin/env node
-import { createRequire } from "node:module"
-const require = createRequire(import.meta.url)
+#!/usr/bin/env node --experimental-require-module --no-warnings
 
-// Emits node warning which is annoying
-// import packageJson from "./package.json" with { type: "json" }
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
 
-global.TSCIRCUIT_VERSION = require("./package.json").version
+// Use require to import package.json
+const packageJson = require("./package.json");
+global.TSCIRCUIT_VERSION = packageJson.version;
 
-await import("@tscircuit/cli")
+async function main() {
+  await import("@tscircuit/cli");
+}
+
+main();
