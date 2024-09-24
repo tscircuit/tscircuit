@@ -1,0 +1,27 @@
+# Created using @tscircuit/plop (npm install -g @tscircuit/plop)
+name: Bun Test
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+      
+      - run: bun run build
+
+      - name: Run tests
+        run: bun test

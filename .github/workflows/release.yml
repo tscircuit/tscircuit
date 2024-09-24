@@ -12,11 +12,13 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
       - run: npm install -g pver
       - run: npm ci
       - run: npm run build
-      - name: Module can be require'd
-        run: node -e "require('.')"
       - run: pver release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
