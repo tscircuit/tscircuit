@@ -3,6 +3,10 @@
   "main": "dist/index.js",
   "type": "module",
   "version": "0.0.340",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tscircuit/tscircuit"
+  },
   "files": [
     "dist",
     "cli.mjs"
