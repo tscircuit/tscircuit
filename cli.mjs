@@ -1,4 +1,4 @@
-#!/usr/bin/env node --experimental-require-module --no-warnings
+#!/usr/bin/env bun
 
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
