@@ -31,7 +31,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/cli": "^0.0.213",
+    "@tscircuit/cli": "^0.0.264",
     "@tscircuit/core": "^0.0.71",
     "@tscircuit/footprinter": "^0.0.61",
     "@tscircuit/layout": "^0.0.28",
