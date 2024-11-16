@@ -6,6 +6,13 @@
 
 Make electronics using Typescript, React and [AI](https://text-to-footprint.tscircuit.com).
 
+We recommend starting with our [online editor on tscircuit.com](https://tscircuit.com/playground) (no sign-up required) rather than our CLI.
+
+Example Circuits:
+- [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
+
+---
+
 ```
 npm install -g tscircuit
 ```
