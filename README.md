@@ -1,24 +1,81 @@
-# ⏣ tscircuit - React for Circuits
+## Welcome to ⏣ TSCircuit 💙⚡
 
-[Docs](https://docs.tscircuit.com) &middot; [Website](https://tscircuit.com) &middot; [Twitter](https://x.com/tscircuit) &middot; [discord](https://tscircuit.com/community/join-redirect) &middot; [Quickstart](https://docs.tscircuit.com/quickstart) &middot; [Online Playground](https://tscircuit.com/playground)
+<div style="display: flex; flex-direction: column; gap: 8px; align-items: center; justify: center;" align="center">
+  <div style="text-align: center;">Make electronics using Typescript, React, and <a href="https://text-to-footprint.tscircuit.com">AI</a>. We recommend starting with our <a href="https://tscircuit.com/playground">online editor on tscircuit.com</a> <strong>(no sign-up required)</strong> rather than our CLI.</div>
+  <div>
+  <a href="https://tscircuit.com"><strong>Learn more »</strong></a>
+</div>
 
-[![NPM Version](https://img.shields.io/npm/v/tscircuit)](https://www.npmjs.com/package/tscircuit) [![](https://img.shields.io/github/stars/tscircuit/tscircuit)](https://github.com/tscircuit/tscircuit)
+<a href="https://tscircuit.com/join">Discord</a>
+·
+<a href="https://tscircuit.com">Website</a>
+·
+<a href="https://docs.tscircuit.com">Docs</a>
+·
+<a href="https://blog.tscircuit.com/">Articles</a>
+·
+<a href="https://tscircuit.com/playground">Online Playground</a>
+·
+<a href="https://docs.tscircuit.com/quickstart">Quick Start</a>
+·
+<a href="https://github.com/tscircuit/tscircuit/issues">Issues</a>
+·
+<a href="https://x.com/tscircuit">Twitter</a>
 
-Make electronics using Typescript, React and [AI](https://text-to-footprint.tscircuit.com).
+</div>
 
-We recommend starting with our [online editor on tscircuit.com](https://tscircuit.com/playground) (no sign-up required) rather than our CLI.
+<div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+  <a href="https://tscircuit.com/join"><img src="https://img.shields.io/badge/Discord-tscircuit.com/join-%235865F2" alt="Join TSCircuit on Discord"></a>
+  <a href="https://www.npmjs.com/package/tscircuit"><img src="https://img.shields.io/npm/v/tscircuit" alt="NPM Version"></a>
+  <a href="https://github.com/tscircuit/tscircuit/stargazers"><img src="https://img.shields.io/github/stars/tscircuit/tscircuit" alt="GitHub Stars"></a>
+</div>
 
-Example Circuits:
-- [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
+## Meet Founder of TSCircuit - Seve! 👋⚡
+
+https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4c3691e5ca9
+
+## Table of Contents
+
+1. [About TSCircuit](#about-tscircuit)
+2. [Examples](#example-circuits)
+3. [Community and Next Steps](#community-and-next-steps)
+4. [Getting Started](#getting-started)
+5. [Developer Setup Guide](#developer-setup-guide)
+6. [Want to Contribute to TSCircuit?](#want-to-contribute-to-tscircuit-you-are-most-welcome)
+7. [Repository Activity](#repo-activity)
+8. [Development Sub-Projects / Organization](#development-sub-projects--organization)
+9. [FAQs](#faq)
 
 ---
 
-```
-npm install -g tscircuit
-```
+## About TSCircuit
 
 `tscircuit` is a library complemented by a registry, package manager, command line tool and AI electronic design suite that makes it easy to create, share, export and manufacture electronic circuits. It uses
 [React Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to render circuits into web pages.
+
+Think of tscircuit as "React for Electronics." It allows you to design real-world electronic circuits using Typescript and React. This is what tscircuit code looks like, instead of creating web element like “div”, you create circuit elements like “chip”, “resistor” or “capacitor”, then instead of rendering a website, we render a 3d circuit (that you can actually order!)
+
+With tscircuit, we've even designed a <a href="https://blog.tscircuit.com/p/battling-jlcs-assembly-interface" target="_blank">fully functional keyboard!</a> The best part? Once you've completed your design, you can export it to a manufacturer and bring your circuit to life in the real world. How cool is that?
+
+## Example Circuits
+
+- [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
+
+<!-- ## Community and Next Steps
+
+## Getting Started
+
+## Contact Us
+
+## Developer Setup Guide
+
+## Want to Contribute to TSCircuit? You Are Most Welcome
+
+## Repo Activity
+
+![Repo Activity Analytics](#)
+
+## Development Sub-Projects / Organization -->
 
 ```tsx
 const Circuit = () => (
@@ -37,12 +94,10 @@ const Circuit = () => (
     <trace path={[".U1 > .D0", ".R1 > .left"]} />
     <trace path={[".R1 > .right", ".GND > .gnd"]} />
   </board>
-)
+);
 ```
 
 ![Example Circuit Rendering](./docs/example_render.png)
-
-https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4c3691e5ca9
 
 ## Getting Started
 
