@@ -1,4 +1,4 @@
-# Welcome to ⏣ TSCircuit 💙⚡
+# tscircuit - React for Circuits
 
 <div style="display: flex; flex-direction: column;">
   <div>Make electronics using Typescript, React, and 
@@ -50,34 +50,18 @@ https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4
 
 ---
 
-## About TSCircuit 💙
+## About tscircuit
 
 `tscircuit` is a library complemented by a registry, package manager, command line tool and AI electronic design suite that makes it easy to create, share, export and manufacture electronic circuits. It uses
 [React Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to render circuits into web pages.
 
-Think of tscircuit as "React for Electronics." It allows you to design real-world electronic circuits using Typescript and React. This is what tscircuit code looks like, instead of creating web element like “div”, you create circuit elements like “chip”, “resistor” or “capacitor”, then instead of rendering a website, we render a 3d circuit (that you can actually order!) 🚀
+Think of tscircuit as "React for Electronics" It allows you to design real-world electronic circuits using Typescript and React. This is what tscircuit code looks like, instead of creating web element like “div”, you create circuit elements like “chip”, “resistor” or “capacitor”, then instead of rendering a website, we render a 3d circuit (that you can actually order!) 🚀
 
-With tscircuit, we've even designed a <a target="_blank" href="https://blog.tscircuit.com/p/battling-jlcs-assembly-interface" target="_blank">fully functional keyboard!</a> The best part? Once you've completed your design, you can export it to a manufacturer and bring your circuit to life in the real world. How cool is that? 😎
+With tscircuit, we've even designed a <a target="_blank" href="https://blog.tscircuit.com/p/battling-jlcs-assembly-interface" target="_blank">fully functional keyboard!</a> The best part? Once you've completed your design, you can export it to a manufacturer and bring your circuit to life in the real world!
 
 ## Example Circuits
 
 - [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
-
-<!-- ## Community and Next Steps
-
-## Getting Started
-
-## Contact Us
-
-## Developer Setup Guide
-
-## Want to Contribute to TSCircuit? You Are Most Welcome
-
-## Repo Activity
-
-![Repo Activity Analytics](#)
-
-## Development Sub-Projects / Organization -->
 
 ```tsx
 const Circuit = () => (
