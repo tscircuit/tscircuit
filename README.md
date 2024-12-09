@@ -1,9 +1,9 @@
 ## Welcome to ⏣ TSCircuit 💙⚡
 
-<div style="display: flex; flex-direction: column; gap: 8px; align-items: center; justify: center;" align="center">
-  <div style="text-align: center;">Make electronics using Typescript, React, and <a href="https://text-to-footprint.tscircuit.com">AI</a>. We recommend starting with our <a href="https://tscircuit.com/playground">online editor on tscircuit.com</a> <strong>(no sign-up required)</strong> rather than our CLI.</div>
+<div style="display: flex; flex-direction: column; gap: 4px;">
+  <div>Make electronics using Typescript, React, and <a href="https://text-to-footprint.tscircuit.com">AI</a>. We recommend starting with our <a href="https://tscircuit.com/playground">online editor on tscircuit.com</a> <strong>(no sign-up required)</strong> rather than our CLI. <a href="https://tscircuit.com"><strong>Learn more »</strong></a></div> 
   <div>
-  <a href="https://tscircuit.com"><strong>Learn more »</strong></a>
+  
 </div>
 
 <a href="https://tscircuit.com/join">Discord</a>
@@ -24,7 +24,7 @@
 
 </div>
 
-<div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+<div style="display: flex; gap: 10px; margin-bottom: 20px;">
   <a href="https://tscircuit.com/join"><img src="https://img.shields.io/badge/Discord-tscircuit.com/join-%235865F2" alt="Join TSCircuit on Discord"></a>
   <a href="https://www.npmjs.com/package/tscircuit"><img src="https://img.shields.io/npm/v/tscircuit" alt="NPM Version"></a>
   <a href="https://github.com/tscircuit/tscircuit/stargazers"><img src="https://img.shields.io/github/stars/tscircuit/tscircuit" alt="GitHub Stars"></a>
