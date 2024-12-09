@@ -1,4 +1,4 @@
-# tscircuit - React for Circuits
+# ⏣ tscircuit - React for Circuits
 
 <div style="display: flex; flex-direction: column;">
   <div>Make electronics using Typescript, React, and 
@@ -44,9 +44,10 @@ https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4
 2. [Examples](#example-circuits)
 3. [Getting Started](#getting-started)
 4. [Features](#more-features)
-5. [FAQs](#faq)
-6. [Development Sub-Projects / Organization](#development-sub-projects--organization)
-7. [Other Links](#other-links)
+5. [Community Support](#community-support)
+6. [FAQs](#faq)
+7. [Development Sub-Projects / Organization](#development-sub-projects--organization)
+8. [Other Links](#other-links)
 
 ---
 
@@ -85,7 +86,7 @@ const Circuit = () => (
 
 ![Example Circuit Rendering](./docs/example_render.png)
 
-## Getting Started ⚡
+## Getting Started
 
 You can do everything you need to do with `tscircuit` using the [`tsci`](https://github.com/tscircuit/cli) command line tool.
 
@@ -99,7 +100,7 @@ tsci dev
 
 > ![tsci Server Preview](./docs/example_preview.png)
 
-## More Features! 🤩
+## More Features!
 
 - [x] Preview PCBs & Schematics in your browser
 - [x] Use normal Typescript/React tooling
@@ -109,15 +110,17 @@ tsci dev
 - [x] Simplified, extensible auto-routing for schematics and PCBs
 - [x] Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com)
 
----
+## Community Support
 
-## FAQ 🤔
+Have any queries? Want to reach out to the team? Have got feature ideas? Want to report any bugs? Want to discuss something? Want to attend meetings? Just want to give your feedback of using tscircuit or want to introduce yourself or want to be a part of our growing community? We got you - We primarily communicate on <a href="https://tscircuit.com/join" target="_blank">Discord Community Server</a>, of 100+ members currently, where you are a developer or not - all the primary communications happen here.
 
-### Is tscircuit free?
+## FAQ
+
+### 1. Is tscircuit free?
 
 tscircuit is completely free and MIT-licensed open-source
 
-### How does this work?
+### 2. How does this work?
 
 tscircuit uses the same thing that React Native and [react-three-fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) use to render to mobile or 3d to render PCBs and schematics (it's called [React Fiber](https://github.com/acdlite/react-fiber-architecture)!)
 
@@ -136,11 +139,11 @@ export const MyApp = () => (
 
 tscircuit has a bunch of extra tools and exports in the command line, so it's a bit easier to use `tsci dev` to develop circuits (you can always publish and import them later)
 
-### Is this ready for production?
+### 3. Is this ready for production?
 
 No! Although I've [ordered a fully assembled circuit](https://x.com/seveibar/status/1780803190101020720) [(source code)](https://github.com/tscircuit/blinking-led-circuit/blob/main/lib/MyCircuit.tsx), this project is still very very early!
 
-### How does the registry work?
+### 4. How does the registry work?
 
 The tscircuit registry fully implements the npm registry. When you run `tsci init` a `.npmrc` file is created in your project so that any `npm add` or `npm install` for a package starting with `@tsci/*`
 will go to the tscircuit registry instead of the npm registry.
@@ -151,51 +154,51 @@ will go to the tscircuit registry instead of the npm registry.
 @tsci:registry=https://registry-api.tscircuit.com/npm
 ```
 
-### Can I use a different registry?
+### 5. Can I use a different registry?
 
 Yes! You can use the same trick and modify the `.npmrc` file for your project. You can run your own npm registry with [verdaccio](https://verdaccio.org/)
 
-### Why are some things upside down?
+### 6. Why are some things upside down?
 
 If you see something upside down, it's because mid-April the Y Axis was flipped so that "up" would mean the Y value would increase for both schematics and PCBs. In web development, the
 Y axis is negative as you go up, but [this probably isn't a good choice an engineering tool](https://x.com/seveibar/status/1780992701800034726) so now the Y Axis is positive and some
 things are upside down until they're fixed.
 
-### Can I test this in my browser?
+### 7. Can I test this in my browser?
 
 Yes! There is a [playground tool!](https://tscircuit.com/playground)
 
-### Do I have to specify the position of every component?
+### 8. Do I have to specify the position of every component?
 
 I'm working on autolayout functionality where you will hopefully only need to
 tweak things like the spacing. The goal of anything auto
 
-### Is the auto-routing good?
+### 9. Is the auto-routing good?
 
 The auto-routing is very basic. You can adjust the paths by adding `pcb_route_hints`
 to a `<trace />`. Over time, we'll get good, fast auto-routing algorithms and also
 ways to "bake & cache" a route over a longer time period.
 
-### Can I export into other tools for routing?
+### 10. Can I export into other tools for routing?
 
 This isn't currently possible but a major current objective. If you're interested in writing a module that can convert [tscircuit soup JSON](https://docs.tscircuit.com/api-reference/advanced/soup)
 into another editor's format, reach out on our [campfire](https://tscircuit.com/community/join-redirect)!!
 
-### I found a bug or have an idea for a feature, what should I do?
+### 11. I found a bug or have an idea for a feature, what should I do?
 
 Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
 
-### How can I follow along?
+### 11. How can I follow along?
 
 - [@seveibar](https://x.com/seveibar) is the main author, he tweets about tscircuit and does [development livestreams](https://www.twitch.tv/seveibar)
 - [@tscircuit](https://x.com/tscircuit) for major tscircuit releases, features and discussions
 - [tscircuit discord](https://discord.gg/6X3PYhtj) and [tscircuit campfire](https://tscircuit.com/community/join-redirect)
 
-### Does this use AI?
+### 12. Does this use AI?
 
 No, but AI is pretty good at generating circuits! Try it with copilot!
 
-### What big features are coming?
+### 13. What big features are coming?
 
 - [ ] Type-safe traces
 - [ ] Autolayout and autorouter improvements
@@ -228,9 +231,7 @@ a quick guide to navigating all of the sub-projects:
 | [kicad-mod-converter](https://github.com/tscircuit/kicad-mod-converter)      | Convert kicad_mod files to and from JSON                                                                 |
 | [@tscircuit/kicad-viewer](https://github.com/tscircuit/kicad-viewer)         | View the KiCad official footprints online                                                                |
 
-### Other Links
+## Other Links
 
-- [tscircuit.com](https://tscircuit.com) - The official tscircuit website
 - [Registry](https://tscircuit.com/trending) - The official tscircuit registry that hosts re-usable tscircuit components
-- [discord](https://tscircuit.com/community/join-redirect)
 - [@seveibar](https://x.com/seveibar) - Twitter for author of tscircuit with dev sessions and upcoming features
