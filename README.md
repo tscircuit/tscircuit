@@ -2,34 +2,34 @@
 
 <div style="display: flex; flex-direction: column;">
   <div>Make electronics using Typescript, React, and 
-  <a href="https://text-to-footprint.tscircuit.com">AI</a>. 
-  We recommend starting with our <a href="https://tscircuit.com/playground">online editor on tscircuit.com</a> <strong>(no sign-up required)</strong> rather than our CLI. <a href="https://tscircuit.com"><strong>Learn more »</strong></a>
+  <a href="https://text-to-footprint.tscircuit.com" target="_blank">AI</a>. 
+  We recommend starting with our <a target="_blank" href="https://tscircuit.com/playground">online editor on tscircuit.com</a> <strong>(no sign-up required)</strong> rather than our CLI. <a target="_blank" href="https://tscircuit.com"><strong>Learn more »</strong></a>
   </div>
 <br/>
   <div>
-<a href="https://tscircuit.com/join">Discord</a>
+<a href="https://tscircuit.com/join" target="_blank">Discord</a>
 ·
-<a href="https://tscircuit.com">Website</a>
+<a href="https://tscircuit.com" target="_blank">Website</a>
 ·
-<a href="https://docs.tscircuit.com">Docs</a>
+<a href="https://docs.tscircuit.com" target="_blank">Docs</a>
 ·
-<a href="https://blog.tscircuit.com/">Articles</a>
+<a href="https://blog.tscircuit.com/" target="_blank">Articles</a>
 ·
-<a href="https://tscircuit.com/playground">Online Playground</a>
+<a href="https://tscircuit.com/playground" target="_blank">Online Playground</a>
 ·
-<a href="https://docs.tscircuit.com/quickstart">Quick Start</a>
+<a href="https://docs.tscircuit.com/quickstart" target="_blank">Quick Start</a>
 ·
-<a href="https://github.com/tscircuit/tscircuit/issues">Issues</a>
+<a href="https://github.com/tscircuit/tscircuit/issues" target="_blank">Issues</a>
 ·
-<a href="https://x.com/tscircuit">Twitter</a>
+<a href="https://x.com/tscircuit" target="_blank">Twitter</a>
 
 </div>
 <br/>
 
 <div style="display: flex; gap: 10px">
-  <a href="https://tscircuit.com/join"><img src="https://img.shields.io/badge/Discord-tscircuit.com/join-%235865F2" alt="Join TSCircuit on Discord"></a>
-  <a href="https://www.npmjs.com/package/tscircuit"><img src="https://img.shields.io/npm/v/tscircuit" alt="NPM Version"></a>
-  <a href="https://github.com/tscircuit/tscircuit/stargazers"><img src="https://img.shields.io/github/stars/tscircuit/tscircuit" alt="GitHub Stars"></a>
+  <a target="_blank" href="https://tscircuit.com/join"><img src="https://img.shields.io/badge/Discord-tscircuit.com/join-%235865F2" alt="Join TSCircuit on Discord"></a>
+  <a target="_blank" href="https://www.npmjs.com/package/tscircuit"><img src="https://img.shields.io/npm/v/tscircuit" alt="NPM Version"></a>
+  <a target="_blank" href="https://github.com/tscircuit/tscircuit/stargazers"><img src="https://img.shields.io/github/stars/tscircuit/tscircuit" alt="GitHub Stars"></a>
 </div>
 
 </div>
@@ -38,28 +38,26 @@
 
 https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4c3691e5ca9
 
-## Table of Contents
+## Table of Contents 🧾
 
 1. [About TSCircuit](#about-tscircuit)
 2. [Examples](#example-circuits)
-3. [Community and Next Steps](#community-and-next-steps)
-4. [Getting Started](#getting-started)
-5. [Developer Setup Guide](#developer-setup-guide)
-6. [Want to Contribute to TSCircuit?](#want-to-contribute-to-tscircuit-you-are-most-welcome)
-7. [Repository Activity](#repo-activity)
-8. [Development Sub-Projects / Organization](#development-sub-projects--organization)
-9. [FAQs](#faq)
+3. [Getting Started](#getting-started)
+4. [Features](#more-features)
+5. [FAQs](#faq)
+6. [Development Sub-Projects / Organization](#development-sub-projects--organization)
+7. [Other Links](#other-links)
 
 ---
 
-## About TSCircuit
+## About TSCircuit 💙
 
 `tscircuit` is a library complemented by a registry, package manager, command line tool and AI electronic design suite that makes it easy to create, share, export and manufacture electronic circuits. It uses
 [React Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to render circuits into web pages.
 
-Think of tscircuit as "React for Electronics." It allows you to design real-world electronic circuits using Typescript and React. This is what tscircuit code looks like, instead of creating web element like “div”, you create circuit elements like “chip”, “resistor” or “capacitor”, then instead of rendering a website, we render a 3d circuit (that you can actually order!)
+Think of tscircuit as "React for Electronics." It allows you to design real-world electronic circuits using Typescript and React. This is what tscircuit code looks like, instead of creating web element like “div”, you create circuit elements like “chip”, “resistor” or “capacitor”, then instead of rendering a website, we render a 3d circuit (that you can actually order!) 🚀
 
-With tscircuit, we've even designed a <a href="https://blog.tscircuit.com/p/battling-jlcs-assembly-interface" target="_blank">fully functional keyboard!</a> The best part? Once you've completed your design, you can export it to a manufacturer and bring your circuit to life in the real world. How cool is that?
+With tscircuit, we've even designed a <a target="_blank" href="https://blog.tscircuit.com/p/battling-jlcs-assembly-interface" target="_blank">fully functional keyboard!</a> The best part? Once you've completed your design, you can export it to a manufacturer and bring your circuit to life in the real world. How cool is that? 😎
 
 ## Example Circuits
 
@@ -103,7 +101,7 @@ const Circuit = () => (
 
 ![Example Circuit Rendering](./docs/example_render.png)
 
-## Getting Started
+## Getting Started ⚡
 
 You can do everything you need to do with `tscircuit` using the [`tsci`](https://github.com/tscircuit/cli) command line tool.
 
@@ -117,7 +115,7 @@ tsci dev
 
 > ![tsci Server Preview](./docs/example_preview.png)
 
-## More Features!
+## More Features! 🤩
 
 - [x] Preview PCBs & Schematics in your browser
 - [x] Use normal Typescript/React tooling
@@ -129,7 +127,7 @@ tsci dev
 
 ---
 
-## FAQ
+## FAQ 🤔
 
 ### Is tscircuit free?
 
