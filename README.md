@@ -1,4 +1,4 @@
-## Welcome to ⏣ TSCircuit 💙⚡
+# Welcome to ⏣ TSCircuit 💙⚡
 
 <div style="display: flex; flex-direction: column;">
   <div>Make electronics using Typescript, React, and 
