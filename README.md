@@ -40,7 +40,7 @@ https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4
 
 ## Table of Contents 🧾
 
-1. [About TSCircuit](#about-tscircuit)
+1. [About tscircuit](#about-tscircuit)
 2. [Examples](#example-circuits)
 3. [Getting Started](#getting-started)
 4. [Features](#more-features)
