@@ -45,9 +45,10 @@ https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4
 3. [Getting Started](#getting-started)
 4. [Features](#more-features)
 5. [Community Support](#community-support)
-6. [FAQs](#faq)
-7. [Development Sub-Projects / Organization](#development-sub-projects--organization)
-8. [Other Links](#other-links)
+6. [Want to contribute to tscircuit?](#want-to-contribute-to-tscircuit)
+7. [FAQs](#faq)
+8. [Development Sub-Projects / Organization](#development-sub-projects--organization)
+9. [Other Links](#other-links)
 
 ---
 
@@ -113,6 +114,10 @@ tsci dev
 ## Community Support
 
 Have any queries? Want to reach out to the team? Have got feature ideas? Want to report any bugs? Want to discuss something? Want to attend meetings? Just want to give your feedback of using tscircuit or want to introduce yourself or want to be a part of our growing community? We got you - We primarily communicate on <a href="https://tscircuit.com/join" target="_blank">Discord Community Server</a>, of 100+ members currently, where you are a developer or not - all the primary communications happen here.
+
+## Want to contribute to tscircuit?
+
+Contributors are most welcome! We value your time and efforts in making tscircuit more awesome! ⚡💙 Please Check our <a href="https://github.com/tscircuit/snippets/blob/main/CONTRIBUTING.md" target="_blank">Contributing Guide</a> for your next contribution!
 
 ## FAQ
 
@@ -222,6 +227,7 @@ a quick guide to navigating all of the sub-projects:
 | [tscircuit](https://github.com/tscircuit/tscircuit)                          | The main package, packages up everything into a single version                                           |
 | [@tscircuit/builder](https://github.com/tscircuit/builder)                   | A typescript-native library for building circuits (no React). Converts typescript into "the soup format" |
 | [@tscircuit/cli](https://github.com/tscircuit/cli)                           | The tscircuit command line tool `tsci` and development environment                                       |
+| [@tscircuit/snippets](https://github.com/tscircuit/snippets)                 | The main website, playground and online development environment for tscircuit                            |
 | [@tscircuit/schematic-viewer](https://github.com/tscircuit/schematic-viewer) | The Schematic renderer                                                                                   |
 | [@tscircuit/pcb-viewer](https://github.com/tscircuit/pcb-viewer)             | The PCB renderer                                                                                         |
 | [@tscircuit/react-fiber](https://github.com/tscircuit/react-fiber)           | Bindings from builder to React, React types                                                              |
