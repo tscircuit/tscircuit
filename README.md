@@ -22,6 +22,8 @@
 <a href="https://github.com/tscircuit/tscircuit/issues" target="_blank">Issues</a>
 ·
 <a href="https://x.com/tscircuit" target="_blank">Twitter</a>
+·
+<a href="https://console.algora.io/org/tscircuit/bounties?status=open">Open Bounties</a>
 
 </div>
 <br/>
