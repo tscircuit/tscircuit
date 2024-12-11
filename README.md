@@ -1,24 +1,67 @@
 # ⏣ tscircuit - React for Circuits
 
-[Docs](https://docs.tscircuit.com) &middot; [Website](https://tscircuit.com) &middot; [Twitter](https://x.com/tscircuit) &middot; [discord](https://tscircuit.com/community/join-redirect) &middot; [Quickstart](https://docs.tscircuit.com/quickstart) &middot; [Online Playground](https://tscircuit.com/playground)
+<div style="display: flex; flex-direction: column;">
+  <div>Make electronics using Typescript, React, and 
+  <a href="https://text-to-footprint.tscircuit.com" target="_blank">AI</a>. 
+  We recommend starting with our <a target="_blank" href="https://tscircuit.com/playground">online editor on tscircuit.com</a> <strong>(no sign-up required)</strong> rather than our CLI. <a target="_blank" href="https://tscircuit.com"><strong>Learn more »</strong></a>
+  </div>
+<br/>
+  <div>
+<a href="https://tscircuit.com/join" target="_blank">Discord</a>
+·
+<a href="https://tscircuit.com" target="_blank">Website</a>
+·
+<a href="https://docs.tscircuit.com" target="_blank">Docs</a>
+·
+<a href="https://blog.tscircuit.com/" target="_blank">Articles</a>
+·
+<a href="https://tscircuit.com/playground" target="_blank">Online Playground</a>
+·
+<a href="https://docs.tscircuit.com/quickstart" target="_blank">Quick Start</a>
+·
+<a href="https://github.com/tscircuit/tscircuit/issues" target="_blank">Issues</a>
+·
+<a href="https://x.com/tscircuit" target="_blank">Twitter</a>
 
-[![NPM Version](https://img.shields.io/npm/v/tscircuit)](https://www.npmjs.com/package/tscircuit) [![](https://img.shields.io/github/stars/tscircuit/tscircuit)](https://github.com/tscircuit/tscircuit)
+</div>
+<br/>
 
-Make electronics using Typescript, React and [AI](https://text-to-footprint.tscircuit.com).
+<div style="display: flex; gap: 10px">
+  <a target="_blank" href="https://tscircuit.com/join"><img src="https://img.shields.io/badge/Discord-tscircuit.com/join-%235865F2" alt="Join TSCircuit on Discord"></a>
+  <a target="_blank" href="https://www.npmjs.com/package/tscircuit"><img src="https://img.shields.io/npm/v/tscircuit" alt="NPM Version"></a>
+  <a target="_blank" href="https://github.com/tscircuit/tscircuit/stargazers"><img src="https://img.shields.io/github/stars/tscircuit/tscircuit" alt="GitHub Stars"></a>
+</div>
 
-We recommend starting with our [online editor on tscircuit.com](https://tscircuit.com/playground) (no sign-up required) rather than our CLI.
+</div>
 
-Example Circuits:
-- [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
+## Meet Founder of TSCircuit - Seve! 👋⚡
+
+https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4c3691e5ca9
+
+## Table of Contents 🧾
+
+1. [About tscircuit](#about-tscircuit)
+2. [Examples](#example-circuits)
+3. [Getting Started](#getting-started)
+4. [Features](#more-features)
+5. [FAQs](#faq)
+6. [Development Sub-Projects / Organization](#development-sub-projects--organization)
+7. [Other Links](#other-links)
 
 ---
 
-```
-npm install -g tscircuit
-```
+## About tscircuit
 
 `tscircuit` is a library complemented by a registry, package manager, command line tool and AI electronic design suite that makes it easy to create, share, export and manufacture electronic circuits. It uses
 [React Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to render circuits into web pages.
+
+Think of tscircuit as "React for Electronics" It allows you to design real-world electronic circuits using Typescript and React. This is what tscircuit code looks like, instead of creating web element like “div”, you create circuit elements like “chip”, “resistor” or “capacitor”, then instead of rendering a website, we render a 3d circuit (that you can actually order!) 🚀
+
+Using tscircuit, you can design things like a <a target="_blank" href="https://blog.tscircuit.com/p/battling-jlcs-assembly-interface" target="_blank">fully functional keyboard!</a> Once you've completed your design, you can export it to a manufacturer and order a real, functional circuit board!
+
+## Example Circuits
+
+- [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
 
 ```tsx
 const Circuit = () => (
@@ -41,8 +84,6 @@ const Circuit = () => (
 ```
 
 ![Example Circuit Rendering](./docs/example_render.png)
-
-https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4c3691e5ca9
 
 ## Getting Started
 
@@ -67,8 +108,6 @@ tsci dev
 - [x] Publish subpackages to the registry with `tsci publish`
 - [x] Simplified, extensible auto-routing for schematics and PCBs
 - [x] Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com)
-
----
 
 ## FAQ
 
@@ -113,12 +152,6 @@ will go to the tscircuit registry instead of the npm registry.
 ### Can I use a different registry?
 
 Yes! You can use the same trick and modify the `.npmrc` file for your project. You can run your own npm registry with [verdaccio](https://verdaccio.org/)
-
-### Why are some things upside down?
-
-If you see something upside down, it's because mid-April the Y Axis was flipped so that "up" would mean the Y value would increase for both schematics and PCBs. In web development, the
-Y axis is negative as you go up, but [this probably isn't a good choice an engineering tool](https://x.com/seveibar/status/1780992701800034726) so now the Y Axis is positive and some
-things are upside down until they're fixed.
 
 ### Can I test this in my browser?
 
@@ -178,6 +211,7 @@ a quick guide to navigating all of the sub-projects:
 | [tscircuit](https://github.com/tscircuit/tscircuit)                          | The main package, packages up everything into a single version                                           |
 | [@tscircuit/builder](https://github.com/tscircuit/builder)                   | A typescript-native library for building circuits (no React). Converts typescript into "the soup format" |
 | [@tscircuit/cli](https://github.com/tscircuit/cli)                           | The tscircuit command line tool `tsci` and development environment                                       |
+| [@tscircuit/snippets](https://github.com/tscircuit/snippets)                 | The main website, playground and online development environment for tscircuit                            |
 | [@tscircuit/schematic-viewer](https://github.com/tscircuit/schematic-viewer) | The Schematic renderer                                                                                   |
 | [@tscircuit/pcb-viewer](https://github.com/tscircuit/pcb-viewer)             | The PCB renderer                                                                                         |
 | [@tscircuit/react-fiber](https://github.com/tscircuit/react-fiber)           | Bindings from builder to React, React types                                                              |
@@ -187,9 +221,8 @@ a quick guide to navigating all of the sub-projects:
 | [kicad-mod-converter](https://github.com/tscircuit/kicad-mod-converter)      | Convert kicad_mod files to and from JSON                                                                 |
 | [@tscircuit/kicad-viewer](https://github.com/tscircuit/kicad-viewer)         | View the KiCad official footprints online                                                                |
 
-### Other Links
+## Other Links
 
-- [tscircuit.com](https://tscircuit.com) - The official tscircuit website
-- [Registry](https://tscircuit.com/trending) - The official tscircuit registry that hosts re-usable tscircuit components
-- [discord](https://tscircuit.com/community/join-redirect)
+- [tscircuit.com](https://tscircuit.com/) - The official tscircuit website, registry and playground
+- [discord](https://tscircuit.com/community/join-redirect) - Join the community server where all the primary conversations happen
 - [@seveibar](https://x.com/seveibar) - Twitter for author of tscircuit with dev sessions and upcoming features
