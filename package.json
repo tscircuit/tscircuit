@@ -39,7 +39,7 @@
     "@tscircuit/pcb-viewer": "^1.10.3",
     "@tscircuit/props": "^0.0.62",
     "@tscircuit/react-fiber": "^1.2.0",
-    "@tscircuit/schematic-autolayout": "^0.0.5",
+    "@tscircuit/schematic-autolayout": "^0.0.6",
     "@tscircuit/schematic-viewer": "^1.2.14",
     "@tscircuit/soup-util": "^0.0.23",
     "circuit-json-to-connectivity-map": "^0.0.15",
