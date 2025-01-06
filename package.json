@@ -34,7 +34,7 @@
     "@tscircuit/cli": "^0.0.213",
     "@tscircuit/core": "^0.0.71",
     "@tscircuit/footprinter": "^0.0.61",
-    "@tscircuit/layout": "^0.0.28",
+    "@tscircuit/layout": "^0.0.29",
     "@tscircuit/math-utils": "^0.0.4",
     "@tscircuit/pcb-viewer": "^1.10.3",
     "@tscircuit/props": "^0.0.62",
