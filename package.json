@@ -41,7 +41,7 @@
     "@tscircuit/react-fiber": "^1.2.0",
     "@tscircuit/schematic-autolayout": "^0.0.5",
     "@tscircuit/schematic-viewer": "^1.2.14",
-    "@tscircuit/soup-util": "^0.0.23",
+    "@tscircuit/soup-util": "^0.0.41",
     "circuit-json-to-connectivity-map": "^0.0.15",
     "circuit-to-svg": "^0.0.33",
     "performance-now": "^2.1.0"
