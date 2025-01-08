@@ -35,7 +35,7 @@
     "@tscircuit/core": "^0.0.71",
     "@tscircuit/footprinter": "^0.0.61",
     "@tscircuit/layout": "^0.0.28",
-    "@tscircuit/math-utils": "^0.0.4",
+    "@tscircuit/math-utils": "^0.0.10",
     "@tscircuit/pcb-viewer": "^1.10.3",
     "@tscircuit/props": "^0.0.62",
     "@tscircuit/react-fiber": "^1.2.0",
