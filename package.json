@@ -33,7 +33,7 @@
   "dependencies": {
     "@tscircuit/cli": "^0.0.213",
     "@tscircuit/core": "^0.0.71",
-    "@tscircuit/footprinter": "^0.0.61",
+    "@tscircuit/footprinter": "^0.0.99",
     "@tscircuit/layout": "^0.0.28",
     "@tscircuit/math-utils": "^0.0.4",
     "@tscircuit/pcb-viewer": "^1.10.3",
