@@ -31,19 +31,9 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/cli": "^0.0.213",
-    "@tscircuit/core": "^0.0.71",
-    "@tscircuit/footprinter": "^0.0.61",
-    "@tscircuit/layout": "^0.0.28",
-    "@tscircuit/math-utils": "^0.0.4",
-    "@tscircuit/pcb-viewer": "^1.10.3",
-    "@tscircuit/props": "^0.0.62",
-    "@tscircuit/react-fiber": "^1.2.0",
-    "@tscircuit/schematic-autolayout": "^0.0.5",
-    "@tscircuit/schematic-viewer": "^1.2.14",
-    "@tscircuit/soup-util": "^0.0.23",
-    "circuit-json-to-connectivity-map": "^0.0.15",
-    "circuit-to-svg": "^0.0.33",
+    "@tscircuit/cli": "^0.1.7",
+    "@tscircuit/core": "^0.0.265",
+    "debug": "^4.4.0",
     "performance-now": "^2.1.0"
   }
 }
