@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@tscircuit/cli": "^0.1.21",
-    "@tscircuit/core": "^0.0.298",
+    "@tscircuit/core": "^0.0.299",
     "debug": "^4.4.0",
     "performance-now": "^2.1.0"
   }
