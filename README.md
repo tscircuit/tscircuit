@@ -54,6 +54,8 @@ https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4
 
 ---
 
+## What is tscircuit?
+
 `tscircuit` is a library complemented by a registry, package manager, command line tool and AI electronic design suite that makes it easy to create, share, export and manufacture electronic circuits. It uses
 [React Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to render circuits into web pages.
 
