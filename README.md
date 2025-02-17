@@ -42,8 +42,6 @@
 
 </div>
 
-## Meet Founder of TSCircuit - Seve! 👋⚡
-
 https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4c3691e5ca9
 
 ## Table of Contents 🧾
