@@ -31,7 +31,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/cli": "^0.1.49",
+    "@tscircuit/cli": "^0.1.51",
     "@tscircuit/core": "^0.0.337",
     "debug": "^4.4.0",
     "performance-now": "^2.1.0"
