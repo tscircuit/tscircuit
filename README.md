@@ -111,9 +111,10 @@ tsci dev
 - [x] Preview PCBs & Schematics in your browser
 - [x] Use normal Typescript/React tooling
 - [x] Export Gerbers, Pick'n'Place and BOM for manufacturing
-- [x] Add [registry packages](https://tscircuit.com/trending) with `tsci add`
-- [x] Publish subpackages to the registry with `tsci publish`
-- [x] Simplified, extensible auto-routing for schematics and PCBs
+- [x] Add [registry packages](https://tscircuit.com/) with `tsci add`
+- [x] Publish subpackages to the registry with `tsci push`
+- [x] Simplified, extensible auto-routing for PCBs
+- [x] Import footprints and components from third-party sites 
 - [x] Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com)
 
 ## FAQ
@@ -141,44 +142,21 @@ export const MyApp = () => (
 
 tscircuit has a bunch of extra tools and exports in the command line, so it's a bit easier to use `tsci dev` to develop circuits (you can always publish and import them later)
 
-### Is this ready for production?
-
-No! Although I've [ordered a fully assembled circuit](https://x.com/seveibar/status/1780803190101020720) [(source code)](https://github.com/tscircuit/blinking-led-circuit/blob/main/lib/MyCircuit.tsx), this project is still very very early!
-
-### How does the registry work?
-
-The tscircuit registry fully implements the npm registry. When you run `tsci init` a `.npmrc` file is created in your project so that any `npm add` or `npm install` for a package starting with `@tsci/*`
-will go to the tscircuit registry instead of the npm registry.
-
-```
-# Example .npmrc
-# This line says "any package from the org @tsci should use the tscircuit registry server
-@tsci:registry=https://registry-api.tscircuit.com/npm
-```
-
-### Can I use a different registry?
-
-Yes! You can use the same trick and modify the `.npmrc` file for your project. You can run your own npm registry with [verdaccio](https://verdaccio.org/)
-
 ### Can I test this in my browser?
 
-Yes! There is a [playground tool!](https://tscircuit.com/playground)
+Yes! There is a [playground tool!](https://tscircuit.com/editor)
 
 ### Do I have to specify the position of every component?
 
-I'm working on autolayout functionality where you will hopefully only need to
-tweak things like the spacing. The goal of anything auto
+Currently you should specify `pcbX`/`pcbY` for components (and nest inside `<group />`s for convenience!)
+
+We are working on building the equivalent of "flex" and "CSS Grid" autolayout algorithms
+for PCBs. Wherever an automatic placement is made, you'll be able to override it.
 
 ### Is the auto-routing good?
 
-The auto-routing is very basic. You can adjust the paths by adding `pcb_route_hints`
-to a `<trace />`. Over time, we'll get good, fast auto-routing algorithms and also
-ways to "bake & cache" a route over a longer time period.
-
-### Can I export into other tools for routing?
-
-This isn't currently possible but a major current objective. If you're interested in writing a module that can convert [tscircuit soup JSON](https://docs.tscircuit.com/api-reference/advanced/soup)
-into another editor's format, reach out on our [campfire](https://tscircuit.com/community/join-redirect)!!
+We are working towards a state-of-the-art web-based autorouting algorithm. You can follow the
+progress of our autorouter development on [autorouting.com](https://blog.autorouting.com)
 
 ### I found a bug or have an idea for a feature, what should I do?
 
@@ -189,20 +167,6 @@ Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
 - [@seveibar](https://x.com/seveibar) is the main author, he tweets about tscircuit and does [development livestreams](https://www.twitch.tv/seveibar)
 - [@tscircuit](https://x.com/tscircuit) for major tscircuit releases, features and discussions
 - [tscircuit discord](https://discord.gg/6X3PYhtj) and [tscircuit campfire](https://tscircuit.com/community/join-redirect)
-
-### Does this use AI?
-
-No, but AI is pretty good at generating circuits! Try it with copilot!
-
-### What big features are coming?
-
-- [ ] Type-safe traces
-- [ ] Autolayout and autorouter improvements
-- [ ] Layout and route "baking" for more complex routes/layouts
-- [ ] Lots and lots of static analysis
-- [ ] SPICE output!
-- [ ] Export to other EDA tools
-- [ ] Less bugs! A lot less bugs!
 
 ---
 
