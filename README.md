@@ -1,4 +1,4 @@
-# ⏣ tscircuit - React for Circuits
+# tscircuit - React for Circuits
 
 Make electronics using Typescript, React, and AI tools.
 
