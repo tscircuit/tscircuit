@@ -43,7 +43,9 @@ Get started by running `npm install -g @tscircuit/cli`! [(CLI quickstart doc)](h
 
 </div>
 
-https://github.com/tscircuit/tscircuit/assets/1910070/63610730-41e6-4a00-9748-e4c3691e5ca9
+
+https://github.com/user-attachments/assets/f69aad7c-cfab-400b-a2b9-cee67292698b
+
 
 1. [What is tscircuit?](#about-tscircuit)
 2. [Examples](#example-circuits)
