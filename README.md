@@ -1,12 +1,13 @@
 # ⏣ tscircuit - React for Circuits
 
-<div style="display: flex; flex-direction: column;">
-  <div>Make electronics using Typescript, React, and 
-  <a href="https://text-to-footprint.tscircuit.com" target="_blank">AI</a>. 
-  We recommend starting with our <a target="_blank" href="https://tscircuit.com/playground">online editor on tscircuit.com</a> <strong>(no sign-up required)</strong> rather than our CLI. <a target="_blank" href="https://tscircuit.com"><strong>Learn more »</strong></a>
-  </div>
-<br/>
-  <div>
+Make electronics using Typescript, React, and AI tools.
+
+tscircuit makes developing electronics like web development. Edit code in your favorite IDE and watch the changes
+create electronics in realtime. When you're done, [export your project and manufacture](https://docs.tscircuit.com/guides/understanding-fabrication-files)!
+
+Get started by running `npm install -g @tscircuit/cli`! [(CLI quickstart doc)](https://docs.tscircuit.com/intro/quickstart-cli)
+
+<div>
 <a href="https://tscircuit.com/join" target="_blank">Discord</a>
 ·
 <a href="https://tscircuit.com" target="_blank">Website</a>
