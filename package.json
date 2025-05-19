@@ -12,7 +12,7 @@
     "cli.mjs"
   ],
   "scripts": {
-    "build": "tsup-node",
+    "build": "tsup-node --dts --sourcemap inline --format esm",
     "test": "bun test",
     "update-deps": "npm add @tscircuit/core@latest @tscircuit/cli@latest @tscircuit/pcb-viewer@latest @tscircuit/react-fiber@latest @tscircuit/schematic-viewer@latest @tscircuit/layout@latest @tscircuit/schematic-autolayout@latest @tscircuit/footprinter@latest"
   },
@@ -21,6 +21,8 @@
     "tscircuit": "cli.mjs"
   },
   "devDependencies": {
+    "@babel/standalone": "^7.27.2",
+    "@tscircuit/eval": "^0.0.211",
     "@types/bun": "latest",
     "ava": "^6.1.2",
     "esbuild": "^0.20.2",
