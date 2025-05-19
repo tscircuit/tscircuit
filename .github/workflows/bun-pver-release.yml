@@ -8,17 +8,18 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 22
           registry-url: https://registry.npmjs.org/
       - run: npm install -g pver
       - run: bun install --frozen-lockfile
+      - run: bun run build
       - run: pver release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
