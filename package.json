@@ -43,6 +43,7 @@
     "@tscircuit/props": "^0.0.183",
     "circuit-json": "^0.0.170",
     "circuit-json-to-connectivity-map": "^0.0.22",
+    "comlink": "^4.4.2",
     "debug": "^4.3.6",
     "performance-now": "^2.1.0",
     "schematic-symbols": "^0.0.132"
