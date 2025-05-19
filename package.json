@@ -14,7 +14,7 @@
   "scripts": {
     "build": "tsup-node",
     "test": "bun test",
-    "update-deps": "bun add @tscircuit/core@latest @tscircuit/cli@latest"
+    "preinstall": "bun run scripts/copy-core-versions.ts"
   },
   "bin": {
     "tsci": "cli.mjs",
