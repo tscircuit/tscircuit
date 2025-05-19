@@ -5,7 +5,11 @@
   "packageRules": [
     {
       "packagePatterns": ["*"],
-      "excludePackagePatterns": ["@tscircuit/*"],
+      "excludePackagePatterns": [
+        "@tscircuit/core",
+        "@tscircuit/cli",
+        "@tscircuit/eval"
+      ],
       "enabled": false
     },
     {
