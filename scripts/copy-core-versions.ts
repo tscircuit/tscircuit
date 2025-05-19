@@ -14,6 +14,7 @@ let modifiedDeps = false
 // Update dependencies to match core
 for (const [packageName, currentVersion] of Object.entries(currentDeps)) {
   if (packageName in coreDeps && coreDeps[packageName] !== currentVersion) {
+    console.log(`Updating ${packageName} from ${currentVersion} to ${coreDeps[packageName]}`)
     depsToUpdate[packageName] = coreDeps[packageName as keyof typeof coreDeps]
     modifiedDeps = true
   }
@@ -24,8 +25,9 @@ if (modifiedDeps) {
   const packageJsonPath = join(import.meta.dirname, "../package.json")
   let packageJson = await Bun.file(packageJsonPath).text()
   for (const [packageName, version] of Object.entries(depsToUpdate)) {
+    const pattern = `"${packageName}":\\s*"${currentDeps[packageName].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"(,)?`;
     packageJson = packageJson.replace(
-      new RegExp(`"${packageName}": "${currentDeps[packageName]}"(,)?`),
+      new RegExp(pattern),
       `"${packageName}": "${version}"$1`
     )
   }

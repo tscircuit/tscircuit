@@ -32,19 +32,19 @@
   "dependencies": {
     "@babel/standalone": "^7.27.2",
     "@tscircuit/capacity-autorouter": "^0.0.66",
-    "@tscircuit/checks": "^0.0.48",
+    "@tscircuit/checks": "^0.0.46",
     "@tscircuit/circuit-json-util": "^0.0.47",
     "@tscircuit/cli": "^0.1.106",
     "@tscircuit/core": "^0.0.412",
     "@tscircuit/eval": "^0.0.211",
-    "@tscircuit/footprinter": "^0.0.161",
-    "@tscircuit/infgrid-ijump-astar": "^0.0.34",
+    "@tscircuit/footprinter": "^0.0.159",
+    "@tscircuit/infgrid-ijump-astar": "^0.0.33",
     "@tscircuit/math-utils": "^0.0.18",
-    "@tscircuit/props": "^0.0.184",
-    "circuit-json": "^0.0.180",
+    "@tscircuit/props": "^0.0.183",
+    "circuit-json": "^0.0.170",
     "circuit-json-to-connectivity-map": "^0.0.22",
-    "debug": "^4.4.0",
+    "debug": "^4.3.6",
     "performance-now": "^2.1.0",
-    "schematic-symbols": "^0.0.139"
+    "schematic-symbols": "^0.0.132"
   }
 }
