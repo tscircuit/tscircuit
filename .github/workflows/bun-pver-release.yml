@@ -20,6 +20,7 @@ jobs:
       - run: npm install -g pver
       - run: bun install --frozen-lockfile
       - run: bun run build
+      - run: git status
       - run: pver release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
