@@ -14,7 +14,7 @@
   "scripts": {
     "build": "tsup-node",
     "test": "bun test",
-    "postinstall": "bun run scripts/copy-core-versions.ts && bun install --ignore-scripts"
+    "copy-core-versions": "bun run scripts/copy-core-versions.ts && bun install --ignore-scripts"
   },
   "bin": {
     "tsci": "cli.mjs",
