@@ -1,0 +1,46 @@
+name: Update Dependencies
+
+on:
+  schedule:
+    - cron: "0 15 * * *" # 8 AM PT (15:00 UTC)
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Configure git
+        run: |
+          git config --global user.name "tscircuitbot"
+          git config --global user.email "bot@tscircuit.com"
+
+      - name: Update specific dependencies
+        run: |
+          bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval
+
+      - name: Run copy-core-versions script
+        run: bun run copy-core-versions
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code || echo "changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git add .
+          git commit -m "chore: update @tscircuit dependencies
+
+          🤖 Generated with automated dependency updater"
+          git push origin main
