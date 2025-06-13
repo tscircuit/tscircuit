@@ -35,17 +35,17 @@
     "@tscircuit/checks": "^0.0.52",
     "@tscircuit/circuit-json-util": "^0.0.47",
     "@tscircuit/cli": "^0.1.127",
-    "@tscircuit/core": "^0.0.463",
+    "@tscircuit/core": "^0.0.465",
     "@tscircuit/eval": "^0.0.227",
-    "@tscircuit/footprinter": "^0.0.175",
+    "@tscircuit/footprinter": "^0.0.177",
     "@tscircuit/infgrid-ijump-astar": "^0.0.33",
     "@tscircuit/math-utils": "^0.0.18",
-    "@tscircuit/props": "^0.0.219",
+    "@tscircuit/props": "^0.0.220",
     "circuit-json": "^0.0.204",
     "circuit-json-to-connectivity-map": "^0.0.22",
     "comlink": "^4.4.2",
     "debug": "^4.3.6",
     "performance-now": "^2.1.0",
-    "schematic-symbols": "^0.0.159"
+    "schematic-symbols": "^0.0.160"
   }
 }
