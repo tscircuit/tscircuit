@@ -34,9 +34,9 @@
     "@tscircuit/capacity-autorouter": "^0.0.75",
     "@tscircuit/checks": "^0.0.52",
     "@tscircuit/circuit-json-util": "^0.0.49",
-    "@tscircuit/cli": "^0.1.144",
-    "@tscircuit/core": "^0.0.510",
-    "@tscircuit/eval": "^0.0.237",
+    "@tscircuit/cli": "^0.1.146",
+    "@tscircuit/core": "^0.0.511",
+    "@tscircuit/eval": "^0.0.238",
     "@tscircuit/footprinter": "^0.0.182",
     "@tscircuit/infgrid-ijump-astar": "^0.0.33",
     "@tscircuit/math-utils": "^0.0.18",
@@ -47,6 +47,6 @@
     "comlink": "^4.4.2",
     "debug": "^4.3.6",
     "performance-now": "^2.1.0",
-    "schematic-symbols": "^0.0.160"
+    "schematic-symbols": "^0.0.163"
   }
 }
