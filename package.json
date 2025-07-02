@@ -46,6 +46,7 @@
     "circuit-json-to-connectivity-map": "^0.0.22",
     "comlink": "^4.4.2",
     "debug": "^4.3.6",
+    "graphics-debug": "^0.0.60",
     "performance-now": "^2.1.0",
     "schematic-symbols": "^0.0.165"
   }
