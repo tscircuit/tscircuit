@@ -35,7 +35,7 @@
     "@tscircuit/checks": "^0.0.52",
     "@tscircuit/circuit-json-util": "^0.0.50",
     "@tscircuit/cli": "^0.1.158",
-    "@tscircuit/core": "^0.0.551",
+    "@tscircuit/core": "^0.0.552",
     "@tscircuit/eval": "^0.0.248",
     "@tscircuit/footprinter": "^0.0.189",
     "@tscircuit/infgrid-ijump-astar": "^0.0.33",
@@ -46,7 +46,7 @@
     "circuit-json-to-connectivity-map": "^0.0.22",
     "comlink": "^4.4.2",
     "debug": "^4.3.6",
-    "graphics-debug": "^0.0.57",
+    "graphics-debug": "^0.0.60",
     "performance-now": "^2.1.0",
     "schematic-symbols": "^0.0.165"
   }
