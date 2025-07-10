@@ -11,7 +11,7 @@
         "@tscircuit/circuit-json-util": "^0.0.51",
         "@tscircuit/cli": "^0.1.165",
         "@tscircuit/core": "^0.0.558",
-        "@tscircuit/eval": "^0.0.254",
+        "@tscircuit/eval": "^0.0.256",
         "@tscircuit/footprinter": "^0.0.189",
         "@tscircuit/infgrid-ijump-astar": "^0.0.33",
         "@tscircuit/math-utils": "^0.0.18",
@@ -184,7 +184,7 @@
 
     "@tscircuit/core": ["@tscircuit/core@0.0.558", "", { "dependencies": { "@lume/kiwi": "^0.4.3", "css-select": "5.1.0", "format-si-unit": "^0.0.3", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "react-reconciler-18": "npm:react-reconciler@0.29.2", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-autolayout": "*", "@tscircuit/schematic-corpus": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "schematic-symbols": "*", "typescript": "^5.0.0" } }, "sha512-v6T74UXd7lRcUNsUWdtLU0zoaVfU9ScT54Tw6dcHp1pvGTldRG07f8mndrJBWDbnZ4bxrB4fhGvSP5JAzk9g6w=="],
 
-    "@tscircuit/eval": ["@tscircuit/eval@0.0.254", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "jscad-fiber": "*", "typescript": "^5.0.0" } }, "sha512-sMvHmhKncM2DgEx223Tws2F2g6S+LVE9yAmh/BNJ4CA/smYHJuwesqeGdT9WJkBAOFpA4bYNSariTwbx5rTBjQ=="],
+    "@tscircuit/eval": ["@tscircuit/eval@0.0.256", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "jscad-fiber": "*", "typescript": "^5.0.0" } }, "sha512-jUqON/iqzGPrfwZA9fIdDKO6cFeLzRQkj6lD4kcKPthPTKTluKiqd2xyWJf7VxaXGsqMbJoS6aCaVg3ikgzB4Q=="],
 
     "@tscircuit/footprinter": ["@tscircuit/footprinter@0.0.189", "", { "dependencies": { "@tscircuit/mm": "^0.0.8", "zod": "^3.23.8" }, "peerDependencies": { "circuit-json": "*" } }, "sha512-n0hJimX+Cx1GBqK8B5/nByRiri/VIHq2NdjQxL8MjI1obCB+vvJBgPj+gq4rXRnu/UGtiDBkzUgyz2UiwIzvHg=="],
 
