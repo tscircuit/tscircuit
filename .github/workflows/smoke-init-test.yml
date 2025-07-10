@@ -1,7 +1,10 @@
 name: tscircuit Smoke Init Test
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
 
 jobs:
   smoke-init-test:
@@ -9,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup bun
         uses: oven-sh/setup-bun@v1
@@ -19,5 +22,34 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Run smoke test
-        run: bun run scripts/smoke-init-test.ts
+      - name: Build package
+        run: bun run build
+
+      - name: Pack package
+        run: bun pm pack
+
+      - name: Create temporary directory
+        run: |
+          TEMP_DIR=$(mktemp -d)
+          echo "TEMP_DIR=$TEMP_DIR" >> $GITHUB_ENV
+
+      - name: Install tscircuit globally from packed file
+        run: |
+          PACKAGE_FILE=$(ls *.tgz)
+          npm install -g "$PACKAGE_FILE"
+
+      - name: Test tsci init in temporary directory
+        run: |
+          cd "$TEMP_DIR"
+          tsci init -y
+
+      - name: Test tsci build in temporary directory
+        run: |
+          cd "$TEMP_DIR"
+          tsci build index.tsx
+
+      - name: Verify build output
+        run: |
+          cd "$TEMP_DIR"
+          ls -la
+          test -f index.tsx || (echo "index.tsx not found" && exit 1)
