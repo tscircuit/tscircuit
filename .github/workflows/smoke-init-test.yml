@@ -26,7 +26,7 @@ jobs:
         run: bun run build
 
       - name: Pack package
-        run: npm pack
+        run: bun pm pack
 
       - name: Create temporary directory
         run: |
@@ -36,7 +36,7 @@ jobs:
       - name: Install tscircuit globally from packed file
         run: |
           PACKAGE_FILE=$(ls *.tgz)
-          bun install -g "$PACKAGE_FILE"
+          npm install -g "$PACKAGE_FILE"
 
       - name: Test tsci init in temporary directory
         run: |
