@@ -2,19 +2,40 @@ import corePackageJson from "@tscircuit/core/package.json"
 import currentPackageJson from "../package.json"
 import { join } from "node:path"
 
-const DONT_SYNC_FROM_CORE: string[] = []
+const DO_NOT_SYNC_PACKAGE = [
+  "@biomejs/biome",
+  "@tscircuit/import-snippet",
+  "@tscircuit/layout",
+  "@tscircuit/log-soup",
+  "@tscircuit/schematic-autolayout",
+  "@types/*",
+  "tsup",
+  "react-reconciler",
+  "react-reconciler-18",
+  "bun-match-svg",
+  "chokidar-cli",
+  "pkg-pr-new",
+  "howfat",
+  "live-server",
+  "looks-same",
+  "ts-expect",
+  "concurrently",
+  "nanoid",
+]
 
 const coreDeps: any = {
   ...corePackageJson.devDependencies,
   ...corePackageJson.dependencies,
 }
 
-const currentDeps: any = { ...currentPackageJson.devDependencies }
+const currentDeps: any = {
+  ...currentPackageJson.devDependencies,
+  ...currentPackageJson.dependencies,
+}
 const depsToUpdate: any = {}
 
 let modifiedDeps = false
-
-// Update existing dependencies to match core
+// Update dependencies to match core
 for (const [packageName, currentVersion] of Object.entries(currentDeps)) {
   if (packageName in coreDeps && coreDeps[packageName] !== currentVersion) {
     console.log(
@@ -25,56 +46,40 @@ for (const [packageName, currentVersion] of Object.entries(currentDeps)) {
   }
 }
 
-// Add new dependencies from core that we don't have yet
-for (const [packageName, version] of Object.entries(
-  corePackageJson.devDependencies || {},
-)) {
+// Check for missing core dependencies
+const missingDeps: string[] = []
+for (const packageName of Object.keys(coreDeps)) {
   if (
-    !DONT_SYNC_FROM_CORE.includes(packageName) &&
-    !(packageName in currentDeps)
+    DO_NOT_SYNC_PACKAGE.some((dnsp) =>
+      dnsp.includes("*")
+        ? packageName.startsWith(dnsp.replace("*", ""))
+        : packageName === dnsp,
+    )
   ) {
-    console.log(`Adding new dependency ${packageName}: ${version}`)
-    depsToUpdate[packageName] = version
-    modifiedDeps = true
+    continue
   }
+  if (!(packageName in currentDeps)) {
+    missingDeps.push(packageName)
+  }
+}
+
+if (missingDeps.length > 0) {
+  throw new Error(
+    `Missing core dependencies in package.json: ${missingDeps.join(", ")}. ` +
+      `\n\nAdd them to package.json or add to DO_NOT_SYNC_PACKAGE list.`,
+  )
 }
 
 if (modifiedDeps) {
   // Use regex to replace the dependencies in the package.json
   const packageJsonPath = join(import.meta.dirname, "../package.json")
   let packageJson = await Bun.file(packageJsonPath).text()
-
-  // Update existing dependencies
   for (const [packageName, version] of Object.entries(depsToUpdate)) {
-    if (packageName in currentDeps) {
-      const pattern = `"${packageName}":\\s*"${currentDeps[packageName].replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"(,)?`
-      packageJson = packageJson.replace(
-        new RegExp(pattern),
-        `"${packageName}": "${version}"$1`,
-      )
-    }
+    const pattern = `"${packageName}":\\s*"${currentDeps[packageName].replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"(,)?`
+    packageJson = packageJson.replace(
+      new RegExp(pattern),
+      `"${packageName}": "${version}"$1`,
+    )
   }
-
-  // Add new dependencies at the end of devDependencies
-  const newDeps = Object.entries(depsToUpdate).filter(
-    ([packageName]) => !(packageName in currentDeps),
-  )
-  if (newDeps.length > 0) {
-    // Find the last dependency in devDependencies and add after it
-    const devDepsPattern = /"devDependencies":\s*{([^}]+)}/
-    const match = packageJson.match(devDepsPattern)
-    if (match) {
-      const devDepsContent = match[1]
-      const newDepsStr = newDeps
-        .map(([name, version]) => `    "${name}": "${version}"`)
-        .join(",\n")
-      const updatedDevDeps = `${devDepsContent.trimEnd()},\n${newDepsStr}`
-      packageJson = packageJson.replace(
-        devDepsPattern,
-        `"devDependencies": {${updatedDevDeps}}`,
-      )
-    }
-  }
-
   await Bun.write(packageJsonPath, packageJson)
 }
