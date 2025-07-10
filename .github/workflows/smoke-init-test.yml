@@ -26,7 +26,7 @@ jobs:
         run: bun run build
 
       - name: Pack package
-        run: bun run pack
+        run: npm pack
 
       - name: Create temporary directory
         run: |
