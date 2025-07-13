@@ -14,7 +14,7 @@ Get started by running `npm install -g @tscircuit/cli`! [(CLI quickstart doc)](h
 ·
 <a href="https://docs.tscircuit.com" target="_blank">Docs</a>
 ·
-<a href="https://blog.tscircuit.com/" target="_blank">Articles</a>
+<a href="https://blog.tscircuit.com/" target="_blank">Blog</a>
 ·
 <a href="https://tscircuit.com/playground" target="_blank">Online Playground</a>
 ·
@@ -24,7 +24,7 @@ Get started by running `npm install -g @tscircuit/cli`! [(CLI quickstart doc)](h
 ·
 <a href="https://x.com/tscircuit" target="_blank">Twitter</a>
 ·
-<a href="https://console.algora.io/org/tscircuit/bounties?status=open">Open Bounties</a>
+<a href="https://docs.tscircuit.com/llms.txt">llms.txt</a>
 
 </div>
 <br/>
