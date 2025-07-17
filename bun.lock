@@ -9,7 +9,7 @@
         "@tscircuit/capacity-autorouter": "^0.0.93",
         "@tscircuit/checks": "^0.0.56",
         "@tscircuit/circuit-json-util": "^0.0.51",
-        "@tscircuit/cli": "^0.1.174",
+        "@tscircuit/cli": "^0.1.175",
         "@tscircuit/core": "^0.0.571",
         "@tscircuit/eval": "^0.0.260",
         "@tscircuit/footprinter": "^0.0.203",
@@ -180,7 +180,7 @@
 
     "@tscircuit/circuit-json-util": ["@tscircuit/circuit-json-util@0.0.51", "", { "dependencies": { "parsel-js": "^1.1.2" }, "peerDependencies": { "circuit-json": "*", "transformation-matrix": "*", "zod": "*" } }, "sha512-u9tP4NObpZm6lkhZoi823QO9VRhi44TChlTQ7DwIbrLvXJOAg6oOvjP2VFGpchIqB8Z+pWAu4tdmpGUE09z8jQ=="],
 
-    "@tscircuit/cli": ["@tscircuit/cli@0.1.174", "", { "peerDependencies": { "tscircuit": "*" }, "bin": { "tsci": "cli/entrypoint.js" } }, "sha512-prDLDTdEbBv/k2LkpEgkduFo2P6GGgqaFx8Q/Arq9ncabeQxrPHOUvTepecNnIoQODTX0p60eLQdPXCYMQHbAA=="],
+    "@tscircuit/cli": ["@tscircuit/cli@0.1.175", "", { "peerDependencies": { "tscircuit": "*" }, "bin": { "tsci": "cli/entrypoint.js" } }, "sha512-2CbH/zA8Q5XSDsJvVf4DcGEWF98bC5Er2vIn/GrehxPCvyM2auVXgEgLTMlW630gVctpWG0vdVoUDnBpif7aSw=="],
 
     "@tscircuit/core": ["@tscircuit/core@0.0.571", "", { "dependencies": { "@lume/kiwi": "^0.4.3", "css-select": "5.1.0", "format-si-unit": "^0.0.3", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "react-reconciler-18": "npm:react-reconciler@0.29.2", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-autolayout": "*", "@tscircuit/schematic-corpus": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "schematic-symbols": "*", "typescript": "^5.0.0" } }, "sha512-iGnh/ViSiC74Fv3TXJRcmYul7SK9/JGeF2ZB7rwXRqhYrM2ccSbHaoioPmzRIlEcVdx7ZtnCUMA/43peUDoVSQ=="],
 
