@@ -12,9 +12,14 @@
     "cli.mjs"
   ],
   "scripts": {
-    "build": "tsup-node",
+    "build": "tsup-node && bun run copy-runframe-standalone",
     "test": "bun test",
+    "copy-runframe-standalone": "bun run scripts/copy-runframe-standalone.ts",
     "copy-core-versions": "bun run scripts/copy-core-versions.ts && bun install --ignore-scripts"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./browser": "./dist/browser.min.js"
   },
   "bin": {
     "tsci": "cli.mjs",
@@ -42,6 +47,7 @@
     "@tscircuit/infgrid-ijump-astar": "^0.0.33",
     "@tscircuit/math-utils": "^0.0.18",
     "@tscircuit/props": "^0.0.261",
+    "@tscircuit/runframe": "^0.0.712",
     "@tscircuit/schematic-corpus": "^0.0.52",
     "@tscircuit/schematic-match-adapt": "^0.0.16",
     "@tscircuit/simple-3d-svg": "^0.0.6",
