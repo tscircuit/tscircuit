@@ -63,6 +63,8 @@
     "debug": "^4.3.6",
     "format-si-unit": "^0.0.3",
     "graphics-debug": "^0.0.60",
+    "jscad-fiber": "^0.0.82",
+    "jscad-planner": "^0.0.13",
     "performance-now": "^2.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
