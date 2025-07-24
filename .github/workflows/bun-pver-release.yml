@@ -24,3 +24,11 @@ jobs:
       - run: pver release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish libonly version
+        run: |
+          bun scripts/create-libonly-package.js
+          cp package-libonly.json package.json
+          npm publish --tag libonly
+          git checkout package.json
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
