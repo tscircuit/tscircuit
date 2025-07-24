@@ -40,7 +40,7 @@
     "@tscircuit/capacity-autorouter": "^0.0.93",
     "@tscircuit/checks": "^0.0.56",
     "@tscircuit/circuit-json-util": "^0.0.51",
-    "@tscircuit/cli": "^0.1.179",
+    "@tscircuit/cli": "^0.1.186",
     "@tscircuit/core": "^0.0.576",
     "@tscircuit/eval": "^0.0.262",
     "@tscircuit/footprinter": "^0.0.204",
