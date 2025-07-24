@@ -179,3 +179,5 @@ test-project
 
 yalc.*
 *.yalc
+
+package-libonly.json
