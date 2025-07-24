@@ -11,7 +11,7 @@ const originalPackage = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
 
 const libonlyPackage = {
   ...originalPackage,
-  name: `${originalPackage.name}-libonly`,
+  version: `${originalPackage.version}-libonly`,
   dependencies: {
     ...originalPackage.dependencies
   },
