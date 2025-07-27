@@ -41,7 +41,7 @@
     "@tscircuit/capacity-autorouter": "^0.0.100",
     "@tscircuit/checks": "^0.0.56",
     "@tscircuit/circuit-json-flex": "^0.0.1",
-    "@tscircuit/circuit-json-util": "^0.0.54",
+    "@tscircuit/circuit-json-util": "^0.0.58",
     "@tscircuit/cli": "^0.1.189",
     "@tscircuit/core": "^0.0.587",
     "@tscircuit/eval": "^0.0.268",
