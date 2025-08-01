@@ -61,7 +61,7 @@
     "circuit-json-to-bpc": "^0.0.13",
     "circuit-json-to-connectivity-map": "^0.0.22",
     "circuit-json-to-simple-3d": "^0.0.2",
-    "circuit-to-svg": "^0.0.174",
+    "circuit-to-svg": "^0.0.175",
     "comlink": "^4.4.2",
     "css-select": "5.1.0",
     "debug": "^4.3.6",
