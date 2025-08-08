@@ -12,9 +12,10 @@
     "cli.mjs"
   ],
   "scripts": {
-    "build": "tsup-node && bun run copy-runframe-standalone",
+    "build": "tsup-node && bun run copy-runframe-standalone && bun run copy-eval-webworker",
     "test": "bun test",
     "copy-runframe-standalone": "bun run scripts/copy-runframe-standalone.ts",
+    "copy-eval-webworker": "bun run scripts/copy-eval-webworker.ts",
     "copy-core-versions": "bun run scripts/copy-core-versions.ts && bun install --ignore-scripts"
   },
   "exports": {
