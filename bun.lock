@@ -10,9 +10,9 @@
         "@tscircuit/capacity-autorouter": "^0.0.100",
         "@tscircuit/checks": "^0.0.64",
         "@tscircuit/circuit-json-flex": "^0.0.3",
-        "@tscircuit/circuit-json-util": "^0.0.62",
+        "@tscircuit/circuit-json-util": "^0.0.64",
         "@tscircuit/cli": "^0.1.196",
-        "@tscircuit/core": "^0.0.616",
+        "@tscircuit/core": "^0.0.617",
         "@tscircuit/eval": "^0.0.279",
         "@tscircuit/footprinter": "^0.0.208",
         "@tscircuit/infgrid-ijump-astar": "^0.0.33",
@@ -227,11 +227,11 @@
 
     "@tscircuit/circuit-json-flex": ["@tscircuit/circuit-json-flex@0.0.3", "", { "dependencies": { "@tscircuit/miniflex": "^0.0.3" }, "peerDependencies": { "tscircuit": "*", "typescript": "^5" } }, "sha512-8az7FWP8Y2THen5QYn62Ny2lNvdFeELuN3KPp1BVJ8yn5ClAVqnLh8WL/NMtde50629aus3zQTTvpqYfw1bRpg=="],
 
-    "@tscircuit/circuit-json-util": ["@tscircuit/circuit-json-util@0.0.62", "", { "dependencies": { "parsel-js": "^1.1.2" }, "peerDependencies": { "circuit-json": "*", "transformation-matrix": "*", "zod": "*" } }, "sha512-OGT62P1mwV0y9C1HOBYhCRtGyvuifAw87nwvI5StkO8kbvNl/PsEoB70HTIdeIQrR7auCXCaBlRyNAHLYjp/Pw=="],
+    "@tscircuit/circuit-json-util": ["@tscircuit/circuit-json-util@0.0.64", "", { "dependencies": { "parsel-js": "^1.1.2" }, "peerDependencies": { "circuit-json": "*", "transformation-matrix": "*", "zod": "*" } }, "sha512-wtgVW79z6CpNoMD4IUF2NOB8Rm4WxTKOGgiYSdmBX6Zz5aZvSXedrtN2Zm2dnSGVWdSnssfHjCEq+viYW1f1Hw=="],
 
     "@tscircuit/cli": ["@tscircuit/cli@0.1.196", "", { "dependencies": { "looks-same": "^9.0.1", "sharp": "^0.34.3" }, "peerDependencies": { "tscircuit": "*" }, "bin": { "tscircuit-cli": "cli/entrypoint.js" } }, "sha512-vVwtfKERlUkxCwRISuDHdctn0HFomcXKywuXWHcGj85F2YSiaCDH1FtCkMj+MVdreGgTRDSsvVWU1+Y8ZEfcmg=="],
 
-    "@tscircuit/core": ["@tscircuit/core@0.0.616", "", { "dependencies": { "@flatten-js/core": "^1.6.2", "@lume/kiwi": "^0.4.3", "calculate-packing": "0.0.9", "css-select": "5.1.0", "format-si-unit": "^0.0.3", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "react-reconciler-18": "npm:react-reconciler@0.29.2", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-flex": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-autolayout": "*", "@tscircuit/schematic-corpus": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "schematic-symbols": "*", "typescript": "^5.0.0" } }, "sha512-9GkB9FEq5iem2mwzVwuXz9C6uNTY2erebowQLXVsBYdDLolqn56MSUzDbjSFwhcV7mdUn3CFedb1cdb4/afQAw=="],
+    "@tscircuit/core": ["@tscircuit/core@0.0.617", "", { "dependencies": { "@flatten-js/core": "^1.6.2", "@lume/kiwi": "^0.4.3", "calculate-packing": "0.0.9", "css-select": "5.1.0", "format-si-unit": "^0.0.3", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "react-reconciler-18": "npm:react-reconciler@0.29.2", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-autolayout": "*", "@tscircuit/schematic-corpus": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "schematic-symbols": "*", "typescript": "^5.0.0" } }, "sha512-wr0W2X+Et1BiAlmWRUxi8/PiiN6bky3D7/N4zFk5xOhVzBRvKsBj42ijrmvsUxtiW95/eh8cCr2jubAtVlEo5A=="],
 
     "@tscircuit/eval": ["@tscircuit/eval@0.0.279", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "jscad-fiber": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-ncJfRTt0As4jVFvbw0j3XtBJ9Oae79xDsohhqSjPooT6AIxZx5EJhg3IFy1d42JBoUOvfcJPdBdgT3Fphs+0tQ=="],
 
