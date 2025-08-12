@@ -48,6 +48,7 @@
     "@tscircuit/eval": "^0.0.280",
     "@tscircuit/footprinter": "^0.0.208",
     "@tscircuit/infgrid-ijump-astar": "^0.0.33",
+    "@tscircuit/matchpack": "^0.0.3",
     "@tscircuit/math-utils": "^0.0.18",
     "@tscircuit/miniflex": "^0.0.4",
     "@tscircuit/props": "^0.0.281",
