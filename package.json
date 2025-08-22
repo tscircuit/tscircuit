@@ -71,6 +71,7 @@
     "graphics-debug": "^0.0.60",
     "jscad-fiber": "^0.0.83",
     "jscad-planner": "^0.0.13",
+    "minicssgrid": "^0.0.8",
     "performance-now": "^2.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
