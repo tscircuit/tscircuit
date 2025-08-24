@@ -2,7 +2,7 @@
   "name": "tscircuit",
   "main": "dist/index.js",
   "type": "module",
-  "version": "0.0.599",
+  "version": "0.0.600",
   "repository": {
     "type": "git",
     "url": "https://github.com/tscircuit/tscircuit"
