@@ -54,6 +54,7 @@
     "@tscircuit/props": "^0.0.287",
     "@tscircuit/runframe": "^0.0.808",
     "@tscircuit/schematic-match-adapt": "^0.0.16",
+    "@tscircuit/schematic-trace-solver": "^0.0.18",
     "@tscircuit/simple-3d-svg": "^0.0.38",
     "bpc-graph": "^0.0.57",
     "calculate-elbow": "^0.0.9",
