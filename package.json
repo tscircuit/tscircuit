@@ -46,7 +46,7 @@
     "@tscircuit/cli": "^0.1.200",
     "@tscircuit/core": "^0.0.678",
     "@tscircuit/eval": "^0.0.297",
-    "@tscircuit/footprinter": "^0.0.208",
+    "@tscircuit/footprinter": "^0.0.234",
     "@tscircuit/infgrid-ijump-astar": "^0.0.33",
     "@tscircuit/matchpack": "^0.0.9",
     "@tscircuit/math-utils": "^0.0.18",
