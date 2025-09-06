@@ -1,2 +1,5 @@
 export * from "@tscircuit/core"
 export * from "@tscircuit/eval"
+export * from "./src/with-npm-imports"
+export * from "./src/eval-with-npm"
+export * from "./src/cli-npm-support"
