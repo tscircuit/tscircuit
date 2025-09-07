@@ -17,17 +17,17 @@
         "@tscircuit/footprinter": "^0.0.208",
         "@tscircuit/infgrid-ijump-astar": "^0.0.33",
         "@tscircuit/matchpack": "^0.0.16",
-        "@tscircuit/math-utils": "^0.0.18",
+        "@tscircuit/math-utils": "^0.0.21",
         "@tscircuit/miniflex": "^0.0.4",
-        "@tscircuit/props": "0.0.297",
+        "@tscircuit/props": "0.0.298",
         "@tscircuit/runframe": "^0.0.808",
         "@tscircuit/schematic-match-adapt": "^0.0.16",
-        "@tscircuit/schematic-trace-solver": "^0.0.25",
+        "@tscircuit/schematic-trace-solver": "^0.0.34",
         "@tscircuit/simple-3d-svg": "^0.0.38",
         "bpc-graph": "^0.0.57",
-        "calculate-elbow": "^0.0.9",
+        "calculate-elbow": "^0.0.11",
         "calculate-packing": "0.0.31",
-        "circuit-json": "^0.0.242",
+        "circuit-json": "^0.0.245",
         "circuit-json-to-bpc": "^0.0.13",
         "circuit-json-to-connectivity-map": "^0.0.22",
         "circuit-json-to-simple-3d": "^0.0.6",
@@ -262,13 +262,13 @@
 
     "@tscircuit/matchpack": ["@tscircuit/matchpack@0.0.16", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-F9QX7uQdml88XGKwe7kDkYnwHfG0kykr2cHD+JsnATKlgi32vYwFGuRaOR4tyRrkDGdmzt5T7YYb4Mhi9uncGA=="],
 
-    "@tscircuit/math-utils": ["@tscircuit/math-utils@0.0.18", "", { "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-P45v7V/BiVZZjXTUzjWSUsy0M8GpI5o6d+JWhPWE5+JwI/sYZARuLT4e1xzV7LaavEX4GQ0NKG9hKN48xTZJsw=="],
+    "@tscircuit/math-utils": ["@tscircuit/math-utils@0.0.21", "", { "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-M1viGlMkOQsYiGfNBEbvsJXxB7DDrMqzA475DzK0QaD/jGueyEk5JgIQsd91SRG0JDtZUH1SvysPjNMJbUOy3Q=="],
 
     "@tscircuit/miniflex": ["@tscircuit/miniflex@0.0.4", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-+Bf/FVAFQfe/foHJXlFPbCjIpi7krjwlrvKgqdQX/J5PnS8xgZW4whe31xqRyN83oWE4zeBV3l2WG2cx3bOvGg=="],
 
     "@tscircuit/mm": ["@tscircuit/mm@0.0.8", "", { "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-nl7nxE7AhARbKuobflI0LUzoir7+wJyvwfPw6bzA/O0Q3YTcH3vBkU/Of+V/fp6ht+AofiCXj7YAH9E446138Q=="],
 
-    "@tscircuit/props": ["@tscircuit/props@0.0.297", "", { "peerDependencies": { "circuit-json": "*", "react": "*", "zod": "*" } }, "sha512-IULO3AN0XrKmWcAnty1DJ3Q9xtgtpeICfpFci/x7+T+oV5cLgDhsdiJmsrGr0OYVnNQ2VKvlGPMLA8mO5Wgbeg=="],
+    "@tscircuit/props": ["@tscircuit/props@0.0.298", "", { "peerDependencies": { "circuit-json": "*", "react": "*", "zod": "*" } }, "sha512-Evbxil/czfv+E8VYwVlTjgJjVOsYtAf8ZIDe5LPGn8SpyTKheQPL5P5jvS+9JdZYcZRW/hQlTd4x0P0f+82pXw=="],
 
     "@tscircuit/runframe": ["@tscircuit/runframe@0.0.808", "", {}, "sha512-BxqLLurE0I1qQl1qMZBHJFG5HcfwU1jiEKlSesfK4cUZVDPa7S2aXI64LKv7Tauu5xMnFV1fltrdVpsIh9F5dw=="],
 
@@ -278,7 +278,7 @@
 
     "@tscircuit/schematic-match-adapt": ["@tscircuit/schematic-match-adapt@0.0.16", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-85e6Pq58zrhZqivyW4bPVZfGfg8xLBCj3yjHl5LZslwfsDRgtWVob4bjJMhCfNL/mLsPUQKnpiDNnFKl9ugUZw=="],
 
-    "@tscircuit/schematic-trace-solver": ["@tscircuit/schematic-trace-solver@0.0.25", "", { "dependencies": { "react": "^19.1.1", "react-dom": "^19.1.1" }, "peerDependencies": { "typescript": "^5" } }, "sha512-VJvUgCRawdcbne45knn+ue5VdObRdNnTvhivhsCSQFK7F6kXw4esC1s9YnAKzz6QNa/WgjDZ1DVoXnLhd3vR3w=="],
+    "@tscircuit/schematic-trace-solver": ["@tscircuit/schematic-trace-solver@0.0.34", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-jgWbbt+Y/c168o8v89FjleQRRxf2ZB8AhsYaFn72+GVZNwkAVrydozfYfS//5N7JhvkDpjP+ELDwbII6SDeA6Q=="],
 
     "@tscircuit/simple-3d-svg": ["@tscircuit/simple-3d-svg@0.0.38", "", {}, "sha512-Y+OpNlj6DvvN4jfkAoy15hdBYlleFuGU7jED2z3SwJ+CCKGpGC/AMYFpICl0rydFk0cXkmwfLJVaktH0/yHaqw=="],
 
@@ -342,7 +342,7 @@
 
     "cac": ["cac@6.7.14", "", {}, "sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ=="],
 
-    "calculate-elbow": ["calculate-elbow@0.0.9", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-CD5Rg30Fxtjpabio7VTPSf3ic1YZ/dYQGHwRDk/nFqQ64Iw5jv9KaESXTbaPZmdRt3qB2Vc3Qj77LbQ1ufGJAg=="],
+    "calculate-elbow": ["calculate-elbow@0.0.11", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-IAwAgcHuWd3e0bXOCB4tSKaT92BgcBIeE7/7iPpn6zvLBCW3QmPL4jmzR+d7Tq2717BD3K2lnVDGxFv2lAXwKg=="],
 
     "calculate-packing": ["calculate-packing@0.0.31", "", { "peerDependencies": { "@tscircuit/circuit-json-util": "*", "typescript": "^5" } }, "sha512-fRQMS2hNvlzmeHoU/WL155r5v4LJvB0PsF1pK3o4Kczlcz3Hg7/JFcc1pyK//TiibcU57bRiWCKMBUPAFBoYjw=="],
 
@@ -350,7 +350,7 @@
 
     "chownr": ["chownr@1.1.4", "", {}, "sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg=="],
 
-    "circuit-json": ["circuit-json@0.0.242", "", {}, "sha512-gJ7ff1+FQxtmLEXKJS6KelgyBn5QHtDRa+XLA39W6xqH6ApL/Qe0GymuHGdrkwPZnPpkilkArEckW/PC/LemGQ=="],
+    "circuit-json": ["circuit-json@0.0.245", "", {}, "sha512-sp3JzIt7G4I1qJjnFtENkND7a/5UP8hYFVyXJmUUy4h2Xs3l5H01vQFp4DeYxx3ND1yMMhTxNrUgR942M8LudA=="],
 
     "circuit-json-to-bpc": ["circuit-json-to-bpc@0.0.13", "", { "peerDependencies": { "bpc-graph": "*", "circuit-json": "*", "typescript": "^5" } }, "sha512-3wSMtPa6tJkiBQN4tsm7f0Mb7Wp90X2c8dNbULoDVE4mGGoFqP1DXqBlyvvZZl+4SjqznzQQ0EioLe2SCQTOcg=="],
 
@@ -751,6 +751,8 @@
     "tscircuit/@tscircuit/eval": ["@tscircuit/eval@0.0.284", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "jscad-fiber": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-aaE45R2gGdRTT3G1+wW4l4PbgW2Ft7p+uGQr4LzWvQzk4SXB6UOQXk4pZlIehLMs3R8Zw2vp43yHG2XVqsxEQQ=="],
 
     "tscircuit/@tscircuit/matchpack": ["@tscircuit/matchpack@0.0.4", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-BO8CEBo8hR84KJFz47vZl0mrvZaEJpVUwuTAa+UwbV+Fg0kS2DSaBPT4+9cAErUfQgWQ9Bs9tcbJAYUJJcNdYQ=="],
+
+    "tscircuit/@tscircuit/math-utils": ["@tscircuit/math-utils@0.0.18", "", { "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-P45v7V/BiVZZjXTUzjWSUsy0M8GpI5o6d+JWhPWE5+JwI/sYZARuLT4e1xzV7LaavEX4GQ0NKG9hKN48xTZJsw=="],
 
     "tscircuit/@tscircuit/props": ["@tscircuit/props@0.0.281", "", { "peerDependencies": { "circuit-json": "*", "react": "*", "zod": "*" } }, "sha512-t4QUtm3LCzIh+R1rpPf4Gjb07mAdLPTW9uFL6kTHwl+A5oBhCy0hwpDxfGVy5Eo0cEOz9WdnKVoVMkbK5Pdcrw=="],
 
