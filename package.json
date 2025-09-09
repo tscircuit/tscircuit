@@ -45,7 +45,7 @@
     "@tscircuit/circuit-json-flex": "^0.0.3",
     "@tscircuit/circuit-json-util": "^0.0.67",
     "@tscircuit/cli": "^0.1.202",
-    "@tscircuit/core": "^0.0.705",
+    "@tscircuit/core": "^0.0.713",
     "@tscircuit/eval": "^0.0.303",
     "@tscircuit/footprinter": "^0.0.236",
     "@tscircuit/infgrid-ijump-astar": "^0.0.33",
