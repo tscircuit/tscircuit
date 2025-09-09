@@ -27,7 +27,7 @@
         "bpc-graph": "^0.0.57",
         "calculate-elbow": "^0.0.12",
         "calculate-packing": "0.0.33",
-        "circuit-json": "^0.0.245",
+        "circuit-json": "^0.0.247",
         "circuit-json-to-bpc": "^0.0.13",
         "circuit-json-to-connectivity-map": "^0.0.22",
         "circuit-json-to-simple-3d": "^0.0.6",
@@ -350,7 +350,7 @@
 
     "chownr": ["chownr@1.1.4", "", {}, "sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg=="],
 
-    "circuit-json": ["circuit-json@0.0.245", "", {}, "sha512-sp3JzIt7G4I1qJjnFtENkND7a/5UP8hYFVyXJmUUy4h2Xs3l5H01vQFp4DeYxx3ND1yMMhTxNrUgR942M8LudA=="],
+    "circuit-json": ["circuit-json@0.0.247", "", {}, "sha512-7Qil4DhBQ3gXxOo4gBTfmeYe5m5Jn+EW75PEQa8bJK/1fkSIhIUgxbwTTMfHAMixNFhtt0PlsWH/y7OBxFB8vw=="],
 
     "circuit-json-to-bpc": ["circuit-json-to-bpc@0.0.13", "", { "peerDependencies": { "bpc-graph": "*", "circuit-json": "*", "typescript": "^5" } }, "sha512-3wSMtPa6tJkiBQN4tsm7f0Mb7Wp90X2c8dNbULoDVE4mGGoFqP1DXqBlyvvZZl+4SjqznzQQ0EioLe2SCQTOcg=="],
 
