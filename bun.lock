@@ -19,7 +19,7 @@
         "@tscircuit/matchpack": "^0.0.16",
         "@tscircuit/math-utils": "^0.0.21",
         "@tscircuit/miniflex": "^0.0.4",
-        "@tscircuit/props": "0.0.300",
+        "@tscircuit/props": "0.0.311",
         "@tscircuit/runframe": "^0.0.808",
         "@tscircuit/schematic-match-adapt": "^0.0.16",
         "@tscircuit/schematic-trace-solver": "^0.0.35",
@@ -44,7 +44,7 @@
         "performance-now": "^2.1.0",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
-        "schematic-symbols": "^0.0.195",
+        "schematic-symbols": "^0.0.198",
         "transformation-matrix": "^2.16.1",
         "zod": "^3.25.67",
       },
@@ -268,7 +268,7 @@
 
     "@tscircuit/mm": ["@tscircuit/mm@0.0.8", "", { "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-nl7nxE7AhARbKuobflI0LUzoir7+wJyvwfPw6bzA/O0Q3YTcH3vBkU/Of+V/fp6ht+AofiCXj7YAH9E446138Q=="],
 
-    "@tscircuit/props": ["@tscircuit/props@0.0.300", "", { "peerDependencies": { "circuit-json": "*", "react": "*", "zod": "*" } }, "sha512-bf8q58ewmGGQFKUPcnsMAggBPpPINE0g5Cy2MjN8W4/0qJs9eaPKR8dPamYTfI26QgWi6fRmx2bb+hEVrKKzDA=="],
+    "@tscircuit/props": ["@tscircuit/props@0.0.311", "", { "peerDependencies": { "circuit-json": "*", "react": "*", "zod": "*" } }, "sha512-w5W59opS3J4PkqSR4upgNUXBFZiPiVCsImHXOG9eA8xZr2qiXP7GDuetl736Th7CAh7RlbemFS/fXibaaSzsSA=="],
 
     "@tscircuit/runframe": ["@tscircuit/runframe@0.0.808", "", {}, "sha512-BxqLLurE0I1qQl1qMZBHJFG5HcfwU1jiEKlSesfK4cUZVDPa7S2aXI64LKv7Tauu5xMnFV1fltrdVpsIh9F5dw=="],
 
@@ -620,7 +620,7 @@
 
     "scheduler": ["scheduler@0.26.0", "", {}, "sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA=="],
 
-    "schematic-symbols": ["schematic-symbols@0.0.195", "", { "peerDependencies": { "typescript": "^5.5.4" } }, "sha512-mWmFTC832Cx+s8dSj6174IvlVuuHGBGExg/1qffCXdM+tQvj4quiGTCUsyPdy1oneZLpg6keDOHB6nF2xvDsMQ=="],
+    "schematic-symbols": ["schematic-symbols@0.0.198", "", { "peerDependencies": { "typescript": "^5.5.4" } }, "sha512-/dJ5NtGs4t/WFJ9/fRPeWEv0TAw0TEN7bzxs6AXrjTXSrVC3XCzKH6akewuZhpPUJAHORMrE2NjZEDSr71ZwBA=="],
 
     "semver": ["semver@7.7.2", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA=="],
 

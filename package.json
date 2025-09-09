@@ -52,7 +52,7 @@
     "@tscircuit/matchpack": "^0.0.16",
     "@tscircuit/math-utils": "^0.0.21",
     "@tscircuit/miniflex": "^0.0.4",
-    "@tscircuit/props": "0.0.300",
+    "@tscircuit/props": "0.0.311",
     "@tscircuit/runframe": "^0.0.808",
     "@tscircuit/schematic-match-adapt": "^0.0.16",
     "@tscircuit/schematic-trace-solver": "^0.0.35",
@@ -77,7 +77,7 @@
     "performance-now": "^2.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "schematic-symbols": "^0.0.195",
+    "schematic-symbols": "^0.0.198",
     "transformation-matrix": "^2.16.1",
     "zod": "^3.25.67"
   }
