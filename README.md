@@ -118,7 +118,10 @@ tsci dev
 - [x] Publish subpackages to the registry with `tsci push`
 - [x] Simplified, extensible auto-routing for PCBs
 - [x] Import footprints and components from third-party sites 
+- [x] Generate schematics from text [using AI](https://text-to-schematic.tscircuit.com)
+- [x] Generate PCBs from text [using AI](https://text-to-pcb.tscircuit.com)
 - [x] Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com)
+- [x] Reusable circuit symbols with the new `<Symbol>` component
 
 ## FAQ
 
@@ -194,6 +197,10 @@ a quick guide to navigating all of the sub-projects:
 | [@tscircuit/footprinter](https://github.com/tscircuit/footprinter)           | DSL for creating footprints                                                                              |
 | [kicad-mod-converter](https://github.com/tscircuit/kicad-mod-converter)      | Convert kicad_mod files to and from JSON                                                                 |
 | [@tscircuit/kicad-viewer](https://github.com/tscircuit/kicad-viewer)         | View the KiCad official footprints online                                                                |
+
+## Documentation
+
+- [Symbol Component](./docs/symbol-component.md) - Guide for using the new Symbol component
 
 ## Other Links
 
