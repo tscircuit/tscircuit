@@ -52,7 +52,7 @@
     "@tscircuit/matchpack": "^0.0.16",
     "@tscircuit/math-utils": "^0.0.21",
     "@tscircuit/miniflex": "^0.0.4",
-    "@tscircuit/props": "0.0.324",
+    "@tscircuit/props": "0.0.327",
     "@tscircuit/runframe": "^0.0.936",
     "@tscircuit/schematic-match-adapt": "^0.0.16",
     "@tscircuit/schematic-trace-solver": "^0.0.37",
