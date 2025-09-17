@@ -87,8 +87,8 @@ const Circuit = () => (
       pcb_y="-1mm"
     />
     <ground x={3} y={1} name="GND" />
-    <trace path={[".U1 > .D0", ".R1 > .left"]} />
-    <trace path={[".R1 > .right", ".GND > .gnd"]} />
+    <trace path={[".U1 > .D0", ".R1 > .left"]} ratsNestColor="#ff0000" />
+    <trace path={[".R1 > .right", ".GND > .gnd"]} ratsNestColor="#00ff00" />
   </board>
 )
 ```
@@ -119,6 +119,7 @@ tsci dev
 - [x] Simplified, extensible auto-routing for PCBs
 - [x] Import footprints and components from third-party sites 
 - [x] Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com)
+- [x] Custom colors for rats nest lines with `ratsNestColor` property
 
 ## FAQ
 
