@@ -12,7 +12,7 @@
     "cli.mjs"
   ],
   "scripts": {
-    "build": "tsup-node && bun run copy-runframe-standalone && bun run copy-eval-webworker",
+    "build": "tsup-node && bun run copy-runframe-standalone && bun run copy-eval-webworker && cp types/static-assets.d.ts dist/static-assets.d.ts",
     "test": "bun test",
     "upgrade-deps": "bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval && bun run copy-core-versions && bun install --ignore-scripts",
     "copy-runframe-standalone": "bun run scripts/copy-runframe-standalone.ts",
