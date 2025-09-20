@@ -95,6 +95,33 @@ const Circuit = () => (
 
 ![Example Circuit Rendering](./docs/example_render.png)
 
+### Wire Color Examples
+
+You can now explicitly control wire/trace colors for clarity in both schematics and PCBs.
+
+Basic trace with a color:
+
+```tsx
+<Trace from="r1.left" to="r2.right" color="#ff0000" />
+```
+
+Separate colors for schematic and PCB:
+
+```tsx
+<Trace
+  from="r1.left"
+  to="r2.right"
+  schematicColor="#00ff00" // Green on schematic
+  pcbColor="#0000ff"        // Blue on PCB
+/>
+```
+
+Schematic line with a color:
+
+```tsx
+<SchematicLine x1="0mm" y1="0mm" x2="10mm" y2="0mm" color="#ff00ff" />
+```
+
 ## Getting Started
 
 You can do everything you need to do with `tscircuit` using the [`tsci`](https://github.com/tscircuit/cli) command line tool.
