@@ -19,7 +19,7 @@
         "@tscircuit/math-utils": "^0.0.21",
         "@tscircuit/miniflex": "^0.0.4",
         "@tscircuit/props": "0.0.335",
-        "@tscircuit/runframe": "^0.0.972",
+        "@tscircuit/runframe": "^0.0.974",
         "@tscircuit/schematic-match-adapt": "^0.0.16",
         "@tscircuit/schematic-trace-solver": "^0.0.38",
         "@tscircuit/simple-3d-svg": "^0.0.41",
@@ -226,7 +226,7 @@
 
     "@tscircuit/props": ["@tscircuit/props@0.0.335", "", { "peerDependencies": { "circuit-json": "*", "react": "*", "zod": "*" } }, "sha512-dIdmEH1pIWU89FIqQWQzQu5ReB6nkMQxBiYLOAMjusrUsmzAshxA8QzDrPJAeM1TjW/edR8CQCrtfatYDNdo5A=="],
 
-    "@tscircuit/runframe": ["@tscircuit/runframe@0.0.972", "", {}, "sha512-tb1X7cH0t1tHmoRHrL297bZkXqIlBX5YubeVYp47E+edd1dnySvDXXHb5god/bwvu5dK+JNtFB1dZCEk7VKECg=="],
+    "@tscircuit/runframe": ["@tscircuit/runframe@0.0.974", "", {}, "sha512-owqwyRfFTL4pjtonYUpSHlIxnuh93RfexZucraCqpJpWuKel6Sy9zTrJZ76in9SIJm41CIFDb9cRUm4pTt3mYg=="],
 
     "@tscircuit/schematic-autolayout": ["@tscircuit/schematic-autolayout@0.0.6", "", { "dependencies": { "@tscircuit/soup-util": "^0.0.38", "transformation-matrix": "^2.16.1" } }, "sha512-34cQxtlSylBKyHkzaMBCynaWJgN9c/mWm7cz63StTYIafKmfFs383K8Xoc4QX8HXCvVrHYl1aK15onZua9MxeA=="],
 
