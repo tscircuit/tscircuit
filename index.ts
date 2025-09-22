@@ -1,3 +1,3 @@
 export * from "@tscircuit/core"
 export * from "@tscircuit/eval"
-export type { ChipProps, PinLabelsProp } from "@tscircuit/props"
+export type { ChipProps, PinLabelsProp, CommonLayoutProps } from "@tscircuit/props"
