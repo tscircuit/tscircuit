@@ -12,7 +12,7 @@
         "@tscircuit/circuit-json-util": "^0.0.67",
         "@tscircuit/cli": "^0.1.231",
         "@tscircuit/core": "^0.0.745",
-        "@tscircuit/eval": "^0.0.337",
+        "@tscircuit/eval": "^0.0.338",
         "@tscircuit/footprinter": "^0.0.236",
         "@tscircuit/infgrid-ijump-astar": "^0.0.33",
         "@tscircuit/matchpack": "^0.0.16",
@@ -210,7 +210,7 @@
 
     "@tscircuit/core": ["@tscircuit/core@0.0.745", "", { "dependencies": { "@flatten-js/core": "^1.6.2", "@lume/kiwi": "^0.4.3", "calculate-packing": "0.0.37", "css-select": "5.1.0", "format-si-unit": "^0.0.3", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/matchpack": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-autolayout": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "schematic-symbols": "*", "typescript": "^5.0.0" } }, "sha512-xKS1+11kP4JI5NTWf+yX3Fl/S8kAOahE2PXImtzzFGSTE1nM36Ro59SKzT9dF1TD4Jj4bu7qGnLB5qGq6NCAPQ=="],
 
-    "@tscircuit/eval": ["@tscircuit/eval@0.0.337", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-4Tw1Za6DwRsYJObBJHj5gBAxqr7Rm1AyT4kSdDV/qlrBmj7t1dk8+jK+CnQwv+R7Y8mqIGHHS+2M7tfxKTzP/w=="],
+    "@tscircuit/eval": ["@tscircuit/eval@0.0.338", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-t/TNpRnzhz9bYJPV05ingSvBQ62qsYJc9LDIOHXjS3h681Z0NpDAN3d9l7omowbigm5oxCDFmOWAU2+LU3TMOg=="],
 
     "@tscircuit/footprinter": ["@tscircuit/footprinter@0.0.236", "", { "dependencies": { "@tscircuit/mm": "^0.0.8", "zod": "^3.23.8" }, "peerDependencies": { "circuit-json": "*" } }, "sha512-SE03ZCNp9FxzSa3LdbQOMBHjT16Q86ZwN6iLu+RPsAbFrdE1RwtM7dv5lOb6lkh78mL3e7yyuyay+QrERiLcYQ=="],
 
