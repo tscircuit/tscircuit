@@ -52,7 +52,7 @@
     "@tscircuit/math-utils": "^0.0.21",
     "@tscircuit/miniflex": "^0.0.4",
     "@tscircuit/props": "0.0.335",
-    "@tscircuit/runframe": "^0.0.993",
+    "@tscircuit/runframe": "^0.0.1002",
     "@tscircuit/schematic-match-adapt": "^0.0.16",
     "@tscircuit/schematic-trace-solver": "^0.0.38",
     "@tscircuit/simple-3d-svg": "^0.0.41",
