@@ -36,7 +36,9 @@ jobs:
             fi
           done
       - name: Run copy-core-versions script
-        run: bun run copy-core-versions
+        run: |
+          bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval @tscircuit/runframe
+          bun run copy-core-versions
       - name: Create Pull Request
         id: create-pr
         uses: peter-evans/create-pull-request@v5
