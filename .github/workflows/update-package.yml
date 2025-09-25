@@ -35,6 +35,8 @@ jobs:
               bun update --latest "$package"
             fi
           done
+      - name: Run copy-core-versions script
+        run: bun run copy-core-versions
       - name: Create Pull Request
         id: create-pr
         uses: peter-evans/create-pull-request@v5
