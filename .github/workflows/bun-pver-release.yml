@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+env:
+  UPSTREAM_REPOS: "svg.tscircuit.com,usercode.tscircuit.com" # comma-separated list, e.g. "eval,tscircuit,docs"
+  PACKAGE_NAMES: "tscircuit" # comma-separated list, e.g. "@tscircuit/core,@tscircuit/props"
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -20,15 +26,22 @@ jobs:
       - run: npm install -g pver
       - run: bun install --frozen-lockfile
       - run: bun run build
-      - run: git status
       - run: pver release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Publish libonly version
+          GITHUB_TOKEN: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
+      - name: Trigger upstream repo updates
+        if: env.UPSTREAM_REPOS && env.PACKAGE_NAMES
         run: |
-          bun scripts/create-libonly-package.js
-          cp package-libonly.json package.json
-          npm publish --tag libonly
-          git checkout package.json
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          IFS=',' read -ra REPOS <<< "${{ env.UPSTREAM_REPOS }}"
+          for repo in "${REPOS[@]}"; do
+            if [[ -n "$repo" ]]; then
+              echo "Triggering update for repo: $repo"
+              curl -X POST \
+                -H "Accept: application/vnd.github.v3+json" \
+                -H "Authorization: token ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}" \
+                -H "Content-Type: application/json" \
+                "https://api.github.com/repos/tscircuit/$repo/actions/workflows/update-package.yml/dispatches" \
+                -d "{\"ref\":\"main\",\"inputs\":{\"package_names\":\"${{ env.PACKAGE_NAMES }}\"}}"
+            fi
+          done
