@@ -1,12 +1,4 @@
-/**
- * Knockout Silkscreen Text Usage Examples
- *
- * Shows how to use knockout silkscreen text in tscircuit components
- */
-
-/**
- * Example 1: Basic knockout text usage
- */
+// Basic knockout text usage example
 export const basicKnockoutExample = {
   type: "pcb_silkscreen_text",
   pcb_silkscreen_text_id: "silkscreen_text_1",
@@ -26,9 +18,7 @@ export const basicKnockoutExample = {
   anchor_alignment: "center"
 }
 
-/**
- * Example 2: Knockout text with different padding
- */
+// Knockout text with different padding example
 export const customPaddingExample = {
   type: "pcb_silkscreen_text",
   pcb_silkscreen_text_id: "silkscreen_text_2",

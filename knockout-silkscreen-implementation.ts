@@ -1,13 +1,6 @@
-/**
- * Knockout Silkscreen Text Implementation
- *
- * This file contains the implementation for knockout silkscreen text
- * across all the tscircuit packages.
- */
-
 import { applyToPoint, compose, scale, translate, rotate } from "transformation-matrix"
 
-// Circuit JSON types for silkscreen text - EXACT schema match
+// Types for silkscreen text with knockout support
 interface PcbSilkscreenText {
   type: "pcb_silkscreen_text"
   pcb_silkscreen_text_id: string
@@ -31,7 +24,7 @@ interface PcbSilkscreenText {
   anchor_alignment: "center" | "top_left" | "top_center" | "top_right" | "center_left" | "center_right" | "bottom_left" | "bottom_center" | "bottom_right"
 }
 
-// Context interface for rendering - EXACT match to original
+// Rendering context interface
 interface RenderContext {
   transform: any
   layer: "top" | "bottom" | null
@@ -43,10 +36,7 @@ interface RenderContext {
   }
 }
 
-/**
- * Enhanced createSvgObjectsFromPcbSilkscreenText with knockout support
- * EXACT match to original function signature, just adds knockout functionality
- */
+// Enhanced function with knockout support
 export function createSvgObjectsFromPcbSilkscreenText(
   pcbSilkscreenText: PcbSilkscreenText,
   ctx: RenderContext
@@ -176,7 +166,7 @@ export function createSvgObjectsFromPcbSilkscreenText(
     value: ""
   }
 
-  // KNOCKOUT FUNCTIONALITY - only addition to original
+  // Add knockout rectangle if enabled
   if (is_knockout) {
     const lineHeight = transformedFontSize
     const textWidth = text.length * transformedFontSize * 0.6
@@ -223,9 +213,7 @@ export function createSvgObjectsFromPcbSilkscreenText(
   return [textSvgObject]
 }
 
-/**
- * Example usage for knockout silkscreen text - circuit-json format
- */
+// Example usage
 export const knockoutTextExample = {
   type: "pcb_silkscreen_text",
   pcb_silkscreen_text_id: "silkscreen_text_1",

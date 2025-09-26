@@ -21,13 +21,13 @@ The `pcb_silkscreen_text` type already includes:
   type: "pcb_silkscreen_text"
   pcb_silkscreen_text_id: string
   text: string
-  is_knockout?: boolean  // defaults to false
+  is_knockout?: boolean
   knockout_padding?: {
     left: number
     top: number
     bottom: number
     right: number
-  }  // defaults to 0.2mm each side
+  }
   // ... other properties
 }
 ```
@@ -77,11 +77,11 @@ export const silkscreenTextProps = pcbLayoutProps.extend({
 
 The knockout functionality is implemented by:
 
-1. **Text Rendering**: Creates the text element with proper styling and positioning
-2. **Knockout Rectangle**: When `is_knockout` is true, creates a filled rectangle behind the text
-3. **Dimensions**: Calculates text dimensions based on font size, text length, and knockout padding
-4. **Positioning**: Aligns the knockout rectangle with the text based on anchor alignment
-5. **Transformations**: Applies the same rotation and transformations to both text and knockout rectangle
+- **Text Rendering**: Creates the text element with proper styling and positioning
+- **Knockout Rectangle**: When `is_knockout` is true, creates a filled rectangle behind the text
+- **Dimensions**: Calculates text dimensions based on font size, text length, and knockout padding
+- **Positioning**: Aligns the knockout rectangle with the text based on anchor alignment
+- **Transformations**: Applies the same rotation and transformations to both text and knockout rectangle
 
 ### Key Features
 
