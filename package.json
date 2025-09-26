@@ -31,6 +31,7 @@
     "@types/bun": "^1.2.16",
     "esbuild": "^0.20.2",
     "esbuild-register": "^3.5.0",
+    "s-expression": "^3.1.1",
     "tsup": "^8.2.4"
   },
   "peerDependencies": {
