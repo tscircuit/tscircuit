@@ -26,10 +26,18 @@ jobs:
       - run: npm install -g pver
       - run: bun install --frozen-lockfile
       - run: bun run build
+      - run: git status
       - run: pver release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
+      - name: Publish libonly version
+        run: |
+          bun scripts/create-libonly-package.js
+          cp package-libonly.json package.json
+          npm publish --tag libonly
+          git checkout package.json
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Trigger upstream repo updates
         if: env.UPSTREAM_REPOS && env.PACKAGE_NAMES
         run: |
