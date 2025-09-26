@@ -39,7 +39,7 @@
         "format-si-unit": "^0.0.3",
         "graphics-debug": "^0.0.60",
         "jscad-planner": "^0.0.13",
-        "kicad-component-converter": "^0.1.20",
+        "kicad-component-converter": "^0.1.21",
         "minicssgrid": "^0.0.9",
         "performance-now": "^2.1.0",
         "react": "^19.1.0",
@@ -455,7 +455,7 @@
 
     "jsonfile": ["jsonfile@4.0.0", "", { "optionalDependencies": { "graceful-fs": "^4.1.6" } }, "sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg=="],
 
-    "kicad-component-converter": ["kicad-component-converter@0.1.20", "", { "bin": { "kicad-mod-converter": "dist/cli.js" } }, "sha512-xwSKIkKwmXkfiQ5sSISDzUEfevUXuMj6KGWtrLv3lkN++JNykQgA5ylrvEyM9TTlFQ3FVJp6vqYgq4Qnn3z9IA=="],
+    "kicad-component-converter": ["kicad-component-converter@0.1.21", "", { "bin": { "kicad-mod-converter": "dist/cli.js" } }, "sha512-+pPTvEan+vnKlXjVqptNk92Tv81XbVJfC4tyxQss7gxtQ8QcSAvoqlQt3WfzdpY16v1HEFhmQvS28qXEMCb7uA=="],
 
     "kind-of": ["kind-of@3.2.2", "", { "dependencies": { "is-buffer": "^1.1.5" } }, "sha512-NOW9QQXMoZGg/oqnVNoNTTIFEIid1627WCffUBJEdMxYApq7mNE7CpzucIPc+ZQg25Phej7IJSmX3hO+oblOtQ=="],
 
