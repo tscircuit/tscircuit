@@ -31,7 +31,6 @@
     "@types/bun": "^1.2.16",
     "esbuild": "^0.20.2",
     "esbuild-register": "^3.5.0",
-    "s-expression": "^3.1.1",
     "tsup": "^8.2.4"
   },
   "peerDependencies": {
@@ -78,6 +77,7 @@
     "performance-now": "^2.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "s-expression": "^3.1.1",
     "schematic-symbols": "^0.0.202",
     "sucrase": "^3.35.0",
     "transformation-matrix": "^2.16.1",
