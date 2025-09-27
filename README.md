@@ -5,7 +5,7 @@ Make electronics using Typescript, React, and AI tools.
 tscircuit makes developing electronics like web development. Edit code in your favorite IDE and watch the changes
 create electronics in realtime. When you're done, [export your project and manufacture](https://docs.tscircuit.com/guides/understanding-fabrication-files)!
 
-Get started by running `npm install -g @tscircuit/cli`! [(CLI quickstart doc)](https://docs.tscircuit.com/intro/quickstart-cli)
+Get started by running `npm install -g tscircuit`! [(CLI quickstart doc)](https://docs.tscircuit.com/intro/quickstart-cli)
 
 <div>
 <a href="https://tscircuit.com/join" target="_blank">Discord</a>
@@ -25,6 +25,8 @@ Get started by running `npm install -g @tscircuit/cli`! [(CLI quickstart doc)](h
 <a href="https://x.com/tscircuit" target="_blank">Twitter</a>
 ·
 <a href="https://docs.tscircuit.com/llms.txt">llms.txt</a>
+·
+<a href="https://share.cleanshot.com/XkJKK2ys">Getting Started Contributor Video</a>
 
 </div>
 <br/>
