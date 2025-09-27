@@ -57,10 +57,10 @@ jobs:
       - name: Enable auto-merge
         if: steps.create-pr.outputs.pull-request-number != ''
         run: |
-          gh pr merge ${{ steps.create-pr.outputs.pull-request-number }} --rebase --delete-branch
+          gh pr merge ${{ steps.create-pr.outputs.pull-request-number }} --auto --squash --delete-branch
         env:
           GH_TOKEN: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
-          
+
       - name: Trigger upstream repo updates
         if: env.UPSTREAM_REPOS && env.PACKAGE_NAMES
         run: |
