@@ -29,7 +29,7 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run build
       - run: git status
-      - run: pver release
+      - run: pver release --no-push-main
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish libonly version
@@ -40,6 +40,27 @@ jobs:
           git checkout package.json
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create Pull Request
+        id: create-pr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "chore: bump version"
+          title: "chore: bump version"
+          body: "Automated package update"
+          branch: bump-version-${{ github.run_number }}
+          base: main
+          token: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
+          committer: tscircuitbot <githubbot@tscircuit.com>
+          author: tscircuitbot <githubbot@tscircuit.com>
+
+      - name: Enable auto-merge
+        if: steps.create-pr.outputs.pull-request-number != ''
+        run: |
+          gh pr merge ${{ steps.create-pr.outputs.pull-request-number }} --rebase --delete-branch
+        env:
+          GH_TOKEN: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
+          
       - name: Trigger upstream repo updates
         if: env.UPSTREAM_REPOS && env.PACKAGE_NAMES
         run: |
