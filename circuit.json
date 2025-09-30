@@ -1,0 +1,18 @@
+[
+  {
+    "type": "chip",
+    "name": "U1",
+    "position": { "x": 0, "y": 0 },
+    "cadModel": {
+      "gltfUrl": "https://modelcdn.tscircuit.com/jscad_models/soic8.glb"
+    }
+  },
+  {
+    "type": "chip",
+    "name": "U2",
+    "position": { "x": 30, "y": 30 },
+    "cadModel": {
+      "gltfUrl": "https://modelcdn.tscircuit.com/jscad_models/soic8.glb"
+    }
+  }
+]
