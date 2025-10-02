@@ -8,9 +8,11 @@ declare module "*.stl" {
   export default src
 }
 
+import type { CircuitJson } from "circuit-json"
+
 declare module "*.kicad_mod" {
-  const src: string
-  export default src
+  const footprintCircuitJson: CircuitJson | Promise<CircuitJson>
+  export default footprintCircuitJson
 }
 
 declare module "*.glb" {
