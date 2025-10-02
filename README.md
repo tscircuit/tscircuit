@@ -97,6 +97,30 @@ const Circuit = () => (
 
 ![Example Circuit Rendering](./docs/example_render.png)
 
+## Board Templates
+
+tscircuit supports community board templates for common board formats.
+
+```tsx
+import { footprintLibraryMap } from "tscircuit"
+
+const ArduinoShieldExample = () => {
+  const template = footprintLibraryMap["community:arduinoshield"]
+
+  return (
+    <board width={template.width} height={template.height}>
+      {/* Your components here */}
+    </board>
+  )
+}
+```
+
+**Available Templates:**
+- `community:arduinoshield` (68.58mm × 53.34mm)
+- `community:raspberrypihat` (65mm × 56.5mm)
+- `community:sparkfunmicromod_processor` (22mm × 22mm)
+- `community:sparkfunmicromod_host` (75mm × 75mm)
+
 ## Getting Started
 
 You can do everything you need to do with `tscircuit` using the [`tsci`](https://github.com/tscircuit/cli) command line tool.
@@ -119,8 +143,9 @@ tsci dev
 - [x] Add [registry packages](https://tscircuit.com/) with `tsci add`
 - [x] Publish subpackages to the registry with `tsci push`
 - [x] Simplified, extensible auto-routing for PCBs
-- [x] Import footprints and components from third-party sites 
+- [x] Import footprints and components from third-party sites
 - [x] Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com)
+- [x] Use community board templates (Arduino shields, Raspberry Pi HATs, etc.)
 
 ## FAQ
 
