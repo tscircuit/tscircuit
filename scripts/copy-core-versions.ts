@@ -6,6 +6,7 @@ const DO_NOT_SYNC_PACKAGE = [
   "@biomejs/biome",
   "@tscircuit/import-snippet",
   "@tscircuit/layout",
+  "@tscircuit/common",
   "@tscircuit/log-soup",
   "@tscircuit/schematic-autolayout",
   "@types/*",
