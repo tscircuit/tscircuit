@@ -7,6 +7,7 @@ const DO_NOT_SYNC_PACKAGE = [
   "@tscircuit/import-snippet",
   "@tscircuit/layout",
   "@tscircuit/log-soup",
+  "@tscircuit/common",
   "@tscircuit/schematic-autolayout",
   "@types/*",
   "tsup",
