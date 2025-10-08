@@ -12,6 +12,7 @@ env:
 
 jobs:
   publish:
+    if: ${{ !(github.event_name == 'push' && startsWith(github.event.head_commit.message, 'v')) }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
