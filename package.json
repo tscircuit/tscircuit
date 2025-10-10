@@ -43,7 +43,7 @@
     "@tscircuit/checks": "^0.0.84",
     "@tscircuit/circuit-json-flex": "^0.0.3",
     "@tscircuit/circuit-json-util": "^0.0.67",
-    "@tscircuit/cli": "^0.1.297",
+    "@tscircuit/cli": "^0.1.298",
     "@tscircuit/core": "^0.0.773",
     "@tscircuit/eval": "^0.0.374",
     "@tscircuit/footprinter": "^0.0.236",
