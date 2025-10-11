@@ -1,6 +1,7 @@
 {
   "name": "tscircuit",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "version": "0.0.723",
   "repository": {
@@ -9,10 +10,12 @@
   },
   "files": [
     "dist",
-    "cli.mjs"
+    "cli.mjs",
+    "globals.d.ts"
   ],
   "scripts": {
-    "build": "tsup-node && bun run copy-runframe-standalone && bun run copy-eval-webworker && cp types/static-assets.d.ts dist/static-assets.d.ts",
+    "build": "tsup-node && bun run copy-runframe-standalone && bun run copy-eval-webworker && cp types/static-assets.d.ts dist/static-assets.d.ts && bun run add-global-types-reference",
+    "add-global-types-reference": "echo '/// <reference path=\"../globals.d.ts\" />' | cat - dist/index.d.ts > dist/index.d.ts.tmp && mv dist/index.d.ts.tmp dist/index.d.ts",
     "test": "bun test",
     "upgrade-deps": "bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval && bun run copy-core-versions && bun install --ignore-scripts",
     "copy-runframe-standalone": "bun run scripts/copy-runframe-standalone.ts",
@@ -20,8 +23,16 @@
     "copy-core-versions": "bun run scripts/copy-core-versions.ts && bun install --ignore-scripts"
   },
   "exports": {
-    ".": "./dist/index.js",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
     "./browser": "./dist/browser.min.js"
+  },
+  "typesVersions": {
+    "*": {
+      "*": ["globals.d.ts", "dist/index.d.ts"]
+    }
   },
   "bin": {
     "tsci": "cli.mjs",
