@@ -29,14 +29,6 @@
     },
     "./browser": "./dist/browser.min.js"
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "globals.d.ts",
-        "dist/index.d.ts"
-      ]
-    }
-  },
   "bin": {
     "tsci": "cli.mjs",
     "tscircuit": "cli.mjs"
