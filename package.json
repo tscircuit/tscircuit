@@ -3,7 +3,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "version": "0.0.730",
+  "version": "0.0.731",
   "repository": {
     "type": "git",
     "url": "https://github.com/tscircuit/tscircuit"
@@ -31,7 +31,10 @@
   },
   "typesVersions": {
     "*": {
-      "*": ["globals.d.ts", "dist/index.d.ts"]
+      "*": [
+        "globals.d.ts",
+        "dist/index.d.ts"
+      ]
     }
   },
   "bin": {
