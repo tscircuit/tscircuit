@@ -74,6 +74,7 @@ Using tscircuit, you can design things like a <a target="_blank" href="https://b
 ## Example Circuits
 
 - [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
+- [LED Color Configuration Guide](./docs/led-colors.md)
 
 ```tsx
 const Circuit = () => (
@@ -88,9 +89,17 @@ const Circuit = () => (
       pcb_x="4mm"
       pcb_y="-1mm"
     />
+    <led
+      name="LED1"
+      color="red"
+      footprint="0402"
+      pcb_x="8mm"
+      pcb_y="2mm"
+    />
     <ground x={3} y={1} name="GND" />
     <trace path={[".U1 > .D0", ".R1 > .left"]} />
-    <trace path={[".R1 > .right", ".GND > .gnd"]} />
+    <trace path={[".R1 > .right", ".LED1 > .anode"]} />
+    <trace path={[".LED1 > .cathode", ".GND > .gnd"]} />
   </board>
 )
 ```
