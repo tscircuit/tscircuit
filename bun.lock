@@ -26,13 +26,13 @@
         "bpc-graph": "^0.0.57",
         "calculate-elbow": "^0.0.12",
         "calculate-packing": "0.0.48",
-        "circuit-json": "^0.0.277",
+        "circuit-json": "^0.0.278",
         "circuit-json-to-bpc": "^0.0.13",
         "circuit-json-to-connectivity-map": "^0.0.22",
         "circuit-json-to-gltf": "^0.0.7",
         "circuit-json-to-simple-3d": "^0.0.9",
         "circuit-json-to-spice": "^0.0.13",
-        "circuit-to-svg": "^0.0.235",
+        "circuit-to-svg": "^0.0.238",
         "comlink": "^4.4.2",
         "connectivity-map": "^1.0.0",
         "css-select": "5.1.0",
@@ -342,7 +342,7 @@
 
     "chownr": ["chownr@1.1.4", "", {}, "sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg=="],
 
-    "circuit-json": ["circuit-json@0.0.277", "", {}, "sha512-56xoNBHILJINYznkpQ+ds+7Zno+/CH1aLT1wKiqla8w5wL9p/B1rWFiv9ueQE0KvayLYwQgwUeN3Rd9zpVP8xg=="],
+    "circuit-json": ["circuit-json@0.0.278", "", {}, "sha512-qJVj1huQt7FZ0lV5KTpJjQ0LHXid0Nh3v1KCqRPXbBdp35GhyJ1GshS92xD+xNotuKngvxJIwf1eZgXJXv6I1A=="],
 
     "circuit-json-to-bpc": ["circuit-json-to-bpc@0.0.13", "", { "peerDependencies": { "bpc-graph": "*", "circuit-json": "*", "typescript": "^5" } }, "sha512-3wSMtPa6tJkiBQN4tsm7f0Mb7Wp90X2c8dNbULoDVE4mGGoFqP1DXqBlyvvZZl+4SjqznzQQ0EioLe2SCQTOcg=="],
 
@@ -354,7 +354,7 @@
 
     "circuit-json-to-spice": ["circuit-json-to-spice@0.0.13", "", { "dependencies": { "@tscircuit/soup-util": "^0.0.41", "circuit-json": "^0.0.271", "circuit-json-to-connectivity-map": "^0.0.22" }, "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-rNC5tVTEjtnQxIf9q1DsgXu0JRgw3sfAJAWMgNRHDJ9m4vn47gFzg38JZcEM5FM+TvJMSEb2N8fGK/ITKBjlhA=="],
 
-    "circuit-to-svg": ["circuit-to-svg@0.0.235", "", { "dependencies": { "@types/node": "^22.5.5", "bun-types": "^1.1.40", "calculate-elbow": "0.0.12", "svgson": "^5.3.1", "transformation-matrix": "^2.16.1" } }, "sha512-Qz0vQUQMFimLyA2PBUv588iZzuWIaZ8MaQQGR4ir0GsecE+XqQSqktnbcNEeGqZJ8oYj9gXDCHKDwUhmJ4Owog=="],
+    "circuit-to-svg": ["circuit-to-svg@0.0.238", "", { "dependencies": { "@types/node": "^22.5.5", "bun-types": "^1.1.40", "calculate-elbow": "0.0.12", "svgson": "^5.3.1", "transformation-matrix": "^2.16.1" } }, "sha512-gRLKDhj/PrbFu+xMNRJqbU0C9l8HrZiFNebG1o9hs6GdpTf+H93nR/BltzQNHNXULGEO1NG+cgMeFahGMuBSbQ=="],
 
     "color": ["color@4.2.3", "", { "dependencies": { "color-convert": "^2.0.1", "color-string": "^1.9.0" } }, "sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A=="],
 
