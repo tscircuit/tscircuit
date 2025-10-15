@@ -10,9 +10,9 @@
         "@tscircuit/checks": "^0.0.85",
         "@tscircuit/circuit-json-flex": "^0.0.3",
         "@tscircuit/circuit-json-util": "^0.0.72",
-        "@tscircuit/cli": "^0.1.327",
-        "@tscircuit/core": "^0.0.791",
-        "@tscircuit/eval": "^0.0.393",
+        "@tscircuit/cli": "^0.1.328",
+        "@tscircuit/core": "^0.0.792",
+        "@tscircuit/eval": "^0.0.394",
         "@tscircuit/footprinter": "^0.0.236",
         "@tscircuit/infgrid-ijump-astar": "^0.0.33",
         "@tscircuit/matchpack": "^0.0.16",
@@ -238,11 +238,11 @@
 
     "@tscircuit/circuit-json-util": ["@tscircuit/circuit-json-util@0.0.72", "", { "dependencies": { "parsel-js": "^1.1.2" }, "peerDependencies": { "circuit-json": "*", "transformation-matrix": "*", "zod": "3" } }, "sha512-8KqdPYz1Q+rYgPuP9VBBxusLgq0MmpVw4FjLORNHYr2qfWmM1m/1OQEokZHZZZLTUbfcn86zUOcv69+LqHa0FA=="],
 
-    "@tscircuit/cli": ["@tscircuit/cli@0.1.327", "", { "peerDependencies": { "tscircuit": "*" }, "bin": { "tscircuit-cli": "cli/entrypoint.js" } }, "sha512-SPJGkAH4t1wFY97ZKgtDUqVmuZhXEm2I1imhN0jH88CRQyWXgAK8s+26VG5YAbIL5Z/CXcE9Fj5zTCzgyk+pOA=="],
+    "@tscircuit/cli": ["@tscircuit/cli@0.1.328", "", { "peerDependencies": { "tscircuit": "*" }, "bin": { "tscircuit-cli": "cli/entrypoint.js" } }, "sha512-yM+0ghjLnUiznljXOEg3XNhUq0JjtdYwwvjCu06Eii4UtaHv2xvHnGX6VWTFu+IkTVpIUtKeF+x5VYnY/RGHhg=="],
 
-    "@tscircuit/core": ["@tscircuit/core@0.0.791", "", { "dependencies": { "@flatten-js/core": "^1.6.2", "@lume/kiwi": "^0.4.3", "calculate-packing": "0.0.48", "css-select": "5.1.0", "format-si-unit": "^0.0.3", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/matchpack": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-autolayout": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "schematic-symbols": "*", "typescript": "^5.0.0" } }, "sha512-mSGlmEw68mdh3lZl9WkPnUVDv6SRHMXKIjCdyKra1wt8Nf1iIRTWt7Bh7hKcC0EtDMio8WlzCPOEldl3OHyuYA=="],
+    "@tscircuit/core": ["@tscircuit/core@0.0.792", "", { "dependencies": { "@flatten-js/core": "^1.6.2", "@lume/kiwi": "^0.4.3", "calculate-packing": "0.0.48", "css-select": "5.1.0", "format-si-unit": "^0.0.3", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/matchpack": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-autolayout": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "schematic-symbols": "*", "typescript": "^5.0.0" } }, "sha512-wtQ1SklRMUX1PI7E0SVSmcNuMs1tz59E2xpBDkMK46JDiPJj8hKUOr2YT6y4BYzGb2ui0DRseBP7azCFkqSMuA=="],
 
-    "@tscircuit/eval": ["@tscircuit/eval@0.0.393", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-Db9mAKiru1vaPMeOd1B8CjPwBtgn41yhJOFNa/xdpibv60kXO5eg2qfLGw8FBvtNZ9F2UGXCFZJeeEggKnG1UQ=="],
+    "@tscircuit/eval": ["@tscircuit/eval@0.0.394", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-gauO5HUXIdPS9AKx0o/OcNikdFQbASOl0XdAENEiaiJ4ERB7HizjKf0yK8YgQgUYE3zeF6Q0q9MXE/m2FWYrxQ=="],
 
     "@tscircuit/footprinter": ["@tscircuit/footprinter@0.0.236", "", { "dependencies": { "@tscircuit/mm": "^0.0.8", "zod": "^3.23.8" }, "peerDependencies": { "circuit-json": "*" } }, "sha512-SE03ZCNp9FxzSa3LdbQOMBHjT16Q86ZwN6iLu+RPsAbFrdE1RwtM7dv5lOb6lkh78mL3e7yyuyay+QrERiLcYQ=="],
 
