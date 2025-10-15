@@ -1,0 +1,68 @@
+name: Notify on Failed Package Update
+
+on:
+  workflow_run:
+    workflows: ["Bun Test", "tscircuit Smoke Init Test"]  # Replace with your actual CI workflow name
+    types:
+      - completed
+
+jobs:
+  notify-on-failure:
+    runs-on: ubuntu-latest
+    # Only run if CI failed AND it was triggered by the bot
+    if: |
+      github.event.workflow_run.conclusion == 'failure' &&
+      github.event.workflow_run.actor.login == 'tscircuitbot'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check if PR is from package update and send Slack notification
+        run: |
+          PR_NUMBER=$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${{ github.repository }}/commits/${{ github.event.workflow_run.head_sha }}/pulls" \
+            --jq '.[0].number')
+          
+          if [ -z "$PR_NUMBER" ]; then
+            echo "No PR found"
+            exit 0
+          fi
+          
+          PR_BRANCH=$(gh pr view $PR_NUMBER --json headRefName --jq '.headRefName')
+          
+          # Extra safety: verify it's a package update PR
+          if [[ ! "$PR_BRANCH" =~ ^update-packages- ]]; then
+            echo "Not a package update PR"
+            exit 0
+          fi
+          
+          PR_STATE=$(gh pr view $PR_NUMBER --json state --jq '.state')
+          
+          if [ "$PR_STATE" != "OPEN" ]; then
+            echo "PR already merged/closed"
+            exit 0
+          fi
+          
+          echo "Sending Slack notification for failed package update PR #$PR_NUMBER"
+          
+          # Get PR URL
+          PR_URL=$(gh pr view $PR_NUMBER --json url --jq '.url')
+          
+          # Send Slack notification
+          curl -X POST $SLACK_AUTOMERGE_ALERT_WEBHOOK_URL \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"MESSAGE\": \"CI failed for automated package update in ${{ github.repository }} - PR #$PR_NUMBER: $PR_URL\"
+            }"
+            
+          # Optional: Still add a comment to the PR for visibility
+          gh pr comment $PR_NUMBER --body "⚠️ **CI checks failed for this automated package update.**
+
+          A notification has been sent to the team Slack channel.
+          
+          Workflow run: ${{ github.event.workflow_run.html_url }}"
+          
+        env:
+          GH_TOKEN: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
+          SLACK_AUTOMERGE_ALERT_WEBHOOK_URL: ${{ secrets.SLACK_AUTOMERGE_ALERT_WEBHOOK_URL }}
