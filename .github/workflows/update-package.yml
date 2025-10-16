@@ -35,6 +35,11 @@ jobs:
               bun update --latest "$package"
             fi
           done
+      - name: Close existing PRs
+        run: |
+          gh pr list --repo ${{ github.repository }} --state open --author "tscircuitbot" --json number,title --jq '.[] | select(.title | startswith("chore:")) | .number' | xargs -I{} gh pr close {} --comment "Closing in favor of a new update PR"
+        env:
+          GH_TOKEN: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
       - name: Run copy-core-versions script
         run: |
           bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval @tscircuit/runframe
