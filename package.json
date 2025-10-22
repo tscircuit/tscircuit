@@ -45,6 +45,7 @@
   "dependencies": {
     "@flatten-js/core": "^1.6.2",
     "@lume/kiwi": "^0.4.3",
+    "@resvg/resvg-js": "^2.6.2",
     "@tscircuit/capacity-autorouter": "^0.0.132",
     "@tscircuit/checks": "^0.0.85",
     "@tscircuit/circuit-json-flex": "^0.0.3",
