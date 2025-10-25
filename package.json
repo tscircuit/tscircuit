@@ -3,7 +3,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "version": "0.0.816",
+  "version": "0.0.817",
   "repository": {
     "type": "git",
     "url": "https://github.com/tscircuit/tscircuit"
