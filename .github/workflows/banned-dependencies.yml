@@ -1,0 +1,46 @@
+name: Banned Dependencies Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  banned-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+
+      - name: Verify banned dependencies are absent
+        run: |
+          set -euo pipefail
+          while IFS= read -r dep || [ -n "$dep" ]; do
+            [ -z "$dep" ] && continue
+            echo "Checking banned dependency: $dep"
+            set +e
+            output=$(npm ls "$dep" 2>&1)
+            status=$?
+            set -e
+            if [ $status -eq 0 ]; then
+              printf '%s\n' "$output"
+              echo "::error::Banned dependency '$dep' found in dependency tree."
+              exit 1
+            elif [ $status -eq 1 ]; then
+              echo "Banned dependency '$dep' not found."
+            else
+              printf '%s\n' "$output"
+              echo "::error::npm ls failed for '$dep' with exit code $status."
+              exit $status
+            fi
+          done < .github/banned-dependencies.txt
