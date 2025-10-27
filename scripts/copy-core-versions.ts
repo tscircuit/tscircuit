@@ -22,6 +22,7 @@ const DO_NOT_SYNC_PACKAGE = [
   "ts-expect",
   "concurrently",
   "nanoid",
+  "eecircuit-engine",
 ]
 
 const coreDeps: any = {
