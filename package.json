@@ -64,6 +64,8 @@
     "@tscircuit/schematic-match-adapt": "^0.0.16",
     "@tscircuit/schematic-trace-solver": "^0.0.43",
     "@tscircuit/simple-3d-svg": "^0.0.41",
+    "@tscircuit/copper-pour-solver": "^0.0.12",
+    "@tscircuit/solver-utils": "^0.0.3",
     "bpc-graph": "^0.0.57",
     "calculate-elbow": "^0.0.12",
     "calculate-packing": "0.0.50",
