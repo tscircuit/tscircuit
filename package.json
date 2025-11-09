@@ -61,7 +61,7 @@
     "@tscircuit/miniflex": "^0.0.4",
     "@tscircuit/ngspice-spice-engine": "^0.0.2",
     "@tscircuit/props": "^0.0.396",
-    "@tscircuit/runframe": "^0.0.1230",
+    "@tscircuit/runframe": "^0.0.1231",
     "@tscircuit/schematic-match-adapt": "^0.0.16",
     "@tscircuit/schematic-trace-solver": "^v0.0.45",
     "@tscircuit/simple-3d-svg": "^0.0.41",
