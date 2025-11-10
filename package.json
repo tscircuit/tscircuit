@@ -47,6 +47,7 @@
     "@lume/kiwi": "^0.4.3",
     "@resvg/resvg-js": "^2.6.2",
     "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-typescript": "^12.3.0",
     "@tscircuit/capacity-autorouter": "^0.0.140",
