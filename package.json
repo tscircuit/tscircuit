@@ -72,7 +72,7 @@
     "@tscircuit/solver-utils": "^0.0.3",
     "bpc-graph": "^0.0.57",
     "calculate-elbow": "^0.0.12",
-    "calculate-packing": "0.0.66",
+    "calculate-packing": "0.0.68",
     "circuit-json": "^0.0.325",
     "circuit-json-to-bpc": "^0.0.13",
     "circuit-json-to-connectivity-map": "^0.0.22",
