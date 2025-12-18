@@ -56,7 +56,7 @@
     "@tscircuit/circuit-json-util": "^0.0.73",
     "@tscircuit/cli": "^0.1.657",
     "@tscircuit/copper-pour-solver": "^0.0.14",
-    "@tscircuit/core": "^0.0.933",
+    "@tscircuit/core": "^0.0.934",
     "@tscircuit/eval": "^0.0.542",
     "@tscircuit/footprinter": "^0.0.236",
     "@tscircuit/infgrid-ijump-astar": "^0.0.33",
