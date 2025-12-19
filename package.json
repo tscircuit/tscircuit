@@ -86,7 +86,7 @@
     "debug": "^4.3.6",
     "flatbush": "^4.5.0",
     "format-si-unit": "^0.0.3",
-    "graphics-debug": "^0.0.60",
+    "graphics-debug": "^0.0.72",
     "jscad-planner": "^0.0.13",
     "kicad-component-converter": "^0.1.30",
     "kicad-to-circuit-json": "^0.0.15",
