@@ -90,7 +90,7 @@
     "jscad-planner": "^0.0.13",
     "kicad-component-converter": "^0.1.30",
     "kicad-to-circuit-json": "^0.0.15",
-    "kicadts": "^0.0.22",
+    "kicadts": "^0.0.23",
     "minicssgrid": "^0.0.9",
     "performance-now": "^2.1.0",
     "poppygl": "^0.0.16",
