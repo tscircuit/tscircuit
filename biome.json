@@ -11,7 +11,7 @@
     "formatter": {
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
-      "trailingCommas": "all",
+      "trailingComma": "all",
       "semicolons": "asNeeded",
       "arrowParentheses": "always",
       "bracketSpacing": true,
@@ -32,7 +32,10 @@
           "options": {
             "strictCase": true,
             "requireAscii": true,
-            "filenameCases": ["kebab-case", "export"]
+            "filenameCases": [
+              "kebab-case",
+              "export"
+            ]
           }
         }
       }

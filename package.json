@@ -8,12 +8,7 @@
     "type": "git",
     "url": "https://github.com/tscircuit/tscircuit"
   },
-  "files": [
-    "dist",
-    "cli.mjs",
-    "globals.d.ts",
-    "plugins"
-  ],
+  "files": ["dist", "cli.mjs", "globals.d.ts", "plugins"],
   "scripts": {
     "build": "tsup-node && bun run copy-runframe-standalone && bun run copy-eval-webworker && cp types/static-assets.d.ts dist/static-assets.d.ts && bun run add-global-types-reference",
     "add-global-types-reference": "bun run scripts/add-global-types.ts",
