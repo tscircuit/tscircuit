@@ -4,16 +4,18 @@ import { kicadPlugin } from "../plugins/bun-plugin-kicad.ts";
 
 plugin(kicadPlugin);
 
-test("should load .kicad_mod file as circuit json", async () => {
+import { parseKicadModToCircuitJson } from "kicad-component-converter";
+
+test("should load .kicad_mod file as string via plugin", async () => {
     const mod = await import("./fixtures/test.kicad_mod");
+    console.log("Loaded mod type:", typeof mod.default);
+    expect(typeof mod.default).toBe("string");
+    expect(mod.default).toContain("(module");
+});
 
-    // The structure depends on what convertKicadToCircuitJson returns.
-    // Usually it returns Soup or a specific object.
-    // Let's inspect it.
-    console.log("Loaded mod:", mod.default);
-
-    expect(mod.default).toBeDefined();
-    // Check for common circuit json properties
-    // It might return an array of elements or a component definition
-    expect(Array.isArray(mod.default) || typeof mod.default === 'object').toBe(true);
+test("should be parseable by kicad-component-converter", async () => {
+    const mod = await import("./fixtures/test.kicad_mod");
+    const result = await parseKicadModToCircuitJson(mod.default);
+    expect(result).toBeDefined();
+    expect(Array.isArray(result) || typeof result === 'object').toBe(true);
 });
