@@ -70,6 +70,7 @@
     "@tscircuit/schematic-trace-solver": "^v0.0.45",
     "@tscircuit/simple-3d-svg": "^0.0.41",
     "@tscircuit/solver-utils": "^0.0.3",
+    "@tscircuit/soup-util": "^0.0.41",
     "bpc-graph": "^0.0.57",
     "calculate-elbow": "^0.0.12",
     "calculate-packing": "0.0.68",
