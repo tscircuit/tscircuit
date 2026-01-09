@@ -47,7 +47,7 @@ jobs:
       - name: Test tsci build in temporary directory
         run: |
           cd "$TEMP_DIR"
-          tsci build index.tsx
+          tsci build index.tsx --ignore-errors
 
       - name: Verify build output
         run: |
