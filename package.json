@@ -77,7 +77,7 @@
     "circuit-json": "^0.0.350",
     "circuit-json-to-bpc": "^0.0.13",
     "circuit-json-to-connectivity-map": "^0.0.23",
-    "circuit-json-to-gltf": "^0.0.31",
+    "circuit-json-to-gltf": "^0.0.60",
     "circuit-json-to-simple-3d": "^0.0.9",
     "circuit-json-to-spice": "^0.0.33",
     "circuit-to-svg": "^0.0.313",
