@@ -7,6 +7,11 @@ const require = createRequire(import.meta.url);
 const packageJson = require("./package.json");
 global.TSCIRCUIT_VERSION = packageJson.version;
 
+if (process.argv.some((arg) => arg === "--version" || arg === "-v")) {
+  console.log(`tscircuit@${packageJson.version}`);
+  process.exit(0);
+}
+
 async function main() {
   await import("@tscircuit/cli");
 }
