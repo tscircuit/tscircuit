@@ -2,8 +2,8 @@
  * Bun plugin for loading .kicad_mod files
  *
  * This plugin enables direct import of KiCad footprint files in tscircuit projects
- * when running with Bun. It exports a file:// URL that can be fetched by the
- * footprintFileParserMap to parse the kicad_mod content.
+ * when running with Bun. It parses the kicad_mod file at import time and exports
+ * circuit JSON that can be used directly as a footprint.
  *
  * Usage:
  * 1. Via preload: bun --preload ./node_modules/tscircuit/plugins/preload.ts your-file.tsx
@@ -13,7 +13,13 @@
  * 3. Manual registration:
  *    import { registerKicadModPlugin } from "tscircuit/plugins/bun-plugin-kicad-mod"
  *    registerKicadModPlugin() // Must be called before any .kicad_mod imports
+ *
+ * Then in your code:
+ *   import footprint from "./my-footprint.kicad_mod"
+ *   <chip footprint={footprint} name="U1" />
  */
+
+import { parseKicadModToCircuitJson } from "kicad-component-converter"
 
 export interface BunPluginBuilder {
   onLoad(
@@ -34,10 +40,15 @@ export const kicadModPlugin: BunPlugin = {
   name: "tscircuit-kicad-mod",
   setup(build) {
     build.onLoad({ filter: /\.kicad_mod$/ }, async (args) => {
-      // Export the file path as a file:// URL that Bun's fetch can handle
-      const fileUrl = `file://${args.path}`
+      // Read the file content
+      const content = await Bun.file(args.path).text()
+
+      // Parse kicad_mod to circuit JSON at import time
+      const circuitJson = await parseKicadModToCircuitJson(content)
+
+      // Export the circuit JSON directly
       return {
-        contents: `export default ${JSON.stringify(fileUrl)};`,
+        contents: `export default ${JSON.stringify(circuitJson)};`,
         loader: "js",
       }
     })
