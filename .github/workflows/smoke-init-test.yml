@@ -47,10 +47,10 @@ jobs:
       - name: Test tsci build in temporary directory
         run: |
           cd "$TEMP_DIR"
-          tsci build index.tsx --ignore-errors
+          tsci build index.circuit.tsx --ignore-errors
 
       - name: Verify build output
         run: |
           cd "$TEMP_DIR"
           ls -la
-          test -f index.tsx || (echo "index.tsx not found" && exit 1)
+          test -f index.circuit.tsx || (echo "index.circuit.tsx not found" && exit 1)
