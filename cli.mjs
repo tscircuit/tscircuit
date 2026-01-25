@@ -11,4 +11,9 @@ async function main() {
   await import("@tscircuit/cli");
 }
 
+import { plugin } from "bun";
+import { kicadPlugin } from "./plugins/bun-plugin-kicad.ts";
+
+plugin(kicadPlugin);
+
 main();

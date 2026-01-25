@@ -9,7 +9,7 @@ declare module "*.stl" {
 }
 
 declare module "*.kicad_mod" {
-  const src: string
+  const src: any
   export default src
 }
 
