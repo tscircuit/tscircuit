@@ -74,7 +74,7 @@ Using tscircuit, you can design things like a <a target="_blank" href="https://b
 ## Example Circuits
 
 - [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
-
+- [Arduino Nano Board by AINANASOLO](https://tscircuit.com/editor?&snippet_type=board#data:application/gzip;base64,H4sIADHnfmkAA62T32rCMBTGX+XQKxVMbadWRhWEPcAuFDboTWqyJtD8IYlbh/juS1vrFAYbI3c53zn55ctHcoq4JLRBzjbRY0QbrYwDQt/wsXYwGsN6A6NCAuSlwobAByeOrYsoWQlRRMAor5jz9XzR1pt2EuAUT2DHKAjMJRwY11Aq8gmT+Nz3807r1wASC+oJ+8TzBk0oQmsvbneCVvghXT1Pt/ubvj6UL749u5de76TYu/n2s7dcVmC50DUFpmpqwSnA74oToMYoY2/8VUYd9WBMc2mvV/PNdvNgYJqhZdolcTk+yVB2icaPPXGPcNS0vlAvt67+BFqgdB4ElKIsCGeGkmUI0LX+lfMjL1TioQIPlHeouP+bdh53j76r8rj77H49js5fUt2EBiEEAAA=)
 ```tsx
 const Circuit = () => (
   <board width="50mm" height="50mm" center_x={0} center_y={0}>
