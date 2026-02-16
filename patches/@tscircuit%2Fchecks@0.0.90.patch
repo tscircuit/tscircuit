@@ -1,0 +1,21 @@
+diff --git a/dist/index.js b/dist/index.js
+index 8f36045f50a49261c8e1e93adb08bd62ae258efd..12f0b890d83411a74a14f5ea619f154ecf4166f6 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -664,11 +664,16 @@ function checkEachPcbTraceNonOverlapping(circuitJson, {
+           { x: segmentB.x2, y: segmentB.y2 }
+         ) - segmentA.thickness / 2 - segmentB.thickness / 2;
+         if (gap2 > DEFAULT_TRACE_MARGIN - EPSILON) continue;
++        const srcIdA = segmentA._pcbTrace?.source_trace_id || segmentA.pcb_trace_id;
++        const srcIdB = segmentB._pcbTrace?.source_trace_id || segmentB.pcb_trace_id;
++        const sourceTraceDedupKey = `overlap_src_${[srcIdA, srcIdB].sort().join("_")}`;
++        if (errorIds.has(sourceTraceDedupKey)) continue;
+         const pcb_trace_error_id = `overlap_${segmentA.pcb_trace_id}_${segmentB.pcb_trace_id}`;
+         const pcb_trace_error_id_reverse = `overlap_${segmentB.pcb_trace_id}_${segmentA.pcb_trace_id}`;
+         if (errorIds.has(pcb_trace_error_id)) continue;
+         if (errorIds.has(pcb_trace_error_id_reverse)) continue;
+         errorIds.add(pcb_trace_error_id);
++        errorIds.add(sourceTraceDedupKey);
+         errors.push({
+           type: "pcb_trace_error",
+           error_type: "pcb_trace_error",
