@@ -101,7 +101,7 @@
     "rollup": "^4.53.2",
     "rollup-plugin-dts": "^6.2.3",
     "s-expression": "^3.1.1",
-    "schematic-symbols": "^0.0.208",
+    "schematic-symbols": "^0.0.215",
     "spicey": "^0.0.14",
     "sucrase": "^3.35.0",
     "svg-path-commander": "^2.1.11",
