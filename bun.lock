@@ -14,7 +14,7 @@
         "@rollup/plugin-typescript": "^12.3.0",
         "@tscircuit/alphabet": "0.0.18",
         "@tscircuit/capacity-autorouter": "^0.0.269",
-        "@tscircuit/checks": "^0.0.90",
+        "@tscircuit/checks": "0.0.90",
         "@tscircuit/circuit-json-flex": "^0.0.3",
         "@tscircuit/circuit-json-util": "^0.0.77",
         "@tscircuit/cli": "^0.1.938",

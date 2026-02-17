@@ -65,25 +65,7 @@ test("MST trace segments should not multiply DRC overlap errors (#2142)", () => 
 
   const errors = checkEachPcbTraceNonOverlapping(circuitJson)
 
-  console.log(`Error count: ${errors.length}`)
-  for (const err of errors) {
-    console.log(`  [${err.pcb_trace_error_id}] ${err.message}`)
-  }
-
-  // Group by source_trace_id pair to count conceptual overlaps
-  const sourceTracePairs = new Set<string>()
-  for (const err of errors) {
-    const traceA = circuitJson.find((t: any) => t.pcb_trace_id === err.pcb_trace_id)
-    const otherTraceId = err.pcb_trace_error_id.replace(`overlap_${err.pcb_trace_id}_`, "")
-    const traceB = circuitJson.find((t: any) => t.pcb_trace_id === otherTraceId)
-    const pair = [traceA?.source_trace_id, traceB?.source_trace_id].sort().join("__")
-    sourceTracePairs.add(pair)
-  }
-
-  console.log(`Conceptual source_trace overlaps: ${sourceTracePairs.size}`)
-  console.log(`False positives (duplicates by MST): ${errors.length - sourceTracePairs.size}`)
-
-  // The key assertion: errors should not exceed the number of
-  // distinct source_trace_id pair overlaps
-  expect(errors.length).toBe(sourceTracePairs.size)
+  // Exactly 1 overlap should be detected (net A crosses net B),
+  // not 4 (one per MST segment pair)
+  expect(errors.length).toBe(1)
 })

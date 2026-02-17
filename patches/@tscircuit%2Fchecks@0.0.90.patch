@@ -1,5 +1,8 @@
+diff --git a/node_modules/@tscircuit/checks/.bun-tag-31a524fb85339a4b b/.bun-tag-31a524fb85339a4b
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/dist/index.js b/dist/index.js
-index 8f36045f50a49261c8e1e93adb08bd62ae258efd..12f0b890d83411a74a14f5ea619f154ecf4166f6 100644
+index 8f36045f50a49261c8e1e93adb08bd62ae258efd..a5eff8fd62920364255eef0960f9a903a0d04811 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -664,11 +664,16 @@ function checkEachPcbTraceNonOverlapping(circuitJson, {
@@ -8,7 +11,7 @@ index 8f36045f50a49261c8e1e93adb08bd62ae258efd..12f0b890d83411a74a14f5ea619f154e
          if (gap2 > DEFAULT_TRACE_MARGIN - EPSILON) continue;
 +        const srcIdA = segmentA._pcbTrace?.source_trace_id || segmentA.pcb_trace_id;
 +        const srcIdB = segmentB._pcbTrace?.source_trace_id || segmentB.pcb_trace_id;
-+        const sourceTraceDedupKey = `overlap_src_${[srcIdA, srcIdB].sort().join("_")}`;
++        const sourceTraceDedupKey = `overlap_src_${JSON.stringify([srcIdA, srcIdB].sort())}`;
 +        if (errorIds.has(sourceTraceDedupKey)) continue;
          const pcb_trace_error_id = `overlap_${segmentA.pcb_trace_id}_${segmentB.pcb_trace_id}`;
          const pcb_trace_error_id_reverse = `overlap_${segmentB.pcb_trace_id}_${segmentA.pcb_trace_id}`;
