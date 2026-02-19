@@ -79,4 +79,13 @@ test("polygon smtpads with coveredWithSolderMask for capacitive touch slider", a
   for (let i = 1; i < sortedCentroids.length; i++) {
     expect(sortedCentroids[i]).not.toBe(sortedCentroids[i - 1])
   }
+
+  // Snapshot the polygon smtpad elements to catch regressions
+  const smtpadSnapshot = smtpads.map((pad: any) => ({
+    type: pad.type,
+    shape: pad.shape,
+    is_covered_with_solder_mask: pad.is_covered_with_solder_mask,
+    points: pad.points,
+  }))
+  expect(smtpadSnapshot).toMatchSnapshot()
 })
