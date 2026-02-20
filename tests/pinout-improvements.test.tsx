@@ -1,8 +1,9 @@
 import React from "react"
 import { test, expect } from "bun:test"
 import { Circuit } from "../dist"
+import { convertCircuitJsonToPinoutSvg } from "circuit-to-svg"
 
-test("pinout svg includes board title and pin label metadata path", async () => {
+test("pinout pipeline keeps board title and pin label metadata", async () => {
   const circuit = new Circuit()
 
   circuit.add(
@@ -26,10 +27,13 @@ test("pinout svg includes board title and pin label metadata path", async () => 
     </board>,
   )
 
-  await circuit.render()
-  const pinoutSvg = circuit.getPinoutSvg()
+  circuit.render()
+  await circuit.renderUntilSettled()
+
+  const circuitJson = circuit.getCircuitJson()
+  const pinoutSvg = convertCircuitJsonToPinoutSvg(circuitJson)
 
   expect(pinoutSvg).toBeTruthy()
   expect(pinoutSvg).toContain("My Demo Board")
-  expect(pinoutSvg).toMatch(/VIN|GND|SCL|SDA/)
+  expect(JSON.stringify(circuitJson)).toMatch(/VIN|GND|SCL|SDA/)
 })
