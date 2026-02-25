@@ -73,6 +73,8 @@ Using tscircuit, you can design things like a <a target="_blank" href="https://b
 
 ## Example Circuits
 
+- [Arduino Nano](snippets/arduino-nano.tsx) - Complete Arduino Nano circuit with ATmega328P, CH340G USB-UART, 16MHz crystal, AMS1117 voltage regulators, USB mini-B connector, LED D13, reset button, and 2x15 pin headers.
+
 - [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
 - [Arduino Nano](https://tscircuit.com/jdhruv1503/arduino-nano-circuit)
 
