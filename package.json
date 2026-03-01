@@ -91,7 +91,7 @@
     "graphics-debug": "^0.0.60",
     "jscad-planner": "^0.0.13",
     "kicad-component-converter": "^0.1.30",
-    "kicad-to-circuit-json": "^0.0.15",
+    "kicad-to-circuit-json": "^0.0.30",
     "kicadts": "^0.0.23",
     "minicssgrid": "^0.0.9",
     "performance-now": "^2.1.0",
