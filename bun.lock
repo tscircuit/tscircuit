@@ -20,7 +20,7 @@
         "@tscircuit/cli": "^0.1.1023",
         "@tscircuit/copper-pour-solver": "^0.0.20",
         "@tscircuit/core": "^0.0.1075",
-        "@tscircuit/eval": "^0.0.676",
+        "@tscircuit/eval": "^0.0.677",
         "@tscircuit/footprinter": "^0.0.316",
         "@tscircuit/infgrid-ijump-astar": "^0.0.35",
         "@tscircuit/matchpack": "^0.0.16",
@@ -287,7 +287,7 @@
 
     "@tscircuit/core": ["@tscircuit/core@0.0.1075", "", { "dependencies": { "@flatten-js/core": "^1.6.2", "@lume/kiwi": "^0.4.3", "calculate-packing": "0.0.68", "css-select": "5.1.0", "format-si-unit": "^0.0.3", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "svg-path-commander": "^2.1.11", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/matchpack": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "schematic-symbols": "*", "typescript": "^5.0.0" } }, "sha512-pu/UBq3HS7cUbv7fh3NBZoqPibxFzVduJWipwW+AWnySYW4H6GZMswRJ/+GqMv5fEBFCIM93laRuY5hA+UF7Hg=="],
 
-    "@tscircuit/eval": ["@tscircuit/eval@0.0.676", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-RN4KSURZeIb5P/99bKXyCnIoafzxZbKZu8wJEIyrQx02uYXXj87Vu7dulHwwt1VI9ZPmWkXhN4Xc3hnDso/JDQ=="],
+    "@tscircuit/eval": ["@tscircuit/eval@0.0.677", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-R0t1gAyg6RskwsolR0BX0NSq/PXs7WwecFo4X8j7ZyNad9SOGqUHoJHbrZfDwVu2VEwZQOA9gbVrwHbSDmcxSQ=="],
 
     "@tscircuit/footprinter": ["@tscircuit/footprinter@0.0.316", "", { "dependencies": { "@tscircuit/mm": "^0.0.8", "zod": "^3.23.8" }, "peerDependencies": { "circuit-json": "*" } }, "sha512-tzuFuDyDWyz9jHUoandzkb6GfF9xI7h/qqqIQMw1Gjq/jMW5Y5Bq9uZsDde/En2MvnZlo3LAkg4sJHObAiqdlQ=="],
 
