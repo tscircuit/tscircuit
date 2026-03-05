@@ -61,6 +61,7 @@
     "@tscircuit/core": "^0.0.1085",
     "@tscircuit/eval": "^0.0.686",
     "@tscircuit/footprinter": "^0.0.316",
+    "@tscircuit/infer-cable-insertion-point": "^0.0.2",
     "@tscircuit/infgrid-ijump-astar": "^0.0.35",
     "@tscircuit/matchpack": "^0.0.16",
     "@tscircuit/math-utils": "^0.0.29",
