@@ -1,0 +1,121 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`polygon smtpads with coveredWithSolderMask for capacitive touch slider 1`] = `
+[
+  {
+    "is_covered_with_solder_mask": true,
+    "points": [
+      {
+        "x": -16,
+        "y": -3,
+      },
+      {
+        "x": -11,
+        "y": -3,
+      },
+      {
+        "x": -11,
+        "y": 3,
+      },
+      {
+        "x": -16,
+        "y": 3,
+      },
+    ],
+    "shape": "polygon",
+    "type": "pcb_smtpad",
+  },
+  {
+    "is_covered_with_solder_mask": true,
+    "points": [
+      {
+        "x": -8,
+        "y": -3,
+      },
+      {
+        "x": -3,
+        "y": -3,
+      },
+      {
+        "x": -3,
+        "y": 3,
+      },
+      {
+        "x": -8,
+        "y": 3,
+      },
+    ],
+    "shape": "polygon",
+    "type": "pcb_smtpad",
+  },
+  {
+    "is_covered_with_solder_mask": true,
+    "points": [
+      {
+        "x": 0,
+        "y": -3,
+      },
+      {
+        "x": 5,
+        "y": -3,
+      },
+      {
+        "x": 5,
+        "y": 3,
+      },
+      {
+        "x": 0,
+        "y": 3,
+      },
+    ],
+    "shape": "polygon",
+    "type": "pcb_smtpad",
+  },
+  {
+    "is_covered_with_solder_mask": true,
+    "points": [
+      {
+        "x": 8,
+        "y": -3,
+      },
+      {
+        "x": 13,
+        "y": -3,
+      },
+      {
+        "x": 13,
+        "y": 3,
+      },
+      {
+        "x": 8,
+        "y": 3,
+      },
+    ],
+    "shape": "polygon",
+    "type": "pcb_smtpad",
+  },
+  {
+    "is_covered_with_solder_mask": true,
+    "points": [
+      {
+        "x": 16,
+        "y": -3,
+      },
+      {
+        "x": 21,
+        "y": -3,
+      },
+      {
+        "x": 21,
+        "y": 3,
+      },
+      {
+        "x": 16,
+        "y": 3,
+      },
+    ],
+    "shape": "polygon",
+    "type": "pcb_smtpad",
+  },
+]
+`;
