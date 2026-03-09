@@ -55,7 +55,7 @@
     "@tscircuit/capacity-autorouter": "^0.0.317",
     "@tscircuit/checks": "0.0.104",
     "@tscircuit/circuit-json-flex": "^0.0.3",
-    "@tscircuit/circuit-json-util": "^0.0.82",
+    "@tscircuit/circuit-json-util": "0.0.86",
     "@tscircuit/cli": "^0.1.1066",
     "@tscircuit/copper-pour-solver": "^0.0.20",
     "@tscircuit/core": "^0.0.1092",
