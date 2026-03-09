@@ -25,16 +25,16 @@ const DO_NOT_SYNC_PACKAGE = [
   "eecircuit-engine",
 ]
 
-const coreDeps: any = {
+const coreDeps: Record<string, string> = {
   ...corePackageJson.devDependencies,
   ...corePackageJson.dependencies,
 }
 
-const currentDeps: any = {
+const currentDeps: Record<string, string> = {
   ...currentPackageJson.devDependencies,
   ...currentPackageJson.dependencies,
 }
-const depsToUpdate: any = {}
+const depsToUpdate: Record<string, string> = {}
 
 let modifiedDeps = false
 // Update dependencies to match core
