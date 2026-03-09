@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  UPSTREAM_REPOS: "svg.tscircuit.com,usercode.tscircuit.com,runframe" # comma-separated list, e.g. "eval,tscircuit,docs"
+  UPSTREAM_REPOS: "svg.tscircuit.com,usercode.tscircuit.com" # comma-separated list, e.g. "eval,tscircuit,docs"
   UPSTREAM_PACKAGES_TO_UPDATE: "tscircuit" # comma-separated list, e.g. "@tscircuit/core,@tscircuit/props"
 
 jobs:
