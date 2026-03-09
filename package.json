@@ -56,7 +56,7 @@
     "@tscircuit/checks": "0.0.104",
     "@tscircuit/circuit-json-flex": "^0.0.3",
     "@tscircuit/circuit-json-util": "^0.0.82",
-    "@tscircuit/cli": "^0.1.1067",
+    "@tscircuit/cli": "^0.1.1068",
     "@tscircuit/copper-pour-solver": "^0.0.20",
     "@tscircuit/core": "^0.0.1092",
     "@tscircuit/eval": "^0.0.694",
