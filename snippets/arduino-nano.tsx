@@ -7,135 +7,114 @@ import React from "react"
  * Features:
  * - ATmega328P microcontroller (TQFP-32)
  * - CH340G USB-to-serial converter (SOP-16)
- * - Mini USB connector
- * - 16MHz crystal oscillator
- * - Power circuit with filtering capacitors
+ * - 16MHz crystal oscillator for MCU
+ * - 12MHz crystal oscillator for CH340G
  * - Status LEDs: PWR (green), TX (yellow), RX (yellow), L (yellow)
- * - Reset button with pull-up resistor
- * - 30-pin headers (2x15)
- * - ICSP programming header (2x3)
+ * - Reset button with pull-up resistor and debounce cap
+ * - 30-pin headers (2x15) and ICSP header (2x3)
  * - Full decoupling capacitor network
  */
 
 export const ArduinoNano = () => (
-  <board width="45mm" height="18mm" center_x={0} center_y={0}>
+  <board width="45mm" height="18mm">
     {/* ===== MICROCONTROLLER ===== */}
     {/* ATmega328P - Main MCU in TQFP-32 package */}
     <chip
       name="U1"
       footprint="tqfp32"
-      manufacturer="Microchip"
-      mpn="ATmega328P-AU"
-      x={0}
-      y={0}
+      manufacturerPartNumber="ATmega328P-AU"
+      pcbX={0}
+      pcbY={0}
     />
 
     {/* ===== USB TO SERIAL CONVERTER ===== */}
-    {/* CH340G - USB-UART bridge, powers the USB interface */}
+    {/* CH340G - USB-UART bridge */}
     <chip
       name="U2"
       footprint="soic16"
-      manufacturer="WCH"
-      mpn="CH340G"
-      x={-14}
-      y={0}
+      manufacturerPartNumber="CH340G"
+      pcbX={-14}
+      pcbY={0}
     />
 
-    {/* ===== CLOCK ===== */}
-    {/* 16MHz crystal for ATmega328P */}
+    {/* ===== 16MHz CLOCK (ATmega328P) ===== */}
     <crystal
       name="Y1"
       frequency="16MHz"
-      load_capacitance="22pF"
+      loadCapacitance="22pF"
       footprint="hc49s"
-      x={6}
-      y={5}
+      pcbX={6}
+      pcbY={5}
     />
-    {/* Crystal load capacitors */}
-    <capacitor name="C1" capacitance="22pF" footprint="0402" x={4} y={6} />
-    <capacitor name="C2" capacitance="22pF" footprint="0402" x={8} y={6} />
+    <capacitor name="C1" capacitance="22pF" footprint="0402" pcbX={4} pcbY={6} />
+    <capacitor name="C2" capacitance="22pF" footprint="0402" pcbX={8} pcbY={6} />
 
-    {/* 12MHz crystal for CH340G USB clock */}
+    {/* ===== 12MHz CLOCK (CH340G) ===== */}
     <crystal
       name="Y2"
       frequency="12MHz"
-      load_capacitance="22pF"
+      loadCapacitance="22pF"
       footprint="hc49s"
-      x={-18}
-      y={5}
+      pcbX={-18}
+      pcbY={5}
     />
-    <capacitor name="C8" capacitance="22pF" footprint="0402" x={-20} y={6} />
-    <capacitor name="C9" capacitance="22pF" footprint="0402" x={-16} y={6} />
+    <capacitor name="C8" capacitance="22pF" footprint="0402" pcbX={-20} pcbY={6} />
+    <capacitor name="C9" capacitance="22pF" footprint="0402" pcbX={-16} pcbY={6} />
 
     {/* ===== STATUS LEDs ===== */}
-    {/* PWR - Power indicator (green) */}
-    <led name="LED_PWR" footprint="0402" color="green" x={-8} y={8} />
-    <resistor name="R_PWR" resistance="1k" footprint="0402" x={-10} y={8} />
+    <led name="LED_PWR" footprint="0402" color="green" pcbX={-8} pcbY={8} />
+    <resistor name="R_PWR" resistance="1k" footprint="0402" pcbX={-10} pcbY={8} />
 
-    {/* TX - Transmit indicator (yellow) */}
-    <led name="LED_TX" footprint="0402" color="yellow" x={-4} y={8} />
-    <resistor name="R_TX" resistance="1k" footprint="0402" x={-6} y={8} />
+    <led name="LED_TX" footprint="0402" color="yellow" pcbX={-4} pcbY={8} />
+    <resistor name="R_TX" resistance="1k" footprint="0402" pcbX={-6} pcbY={8} />
 
-    {/* RX - Receive indicator (yellow) */}
-    <led name="LED_RX" footprint="0402" color="yellow" x={0} y={8} />
-    <resistor name="R_RX" resistance="1k" footprint="0402" x={-2} y={8} />
+    <led name="LED_RX" footprint="0402" color="yellow" pcbX={0} pcbY={8} />
+    <resistor name="R_RX" resistance="1k" footprint="0402" pcbX={-2} pcbY={8} />
 
-    {/* L - User LED on pin D13/PB5 (yellow) */}
-    <led name="LED_L" footprint="0402" color="yellow" x={4} y={8} />
-    <resistor name="R_L" resistance="1k" footprint="0402" x={2} y={8} />
+    {/* L LED on D13 (PB5) */}
+    <led name="LED_L" footprint="0402" color="yellow" pcbX={4} pcbY={8} />
+    <resistor name="R_L" resistance="1k" footprint="0402" pcbX={2} pcbY={8} />
 
     {/* ===== RESET CIRCUIT ===== */}
-    <pushbutton name="SW_RST" x={14} y={2} />
-    <resistor name="R_RST" resistance="10k" footprint="0402" x={12} y={4} />
-    <capacitor name="C_RST" capacitance="100nF" footprint="0402" x={14} y={5} />
+    <pushbutton name="SW_RST" footprint="sw_push_4pin" pcbX={14} pcbY={2} />
+    <resistor name="R_RST" resistance="10k" footprint="0402" pcbX={12} pcbY={4} />
+    <capacitor name="C_RST" capacitance="100nF" footprint="0402" pcbX={14} pcbY={5} />
 
     {/* ===== DECOUPLING CAPACITORS ===== */}
-    {/* ATmega328P decoupling */}
-    <capacitor name="C3" capacitance="100nF" footprint="0402" x={-2} y={-6} />
-    <capacitor name="C4" capacitance="100nF" footprint="0402" x={2} y={-6} />
-    <capacitor name="C5" capacitance="10uF" footprint="0805" x={4} y={-7} />
-
-    {/* CH340G decoupling */}
-    <capacitor name="C6" capacitance="100nF" footprint="0402" x={-12} y={-5} />
-    <capacitor name="C7" capacitance="100nF" footprint="0402" x={-16} y={-5} />
-
-    {/* Bulk power filtering */}
-    <capacitor name="C10" capacitance="10uF" footprint="0805" x={-20} y={-6} />
+    <capacitor name="C3" capacitance="100nF" footprint="0402" pcbX={-2} pcbY={-6} />
+    <capacitor name="C4" capacitance="100nF" footprint="0402" pcbX={2} pcbY={-6} />
+    <capacitor name="C5" capacitance="10uF" footprint="0805" pcbX={4} pcbY={-7} />
+    <capacitor name="C6" capacitance="100nF" footprint="0402" pcbX={-12} pcbY={-5} />
+    <capacitor name="C7" capacitance="100nF" footprint="0402" pcbX={-16} pcbY={-5} />
+    <capacitor name="C10" capacitance="10uF" footprint="0805" pcbX={-20} pcbY={-6} />
 
     {/* ===== PIN HEADERS ===== */}
-    {/* Top header (D0-D13, 5V, RST, GND, VIN) */}
     <pinheader
       name="J_TOP"
-      num_pins={15}
+      pinCount={15}
       pitch="2.54mm"
-      orientation="horizontal"
-      x={-9}
-      y={9}
+      pcbX={-9}
+      pcbY={9}
     />
-
-    {/* Bottom header (A0-A7, 3V3, REF, GND, VCC) */}
     <pinheader
       name="J_BOT"
-      num_pins={15}
+      pinCount={15}
       pitch="2.54mm"
-      orientation="horizontal"
-      x={-9}
-      y={-9}
+      pcbX={-9}
+      pcbY={-9}
     />
-
-    {/* ICSP programming header */}
     <pinheader
       name="J_ICSP"
-      num_pins={6}
+      pinCount={6}
       pitch="2.54mm"
-      orientation="vertical"
-      x={18}
-      y={0}
+      doubleRow={true}
+      pcbX={18}
+      pcbY={0}
     />
 
     {/* ===== TRACES ===== */}
 
-    {/* Crystal oscillator connections */}
+    {/* 16MHz crystal connections */}
     <trace path={[".Y1 > .1", ".U1 > .XTAL1"]} />
     <trace path={[".Y1 > .2", ".U1 > .XTAL2"]} />
     <trace path={[".C1 > .pos", ".Y1 > .1"]} />
@@ -143,7 +122,7 @@ export const ArduinoNano = () => (
     <trace path={[".C1 > .neg", "net.GND"]} />
     <trace path={[".C2 > .neg", "net.GND"]} />
 
-    {/* CH340G crystal connections */}
+    {/* 12MHz crystal connections for CH340G */}
     <trace path={[".Y2 > .1", ".U2 > .XI"]} />
     <trace path={[".Y2 > .2", ".U2 > .XO"]} />
     <trace path={[".C8 > .pos", ".Y2 > .1"]} />
@@ -155,17 +134,17 @@ export const ArduinoNano = () => (
     <trace path={[".U2 > .TXD", ".U1 > .RXD"]} />
     <trace path={[".U2 > .RXD", ".U1 > .TXD"]} />
 
-    {/* Power LED circuit */}
+    {/* Power LED */}
     <trace path={["net.VCC", ".R_PWR > .1"]} />
     <trace path={[".R_PWR > .2", ".LED_PWR > .anode"]} />
     <trace path={[".LED_PWR > .cathode", "net.GND"]} />
 
-    {/* TX LED circuit (active low from CH340G) */}
+    {/* TX LED */}
     <trace path={[".U2 > .TXD", ".R_TX > .1"]} />
     <trace path={[".R_TX > .2", ".LED_TX > .anode"]} />
     <trace path={[".LED_TX > .cathode", "net.GND"]} />
 
-    {/* RX LED circuit (active low from CH340G) */}
+    {/* RX LED */}
     <trace path={[".U2 > .RXD", ".R_RX > .1"]} />
     <trace path={[".R_RX > .2", ".LED_RX > .anode"]} />
     <trace path={[".LED_RX > .cathode", "net.GND"]} />
@@ -183,12 +162,12 @@ export const ArduinoNano = () => (
     <trace path={[".C_RST > .pos", ".U1 > .RESET"]} />
     <trace path={[".C_RST > .neg", "net.GND"]} />
 
-    {/* ATmega328P power supply */}
+    {/* ATmega328P power */}
     <trace path={[".U1 > .VCC", "net.VCC"]} />
     <trace path={[".U1 > .AVCC", "net.VCC"]} />
     <trace path={[".U1 > .GND", "net.GND"]} />
 
-    {/* CH340G power supply */}
+    {/* CH340G power */}
     <trace path={[".U2 > .VCC", "net.VCC"]} />
     <trace path={[".U2 > .GND", "net.GND"]} />
 
