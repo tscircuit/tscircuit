@@ -53,7 +53,7 @@
         "format-si-unit": "^0.0.3",
         "graphics-debug": "^0.0.60",
         "jscad-planner": "^0.0.13",
-        "kicad-component-converter": "^0.1.30",
+        "kicad-component-converter": "^0.1.40",
         "kicad-to-circuit-json": "^0.0.32",
         "kicadts": "^0.0.23",
         "minicssgrid": "^0.0.9",
@@ -582,7 +582,7 @@
 
     "jsonfile": ["jsonfile@4.0.0", "", { "optionalDependencies": { "graceful-fs": "^4.1.6" } }, "sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg=="],
 
-    "kicad-component-converter": ["kicad-component-converter@0.1.36", "", { "bin": { "kicad-mod-converter": "dist/cli.js", "kicad-component-converter": "dist/cli.js" } }, "sha512-LXTip3smGzijA2AEtZHSztquAErenN9nC8LkLeisSCi5CVVVMVB0QbY5cMYh6cAJbVDHZGezP9MtW6qtkPnabA=="],
+    "kicad-component-converter": ["kicad-component-converter@0.1.40", "", { "bin": { "kicad-mod-converter": "dist/cli.js", "kicad-component-converter": "dist/cli.js" } }, "sha512-k0eJpjeRF5E55Izphx87NzL9iGd5kABovG+1TRCgWktfYGWk3YuUnEZPsBVB5PH01TKA7OE8Oj7CdJcGSxWISw=="],
 
     "kicad-to-circuit-json": ["kicad-to-circuit-json@0.0.32", "", { "dependencies": { "schematic-symbols": "^0.0.202" }, "peerDependencies": { "typescript": "^5" } }, "sha512-S7UvRTHq6qbiVbb0yqx/nVMMR6pLE3qBvLz8K10l23BBQOvkU4CGeN4aYlZ35hFrySViXvsZu+5gz8Vq9ncp4g=="],
 
@@ -887,6 +887,8 @@
     "tscircuit/circuit-json-to-spice": ["circuit-json-to-spice@0.0.33", "", { "dependencies": { "circuit-json-to-connectivity-map": "^0.0.22" }, "peerDependencies": { "@tscircuit/circuit-json-util": "*", "circuit-json": "*", "typescript": "^5.0.0" } }, "sha512-K5Z2Su53ySQ46Fo2oZvOgGNU2+PKsK/d558QJoWoQl0tZ2GspXFONeCZ2cj0zMSIj6pYscQIMwSoZ+IKrtKygg=="],
 
     "tscircuit/circuit-to-svg": ["circuit-to-svg@0.0.307", "", { "dependencies": { "@types/node": "^22.5.5", "bun-types": "^1.1.40", "calculate-elbow": "0.0.12", "svgson": "^5.3.1", "transformation-matrix": "^2.16.1" }, "peerDependencies": { "@tscircuit/alphabet": "*" } }, "sha512-3M2XlmodAecauo3Ux/bKKdagRB6VABDv0JshQQ8ezA4/vDK4Tydmpa//c7tq/skq46v9D0FtgugkIrBwJwjasg=="],
+
+    "tscircuit/kicad-component-converter": ["kicad-component-converter@0.1.36", "", { "bin": { "kicad-mod-converter": "dist/cli.js", "kicad-component-converter": "dist/cli.js" } }, "sha512-LXTip3smGzijA2AEtZHSztquAErenN9nC8LkLeisSCi5CVVVMVB0QbY5cMYh6cAJbVDHZGezP9MtW6qtkPnabA=="],
 
     "tscircuit/kicad-to-circuit-json": ["kicad-to-circuit-json@0.0.15", "", { "dependencies": { "schematic-symbols": "^0.0.202" }, "peerDependencies": { "typescript": "^5" } }, "sha512-HG9OVhHqitW08MHX1wFCSF6WPi1EFkywgJJt6qqTpMeZFe211qpctNQbyDpYvlS/u5YTn2h208aCqY8W8DBNHw=="],
 
