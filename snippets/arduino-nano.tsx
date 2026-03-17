@@ -119,6 +119,14 @@ export const ArduinoNano = () => (
             "PC5_A5_SCL",
           ],
         },
+        topSide: {
+          direction: "left-to-right",
+          pins: ["XTAL1", "XTAL2", "ADC6", "ADC7"],
+        },
+        bottomSide: {
+          direction: "left-to-right",
+          pins: ["VCC1", "VCC2", "AVCC", "AREF", "GND1", "GND2", "GND3"],
+        },
       }}
       connections={{
         GND1: "net.GND",
@@ -286,6 +294,14 @@ export const ArduinoNano = () => (
       pcbX={-12}
       pcbY={-5}
     />
+    {/* ATmega328P AREF bypass capacitor */}
+    <capacitor
+      name="C_AREF"
+      capacitance="100nF"
+      footprint="0402"
+      pcbX={4}
+      pcbY={-7}
+    />
     {/* CH340G V3 bypass (3.3V internal regulator) */}
     <capacitor
       name="C7"
@@ -384,8 +400,8 @@ export const ArduinoNano = () => (
     <trace from=".C_RST > .pin2" to=".U1 > .N_RESET" />
 
     {/* ========== TRACES: AREF bypass ========== */}
-    <trace from=".U1 > .AREF" to=".C4 > .pin1" />
-    <trace from=".C4 > .pin2" to="net.GND" />
+    <trace from=".U1 > .AREF" to=".C_AREF > .pin1" />
+    <trace from=".C_AREF > .pin2" to="net.GND" />
 
     {/* ========== TRACES: VCC decoupling ========== */}
     <trace from=".C3 > .pin1" to="net.VCC" />
