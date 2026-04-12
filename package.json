@@ -62,7 +62,7 @@
     "@tscircuit/footprinter": "^0.0.349",
     "@tscircuit/infer-cable-insertion-point": "^0.0.2",
     "@tscircuit/infgrid-ijump-astar": "^0.0.35",
-    "@tscircuit/internal-dynamic-import": "^0.0.0",
+    "@tscircuit/internal-dynamic-import": "^0.0.2",
     "@tscircuit/matchpack": "^0.0.16",
     "@tscircuit/math-utils": "^0.0.36",
     "@tscircuit/miniflex": "^0.0.4",
