@@ -7,50 +7,27 @@ create electronics in realtime. When you're done, [export your project and manuf
 
 Get started by running `npm install -g tscircuit`! [(CLI quickstart doc)](https://docs.tscircuit.com/intro/quickstart-cli)
 
-<div>
-<a href="https://tscircuit.com/join" target="_blank">Discord</a>
+[Discord](https://tscircuit.com/join)
 ·
-<a href="https://tscircuit.com" target="_blank">Website</a>
+[Website](https://tscircuit.com/)
 ·
-<a href="https://docs.tscircuit.com" target="_blank">Docs</a>
+[Docs](https://docs.tscircuit.com/)
 ·
-<a href="https://blog.tscircuit.com/" target="_blank">Blog</a>
+[Blog](https://blog.tscircuit.com/)
 ·
-<a href="https://tscircuit.com/playground" target="_blank">Online Playground</a>
+[Online Playground](https://tscircuit.com/playground)
 ·
-<a href="https://docs.tscircuit.com/quickstart" target="_blank">Quick Start</a>
+[Quick Start](https://docs.tscircuit.com/quickstart)
 ·
-<a href="https://github.com/tscircuit/tscircuit/issues" target="_blank">Issues</a>
+[Issues](https://github.com/tscircuit/tscircuit/issues)
 ·
-<a href="https://x.com/tscircuit" target="_blank">Twitter</a>
+[Twitter](https://x.com/tscircuit)
 ·
-<a href="https://docs.tscircuit.com/llms.txt">llms.txt</a>
+[llms.txt](https://docs.tscircuit.com/llms.txt)
 ·
-<a href="https://share.cleanshot.com/XkJKK2ys">Getting Started Contributor Video</a>
+[Getting Started Contributor Video](https://share.cleanshot.com/XkJKK2ys)
 
-</div>
-<br/>
-
-<div style="display: flex; gap: 10px">
-  <a href="https://console.algora.io/org/tscircuit/bounties?status=completed">
-       <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fconsole.algora.io%2Fapi%2Fshields%2Ftscircuit%2Fbounties%3Fstatus%3Dcompleted" alt="Rewarded Bounties">
-   </a>
-   <a href="https://console.algora.io/org/tscircuit/bounties?status=open">
-       <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fconsole.algora.io%2Fapi%2Fshields%2Ftscircuit%2Fbounties%3Fstatus%3Dopen" alt="Open Bounties">
-   </a>
-  <a target="_blank" href="https://tscircuit.com/join"><img src="https://img.shields.io/badge/Discord-tscircuit.com/join-%235865F2" alt="Join TSCircuit on Discord"></a>
-  <a target="_blank" href="https://www.npmjs.com/package/tscircuit"><img src="https://img.shields.io/npm/v/tscircuit" alt="NPM Version"></a>
-  <a target="_blank" href="https://github.com/tscircuit/tscircuit/stargazers"><img src="https://img.shields.io/github/stars/tscircuit/tscircuit" alt="GitHub Stars"></a>
-</div>
-
-</div>
-
-
-
-https://github.com/user-attachments/assets/e0fc9f05-691f-422e-816a-1854c4ffc02d
-
-
-
+[![Rewarded Bounties](https://img.shields.io/endpoint?url=https%3A%2F%2Fconsole.algora.io%2Fapi%2Fshields%2Ftscircuit%2Fbounties%3Fstatus%3Dcompleted)](https://console.algora.io/org/tscircuit/bounties?status=completed)[![Open Bounties](https://img.shields.io/endpoint?url=https%3A%2F%2Fconsole.algora.io%2Fapi%2Fshields%2Ftscircuit%2Fbounties%3Fstatus%3Dopen)](https://console.algora.io/org/tscircuit/bounties?status=open)[![Join TSCircuit on Discord](https://img.shields.io/badge/Discord-tscircuit.com%2Fjoin-%235865F2)](https://tscircuit.com/join)[![NPM Version](https://img.shields.io/npm/v/tscircuit)](https://www.npmjs.com/package/tscircuit)[![GitHub Stars](https://img.shields.io/github/stars/tscircuit/tscircuit)](https://github.com/tscircuit/tscircuit/stargazers)
 
 1. [What is tscircuit?](#about-tscircuit)
 2. [Examples](#example-circuits)
@@ -67,15 +44,16 @@ https://github.com/user-attachments/assets/e0fc9f05-691f-422e-816a-1854c4ffc02d
 `tscircuit` is a library complemented by a registry, package manager, command line tool and AI electronic design suite that makes it easy to create, share, export and manufacture electronic circuits. It uses
 [React Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to render circuits into web pages.
 
-Think of tscircuit as "React for Electronics" It allows you to design real-world electronic circuits using Typescript and React. This is what tscircuit code looks like, instead of creating web element like “div”, you create circuit elements like “chip”, “resistor” or “capacitor”, then instead of rendering a website, we render a 3d circuit (that you can actually order!)
+Think of tscircuit as "React for Electronics" It allows you to design real-world electronic circuits using Typescript and React. This is what tscircuit code looks like, instead of creating web element like "div", you create circuit elements like "chip", "resistor" or "capacitor", then instead of rendering a website, we render a 3d circuit (that you can actually order!)
 
-Using tscircuit, you can design things like a <a target="_blank" href="https://blog.tscircuit.com/p/battling-jlcs-assembly-interface" target="_blank">fully functional keyboard!</a> Once you've completed your design, you can export it to a manufacturer and order a real, functional circuit board!
+Using tscircuit, you can design things like a [fully functional keyboard!](https://blog.tscircuit.com/p/battling-jlcs-assembly-interface) Once you've completed your design, you can export it to a manufacturer and order a real, functional circuit board!
 
 ## Example Circuits
 
 - [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
+- [Arduino Nano V3.0](https://github.com/tscircuit/tscircuit/blob/main/snippets/arduino-nano.tsx) — ATmega328P-AU + CH340G USB-to-serial, crystals, LEDs, reset button
 
-```tsx
+```
 const Circuit = () => (
   <board width="50mm" height="50mm" center_x={0} center_y={0}>
     <MySubcomponent name="U1" center={[0, 0]} footprint="sot236" />
@@ -95,32 +73,32 @@ const Circuit = () => (
 )
 ```
 
-![Example Circuit Rendering](./docs/example_render.png)
+[![Example Circuit Rendering](./docs/example_render.png)](./docs/example_render.png)
 
 ## Getting Started
 
 You can do everything you need to do with `tscircuit` using the [`tsci`](https://github.com/tscircuit/cli) command line tool.
 
-```bash
+```
 npm install -g tscircuit
 
 tsci dev
 ```
 
-> Open your browser to http://localhost:3020!
+> Open your browser to [http://localhost:3020](http://localhost:3020/)!
 
-> ![tsci Server Preview](./docs/example_preview.png)
+> [![tsci Server Preview](./docs/example_preview.png)](./docs/example_preview.png)
 
 ## More Features!
 
-- [x] Preview PCBs & Schematics in your browser
-- [x] Use normal Typescript/React tooling
-- [x] Export Gerbers, Pick'n'Place and BOM for manufacturing
-- [x] Add [registry packages](https://tscircuit.com/) with `tsci add`
-- [x] Publish subpackages to the registry with `tsci push`
-- [x] Simplified, extensible auto-routing for PCBs
-- [x] Import footprints and components from third-party sites 
-- [x] Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com)
+- [x]  Preview PCBs & Schematics in your browser
+- [x]  Use normal Typescript/React tooling
+- [x]  Export Gerbers, Pick'n'Place and BOM for manufacturing
+- [x]  Add [registry packages](https://tscircuit.com/) with `tsci add`
+- [x]  Publish subpackages to the registry with `tsci push`
+- [x]  Simplified, extensible auto-routing for PCBs
+- [x]  Import footprints and components from third-party sites
+- [x]  Generate footprints from text [using AI](https://text-to-footprint.tscircuit.com/)
 
 ## FAQ
 
@@ -134,7 +112,7 @@ tscircuit uses the same thing that React Native and [react-three-fiber](https://
 
 You can render schematics or PCBs in any React project like this:
 
-```tsx
+```
 import { Schematic } from "@tscircuit/schematic-viewer"
 
 export const MyApp = () => (
@@ -161,7 +139,7 @@ for PCBs. Wherever an automatic placement is made, you'll be able to override it
 ### Is the auto-routing good?
 
 We are working towards a state-of-the-art web-based autorouting algorithm. You can follow the
-progress of our autorouter development on [autorouting.com](https://blog.autorouting.com)
+progress of our autorouter development on [autorouting.com](https://blog.autorouting.com/)
 
 ### I found a bug or have an idea for a feature, what should I do?
 
@@ -182,20 +160,20 @@ a quick guide to navigating all of the sub-projects:
 
 ### Core Libraries
 
-| Project                                                                      | Description                                                                                              |
-| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [tscircuit](https://github.com/tscircuit/tscircuit)                          | The main package, packages up everything into a single version                                           |
-| [@tscircuit/core](https://github.com/tscircuit/core)                         | A typescript-native library for building circuits (no React). Converts typescript into "the circuit-json format" |
-| [@tscircuit/cli](https://github.com/tscircuit/cli)                           | The tscircuit command line tool `tsci` and development environment                                       |
-| [@tscircuit/tscircuit.com](https://github.com/tscircuit/tscircuit.com)       | The main website, playground and online development environment for tscircuit                            |
-| [@tscircuit/schematic-viewer](https://github.com/tscircuit/schematic-viewer) | The Schematic renderer                                                                                   |
-| [@tscircuit/pcb-viewer](https://github.com/tscircuit/pcb-viewer)             | The PCB renderer                                                                                         |
-| [@tscircuit/react-fiber](https://github.com/tscircuit/react-fiber)           | Bindings from builder to React, React types                                                              |
-| [@tscircuit/routing](https://github.com/tscircuit/routing)                   | Routing algorithms for schematic and PCB traces                                                          |
-| [@tscircuit/autolayout](https://github.com/tscircuit/autolayout)             | Layout algorithms for schematics                                                                         |
-| [@tscircuit/footprinter](https://github.com/tscircuit/footprinter)           | DSL for creating footprints                                                                              |
-| [kicad-mod-converter](https://github.com/tscircuit/kicad-mod-converter)      | Convert kicad_mod files to and from JSON                                                                 |
-| [@tscircuit/kicad-viewer](https://github.com/tscircuit/kicad-viewer)         | View the KiCad official footprints online                                                                |
+| Project | Description |
+| --- | --- |
+| [tscircuit](https://github.com/tscircuit/tscircuit) | The main package, packages up everything into a single version |
+| [@tscircuit/core](https://github.com/tscircuit/core) | A typescript-native library for building circuits (no React). Converts typescript into "the circuit-json format" |
+| [@tscircuit/cli](https://github.com/tscircuit/cli) | The tscircuit command line tool `tsci` and development environment |
+| [@tscircuit/tscircuit.com](https://github.com/tscircuit/tscircuit.com) | The main website, playground and online development environment for tscircuit |
+| [@tscircuit/schematic-viewer](https://github.com/tscircuit/schematic-viewer) | The Schematic renderer |
+| [@tscircuit/pcb-viewer](https://github.com/tscircuit/pcb-viewer) | The PCB renderer |
+| [@tscircuit/react-fiber](https://github.com/tscircuit/react-fiber) | Bindings from builder to React, React types |
+| [@tscircuit/routing](https://github.com/tscircuit/routing) | Routing algorithms for schematic and PCB traces |
+| [@tscircuit/autolayout](https://github.com/tscircuit/autolayout) | Layout algorithms for schematics |
+| [@tscircuit/footprinter](https://github.com/tscircuit/footprinter) | DSL for creating footprints |
+| [kicad-mod-converter](https://github.com/tscircuit/kicad-mod-converter) | Convert kicad_mod files to and from JSON |
+| [@tscircuit/kicad-viewer](https://github.com/tscircuit/kicad-viewer) | View the KiCad official footprints online |
 
 ## Other Links
 
