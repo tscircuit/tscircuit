@@ -77,7 +77,7 @@
     "bpc-graph": "^0.0.57",
     "calculate-elbow": "^0.0.12",
     "calculate-packing": "0.0.71",
-    "circuit-json": "^0.0.408",
+    "circuit-json": "^0.0.416",
     "circuit-json-to-bpc": "^0.0.13",
     "circuit-json-to-connectivity-map": "^0.0.23",
     "circuit-json-to-gltf": "^0.0.91",
