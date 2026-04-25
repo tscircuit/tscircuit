@@ -9,11 +9,21 @@ const require = createRequire(import.meta.url)
 const packageJson = require("./package.json")
 global.TSCIRCUIT_VERSION = packageJson.version
 
-// Delegate to @tscircuit/cli entrypoint which handles bun/tsx runtime detection.
-// This allows `tsci` to work when bun is not installed globally.
-const entrypointPath = require.resolve("@tscircuit/cli/cli/entrypoint.js")
+function commandExists(cmd) {
+  try {
+    return spawnSync(cmd, ["--version"], { stdio: "ignore" }).status === 0
+  } catch {
+    return false
+  }
+}
 
-const { status } = spawnSync(process.execPath, [entrypointPath, ...process.argv.slice(2)], {
+// Prefer bun if available (faster), otherwise fall back to tsx.
+// This allows `tsci` to work when bun is not installed globally (closes #2828).
+const runner = commandExists("bun") ? "bun" : "tsx"
+
+const mainPath = require.resolve("@tscircuit/cli")
+
+const { status } = spawnSync(runner, [mainPath, ...process.argv.slice(2)], {
   stdio: "inherit",
   env: { ...process.env, TSCIRCUIT_VERSION: packageJson.version },
 })
