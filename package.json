@@ -83,7 +83,7 @@
     "circuit-json-to-gltf": "^0.0.96",
     "circuit-json-to-simple-3d": "^0.0.9",
     "circuit-json-to-spice": "^0.0.34",
-    "circuit-to-svg": "^0.0.345",
+    "circuit-to-svg": "^0.0.346",
     "comlink": "^4.4.2",
     "connectivity-map": "^1.0.0",
     "css-select": "5.1.0",
