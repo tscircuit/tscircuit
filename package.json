@@ -15,10 +15,11 @@
     "globals.d.ts"
   ],
   "scripts": {
+    "postinstall": "patch-package",
     "build": "tsup-node && bun run copy-runframe-standalone && bun run copy-eval-webworker && cp types/static-assets.d.ts dist/static-assets.d.ts && bun run add-global-types-reference",
     "add-global-types-reference": "echo '/// <reference path=\"../globals.d.ts\" />' | cat - dist/index.d.ts > dist/index.d.ts.tmp && mv dist/index.d.ts.tmp dist/index.d.ts",
     "test": "bun test",
-    "upgrade-deps": "bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval && bun run copy-core-versions && bun install --ignore-scripts",
+    "upgrade-deps": "bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval && bun run copy-core-versions && bun install --ignore-scripts && patch-package",
     "copy-runframe-standalone": "bun run scripts/copy-runframe-standalone.ts",
     "copy-eval-webworker": "bun run scripts/copy-eval-webworker.ts",
     "copy-core-versions": "bun run scripts/copy-core-versions.ts && bun install --ignore-scripts"
@@ -38,6 +39,7 @@
     "@types/bun": "^1.2.16",
     "esbuild": "^0.20.2",
     "esbuild-register": "^3.5.0",
+    "patch-package": "^8.0.1",
     "tsup": "^8.2.4"
   },
   "peerDependencies": {

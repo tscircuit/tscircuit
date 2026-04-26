@@ -1,0 +1,127 @@
+diff --git a/node_modules/circuit-to-svg/dist/index.js b/node_modules/circuit-to-svg/dist/index.js
+index db7f282..5dbbee2 100644
+--- a/node_modules/circuit-to-svg/dist/index.js
++++ b/node_modules/circuit-to-svg/dist/index.js
+@@ -11367,6 +11367,41 @@ var isSourcePortConnected = (circuitJson, sourcePortId) => {
+   }
+   return false;
+ };
++var addSchematicNoConnectCrossToChildren = (children, center, scaleA, strokeWidthPx, strokeColor) => {
++  const s = Math.abs(scaleA) * 0.05;
++  const { x, y } = center;
++  const lineProps = {
++    "stroke-width": strokeWidthPx,
++    stroke: strokeColor,
++    "stroke-linecap": "round"
++  };
++  children.push({
++    name: "line",
++    type: "element",
++    attributes: {
++      x1: (x - s).toString(),
++      y1: (y - s).toString(),
++      x2: (x + s).toString(),
++      y2: (y + s).toString(),
++      ...lineProps
++    },
++    value: "",
++    children: []
++  });
++  children.push({
++    name: "line",
++    type: "element",
++    attributes: {
++      x1: (x - s).toString(),
++      y1: (y + s).toString(),
++      x2: (x + s).toString(),
++      y2: (y - s).toString(),
++      ...lineProps
++    },
++    value: "",
++    children: []
++  });
++};
+ 
+ // lib/sch/svg-object-fns/create-svg-objects-from-sch-component-with-symbol.ts
+ var ninePointAnchorToTextAnchor2 = {
+@@ -11569,20 +11604,36 @@ var createSvgObjectsFromSchematicComponentWithSymbol = ({
+       compose11(realToScreenTransform, transformFromSymbolToReal),
+       port
+     );
+-    svgObjects.push({
+-      type: "element",
+-      name: "circle",
+-      attributes: {
+-        cx: screenPortPos.x.toString(),
+-        cy: screenPortPos.y.toString(),
+-        r: `${Math.abs(realToScreenTransform.a) * 0.02}px`,
+-        "stroke-width": `${getSchStrokeSize(realToScreenTransform)}px`,
+-        fill: "none",
+-        stroke: colorMap2.schematic.component_outline
+-      },
+-      value: "",
+-      children: []
+-    });
++    const portMatch = schPortsWithSymbolPorts.find((m) => m.symbolPort === port);
++    const dnc = portMatch && su7(circuitJson).source_port.get(portMatch.schPort.source_port_id)?.do_not_connect === true;
++    if (dnc) {
++      const dncChildren = [];
++      addSchematicNoConnectCrossToChildren(
++        dncChildren,
++        screenPortPos,
++        realToScreenTransform.a,
++        `${getSchStrokeSize(realToScreenTransform)}px`,
++        colorMap2.schematic.wire
++      );
++      for (const c of dncChildren) {
++        svgObjects.push(c);
++      }
++    } else {
++      svgObjects.push({
++        type: "element",
++        name: "circle",
++        attributes: {
++          cx: screenPortPos.x.toString(),
++          cy: screenPortPos.y.toString(),
++          r: `${Math.abs(realToScreenTransform.a) * 0.02}px`,
++          "stroke-width": `${getSchStrokeSize(realToScreenTransform)}px`,
++          fill: "none",
++          stroke: colorMap2.schematic.component_outline
++        },
++        value: "",
++        children: []
++      });
++    }
+   }
+   for (const circle of circles) {
+     const screenCirclePos = applyToPoint61(
+@@ -11675,10 +11726,11 @@ var createSvgObjectsForSchPortBoxLine = ({
+   const screenSchPortPos = applyToPoint62(transform, schPort.center);
+   const screenRealEdgePos = applyToPoint62(transform, realEdgePos);
+   const isConnected = isSourcePortConnected(circuitJson, schPort.source_port_id);
++  const isDoNotConnect = srcPort?.do_not_connect === true;
+   const is_drawn_with_inversion_circle = schPort.is_drawn_with_inversion_circle ?? false;
+   const BUBBLE_RADIUS_MM = 0.06;
+   const realLineEnd = { ...schPort.center };
+-  if (!isConnected) {
++  if (!isConnected && !isDoNotConnect) {
+     switch (schPort.side_of_component) {
+       case "left":
+         realLineEnd.x += PIN_CIRCLE_RADIUS_MM;
+@@ -11748,7 +11800,15 @@ var createSvgObjectsForSchPortBoxLine = ({
+   });
+   const pinRadiusPx = Math.abs(transform.a) * PIN_CIRCLE_RADIUS_MM;
+   const pinChildren = [];
+-  if (!isConnected) {
++  if (!isConnected && isDoNotConnect) {
++    addSchematicNoConnectCrossToChildren(
++      pinChildren,
++      screenRealEdgePos,
++      transform.a,
++      `${getSchStrokeSize(transform)}px`,
++      colorMap.schematic.wire
++    );
++  } else if (!isConnected) {
+     pinChildren.push({
+       name: "circle",
+       type: "element",
