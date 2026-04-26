@@ -12,9 +12,11 @@
   "files": [
     "dist",
     "cli.mjs",
-    "globals.d.ts"
+    "globals.d.ts",
+    "patches"
   ],
   "scripts": {
+    "postinstall": "patch-package",
     "build": "tsup-node && bun run copy-runframe-standalone && bun run copy-eval-webworker && cp types/static-assets.d.ts dist/static-assets.d.ts && bun run add-global-types-reference",
     "add-global-types-reference": "echo '/// <reference path=\"../globals.d.ts\" />' | cat - dist/index.d.ts > dist/index.d.ts.tmp && mv dist/index.d.ts.tmp dist/index.d.ts",
     "test": "bun test",
@@ -38,6 +40,7 @@
     "@types/bun": "^1.2.16",
     "esbuild": "^0.20.2",
     "esbuild-register": "^3.5.0",
+    "patch-package": "^8.0.1",
     "tsup": "^8.2.4"
   },
   "peerDependencies": {
