@@ -1,0 +1,47 @@
+diff --git a/node_modules/@tscircuit/core/dist/index.js b/node_modules/@tscircuit/core/dist/index.js
+index 046dcf7..0f4fb11 100644
+--- a/node_modules/@tscircuit/core/dist/index.js
++++ b/node_modules/@tscircuit/core/dist/index.js
+@@ -4264,9 +4264,13 @@ function Trace_doInitialPcbTraceRender(trace) {
+     const bLayer = "layers" in b && b.layers.length === 1 ? b.layers[0] : dominantLayer ?? "top";
+     const pcbPortA = "pcb_port_id" in a ? a.pcb_port_id : null;
+     const pcbPortB = "pcb_port_id" in b ? b.pcb_port_id : null;
+-    const minTraceWidth = trace._getExplicitTraceThickness() ?? trace.getSubcircuit()._parsedProps.minTraceWidth ?? jlcMinTolerances.min_trace_width;
++    const sub = trace.getSubcircuit();
++    const minTraceWidth = trace._getExplicitTraceThickness() ?? sub._parsedProps.minTraceWidth ?? jlcMinTolerances.min_trace_width;
++    const subPcbGroup = sub?.subcircuit_id ? trace.root.db.pcb_group.getWhere({ subcircuit_id: sub.subcircuit_id }) : void 0;
++    const configuredTraceClearance = subPcbGroup?.autorouter_configuration?.trace_clearance;
++    const obstacleMargin = configuredTraceClearance !== void 0 && configuredTraceClearance !== null ? Math.max(minTraceWidth, configuredTraceClearance) : minTraceWidth * 2;
+     const ijump = new MultilayerIjump2({
+-      OBSTACLE_MARGIN: minTraceWidth * 2,
++      OBSTACLE_MARGIN: obstacleMargin,
+       isRemovePathLoopsEnabled: true,
+       optimizeWithGoalBoxes: Boolean(pcbPortA && pcbPortB),
+       connMap,
+@@ -4282,7 +4286,7 @@ function Trace_doInitialPcbTraceRender(trace) {
+             ]
+           }
+         ],
+-        layerCount: trace.getSubcircuit()._getSubcircuitLayerCount(),
++        layerCount: sub._getSubcircuitLayerCount(),
+         bounds: {
+           minX: Math.min(a.x, b.x) - BOUNDS_MARGIN,
+           maxX: Math.max(a.x, b.x) + BOUNDS_MARGIN,
+@@ -13732,6 +13736,7 @@ var getSimpleRouteJsonFromCircuitJson = ({
+   }
+   db = su4(subcircuitElements);
+   const pcbGroup = subcircuit_id ? db.pcb_group.getWhere({ subcircuit_id }) : void 0;
++  const traceClearanceForAutorouter = pcbGroup?.autorouter_configuration?.trace_clearance;
+   const connMap = getFullConnectivityMapFromCircuitJson3(subcircuitElements);
+   const obstacles = getObstaclesFromCircuitJson(
+     [
+@@ -14049,7 +14054,8 @@ var getSimpleRouteJsonFromCircuitJson = ({
+       min_via_hole_diameter: board?.min_via_hole_diameter,
+       min_via_pad_diameter: board?.min_via_pad_diameter,
+       nominalTraceWidth,
+-      outline: board?.outline?.map((point6) => ({ ...point6 }))
++      outline: board?.outline?.map((point6) => ({ ...point6 })),
++      ...traceClearanceForAutorouter !== void 0 && traceClearanceForAutorouter !== null ? { defaultObstacleMargin: traceClearanceForAutorouter } : {}
+     },
+     connMap
+   };

@@ -57,6 +57,8 @@ build/Release
 # Dependency directories
 
 node_modules/
+# bun.lock is the project lockfile; do not commit npm’s lock by mistake
+package-lock.json
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
