@@ -84,6 +84,7 @@
     "circuit-json-to-simple-3d": "^0.0.9",
     "circuit-json-to-spice": "^0.0.34",
     "circuit-to-svg": "^0.0.345",
+    "manifold-3d": "^3.4.1",
     "comlink": "^4.4.2",
     "connectivity-map": "^1.0.0",
     "css-select": "5.1.0",
