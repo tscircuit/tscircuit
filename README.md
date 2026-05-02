@@ -202,3 +202,71 @@ a quick guide to navigating all of the sub-projects:
 - [tscircuit.com](https://tscircuit.com/) - The official tscircuit website, registry and playground
 - [discord](https://tscircuit.com/community/join-redirect) - Join the community server where all the primary conversations happen
 - [@seveibar](https://x.com/seveibar) - Twitter for author of tscircuit with dev sessions and upcoming features
+
+## Build the Arduino Nano with tscircuit
+
+Creating the Arduino Nano with tscircuit is a great way to explore the capabilities of the framework. The Arduino Nano is a popular microcontroller board based on the ATmega328P microcontroller. It has 14 digital input/output pins, 8 analog input pins, a USB interface, and a power jack. Below is a step-by-step guide to building the Arduino Nano using tscircuit.
+
+### Step 1: Define the Circuit
+
+First, define the components and their connections. The Arduino Nano includes the following components:
+
+- ATmega328P microcontroller
+- USB-to-serial converter (FT232RL)
+- Power supply (5V regulator)
+- Reset button
+- LED indicators
+
+Here's a basic example of how to define the circuit in TypeScript:
+
+```tsx
+import { Schematic } from "@tscircuit/schematic-viewer"
+
+export const ArduinoNanoSchematic = () => (
+  <Schematic>
+    <microcontroller name="ATmega328P" pcbX="0" pcbY="0" />
+    <usbToSerial name="FT232RL" pcbX="100" pcbY="0" />
+    <powerSupply name="5V Regulator" pcbX="200" pcbY="0" />
+    <resetButton name="Reset Button" pcbX="300" pcbY="0" />
+    <led name="Power LED" pcbX="400" pcbY="0" />
+    <led name="Status LED" pcbX="500" pcbY="0" />
+  </Schematic>
+)
+```
+
+### Step 2: Add Connections
+
+Next, add the connections between the components. This includes power lines, signal lines, and any other necessary connections.
+
+```tsx
+import { Schematic } from "@tscircuit/schematic-viewer"
+
+export const ArduinoNanoSchematic = () => (
+  <Schematic>
+    <microcontroller name="ATmega328P" pcbX="0" pcbY="0" />
+    <usbToSerial name="FT232RL" pcbX="100" pcbY="0" />
+    <powerSupply name="5V Regulator" pcbX="200" pcbY="0" />
+    <resetButton name="Reset Button" pcbX="300" pcbY="0" />
+    <led name="Power LED" pcbX="400" pcbY="0" />
+    <led name="Status LED" pcbX="500" pcbY="0" />
+
+    <connection from="ATmega328P.VCC" to="5V Regulator.VIN" />
+    <connection from="5V Regulator.VOUT" to="ATmega328P.VCC" />
+    <connection from="ATmega328P.RESET" to="Reset Button.OUT" />
+    <connection from="ATmega328P.AUX" to="Status LED.AN" />
+    <connection from="ATmega328P.PWR" to="Power LED.AN" />
+  </Schematic>
+)
+```
+
+### Step 3: Export and Manufacture
+
+Once the schematic is complete, you can export the design to Gerber files, Pick'n'Place, and BOM for manufacturing. This can be done using the `tsci` command line tool.
+
+```bash
+tsci export --format gerber
+tsci export --format picknplace
+tsci export --format bom
+```
+
+By following these steps, you can create a functional Arduino Nano using tscircuit. This project demonstrates the power of tscircuit in creating complex electronic designs with ease.
