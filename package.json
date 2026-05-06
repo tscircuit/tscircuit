@@ -93,7 +93,7 @@
     "graphics-debug": "^0.0.89",
     "jscad-planner": "^0.0.13",
     "kicad-component-converter": "^0.1.40",
-    "kicad-to-circuit-json": "^0.0.32",
+    "kicad-to-circuit-json": "^0.0.51",
     "kicadts": "^0.0.23",
     "manifold-3d": "^3.4.1",
     "minicssgrid": "^0.0.9",
