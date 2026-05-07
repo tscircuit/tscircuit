@@ -96,7 +96,7 @@
     "jscad-planner": "^0.0.13",
     "kicad-component-converter": "^0.1.40",
     "kicad-to-circuit-json": "^0.0.51",
-    "kicadts": "^0.0.23",
+    "kicadts": "^0.0.33",
     "manifold-3d": "^3.4.1",
     "minicssgrid": "^0.0.9",
     "performance-now": "^2.1.0",
