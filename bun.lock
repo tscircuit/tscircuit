@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "tscircuit",
@@ -35,6 +36,7 @@
         "@tscircuit/solver-utils": "^0.0.3",
         "@tscircuit/soup-util": "^0.0.41",
         "bpc-graph": "^0.0.57",
+        "calculate-cell-boundaries": "^0.0.1",
         "calculate-elbow": "^0.0.12",
         "calculate-packing": "0.0.73",
         "circuit-json": "^0.0.423",
