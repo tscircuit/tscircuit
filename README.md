@@ -202,3 +202,6 @@ a quick guide to navigating all of the sub-projects:
 - [tscircuit.com](https://tscircuit.com/) - The official tscircuit website, registry and playground
 - [discord](https://tscircuit.com/community/join-redirect) - Join the community server where all the primary conversations happen
 - [@seveibar](https://x.com/seveibar) - Twitter for author of tscircuit with dev sessions and upcoming features
+
+
+<!-- VTT SOVEREIGN ENGINE: BOUNTY HARVEST INITIALIZED -->
