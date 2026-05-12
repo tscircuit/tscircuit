@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 /**
  * Arduino Nano V3.0 — Superior Circuit Implementation
@@ -41,6 +41,42 @@ import React from "react"
  * | J4         | Mini-USB B Connector  | UX60SC-MB-5ST                    | SMD        | 1   |
  *
  * Board dimensions: 45 mm × 18 mm (matches physical Nano V3)
+ *
+ * ## Pin Header Wiring
+ *
+ * J1 (top edge, y=+9) — Analog & Power header:
+ *   Pin  1: D13/SCK  ← U1.PB5_SCK
+ *   Pin  2: 3V3      ← U4.VOUT (AMS1117-3.3 output)
+ *   Pin  3: AREF      ↔ U1.AREF
+ *   Pin  4: A0        ← U1.PC0_ADC0
+ *   Pin  5: A1        ← U1.PC1_ADC1
+ *   Pin  6: A2        ← U1.PC2_ADC2
+ *   Pin  7: A3        ← U1.PC3_ADC3
+ *   Pin  8: A4/SDA    ← U1.PC4_ADC4_SDA
+ *   Pin  9: A5/SCL    ← U1.PC5_ADC5_SCL
+ *   Pin 10: A6        ← U1.ADC6
+ *   Pin 11: A7        ← U1.ADC7
+ *   Pin 12: 5V        ← U3.VOUT (AMS1117-5.0 output)
+ *   Pin 13: RESET     ← U1.PC6_RESET
+ *   Pin 14: GND       ← GND
+ *   Pin 15: VIN       ← U3.VIN (raw input)
+ *
+ * J2 (bottom edge, y=-9) — Digital & Comms header:
+ *   Pin  1: D12/MISO  ← U1.PB4_MISO
+ *   Pin  2: D11/MOSI  ← U1.PB3_MOSI
+ *   Pin  3: D10/SS    ← U1.PB2_SS
+ *   Pin  4: D9        ← U1.PD5
+ *   Pin  5: D8        ← U1.PD6
+ *   Pin  6: D7        ← U1.PD7
+ *   Pin  7: D6        ← U1.PD4
+ *   Pin  8: D5        ← U1.PD3
+ *   Pin  9: D4        ← U1.PD2
+ *   Pin 10: D3        ← U1.PD3  (D3 and D5 are distinct pads connected to the same MCU pin PD3)
+ *   Pin 11: D2        ← U1.PD2  (D2 and D4 are distinct pads connected to the same MCU pin PD2)
+ *   Pin 12: GND       ← GND
+ *   Pin 13: RESET     ← U1.PC6_RESET
+ *   Pin 14: RX0       → U1.PD0_RXD
+ *   Pin 15: TX1       ← U1.PD1_TXD
  */
 export const ArduinoNano = () => (
   <board
@@ -60,7 +96,7 @@ export const ArduinoNano = () => (
       manufacturerPartNumber="ATmega328P-AU"
       schPinArrangement={{
         leftSide: {
-          pins: [2, 3, 4, 5, 9, 10],
+          pins: [2, 3, 4, 5, 6, 9, 10],
           direction: "top-to-bottom",
         },
         bottomSide: {
@@ -98,17 +134,17 @@ export const ArduinoNano = () => (
         "19": "PB5_SCK",
         "20": "AVCC",
         "21": "AREF",
-        "22": "GND",
+        "22": "GND_2",
         "23": "PC0_ADC0",
         "24": "PC1_ADC1",
         "25": "PC2_ADC2",
         "26": "PC3_ADC3",
         "27": "PC4_ADC4_SDA",
         "28": "PC5_ADC5_SCL",
-        "29": "PC6_RESET",
-        "30": "PD0_RXD",
-        "31": "PD1_TXD",
-        "32": "PD2",
+        "29": "ADC6",
+        "30": "ADC7",
+        "31": "GND_P31",
+        "32": "VCC_P32",
       }}
       pcbX={0}
       pcbY={0}
@@ -512,7 +548,7 @@ export const ArduinoNano = () => (
     />
 
     {/* ═══════════════════ PIN HEADERS ═══════════════════ */}
-    {/* J1: Top row — D0–D13, AREF */}
+    {/* J1: Top row — Analog pins + Power (D13, 3V3, AREF, A0–A7, 5V, RESET, GND, VIN) */}
     <pinheader
       name="J1"
       pinCount={15}
@@ -520,7 +556,7 @@ export const ArduinoNano = () => (
       pcbX={-9}
       pcbY={9}
     />
-    {/* J2: Bottom row — Power + A0–A7 side */}
+    {/* J2: Bottom row — Digital pins + Comms (D12–D2, GND, RESET, RX0, TX1) */}
     <pinheader
       name="J2"
       pinCount={15}
@@ -599,7 +635,9 @@ export const ArduinoNano = () => (
     <trace path={[".C4 > .neg", ".U1 > .GND"]} />
     <trace path={[".C5 > .pos", ".U1 > .VCC"]} />
     <trace path={[".C5 > .neg", ".U1 > .GND"]} />
-    <trace path={[".U1 > .GND", ".U1 > .GND"]} />
+    <trace path={[".U1 > .GND_2", ".U1 > .GND"]} />
+    <trace path={[".U1 > .GND_P31", ".U1 > .GND"]} />
+    <trace path={[".U1 > .VCC_P32", ".U1 > .VCC"]} />
 
     {/* ── AVCC Filtered Supply (VCC → FB1 → AVCC) ──────────────────── */}
     <trace path={[".U3 > .VOUT", ".FB1 > .1"]} />
@@ -634,7 +672,7 @@ export const ArduinoNano = () => (
     <trace path={[".U3 > .VOUT", ".U4 > .VIN"]} />
     <trace path={[".C15 > .pos", ".U4 > .VIN"]} />
     <trace path={[".C15 > .neg", ".U1 > .GND"]} />
-    <trace path={[".U4 > .VOUT", ".U1 > .GND"]} />
+    {/* U4.VOUT connects to 3.3V rail — NOT to GND */}
     <trace path={[".C16 > .pos", ".U4 > .VOUT"]} />
     <trace path={[".C16 > .neg", ".U1 > .GND"]} />
     <trace path={[".U4 > .GND", ".U1 > .GND"]} />
@@ -667,7 +705,71 @@ export const ArduinoNano = () => (
     <trace path={[".J3 > .4", ".U1 > .PB3_MOSI"]} />
     <trace path={[".J3 > .5", ".U1 > .PC6_RESET"]} />
     <trace path={[".J3 > .6", ".U1 > .GND"]} />
-  </board>
-)
 
-export default ArduinoNano
+    {/* ════════════════ J1 HEADER WIRING (Top — Analog + Power) ════════════════ */}
+    {/* Pin 1: D13/SCK ← U1.PB5_SCK */}
+    <trace path={[".J1 > .1", ".U1 > .PB5_SCK"]} />
+    {/* Pin 2: 3V3 ← U4.VOUT (AMS1117-3.3 output) */}
+    <trace path={[".J1 > .2", ".U4 > .VOUT"]} />
+    {/* Pin 3: AREF ↔ U1.AREF */}
+    <trace path={[".J1 > .3", ".U1 > .AREF"]} />
+    {/* Pin 4: A0 ← U1.PC0_ADC0 */}
+    <trace path={[".J1 > .4", ".U1 > .PC0_ADC0"]} />
+    {/* Pin 5: A1 ← U1.PC1_ADC1 */}
+    <trace path={[".J1 > .5", ".U1 > .PC1_ADC1"]} />
+    {/* Pin 6: A2 ← U1.PC2_ADC2 */}
+    <trace path={[".J1 > .6", ".U1 > .PC2_ADC2"]} />
+    {/* Pin 7: A3 ← U1.PC3_ADC3 */}
+    <trace path={[".J1 > .7", ".U1 > .PC3_ADC3"]} />
+    {/* Pin 8: A4/SDA ← U1.PC4_ADC4_SDA */}
+    <trace path={[".J1 > .8", ".U1 > .PC4_ADC4_SDA"]} />
+    {/* Pin 9: A5/SCL ← U1.PC5_ADC5_SCL */}
+    <trace path={[".J1 > .9", ".U1 > .PC5_ADC5_SCL"]} />
+    {/* Pin 10: A6 ← U1.ADC6 */}
+    <trace path={[".J1 > .10", ".U1 > .ADC6"]} />
+    {/* Pin 11: A7 ← U1.ADC7 */}
+    <trace path={[".J1 > .11", ".U1 > .ADC7"]} />
+    {/* Pin 12: 5V ← U3.VOUT */}
+    <trace path={[".J1 > .12", ".U3 > .VOUT"]} />
+    {/* Pin 13: RESET ← U1.PC6_RESET */}
+    <trace path={[".J1 > .13", ".U1 > .PC6_RESET"]} />
+    {/* Pin 14: GND ← GND */}
+    <trace path={[".J1 > .14", ".U1 > .GND"]} />
+    {/* Pin 15: VIN ← U3.VIN (raw input) */}
+    <trace path={[".J1 > .15", ".U3 > .VIN"]} />
+
+    {/* ════════════════ J2 HEADER WIRING (Bottom — Digital + Comms) ════════════════ */}
+    {/* Pin 1: D12/MISO ← U1.PB4_MISO */}
+    <trace path={[".J2 > .1", ".U1 > .PB4_MISO"]} />
+    {/* Pin 2: D11/MOSI ← U1.PB3_MOSI */}
+    <trace path={[".J2 > .2", ".U1 > .PB3_MOSI"]} />
+    {/* Pin 3: D10/SS ← U1.PB2_SS */}
+    <trace path={[".J2 > .3", ".U1 > .PB2_SS"]} />
+    {/* Pin 4: D9 ← U1.PD5 */}
+    <trace path={[".J2 > .4", ".U1 > .PD5"]} />
+    {/* Pin 5: D8 ← U1.PD6 */}
+    <trace path={[".J2 > .5", ".U1 > .PD6"]} />
+    {/* Pin 6: D7 ← U1.PD7 */}
+    <trace path={[".J2 > .6", ".U1 > .PD7"]} />
+    {/* Pin 7: D6 ← U1.PD4 */}
+    <trace path={[".J2 > .7", ".U1 > .PD4"]} />
+    {/* Pin 8: D5 ← U1.PD3 */}
+    <trace path={[".J2 > .8", ".U1 > .PD3"]} />
+    {/* Pin 9: D4 ← U1.PD2 */}
+    <trace path={[".J2 > .9", ".U1 > .PD2"]} />
+    {/* Pin 10: D3 ← U1.PD3 (shares with D5)} */}
+    <trace path={[".J2 > .10", ".U1 > .PD3"]} />
+    {/* Pin 11: D2 ← U1.PD2 (shares with D4)} */}
+    <trace path={[".J2 > .11", ".U1 > .PD2"]} />
+    {/* Pin 12: GND ← GND */}
+    <trace path={[".J2 > .12", ".U1 > .GND"]} />
+    {/* Pin 13: RESET ← U1.PC6_RESET */}
+    <trace path={[".J2 > .13", ".U1 > .PC6_RESET"]} />
+    {/* Pin 14: RX0 ← U1.PD0_RXD */}
+    <trace path={[".J2 > .14", ".U1 > .PD0_RXD"]} />
+    {/* Pin 15: TX1 ← U1.PD1_TXD */}
+    <trace path={[".J2 > .15", ".U1 > .PD1_TXD"]} />
+  </board>
+);
+
+export default ArduinoNano;
