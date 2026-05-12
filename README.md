@@ -95,6 +95,55 @@ const Circuit = () => (
 )
 ```
 
+### 📦 Snippet: Arduino Nano V3.0
+
+A production-grade, drop-in ready Arduino Nano V3.0 compatible module built with tscircuit.
+
+**Key Features:**
+- ATmega328P-AU (TQFP-32) + CH340G (SOP-16) USB-UART bridge
+- Dual LDO power stage: AMS1117-5.0 & AMS1117-3.3 with full input/output filtration
+- Precision timing: 16 MHz (MCU) + 12 MHz (USB) crystals with 22 pF load capacitors
+- Auto-reset: 100 nF DTR capacitor + 10 kΩ reset pull-up
+- 4 indicator LEDs: PWR (green), TX/RX (amber), D13 (yellow) with 1 kΩ current-limiting resistors
+- AVCC analog supply filtering via ferrite bead + bypass capacitor
+- USB VBUS OR-ing via Schottky diode (BAT54C)
+- Full BOM with precise manufacturer part numbers — fabrication-ready
+
+| Designator | Type | MPN / Value | Footprint | Qty |
+|---|---|---|---|---|
+| U1 | MCU (8-bit AVR) | ATmega328P-AU | TQFP-32 | 1 |
+| U2 | USB-UART Bridge | CH340G | SOP-16 | 1 |
+| U3 | 5 V LDO Regulator | AMS1117-5.0 | SOT-223 | 1 |
+| U4 | 3.3 V LDO Regulator | AMS1117-3.3 | SOT-223 | 1 |
+| Y1 | 16 MHz Crystal | ABLS-16.000MHZ-B2-F-T | HC-49/S | 1 |
+| Y2 | 12 MHz Crystal | ABLS-12.000MHZ-B2-F-T | HC-49/S | 1 |
+| C1, C2, C8, C9 | MLCC 22 pF | CL10C220JB8NNNC | 0402 | 4 |
+| C3, C4, C6, C10, C15, C17, C18 | MLCC 100 nF | CC0402KRX7R9BB104 | 0402 | 7 |
+| C5, C7, C13, C14, C16 | Tantalum 10 µF | TAJB106K016RNJ | 0805 | 5 |
+| C11 | MLCC 100 nF (DTR) | CC0402KRX7R9BB104 | 0402 | 1 |
+| R1 | 10 kΩ (Reset Pull-up) | RC0402FR-0710KL | 0402 | 1 |
+| R2–R5 | 1 kΩ (LED current) | RC0402FR-071KL | 0402 | 4 |
+| R6 | 1 MΩ (USB Shield) | RC0402FR-071ML | 0402 | 1 |
+| D1 | Green LED (PWR) | 19-217/GHC-YR1S2/3T | 0402 | 1 |
+| D2, D3 | Amber LED (TX/RX) | 19-217/Y5C-AP1Q2/3T | 0402 | 2 |
+| D4 | Yellow LED (D13) | 19-217/Y5C-AM1N1VY/3T | 0402 | 1 |
+| D5 | Schottky Diode | BAT54C | SOT-23 | 1 |
+| FB1 | Ferrite Bead (AVCC) | BLM18RK102SN1D | 0402 | 1 |
+| SW1 | Reset Pushbutton | PTS645SM43SMTR92 LFS | 4-Pin TH | 1 |
+| J1, J2 | 15-pin Header F | PPTC151LFBN-RC | 2.54 mm TH | 2 |
+| J3 | ICSP 2×3 Header | 67996-406HLF | 2.54 mm TH | 1 |
+| J4 | Mini-USB B Connector | UX60SC-MB-5ST | SMD | 1 |
+
+```tsx
+import { ArduinoNano } from "@tscircuit/snippets/arduino-nano"
+
+export const MyBoard = () => (
+  <board width="60mm" height="26mm">
+    <ArduinoNano />
+  </board>
+)
+```
+
 ![Example Circuit Rendering](./docs/example_render.png)
 
 ## Getting Started

@@ -101,7 +101,7 @@
     "minicssgrid": "^0.0.9",
     "performance-now": "^2.1.0",
     "poppygl": "^0.0.16",
-    "react": "^19.1.0",
+    "react": "^19.2.6",
     "react-dom": "^19.1.0",
     "rollup": "^4.53.2",
     "rollup-plugin-dts": "^6.2.3",
