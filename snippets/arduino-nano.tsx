@@ -124,6 +124,7 @@ export const ArduinoNano = () => (
     <crystal
       name="Y1"
       frequency="16MHz"
+      loadCapacitance="18pF"
       footprint="hc49s"
       pcbX={6}
       pcbY={6}
@@ -135,6 +136,7 @@ export const ArduinoNano = () => (
     <crystal
       name="Y2"
       frequency="12MHz"
+      loadCapacitance="18pF"
       footprint="hc49s"
       pcbX={-19}
       pcbY={6}

@@ -19,7 +19,7 @@ test("Arduino Nano board dimensions are 45mm × 18mm", async () => {
   circuit.render()
 
   const circuitJson = circuit.getCircuitJson()
-  const board = circuitJson.find((item: any) => item.type === "source_board")
+  const board = circuitJson.find((item: any) => item.type === "pcb_board")
   expect(board).toBeDefined()
   expect(board?.width).toBe(45)
   expect(board?.height).toBe(18)
