@@ -24,6 +24,7 @@ const DO_NOT_SYNC_PACKAGE = [
   "concurrently",
   "nanoid",
   "eecircuit-engine",
+  "stack-svgs"
 ]
 
 const coreDeps: any = {
