@@ -58,7 +58,7 @@
     "@tscircuit/cli": "^0.1.1397",
     "@tscircuit/copper-pour-solver": "^0.0.29",
     "@tscircuit/core": "^0.0.1256",
-    "@tscircuit/eval": "^0.0.852",
+    "@tscircuit/eval": "^0.0.853",
     "@tscircuit/footprinter": "^0.0.357",
     "@tscircuit/infer-cable-insertion-point": "^0.0.2",
     "@tscircuit/infgrid-ijump-astar": "^0.0.35",
