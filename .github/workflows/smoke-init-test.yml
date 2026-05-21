@@ -39,6 +39,12 @@ jobs:
           PACKAGE_FILE=$(ls *.tgz)
           npm install -g "$PACKAGE_FILE"
 
+      - name: Test tsci launches without bun on PATH
+        run: |
+          BUN_BIN_DIR=$(dirname "$(command -v bun)")
+          FILTERED_PATH=$(node -e 'const path = process.env.PATH.split(":").filter((p) => p !== process.argv[1]); process.stdout.write(path.join(":"))' "$BUN_BIN_DIR")
+          PATH="$FILTERED_PATH" tsci --help
+
       - name: Test tsci init in temporary directory
         run: |
           cd "$TEMP_DIR"
