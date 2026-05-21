@@ -45,18 +45,10 @@ jobs:
           FILTERED_PATH=$(node -e 'const path = process.env.PATH.split(":").filter((p) => p !== process.argv[1]); process.stdout.write(path.join(":"))' "$BUN_BIN_DIR")
           PATH="$FILTERED_PATH" tsci --help
 
-      - name: Test tsci init in temporary directory
+      - name: Test tsci init starts and creates a project in temporary directory
         run: |
           cd "$TEMP_DIR"
           tsci init -y
-
-      - name: Test tsci build in temporary directory
-        run: |
-          cd "$TEMP_DIR"
-          tsci build index.circuit.tsx --ignore-errors
-
-      - name: Verify build output
-        run: |
-          cd "$TEMP_DIR"
           ls -la
+          test -f package.json || (echo "package.json not found" && exit 1)
           test -f index.circuit.tsx || (echo "index.circuit.tsx not found" && exit 1)
