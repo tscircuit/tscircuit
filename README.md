@@ -74,6 +74,7 @@ Using tscircuit, you can design things like a <a target="_blank" href="https://b
 ## Example Circuits
 
 - [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
+- [Arduino Nano V3.0](https://github.com/tscircuit/tscircuit/blob/main/snippets/arduino-nano.tsx) — ATmega328P + CH340G USB bridge, schematic + PCB layout
 
 ```tsx
 const Circuit = () => (
