@@ -36,8 +36,26 @@ const port = (soup: SoupElement[], componentName: string, label: string) => {
   return match!
 }
 
+const portByPinNumber = (
+  soup: SoupElement[],
+  componentName: string,
+  pinNumber: number,
+) => {
+  const match = portsFor(soup, componentName).find(
+    (sourcePort) => sourcePort.pin_number === pinNumber,
+  )
+  expect(match, `missing ${componentName} pin ${pinNumber}`).toBeDefined()
+  return match!
+}
+
 const netKey = (soup: SoupElement[], componentName: string, label: string) =>
   port(soup, componentName, label).subcircuit_connectivity_map_key
+
+const netKeyByPinNumber = (
+  soup: SoupElement[],
+  componentName: string,
+  pinNumber: number,
+) => portByPinNumber(soup, componentName, pinNumber).subcircuit_connectivity_map_key
 
 const expectSharedNet = (
   soup: SoupElement[],
@@ -148,6 +166,39 @@ test("Arduino Nano wires both clock domains with load capacitors", () => {
   expectSharedNet(soup, ["C2", "pin1"], ["Y1_16MHZ", "XTAL2"])
   expectSharedNet(soup, ["C3", "pin1"], ["Y2_12MHZ", "XI"])
   expectSharedNet(soup, ["C4", "pin1"], ["Y2_12MHZ", "XO"])
+})
+
+test("Arduino Nano maps CH340G SOP-16 pins to the correct physical nets", () => {
+  const soup = renderArduinoNano()
+  const expectedU2PinMap: Array<
+    [number, string, string, string]
+  > = [
+    [1, "GND", "J_LEFT", "GND"],
+    [2, "TXD", "U1", "D0_RX"],
+    [3, "RXD", "U1", "D1_TX"],
+    [4, "V3", "J_RIGHT", "3V3"],
+    [5, "UD_PLUS", "J_USB", "D_PLUS"],
+    [6, "UD_MINUS", "J_USB", "D_MINUS"],
+    [7, "XI", "Y2_12MHZ", "XI"],
+    [8, "XO", "Y2_12MHZ", "XO"],
+    [9, "CTS", "J_LEFT", "GND"],
+    [10, "DSR", "J_LEFT", "GND"],
+    [11, "RI", "J_LEFT", "GND"],
+    [12, "DCD", "J_LEFT", "GND"],
+    [13, "DTR", "C_RESET", "pin1"],
+    [14, "RTS", "J_LEFT", "GND"],
+    [15, "R232", "J_LEFT", "GND"],
+    [16, "VCC", "J_RIGHT", "5V"],
+  ]
+
+  for (const [pinNumber, label, componentName, componentPin] of expectedU2PinMap) {
+    const sourcePort = portByPinNumber(soup, "U2", pinNumber)
+    expect(sourcePort.name, `U2 pin ${pinNumber} label`).toBe(label)
+    expect(
+      netKeyByPinNumber(soup, "U2", pinNumber),
+      `U2 pin ${pinNumber} net`,
+    ).toBe(netKey(soup, componentName, componentPin))
+  }
 })
 
 test("Arduino Nano connects serial, reset, ICSP, analog, and power nets", () => {
