@@ -300,8 +300,8 @@ export const ArduinoNano = () => (
       rightPin="XTAL2"
       schX={-8}
       schY={3}
-      pcbX={-6}
-      pcbY={3.5}
+      pcbX={-15}
+      pcbY={1.8}
       connections={{ pin1: "net.XTAL16_1", pin2: "net.XTAL16_2" }}
     />
     <capacitor
@@ -310,8 +310,8 @@ export const ArduinoNano = () => (
       footprint="0402"
       schX={-11}
       schY={5}
-      pcbX={-8}
-      pcbY={4.8}
+      pcbX={-18}
+      pcbY={2.8}
       connections={{ pin1: "net.XTAL16_1", pin2: "net.GND" }}
     />
     <capacitor
@@ -320,8 +320,8 @@ export const ArduinoNano = () => (
       footprint="0402"
       schX={-11}
       schY={7}
-      pcbX={-8}
-      pcbY={5.8}
+      pcbX={-18}
+      pcbY={1.2}
       connections={{ pin1: "net.XTAL16_2", pin2: "net.GND" }}
     />
 
@@ -363,8 +363,8 @@ export const ArduinoNano = () => (
       footprint="0402"
       schX={7}
       schY={-5}
-      pcbX={4}
-      pcbY={-4}
+      pcbX={-10}
+      pcbY={-2.2}
       connections={{ pin1: "net.DTR", pin2: "net.RESET" }}
     />
     <resistor
@@ -373,8 +373,8 @@ export const ArduinoNano = () => (
       footprint="0402"
       schX={4}
       schY={-5}
-      pcbX={2}
-      pcbY={-4}
+      pcbX={-10}
+      pcbY={-4.2}
       connections={{ pin1: "net.VCC5", pin2: "net.RESET" }}
     />
     <pushbutton
@@ -449,7 +449,7 @@ export const ArduinoNano = () => (
       schX={-17}
       schY={0}
       pcbX={0}
-      pcbY={-7.2}
+      pcbY={-8}
       connections={{
         pin1: "net.D1_TX",
         pin2: "net.D0_RX",
@@ -493,7 +493,7 @@ export const ArduinoNano = () => (
       schX={17}
       schY={0}
       pcbX={0}
-      pcbY={7.2}
+      pcbY={8}
       connections={{
         pin1: "net.VIN",
         pin2: "net.GND",
