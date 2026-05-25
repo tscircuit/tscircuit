@@ -138,6 +138,13 @@ const AMS1117 = (props: any) => (
   />
 )
 
+const Crystal = (props: any) => (
+  <chip
+    footprint="hc49"
+    pinLabels={{ pin1: props.leftPin, pin2: props.rightPin }}
+    {...props}
+  />
+)
 export const ArduinoNano = () => (
   <board width="45mm" height="18mm" autorouterEffortLevel="100x">
     {/* GND copper pours on both layers */}
@@ -298,11 +305,11 @@ export const ArduinoNano = () => (
     />
 
     {/* 16MHz Crystal for ATmega328P */}
-    <chip
+    <Crystal
       name="Y1"
-      manufacturerPartNumber="16MHz"
-      footprint="hc49"
-      pinLabels={{ pin1: "XTAL1", pin2: "XTAL2" }}
+      manufacturerPartNumber="16MHz Crystal"
+      leftPin="XTAL1"
+      rightPin="XTAL2"
       schX={-8}
       schY={3}
       pcbX={-15}
@@ -331,11 +338,11 @@ export const ArduinoNano = () => (
     />
 
     {/* 12MHz Crystal for CH340G */}
-    <chip
+    <Crystal
       name="Y2"
-      manufacturerPartNumber="12MHz"
-      footprint="hc49"
-      pinLabels={{ pin1: "XI", pin2: "XO" }}
+      manufacturerPartNumber="12MHz Crystal"
+      leftPin="XI"
+      rightPin="XO"
       schX={16}
       schY={4}
       pcbX={12.5}
