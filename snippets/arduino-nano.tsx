@@ -94,31 +94,31 @@ const CH340G = (props: any) => (
     manufacturerPartNumber="CH340G"
     footprint="soic16_w3.9mm_p1.27mm"
     pinLabels={{
-      pin1: "TXD",
-      pin2: "RXD",
-      pin3: "V3",
-      pin4: "UD_PLUS",
-      pin5: "UD_MINUS",
-      pin6: "XI",
-      pin7: "XO",
-      pin8: "TEST",
-      pin9: "GND",
-      pin10: "CTS",
-      pin11: "DSR",
-      pin12: "RI",
-      pin13: "DCD",
-      pin14: "DTR",
-      pin15: "RTS",
+      pin1: "GND",
+      pin2: "TXD",
+      pin3: "RXD",
+      pin4: "V3",
+      pin5: "UD_PLUS",
+      pin6: "UD_MINUS",
+      pin7: "XI",
+      pin8: "XO",
+      pin9: "CTS",
+      pin10: "DSR",
+      pin11: "RI",
+      pin12: "DCD",
+      pin13: "DTR",
+      pin14: "RTS",
+      pin15: "R232",
       pin16: "VCC",
     }}
     schPinArrangement={{
       leftSide: {
         direction: "top-to-bottom",
-        pins: ["pin16", "pin3", "pin6", "pin7", "pin4", "pin5", "pin8", "pin9"],
+        pins: ["pin16", "pin4", "pin7", "pin8", "pin5", "pin6", "pin15", "pin1"],
       },
       rightSide: {
         direction: "top-to-bottom",
-        pins: ["pin1", "pin2", "pin14", "pin15", "pin10", "pin11", "pin12", "pin13"],
+        pins: ["pin2", "pin3", "pin13", "pin14", "pin9", "pin10", "pin11", "pin12"],
       },
     }}
     {...props}
@@ -216,20 +216,20 @@ export const ArduinoNano = () => (
       pcbX={11}
       pcbY={1.5}
       connections={{
-        pin1: "net.D0_RX",
+        pin1: "net.GND",
         pin2: "net.D1_TX",
-        pin3: "net.VCC3V3",
-        pin4: "net.USB_D_PLUS",
-        pin5: "net.USB_D_MINUS",
-        pin6: "net.XTAL12_1",
-        pin7: "net.XTAL12_2",
-        pin8: "net.GND",
+        pin3: "net.D0_RX",
+        pin4: "net.VCC3V3",
+        pin5: "net.USB_D_PLUS",
+        pin6: "net.USB_D_MINUS",
+        pin7: "net.XTAL12_1",
+        pin8: "net.XTAL12_2",
         pin9: "net.GND",
         pin10: "net.GND",
         pin11: "net.GND",
         pin12: "net.GND",
-        pin13: "net.GND",
-        pin14: "net.DTR",
+        pin13: "net.DTR",
+        pin14: "net.RTS",
         pin15: "net.GND",
         pin16: "net.VCC5",
       }}
@@ -697,3 +697,4 @@ export const ArduinoNano = () => (
 )
 
 export default ArduinoNano
+
