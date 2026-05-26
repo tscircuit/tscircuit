@@ -164,28 +164,27 @@ test("Arduino Nano exposes standard dual 15-pin public header map (JP1 + JP2)", 
 
 test("Arduino Nano maps CH340G SOIC-16 pins to the correct physical nets", () => {
   const soup = renderArduinoNano()
-  // CH340G SOIC-16 pinmap: [pinNumber, pinLabel, connectedComponent, connectedPin]
-  // pin1=TXD→U1.D0_RX, pin2=RXD→U1.D1_TX, pin3=V3→VCC3V3,
-  // pin4=UD_PLUS→J_USB.D_PLUS, pin5=UD_MINUS→J_USB.D_MINUS,
-  // pin6=XI→Y2.XI, pin7=XO→Y2.XO, pin8=TEST→GND,
-  // pin9=GND→GND, pin10-13=CTS/DSR/RI/DCD→GND, pin14=DTR→C_RESET.pin1,
-  // pin15=RTS→GND, pin16=VCC→VCC5
+  // CH340G SOIC-16 pinmap per WCH datasheet
+  // pin1=GND, pin2=TXD→U1.D0_RX, pin3=RXD→U1.D1_TX, pin4=V3→VCC3V3,
+  // pin5=UD_PLUS→J_USB.D_PLUS, pin6=UD_MINUS→J_USB.D_MINUS,
+  // pin7=XI→Y2.XI, pin8=XO→Y2.XO, pin9-12=CTS/DSR/RI/DCD→GND,
+  // pin13=DTR→C_RESET.pin1, pin14=RTS→GND, pin15=R232→GND, pin16=VCC→VCC5
   const expectedPinLabels: Array<[number, string]> = [
-    [1, "TXD"],
-    [2, "RXD"],
-    [3, "V3"],
-    [4, "UD_PLUS"],
-    [5, "UD_MINUS"],
-    [6, "XI"],
-    [7, "XO"],
-    [8, "TEST"],
-    [9, "GND"],
-    [10, "CTS"],
-    [11, "DSR"],
-    [12, "RI"],
-    [13, "DCD"],
-    [14, "DTR"],
-    [15, "RTS"],
+    [1, "GND"],
+    [2, "TXD"],
+    [3, "RXD"],
+    [4, "V3"],
+    [5, "UD_PLUS"],
+    [6, "UD_MINUS"],
+    [7, "XI"],
+    [8, "XO"],
+    [9, "CTS"],
+    [10, "DSR"],
+    [11, "RI"],
+    [12, "DCD"],
+    [13, "DTR"],
+    [14, "RTS"],
+    [15, "R232"],
     [16, "VCC"],
   ]
   for (const [pinNumber, label] of expectedPinLabels) {
@@ -194,32 +193,32 @@ test("Arduino Nano maps CH340G SOIC-16 pins to the correct physical nets", () =>
   }
   // Verify key net connections via pin number
   expect(
-    netKeyByPinNumber(soup, "U2", 1),
-    "U2 pin1 TXD → U1.D0_RX",
+    netKeyByPinNumber(soup, "U2", 2),
+    "U2 pin2 TXD → U1.D0_RX",
   ).toBe(netKey(soup, "U1", "D0_RX"))
   expect(
-    netKeyByPinNumber(soup, "U2", 2),
-    "U2 pin2 RXD → U1.D1_TX",
+    netKeyByPinNumber(soup, "U2", 3),
+    "U2 pin3 RXD → U1.D1_TX",
   ).toBe(netKey(soup, "U1", "D1_TX"))
   expect(
-    netKeyByPinNumber(soup, "U2", 4),
-    "U2 pin4 UD_PLUS → J_USB.D_PLUS",
+    netKeyByPinNumber(soup, "U2", 5),
+    "U2 pin5 UD_PLUS → J_USB.D_PLUS",
   ).toBe(netKey(soup, "J_USB", "D_PLUS"))
   expect(
-    netKeyByPinNumber(soup, "U2", 5),
-    "U2 pin5 UD_MINUS → J_USB.D_MINUS",
+    netKeyByPinNumber(soup, "U2", 6),
+    "U2 pin6 UD_MINUS → J_USB.D_MINUS",
   ).toBe(netKey(soup, "J_USB", "D_MINUS"))
   expect(
-    netKeyByPinNumber(soup, "U2", 6),
-    "U2 pin6 XI → Y2.XI",
+    netKeyByPinNumber(soup, "U2", 7),
+    "U2 pin7 XI → Y2.XI",
   ).toBe(netKey(soup, "Y2", "XI"))
   expect(
-    netKeyByPinNumber(soup, "U2", 7),
-    "U2 pin7 XO → Y2.XO",
+    netKeyByPinNumber(soup, "U2", 8),
+    "U2 pin8 XO → Y2.XO",
   ).toBe(netKey(soup, "Y2", "XO"))
   expect(
-    netKeyByPinNumber(soup, "U2", 14),
-    "U2 pin14 DTR → C_RESET.pin1",
+    netKeyByPinNumber(soup, "U2", 13),
+    "U2 pin13 DTR → C_RESET.pin1",
   ).toBe(netKey(soup, "C_RESET", "pin1"))
 })
 
@@ -256,3 +255,4 @@ test("Arduino Nano connects serial, reset, ICSP, analog, and power nets", () => 
   // D13 LED driven by ATmega D13_SCK via current-limiting resistor
   expectSharedNet(soup, ["R_LED_L", "pin1"], ["U1", "D13_SCK"])
 })
+
