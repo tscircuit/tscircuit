@@ -27,8 +27,9 @@ const runner = commandExists("bun")
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const cliRequire = createRequire(join(__dirname, "package.json"));
-const cliPkgJsonPath = cliRequire.resolve("@tscircuit/cli/package.json");
-const cliMainPath = join(dirname(cliPkgJsonPath), "dist/cli/main.js");
+// Resolve @tscircuit/cli via its exported main entry (./package.json is not
+// exported so we can't resolve it directly).
+const cliMainPath = cliRequire.resolve("@tscircuit/cli");
 
 // Expose version for @tscircuit/cli to read via process.env
 process.env.TSCIRCUIT_VERSION = packageJson.version;
