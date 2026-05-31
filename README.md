@@ -73,6 +73,7 @@ Using tscircuit, you can design things like a <a target="_blank" href="https://b
 
 ## Example Circuits
 
+- [Arduino Nano V3.0](./snippets/arduino-nano-v3.tsx) — Complete ATmega328P + CH340G with dual crystals, regulators, USB, ICSP, LEDs, auto-reset
 - [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
 
 ```tsx
