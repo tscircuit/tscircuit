@@ -38,3 +38,18 @@ test("Arduino Nano V3 has traces defined", async () => {
   // We have 60+ traces across all modules
   expect(traces.length).toBeGreaterThanOrEqual(30)
 })
+
+test("Arduino Nano V3 includes core MCU and USB-serial IC", async () => {
+  const circuit = new Circuit()
+  circuit.add(<ArduinoNanoV3 />)
+  circuit.render()
+
+  const json = circuit.getCircuitJson()
+  const names = json
+    .filter((el: any) => el.type === "source_component")
+    .map((el: any) => el.name)
+
+  expect(names).toContain("U1")
+  expect(names).toContain("U2")
+  expect(names).toContain("U3")
+})
