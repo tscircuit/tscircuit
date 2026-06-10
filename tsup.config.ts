@@ -6,4 +6,5 @@ export default defineConfig({
   dts: true,
   sourcemap: "inline",
   clean: true,
+  external: ["react-reconciler", "react-reconciler-18"],
 })
