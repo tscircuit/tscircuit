@@ -41,7 +41,7 @@
     "tsup": "^8.2.4"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@flatten-js/core": "^1.6.2",
