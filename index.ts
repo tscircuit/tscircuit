@@ -3,3 +3,12 @@ export * from "@tscircuit/eval"
 export type { AnyCircuitElement, CircuitJson } from "circuit-json"
 export type { ChipProps, PinLabelsProp, CommonLayoutProps } from "@tscircuit/props"
 export { kicadFootprintStrings } from "@tscircuit/props"
+export {
+  loadBpcConverter,
+  loadConnectivityMapConverter,
+  loadGerberConverter,
+  loadGltfConverter,
+  loadSimple3dConverter,
+  loadSpiceConverter,
+  loadSvgConverter,
+} from "./dynamic-converters"
