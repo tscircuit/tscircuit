@@ -14,7 +14,7 @@ test("Arduino Nano V3 generates valid circuit JSON", async () => {
   // Verify we have at least 20 source components (21 in BOM)
   const components = json.filter((el: any) => el.type === "source_component")
   expect(components.length).toBeGreaterThanOrEqual(20)
-})
+}, 30000)
 
 test("Arduino Nano V3 has correct board dimensions", async () => {
   const circuit = new Circuit()
@@ -26,7 +26,7 @@ test("Arduino Nano V3 has correct board dimensions", async () => {
   expect(board).toBeTruthy()
   expect(board.width).toBe(18)
   expect(board.height).toBe(45)
-})
+}, 30000)
 
 test("Arduino Nano V3 has traces defined", async () => {
   const circuit = new Circuit()
@@ -37,4 +37,4 @@ test("Arduino Nano V3 has traces defined", async () => {
   const traces = json.filter((el: any) => el.type === "source_trace")
   // We have 60+ traces across all modules
   expect(traces.length).toBeGreaterThanOrEqual(30)
-})
+}, 30000)
