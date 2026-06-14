@@ -175,6 +175,12 @@ Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
 
 ---
 
+## Example Projects
+
+Here are some example projects built with tscircuit:
+
+- [Arduino Nano](https://tscircuit.com/user/arduino-nano) - A popular microcontroller board featuring the ATmega328P processor, perfect for embedded projects and prototyping
+
 ## Development Sub-Projects / Organization
 
 tscircuit includes a lot of different independently-runnable sub-projects. Here's
