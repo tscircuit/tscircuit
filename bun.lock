@@ -16,10 +16,10 @@
         "@tscircuit/capacity-autorouter": "^0.0.583",
         "@tscircuit/checks": "0.0.137",
         "@tscircuit/circuit-json-util": "^0.0.96",
-        "@tscircuit/cli": "^0.1.1490",
+        "@tscircuit/cli": "^0.1.1491",
         "@tscircuit/copper-pour-solver": "^0.0.29",
         "@tscircuit/core": "^0.0.1324",
-        "@tscircuit/eval": "^0.0.923",
+        "@tscircuit/eval": "^0.0.924",
         "@tscircuit/footprinter": "^0.0.357",
         "@tscircuit/infer-cable-insertion-point": "^0.0.2",
         "@tscircuit/infgrid-ijump-astar": "^0.0.35",
@@ -30,7 +30,7 @@
         "@tscircuit/miniflex": "^0.0.4",
         "@tscircuit/ngspice-spice-engine": "^0.0.13",
         "@tscircuit/props": "^0.0.546",
-        "@tscircuit/runframe": "^0.0.2072",
+        "@tscircuit/runframe": "^0.0.2073",
         "@tscircuit/schematic-match-adapt": "^0.0.18",
         "@tscircuit/schematic-trace-solver": "^0.0.68",
         "@tscircuit/simple-3d-svg": "^0.0.41",
@@ -348,7 +348,7 @@
 
     "@tscircuit/circuit-json-util": ["@tscircuit/circuit-json-util@0.0.96", "", { "dependencies": { "parsel-js": "^1.1.2" }, "peerDependencies": { "circuit-json": "*", "transformation-matrix": "*", "zod": "3" } }, "sha512-/D5lEPuW77xYESswlufGmJkxh0V4d6aYHA4E1k5ta/erYBZyXGr6Fw8f/cl1lcO1GYo/TWwy6aB8LiNkAVZQTw=="],
 
-    "@tscircuit/cli": ["@tscircuit/cli@0.1.1490", "", { "peerDependencies": { "tscircuit": "*" }, "bin": { "tscircuit-cli": "cli/entrypoint.js" } }, "sha512-kiuMfZhrH65A+0C7wTyfOnygGBK7/i+FY1MamcMsK8Fhch0nOcVSvZEmY3dBOCqNNb/XUtJtF3Y9X/gLVoyxhw=="],
+    "@tscircuit/cli": ["@tscircuit/cli@0.1.1491", "", { "peerDependencies": { "tscircuit": "*" }, "bin": { "tscircuit-cli": "cli/entrypoint.js" } }, "sha512-0RyQN/MvnqpfEs8R9uPLCpuJeqv3aAPd11V8/E319x5y7fTYfbjnR8H7bh4Cw6e2x9LB00pm10wtxxig1GMQEQ=="],
 
     "@tscircuit/copper-pour-solver": ["@tscircuit/copper-pour-solver@0.0.29", "", { "dependencies": { "manifold-3d": "^3.4.1" }, "peerDependencies": { "typescript": "^5" } }, "sha512-hFg69kJu/dBMLzCdaKYAShxvn6e3Wf92sUmTzhnz2oT62YS/0uPL8uqDe5agYblYV/fnADBaV28UvzTFbl8UwA=="],
 
@@ -356,7 +356,7 @@
 
     "@tscircuit/eecircuit-engine": ["@tscircuit/eecircuit-engine@https://jscdn.tscircuit.com/@tscircuit/eecircuit-engine/1.7.4.tgz", {}, "sha512-0/UTw9Hc2DlAY4jFh5s2jkzgga07CoyrLEScle7SS7ifL6ykfG+ms39hwI8TxM3ITyhhmSe3jga3i/8xPLewZw=="],
 
-    "@tscircuit/eval": ["@tscircuit/eval@0.0.923", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-/HKktmK2xPFvobjimcQP/lBd9+a0pwvSI/eLpUNkTNxdUjBJEf4e2c7+/ABqszIEAvRvk54hy5eB2bJQUXjFqg=="],
+    "@tscircuit/eval": ["@tscircuit/eval@0.0.924", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-SPx0iQOkC0o7loqTeycnxfm2bd58ymwEUDXPiy/cOslX9ShkSh6/gzKMD/1Y+KmzVrykrJsBsokgFbXGuv9GPg=="],
 
     "@tscircuit/footprinter": ["@tscircuit/footprinter@0.0.357", "", { "dependencies": { "@tscircuit/mm": "^0.0.8", "zod": "^3.23.8" }, "peerDependencies": { "circuit-json": "*" } }, "sha512-N4QjwY+GkRm1DvPDWQbTq+sRJU59v+ahMxiAIGemBJsoPVFjodVOnu50oN8q41ps4mCXQMS8/16blbLWkZlBkw=="],
 
@@ -382,7 +382,7 @@
 
     "@tscircuit/props": ["@tscircuit/props@0.0.546", "", { "peerDependencies": { "circuit-json": "*", "react": "*", "zod": "*" } }, "sha512-LDlKLmY7EXJSJWwUaf4o4vISH3JN0xs2dS2U0SoPrjgWEIn8ShdvjcXGhTcoHLl6c3PByveV7gwJ286Yp+/OLQ=="],
 
-    "@tscircuit/runframe": ["@tscircuit/runframe@0.0.2072", "", { "dependencies": { "@tscircuit/eval": "^0.0.923", "@tscircuit/solver-utils": "^0.0.7" } }, "sha512-m8c/63xopfhHhsazH6Rx0LLI9mk59tll3EMAu6LLOor3QJeuSjp/Gi1VjKcFCaP4IE6cQL5YLYHhYTRJ8zdgag=="],
+    "@tscircuit/runframe": ["@tscircuit/runframe@0.0.2073", "", { "dependencies": { "@tscircuit/eval": "^0.0.924", "@tscircuit/solver-utils": "^0.0.7" } }, "sha512-rrh+i7yG4vrbezK7VOPQ5b1Kygp1FvajMbXoh2WulrquGq4B0z9uX5zfr6mfYzpPvt8+XiFwpbUyvOMY2sl8wQ=="],
 
     "@tscircuit/schematic-corpus": ["@tscircuit/schematic-corpus@0.0.114", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-jDQX+XDXP6PklB39X8AwUSuiqGRdn78esy1wD/qG8U3cCXkT5rtE3ousDVaKRxclCeED8FxJlD+ZvRtAe8mw8w=="],
 
