@@ -10,6 +10,7 @@ const DO_NOT_SYNC_PACKAGE = [
   "@tscircuit/common",
   "@tscircuit/schematic-autolayout",
   "@tscircuit/jlcpcb-manufacturing-specs",
+  "@tscircuit/eecircuit-engine",
   "@types/*",
   "tsup",
   "react-reconciler",
