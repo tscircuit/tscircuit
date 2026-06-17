@@ -175,16 +175,13 @@ Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
 
 ---
 
-## Example Projects
+## Community Examples
 
-Here are some notable projects and boards built with tscircuit by the community.
+Explore complex board designs built by the tscircuit community.
 
-### Arduino Nano
-
-A recreation of the popular Arduino Nano development board, demonstrating tscircuit's capabilities for complex board designs.
-
-- [View on tscircuit.com](https://tscircuit.com/projects/arduino-nano)
-- [Source Code on GitHub](https://github.com/tscircuit/tscircuit-examples/tree/main/arduino-nano)
+-   **Arduino Nano**: A recreation of the popular Arduino Nano development board, demonstrating tscircuit's capability for detailed component placement and routing.
+    [View on tscircuit Playground](https://tscircuit.com/playground?example=arduino-nano)
+    *(Note: This link is a placeholder and will be updated with the official project URL upon completion and hosting.)*
 
 ## Development Sub-Projects / Organization
 
