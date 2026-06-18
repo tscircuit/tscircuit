@@ -177,7 +177,9 @@ Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
 
 ## Community Projects
 
-- [Arduino Nano](https://github.com/tscircuit/tscircuit/blob/main/snippets/arduino-nano/index.tsx) - A complete recreation of the Arduino Nano board, demonstrating tscircuit's capabilities for complex board designs.
+Showcasing complex and community-contributed board designs built with tscircuit.
+
+- [Arduino Nano](https://github.com/tscircuit/tscircuit/tree/main/examples/arduino-nano) - A detailed implementation of the popular Arduino Nano development board, demonstrating tscircuit's power for recreating intricate PCB layouts and schematics. This project was completed as part of a bounty program.
 
 ## Development Sub-Projects / Organization
 
