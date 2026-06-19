@@ -11,7 +11,6 @@ const DO_NOT_SYNC_PACKAGE = [
   "@tscircuit/schematic-autolayout",
   "@tscircuit/jlcpcb-manufacturing-specs",
   "@tscircuit/breakout-point-solver",
-  "@tscircuit/eecircuit-engine",
   "@types/*",
   "tsup",
   "react-reconciler",
