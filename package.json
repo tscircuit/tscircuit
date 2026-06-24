@@ -3,7 +3,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "version": "0.0.1938",
+  "version": "0.0.1939",
   "license": "MIT",
   "repository": {
     "type": "git",
