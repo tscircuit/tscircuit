@@ -63,7 +63,7 @@
     "@tscircuit/image-utils": "^0.0.8",
     "@tscircuit/infer-cable-insertion-point": "^0.0.2",
     "@tscircuit/infgrid-ijump-astar": "^0.0.35",
-    "@tscircuit/internal-dynamic-import": "^0.0.2",
+    "@tscircuit/internal-dynamic-import": "^0.0.10",
     "@tscircuit/krt-wasm": "^0.1.1",
     "@tscircuit/matchpack": "^0.0.29",
     "@tscircuit/math-utils": "^0.0.36",
