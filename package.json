@@ -98,7 +98,6 @@
     "kicad-component-converter": "^0.1.40",
     "kicad-to-circuit-json": "^0.0.97",
     "kicadts": "^0.0.47",
-    "manifold-3d": "^3.4.1",
     "minicssgrid": "^0.0.9",
     "performance-now": "^2.1.0",
     "poppygl": "^0.0.25",
