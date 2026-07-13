@@ -57,7 +57,7 @@
     "@tscircuit/circuit-json-util": "^0.0.97",
     "@tscircuit/cli": "^0.1.1662",
     "@tscircuit/copper-pour-solver": "0.0.39",
-    "@tscircuit/core": "^0.0.1437",
+    "@tscircuit/core": "^0.0.1438",
     "@tscircuit/eval": "^0.0.1003",
     "@tscircuit/footprinter": "^0.0.371",
     "@tscircuit/image-utils": "^0.0.8",
