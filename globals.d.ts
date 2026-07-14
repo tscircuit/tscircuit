@@ -13,6 +13,11 @@ declare module "*.kicad_mod" {
   export default src
 }
 
+declare module "*.kicad_sym" {
+  const src: string
+  export default src
+}
+
 declare module "*.kicad_pcb" {
   import type { AnyCircuitElement } from "circuit-json"
 
