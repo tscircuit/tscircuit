@@ -24,7 +24,7 @@
         "@tscircuit/image-utils": "^0.0.8",
         "@tscircuit/infer-cable-insertion-point": "^0.0.2",
         "@tscircuit/infgrid-ijump-astar": "^0.0.35",
-        "@tscircuit/internal-dynamic-import": "^0.0.10",
+        "@tscircuit/internal-dynamic-import": "^0.0.11",
         "@tscircuit/krt-wasm": "^0.1.1",
         "@tscircuit/matchpack": "^0.0.38",
         "@tscircuit/math-utils": "^0.0.36",
@@ -366,7 +366,7 @@
 
     "@tscircuit/infgrid-ijump-astar": ["@tscircuit/infgrid-ijump-astar@0.0.35", "", {}, "sha512-PZx3GyD7mDNEhLJn8+7n8NjrieOvrX03g7Gx1cvwXv9mmgSC4M+yTA0WC4DgOvcRdTnarf0R8xvwtDeJ4tMK9Q=="],
 
-    "@tscircuit/internal-dynamic-import": ["@tscircuit/internal-dynamic-import@0.0.10", "", {}, "sha512-GsnHJ2dySAQz2BjW4kA8BsF/M8wVOItQ0Kvm/6ABe1XfaKL/OzPH4m6SBm07bx+hhhp5qRXPbJWNEP150clmvw=="],
+    "@tscircuit/internal-dynamic-import": ["@tscircuit/internal-dynamic-import@0.0.11", "", {}, "sha512-Tr72DhEGXwysbe2PZ0+GiLC8/pGp0BA9Dl+2xTXxaukwcGam08+PMJF+AJpIOfXjafP6S1OZf1HmciDeD8PydA=="],
 
     "@tscircuit/krt-wasm": ["@tscircuit/krt-wasm@0.1.3", "", { "peerDependencies": { "tscircuit": ">=0.0.1686" } }, "sha512-d+U/eAVS5GjIjMsdAvx3DnBkx7NcuGQj8f3qUTx0S+TiiN5rK7xNflz1ATR9PxBQK0R7t6kyAit0WqHn5JooFQ=="],
 
