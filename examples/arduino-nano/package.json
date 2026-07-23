@@ -1,0 +1,15 @@
+{
+  "name": "@tsci/yanyishuai.arduino-nano-v3",
+  "version": "0.0.1",
+  "main": "index.tsx",
+  "keywords": ["tscircuit", "arduino", "nano"],
+  "scripts": {
+    "dev": "tsci dev",
+    "build": "tsci build",
+    "format": "biome format --write ."
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.9",
+    "tscircuit": "^0.0.614"
+  }
+}
