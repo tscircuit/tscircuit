@@ -4,6 +4,7 @@ import { join } from "node:path"
 
 const DO_NOT_SYNC_PACKAGE = [
   "@biomejs/biome",
+  "@tsci/tscircuit.ti",
   "@tscircuit/import-snippet",
   "@tscircuit/layout",
   "@tscircuit/log-soup",
