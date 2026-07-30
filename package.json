@@ -57,7 +57,7 @@
     "@tscircuit/circuit-json-util": "^0.0.101",
     "@tscircuit/cli": "^0.1.1760",
     "@tscircuit/copper-pour-solver": "0.0.41",
-    "@tscircuit/core": "^0.0.1531",
+    "@tscircuit/core": "github:tscircuit/core#7a2a4c5296979e6c5687c316b1a0248842f9435b",
     "@tscircuit/create-fdm-enclosure": "0.0.3",
     "@tscircuit/eval": "^0.0.1079",
     "@tscircuit/footprinter": "^0.0.387",
