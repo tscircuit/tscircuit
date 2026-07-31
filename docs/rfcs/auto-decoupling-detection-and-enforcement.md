@@ -92,6 +92,30 @@ For each probable power port, it finds two-terminal capacitors where:
 4. the connection is not separated by an incompatible net tie, switch, or
    isolation boundary.
 
+### Capacitance value as evidence
+
+Inference uses the capacitor's parsed nominal capacitance in farads, not its
+display string. Value affects ranking but never makes a capacitor ineligible by
+itself.
+
+| Value evidence | Interpretation |
+| --- | --- |
+| Exact match to existing `recommendedDecouplingCapacitorCapacitance` | Strong |
+| 10 nF to 1 µF, especially 100 nF | Plausible pin-local bypass |
+| Larger values, especially around 10 µF | More likely shared bulk/reservoir |
+| Outside these common ranges | Unknown; do not reject |
+
+These are generic priors, not electrical rules. Vendor examples commonly use
+100 nF at individual supply pins and 10 µF as shared bulk capacitance; other
+devices legitimately require different values. In a bank containing both, the
+smaller plausible bypass capacitor should rank toward a pin-local relationship
+and the larger capacitor toward a shared bulk role, unless connectivity or
+geometry gives stronger contrary evidence.
+
+The inference only knows nominal capacitance unless supplier data provides
+voltage, tolerance, dielectric, and DC-bias derating. Missing effective-value
+data lowers confidence and must not create a failure.
+
 The PCB-stage validator later ranks remaining candidates using:
 
 - supply-path length from power pad to capacitor pad;
@@ -101,9 +125,10 @@ The PCB-stage validator later ranks remaining candidates using:
   distant bulk rail; and
 - whether another power pin is a better match.
 
-The ranking is deterministic and lexicographic. Strong topology evidence is
-considered before value hints, names, or proximity. Several weak hints must
-never combine into authoritative evidence.
+The ranking is deterministic and lexicographic: existing explicit relationship,
+exact recommended-value match, topology and branch structure, routed geometry,
+generic value prior, then names. Several weak hints must never combine into
+authoritative evidence.
 
 Confidence communicates ambiguity, not electrical correctness:
 
@@ -164,7 +189,8 @@ Add versioned records for inferred relations and results:
   "confidence": "medium",
   "reasons": [
     "target port requires power",
-    "capacitor connects the same supply domain to ground"
+    "capacitor connects the same supply domain to ground",
+    "nominal capacitance 100 nF matches the common local-bypass prior"
   ],
   "counter_evidence": [
     "two other capacitors have the same source topology"
@@ -208,8 +234,9 @@ Diagnostics should include:
 An inferred warning should read like:
 
 > Inferred C1 as decoupling U1.VDD because VDD requires power, C1 connects the
-> same supply domain to ground, and C1 has the shortest routed path among three
-> candidates. Confidence: medium. This inference may be wrong. Ignore warning.
+> same supply domain to ground, its nominal value is 100 nF, and it has the
+> shortest routed path among three candidates. Confidence: medium. This
+> inference may be wrong. Ignore warning.
 
 Ignoring the warning creates a persistent waiver keyed by the rule, component,
 and target ports. The user does not need to edit the circuit. Waivers may store
@@ -276,6 +303,12 @@ an unknown result into a pass.
   relationships and labels them as inferred warnings.
 - Every inferred warning includes confidence, reasons, and alternative
   candidates.
+- An exact existing recommended-capacitance match outranks a generic value
+  prior.
+- In a typical 100 nF plus 10 µF bank, value contributes local-bypass versus
+  bulk-role evidence without proving either role.
+- An unusual capacitance is not rejected solely because it falls outside common
+  ranges.
 - Ignoring an inferred warning persists a stable waiver and does not require a
   circuit edit.
 - A remote capacitor on the same named rail can produce an explainable
@@ -305,4 +338,6 @@ an unknown result into a pass.
 - [Trace-length aggregate check addition](https://github.com/tscircuit/checks/pull/174)
 - [RP2040 hardware design guidance](https://datasheets.raspberrypi.com/rp2040/hardware-design-with-rp2040.pdf)
 - [TI high-speed layout guidance](https://www.ti.com/lit/an/scaa082a/scaa082a.pdf)
+- [TI example: 100 nF per pin and 10 µF bulk](https://www.ti.com/lit/an/slla408/slla408.pdf)
+- [Microchip example: 0.1–1 µF local and 10 µF bulk](https://www.microchip.com/content/dam/mchp/documents/TIM/ApplicationNotes/ApplicationNotes/AN4101-ZL3063x-ZL3064x-ZL3073x-Power-Supply-Decoupling-and-Layout-Practices-DS00004101A.pdf)
 - [Microchip decoupling guidance](https://onlinedocs.microchip.com/oxy/GUID-04B5982F-17EC-4A6E-B7FE-72DF0A5463B9-en-US-3/GUID-F15B709B-5112-4669-BAE9-9DBAC5DA209C.html)
