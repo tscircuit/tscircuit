@@ -7,16 +7,17 @@
 
 ## Summary
 
-tscircuit should detect and validate decoupling capacitors without requiring a
-designer to set `maxDecouplingTraceLength` on every capacitor.
+tscircuit should detect and validate decoupling capacitors with no new board
+inputs. The default experience is: infer the likely relationship, explain the
+reasoning, emit a warning, and let the user ignore it if the inference is wrong.
 
-The decoupling requirement belongs to an IC power pin or pin group. Component
-libraries should declare that requirement once. The toolchain should then:
+Trusted component metadata can make the result more precise, but is not
+required for advisory detection. The toolchain should:
 
-1. find eligible capacitors from source connectivity;
-2. associate them with the required power pins;
+1. identify likely power pins and eligible capacitors;
+2. associate them using electrical topology and routed geometry;
 3. validate count, capacitance, sharing, and routed supply/return paths;
-4. emit typed, explainable diagnostics; and
+4. emit typed diagnostics with confidence and supporting evidence; and
 5. optionally fail `tsci build` for authoritative violations.
 
 Inference must be conservative. Ambiguous or incomplete cases are warnings or
@@ -42,7 +43,9 @@ packages use compatible schemas and checks.
 
 ## Goals
 
-- No per-capacitor length property is required for normal use.
+- No new board props are required for advisory detection.
+- Every inferred warning states why it was emitted and how confident it is.
+- An incorrect inferred warning can be persistently ignored.
 - Component libraries define part-specific decoupling requirements once.
 - Results are deterministic and explain why a capacitor was selected or
   rejected.
@@ -61,9 +64,9 @@ packages use compatible schemas and checks.
 
 ## Proposed model
 
-### Requirements live on powered components
+### Trusted requirements improve inference
 
-A chip or component definition declares requirements for its power ports:
+A component library may declare requirements for its power ports:
 
 ```ts
 interface DecouplingRequirement {
@@ -111,7 +114,9 @@ Illustrative syntax only; the values below are not vendor guidance:
 />
 ```
 
-The capacitor needs only its normal electrical properties and connections:
+This metadata is optional for board authors. Without it, tscircuit still
+performs warning-only inference. The capacitor needs only its normal electrical
+properties and connections:
 
 ```tsx
 <capacitor name="C1" capacitance="100nF" />
@@ -119,7 +124,44 @@ The capacitor needs only its normal electrical properties and connections:
 
 ### Source-stage resolver
 
-For each requirement, `@tscircuit/core` should:
+The resolver first identifies probable power and reference ports from existing
+port capabilities such as `requiresPower`, `requiresGround`, voltage metadata,
+and `shouldHaveDecouplingCapacitor`. Pin and net names are fallback evidence,
+not authority.
+
+For each probable power port, it finds two-terminal capacitors where:
+
+1. one terminal shares the port's supply connectivity domain;
+2. the other terminal reaches a probable reference domain;
+3. the component is electrically usable as a capacitor; and
+4. the connection is not separated by an incompatible net tie, switch, or
+   isolation boundary.
+
+The PCB-stage validator later ranks remaining candidates using:
+
+- supply-path length from power pad to capacitor pad;
+- return-path length or access to the same continuous reference region;
+- via count;
+- whether the capacitor and target share a local branch rather than only a
+  distant bulk rail; and
+- whether another power pin is a better match.
+
+The ranking is deterministic and lexicographic. Strong topology evidence is
+considered before value hints, names, or proximity. Several weak hints must
+never combine into authoritative evidence.
+
+Confidence communicates ambiguity, not electrical correctness:
+
+| Confidence | Meaning |
+| --- | --- |
+| High | Semantic power/reference ports, exact topology, and one clearly best candidate |
+| Medium | Correct topology but several plausible assignments |
+| Low | Relationship depends on names, generic value ranges, or proximity |
+
+When several assignments are equally plausible, all are preserved. tscircuit
+must not silently invent a one-capacitor-per-pin assignment.
+
+For a trusted requirement, `@tscircuit/core` additionally:
 
 1. normalize the target power ports and acceptable reference domain;
 2. find capacitors with one terminal on the target supply domain and the other
@@ -128,13 +170,14 @@ For each requirement, `@tscircuit/core` should:
 4. preserve all valid candidates when the source topology is symmetric; and
 5. emit requirement and candidate-relation records into Circuit JSON.
 
-Relationship evidence has three levels:
+Enforcement depends on provenance:
 
 | Evidence | Initial behavior |
 | --- | --- |
 | Explicit `decouplingFor` or project mapping | May enforce trusted policy |
 | Reviewed component policy plus exact connectivity | May enforce after full validation |
-| Names, generic presets, or proximity | Advisory only |
+| Zero-input structural inference | Warning only |
+| Names, generic presets, or proximity | Low-confidence warning only |
 
 `shouldHaveDecouplingCapacitor` can request analysis, but by itself is not
 enough to produce a build-failing missing-capacitor error. A hard failure
@@ -165,20 +208,24 @@ Proven schema or generation defects may be reported separately as tool errors.
 
 ## Circuit JSON
 
-Add versioned records for intent, resolved candidates, and results:
+Add versioned records for inferred relations and results:
 
 ```json
 {
-  "type": "source_decoupling_requirement",
-  "source_decoupling_requirement_id": "decoupling_requirement_1",
-  "target_source_port_ids": ["source_port_u1_iovdd1"],
-  "count": 1,
-  "sharing": "dedicated",
-  "policy_provenance": {
-    "source": "component_library",
-    "package": "@example/mcu",
-    "version": "1.2.3"
-  }
+  "type": "source_decoupling_relation",
+  "source_decoupling_relation_id": "decoupling_relation_1",
+  "target_source_port_id": "source_port_u1_vdd",
+  "capacitor_source_component_id": "source_component_c1",
+  "origin": "inferred",
+  "confidence": "medium",
+  "reasons": [
+    "target port requires power",
+    "capacitor connects the same supply domain to ground"
+  ],
+  "counter_evidence": [
+    "two other capacitors have the same source topology"
+  ],
+  "alternative_candidate_count": 2
 }
 ```
 
@@ -221,14 +268,25 @@ Diagnostics should include:
 - actual and permitted path metrics; and
 - why the result is a warning, error, ambiguous, or not checked.
 
+An inferred warning should read like:
+
+> Inferred C1 as decoupling U1.VDD because VDD requires power, C1 connects the
+> same supply domain to ground, and C1 has the shortest routed path among three
+> candidates. Confidence: medium. This inference may be wrong. Ignore warning.
+
+Ignoring the warning creates a persistent waiver keyed by the rule, component,
+and target ports. The user does not need to edit the circuit. Waivers may store
+a reason and remain visible as waived results, but do not count as active
+warnings or errors.
+
 Initial severity rules:
 
 | Condition | Result |
 | --- | --- |
 | Trusted policy, unambiguous relation, complete geometry, violated limit | Error-eligible |
 | Trusted policy but ambiguous relation or incomplete geometry | Warning / `not_checked` |
-| Structural inference without reviewed policy | Warning |
-| Name- or proximity-based inference | Suggestion |
+| Zero-input structural inference | Warning |
+| Name- or proximity-based inference | Low-confidence warning |
 
 `tsci build` should initially report these diagnostics without changing its
 default exit behavior. Strict enforcement should be opt-in through a flag or
@@ -290,6 +348,12 @@ an unknown result into a pass.
 
 - A component-library requirement finds a correctly connected capacitor without
   `maxDecouplingTraceLength`.
+- With no new props or policies, tscircuit infers likely power-pin/capacitor
+  relationships and labels them as inferred warnings.
+- Every inferred warning includes confidence, reasons, and alternative
+  candidates.
+- Ignoring an inferred warning persists a stable waiver and does not require a
+  circuit edit.
 - A remote capacitor on the same named rail can fail an authoritative path
   policy.
 - An incorrectly arranged bank cannot pass merely because all capacitors share
