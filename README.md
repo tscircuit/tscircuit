@@ -55,10 +55,11 @@ https://github.com/user-attachments/assets/e0fc9f05-691f-422e-816a-1854c4ffc02d
 1. [What is tscircuit?](#about-tscircuit)
 2. [Examples](#example-circuits)
 3. [Getting Started](#getting-started)
-4. [Features](#more-features)
-5. [FAQs](#faq)
-6. [Development Sub-Projects / Organization](#development-sub-projects--organization)
-7. [Other Links](#other-links)
+4. [Guides](#guides)
+5. [Features](#more-features)
+6. [FAQs](#faq)
+7. [Development Sub-Projects / Organization](#development-sub-projects--organization)
+8. [Other Links](#other-links)
 
 ---
 
@@ -110,6 +111,11 @@ tsci dev
 > Open your browser to http://localhost:3020!
 
 > ![tsci Server Preview](./docs/example_preview.png)
+
+## Guides
+
+- [Pin attributes](./docs/pin-attributes.md) - Describe pin roles and use them to
+  catch missing or incomplete connections.
 
 ## More Features!
 
