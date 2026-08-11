@@ -46,7 +46,7 @@
         "circuit-json": "^0.0.465",
         "circuit-json-to-bpc": "^0.0.13",
         "circuit-json-to-connectivity-map": "^0.0.27",
-        "circuit-json-to-gltf": "^0.0.111",
+        "circuit-json-to-gltf": "^0.0.116",
         "circuit-json-to-pnp-csv": "^0.0.8",
         "circuit-json-to-simple-3d": "^0.0.9",
         "circuit-json-to-spice": "^0.0.45",
@@ -477,7 +477,7 @@
 
     "circuit-json-to-connectivity-map": ["circuit-json-to-connectivity-map@0.0.27", "", { "dependencies": { "@tscircuit/math-utils": "^0.0.9" }, "peerDependencies": { "typescript": "^5.9.3" } }, "sha512-DxAcRjtKjzuB4IQluF2hSOvVxlwiIkXCcLDsdHWwyDXp+dEfGx+BfDzPrflk2sbgSOuLJUBfj2FJInWPFCh70Q=="],
 
-    "circuit-json-to-gltf": ["circuit-json-to-gltf@0.0.111", "", { "dependencies": { "@jscad/modeling": "^2.12.6", "earcut": "^3.0.2", "jscad-electronics": "^0.0.135", "jscad-planner": "^0.0.14", "jscad-to-gltf": "^0.0.5", "occt-import-js": "^0.0.23" }, "peerDependencies": { "@resvg/resvg-js": "2", "@resvg/resvg-wasm": "2", "@tscircuit/circuit-json-util": "*", "circuit-json": "*", "circuit-to-svg": "*", "typescript": "^5" }, "optionalPeers": ["@resvg/resvg-js", "@resvg/resvg-wasm"] }, "sha512-EKIw/Bflz9NWmM7dNvFiKMVkNPF5Jbnze/Y2IjkwRGesi/Ep+8tR6q3flDgnHBTdNcPlT33RiYXXfH8mYOb3kg=="],
+    "circuit-json-to-gltf": ["circuit-json-to-gltf@0.0.116", "", { "dependencies": { "@jscad/modeling": "^2.12.6", "earcut": "^3.0.2", "jscad-electronics": "^0.0.135", "jscad-planner": "^0.0.14", "jscad-to-gltf": "^0.0.5", "occt-import-js": "^0.0.23" }, "peerDependencies": { "@resvg/resvg-js": "2", "@resvg/resvg-wasm": "2", "@tscircuit/circuit-json-util": "*", "circuit-json": "*", "circuit-to-svg": "*", "typescript": "^5" }, "optionalPeers": ["@resvg/resvg-js", "@resvg/resvg-wasm"] }, "sha512-XxvrfAZG1GTtYMAzc/ontvCaNDnj9/5+VraHzSPjifoN+g1RS1IzWbb5yVJvcPihVklAA8xVtLbRL7w+ssqdiw=="],
 
     "circuit-json-to-pnp-csv": ["circuit-json-to-pnp-csv@0.0.8", "", { "dependencies": { "papaparse": "^5.4.1" }, "peerDependencies": { "@tscircuit/soup-util": "*", "typescript": "^5.0.0" } }, "sha512-m3ycvl5Cx1woE3qNdf457f2r/6WBxBxwbbkYbXbB/a+eEe7Y1Kk9BIq8GBsq7j25MTBeR0mbDMGL6yZGqSAVDA=="],
 
