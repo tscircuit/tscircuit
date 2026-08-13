@@ -59,7 +59,7 @@
     "@tscircuit/copper-pour-solver": "0.0.46",
     "@tscircuit/core": "^0.0.1673",
     "@tscircuit/create-fdm-enclosure": "0.0.4",
-    "@tscircuit/eval": "^0.0.1191",
+    "@tscircuit/eval": "^0.0.1192",
     "@tscircuit/fanout-solver": "0.0.23",
     "@tscircuit/footprinter": "^0.0.409",
     "@tscircuit/image-utils": "^0.0.8",
