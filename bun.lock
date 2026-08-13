@@ -16,11 +16,11 @@
         "@tscircuit/capacity-autorouter": "^0.0.790",
         "@tscircuit/checks": "^0.0.159",
         "@tscircuit/circuit-json-util": "^0.0.106",
-        "@tscircuit/cli": "^0.1.1914",
+        "@tscircuit/cli": "^0.1.1915",
         "@tscircuit/copper-pour-solver": "0.0.46",
-        "@tscircuit/core": "^0.0.1671",
+        "@tscircuit/core": "^0.0.1672",
         "@tscircuit/create-fdm-enclosure": "0.0.4",
-        "@tscircuit/eval": "^0.0.1190",
+        "@tscircuit/eval": "^0.0.1191",
         "@tscircuit/fanout-solver": "0.0.23",
         "@tscircuit/footprinter": "^0.0.409",
         "@tscircuit/image-utils": "^0.0.8",
@@ -33,7 +33,7 @@
         "@tscircuit/miniflex": "^0.0.4",
         "@tscircuit/ngspice-spice-engine": "^0.0.20",
         "@tscircuit/props": "^0.0.620",
-        "@tscircuit/runframe": "^0.0.2455",
+        "@tscircuit/runframe": "^0.0.2456",
         "@tscircuit/schematic-match-adapt": "^0.0.18",
         "@tscircuit/schematic-trace-solver": "^0.0.129",
         "@tscircuit/simple-3d-svg": "^0.0.41",
@@ -351,15 +351,15 @@
 
     "@tscircuit/circuit-json-util": ["@tscircuit/circuit-json-util@0.0.106", "", { "dependencies": { "parsel-js": "^1.1.2" }, "peerDependencies": { "circuit-json": "*", "transformation-matrix": "*", "zod": "3" } }, "sha512-7HxREkrIiC+EcuJYU4i5o9UbTRhgoeTOY03zCHeGhNUhUbUlrDdIciraI1Yn+qb+/ot5+QbhkrqZMTAV8lmpmw=="],
 
-    "@tscircuit/cli": ["@tscircuit/cli@0.1.1914", "", { "peerDependencies": { "circuit-json": "^0.0.464", "tscircuit": "*" }, "bin": { "tscircuit-cli": "cli/entrypoint.js" } }, "sha512-OekoHbEtVt6uz8yRD9wvDxTgBPU7p+7cbE0NokA5RkwSAeTCwyjjpufXCZbC/QhjCzvn45glg+aiMpdmfrvXLA=="],
+    "@tscircuit/cli": ["@tscircuit/cli@0.1.1915", "", { "peerDependencies": { "circuit-json": "^0.0.464", "tscircuit": "*" }, "bin": { "tscircuit-cli": "cli/entrypoint.js" } }, "sha512-mQSUvZEmruj3gj2qXkzWYPzMUArApjvQ+VpJiBogjWwOyLrpnBSAm5U9aEizi8Z6LmwtCve1mliPcwnQiCEYaQ=="],
 
     "@tscircuit/copper-pour-solver": ["@tscircuit/copper-pour-solver@0.0.46", "", { "dependencies": { "@tscircuit/manifold-2d": "^0.0.6" }, "peerDependencies": { "typescript": "^5" } }, "sha512-Ye3BSQn5DfOHLI61gUrcrt+9YHq2UtyYl2tuzEeBiBdBqfypduXAcZ83MSSBabEXLi2cRL7B/pXX5GOyL+c+nA=="],
 
-    "@tscircuit/core": ["@tscircuit/core@0.0.1671", "", { "dependencies": { "@flatten-js/core": "^1.6.2", "@lume/kiwi": "^0.4.3", "calculate-cell-boundaries": "^0.0.13", "calculate-packing": "^0.0.86", "css-select": "5.1.0", "format-si-unit": "^0.0.12", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "svg-path-commander": "^2.1.11", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/create-fdm-enclosure": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/matchpack": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "circuit-json-to-spice": "*", "schematic-symbols": "*", "spicets": "*", "typescript": "^5.0.0" } }, "sha512-GNCNpOBXKM4kVteMTq8Ee3kx6U9liFysKUkwaw1Wzhdg/BCCQtXKkftHbZK8oN4VwXYjhVoCvU0gM3ShcBjQNQ=="],
+    "@tscircuit/core": ["@tscircuit/core@0.0.1672", "", { "dependencies": { "@flatten-js/core": "^1.6.2", "@lume/kiwi": "^0.4.3", "calculate-cell-boundaries": "^0.0.13", "calculate-packing": "^0.0.86", "css-select": "5.1.0", "format-si-unit": "^0.0.12", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "svg-path-commander": "^2.1.11", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/create-fdm-enclosure": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/matchpack": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "circuit-json-to-spice": "*", "schematic-symbols": "*", "spicets": "*", "typescript": "^5.0.0" } }, "sha512-2k36le019claykgZXCgIZ4Uysht7NngZNjhN/ymLr5MiY2lqRfy6Ghdb2u5VP+Xg/Ya1pLSONFodyeqrp4o4VA=="],
 
     "@tscircuit/create-fdm-enclosure": ["@tscircuit/create-fdm-enclosure@0.0.4", "", { "dependencies": { "@tscircuit/solver-utils": "^0.0.19", "graphics-debug": "^0.0.96", "jscad-planner": "^0.0.14" }, "peerDependencies": { "typescript": "^5" } }, "sha512-mJzfM2lG7QIJScb2WwzM91mXBMSC5l9hbAKYl5rjnYB+jjQGdjwRPA61SiUUUcixiZ5fcxgY8k/szpOiyAorqg=="],
 
-    "@tscircuit/eval": ["@tscircuit/eval@0.0.1190", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-gZK+TiuBvWwNpl1JuwMgY9fBpwl4+uyWdjK6jajx0J9zGTukw7/txGofXqaLyp1KwUcimdOCjF35GPVPoTXIfA=="],
+    "@tscircuit/eval": ["@tscircuit/eval@0.0.1191", "", { "peerDependencies": { "@tscircuit/core": "*", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-lqf/9uH/6TvbUlOz+9EVexg4MRCGrpgtlwfs2aKrllH2N6BN6F/AZpUquRxsMsUo7pqvDcOAL1kTT4trkhSulQ=="],
 
     "@tscircuit/fanout-solver": ["@tscircuit/fanout-solver@0.0.23", "", { "dependencies": { "@tscircuit/capacity-autorouter": "0.0.718", "@tscircuit/solver-utils": "0.0.19", "graphics-debug": "0.0.99" }, "peerDependencies": { "typescript": "^5" } }, "sha512-YjpeUU1ei0luQqbSXkbhZhCosWwGUpA+cAG+sDicAmw5THSPWOgiWGup1laQVuF/O1ocOKcL2A9DqWIk9PwixQ=="],
 
@@ -391,7 +391,7 @@
 
     "@tscircuit/props": ["@tscircuit/props@0.0.620", "", { "peerDependencies": { "circuit-json": "*", "react": "*", "zod": "*" } }, "sha512-JQDyw9eq6o6wdjYTYn92fRJdeDi0OsXuBEy4LuXqOu2Zqv+OLJI59+yew77ElAAp+0yfZDSs7y+rR72uAdVvSQ=="],
 
-    "@tscircuit/runframe": ["@tscircuit/runframe@0.0.2455", "", { "dependencies": { "@tscircuit/eval": "^0.0.1190", "@tscircuit/solver-utils": "^0.0.7", "debug": "^4.4.0" } }, "sha512-yknK8e77pgbTw4GKpRJN97ZtuQdEc7ZX1KihIm9mzls91QUwogTIddsRjEQroWCt9yueuaTnohUODnSsKQRisQ=="],
+    "@tscircuit/runframe": ["@tscircuit/runframe@0.0.2456", "", { "dependencies": { "@tscircuit/eval": "^0.0.1191", "@tscircuit/solver-utils": "^0.0.7", "debug": "^4.4.0" } }, "sha512-uwxk4f3W7/uRGV3Bk8eCuIEX56wEe7KlTpv/YjzXDyidxicXBvGcF3a7nJ+6EdFT6SRfkg5n8uhadXnko7BKpQ=="],
 
     "@tscircuit/schematic-corpus": ["@tscircuit/schematic-corpus@0.0.114", "", { "peerDependencies": { "typescript": "^5" } }, "sha512-jDQX+XDXP6PklB39X8AwUSuiqGRdn78esy1wD/qG8U3cCXkT5rtE3ousDVaKRxclCeED8FxJlD+ZvRtAe8mw8w=="],
 
