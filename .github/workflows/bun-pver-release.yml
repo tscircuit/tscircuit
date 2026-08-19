@@ -6,6 +6,11 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+  id-token: write
+  pull-requests: write
+
 env:
   UPSTREAM_REPOS: "svg.tscircuit.com,usercode.tscircuit.com" # comma-separated list, e.g. "eval,tscircuit,docs"
   UPSTREAM_PACKAGES_TO_UPDATE: "tscircuit" # comma-separated list, e.g. "@tscircuit/core,@tscircuit/props"
@@ -22,25 +27,22 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org/
+          package-manager-cache: false
       - run: npm install -g pver
       - run: bun install --frozen-lockfile
       - run: bun run build
       - run: git status
       - run: pver release --no-push-main
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish libonly version
         run: |
           bun scripts/create-libonly-package.js
           cp package-libonly.json package.json
           npm publish --tag libonly
           git checkout package.json
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create Pull Request
         id: create-pr
