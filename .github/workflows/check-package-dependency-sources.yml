@@ -1,0 +1,41 @@
+name: Check Package Dependency Sources
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check-package-dependency-sources:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Reject GitHub and JSCDN dependencies
+        shell: bash
+        run: |
+          forbidden_dependencies="$(
+            jq -r '
+              [
+                "dependencies",
+                "devDependencies",
+                "peerDependencies",
+                "optionalDependencies"
+              ][] as $section
+              | (.[$section] // {})
+              | to_entries[]
+              | select(.value | test("github:|jscdn\\.tscircuit\\.com"))
+              | "\($section).\(.key): \(.value)"
+            ' package.json
+          )"
+
+          if [[ -n "$forbidden_dependencies" ]]; then
+            echo "::error::package.json contains forbidden dependency sources:"
+            echo "$forbidden_dependencies"
+            exit 1
+          fi
