@@ -57,7 +57,7 @@
     "@tscircuit/circuit-json-util": "^0.0.106",
     "@tscircuit/cli": "^0.1.1996",
     "@tscircuit/copper-pour-solver": "^0.0.49",
-    "@tscircuit/core": "^0.0.1754",
+    "@tscircuit/core": "^0.0.1755",
     "@tscircuit/create-fdm-enclosure": "0.0.4",
     "@tscircuit/eval": "^0.0.1267",
     "@tscircuit/fanout-solver": "0.0.36",
