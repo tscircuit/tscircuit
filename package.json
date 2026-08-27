@@ -56,7 +56,7 @@
     "@tscircuit/checks": "^0.0.175",
     "@tscircuit/circuit-json-util": "^0.0.106",
     "@tscircuit/cli": "^0.1.2021",
-    "@tscircuit/copper-pour-solver": "https://pkg.pr.new/@tscircuit/copper-pour-solver@85",
+    "@tscircuit/copper-pour-solver": "^0.0.51",
     "@tscircuit/core": "^0.0.1783",
     "@tscircuit/create-fdm-enclosure": "0.0.4",
     "@tscircuit/eval": "^0.0.1292",
