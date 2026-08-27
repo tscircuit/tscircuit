@@ -39,3 +39,12 @@ jobs:
             echo "$forbidden_dependencies"
             exit 1
           fi
+
+      - name: Reject pkg.pr.new lockfile entries
+        shell: bash
+        run: |
+          if grep -nFq "pkg.pr.new" bun.lock; then
+            echo "::error file=bun.lock::bun.lock contains forbidden pkg.pr.new dependency sources:"
+            grep -nF "pkg.pr.new" bun.lock
+            exit 1
+          fi
