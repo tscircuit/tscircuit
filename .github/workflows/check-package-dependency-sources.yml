@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Reject GitHub and JSCDN dependencies
+      - name: Reject GitHub, JSCDN, and pkg.pr.new dependencies
         shell: bash
         run: |
           forbidden_dependencies="$(
@@ -29,7 +29,7 @@ jobs:
               ][] as $section
               | (.[$section] // {})
               | to_entries[]
-              | select(.value | test("github:|jscdn\\.tscircuit\\.com"))
+              | select(.value | test("github:|jscdn\\.tscircuit\\.com|pkg\\.pr\\.new"))
               | "\($section).\(.key): \(.value)"
             ' package.json
           )"

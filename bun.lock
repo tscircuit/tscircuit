@@ -17,7 +17,7 @@
         "@tscircuit/checks": "^0.0.175",
         "@tscircuit/circuit-json-util": "^0.0.106",
         "@tscircuit/cli": "^0.1.2021",
-        "@tscircuit/copper-pour-solver": "https://pkg.pr.new/@tscircuit/copper-pour-solver@85",
+        "@tscircuit/copper-pour-solver": "^0.0.51",
         "@tscircuit/core": "^0.0.1783",
         "@tscircuit/create-fdm-enclosure": "0.0.4",
         "@tscircuit/eval": "^0.0.1292",
@@ -293,7 +293,7 @@
 
     "@tscircuit/cli": ["@tscircuit/cli@0.1.2021", "", { "peerDependencies": { "circuit-json": "^0.0.464", "tscircuit": "*" }, "bin": { "tscircuit-cli": "cli/entrypoint.js" } }, "sha512-KXSi/HrCIa69ZnvlACOYjzwdvh5r4c5kVlIA8IYR6fGQbYv71QfBLfIF/fqmGlQ7bSuaEwSzrkhf4iL0sUREow=="],
 
-    "@tscircuit/copper-pour-solver": ["@tscircuit/copper-pour-solver@https://pkg.pr.new/@tscircuit/copper-pour-solver@85", { "dependencies": { "@tscircuit/manifold-2d": "^0.0.6" }, "peerDependencies": { "typescript": "^5" } }, "sha512-OjhfBMPLNmkihfRS9dFkjW3KTI9woO99b2XYTgCD1ITWqj5ak51ix0aY3q9TVxRVtgYBVgVPH7jAwrPx4GhIEQ=="],
+    "@tscircuit/copper-pour-solver": ["@tscircuit/copper-pour-solver@0.0.51", "", { "dependencies": { "@tscircuit/manifold-2d": "^0.0.6" }, "peerDependencies": { "typescript": "^5" } }, "sha512-/e5OHr9yA/bAl5QQGA8pkL3dTVw/ksmrID3XzVkh4ezBi9A0/y1va5KcXWbxEWNp1dcPltItJMyq2rErVHMNkw=="],
 
     "@tscircuit/core": ["@tscircuit/core@0.0.1783", "", { "dependencies": { "@flatten-js/core": "^1.6.2", "@lume/kiwi": "^0.4.3", "calculate-cell-boundaries": "^0.0.19", "calculate-packing": "^0.0.86", "css-select": "5.1.0", "format-si-unit": "^0.0.12", "nanoid": "^5.0.7", "performance-now": "^2.1.0", "react-reconciler": "^0.32.0", "svg-path-commander": "^2.1.11", "transformation-matrix": "^2.16.1", "zod": "^3.25.67" }, "peerDependencies": { "@tscircuit/capacity-autorouter": "*", "@tscircuit/checks": "*", "@tscircuit/circuit-json-util": "*", "@tscircuit/create-fdm-enclosure": "*", "@tscircuit/footprinter": "*", "@tscircuit/infgrid-ijump-astar": "*", "@tscircuit/matchpack": "*", "@tscircuit/math-utils": "*", "@tscircuit/props": "*", "@tscircuit/schematic-match-adapt": "*", "bpc-graph": "*", "circuit-json": "*", "circuit-json-to-bpc": "*", "circuit-json-to-connectivity-map": "*", "circuit-json-to-spice": "*", "schematic-symbols": "*", "spicets": "*", "typescript": "^5.0.0" } }, "sha512-5k+ewqMF/B+MYeEiN1cQUT0PJObVUYsdZXQnj9p9swnxy/RwInj4CaD0xvC0DYDYvKcnzstUbolKKRk6WC0/+g=="],
 
@@ -832,6 +832,8 @@
     "prebuild-install/tar-fs": ["tar-fs@2.1.4", "", { "dependencies": { "chownr": "^1.1.1", "mkdirp-classic": "^0.5.2", "pump": "^3.0.0", "tar-stream": "^2.1.4" } }, "sha512-mDAjwmZdh7LTT6pNleZ05Yt65HC3E+NiQzl672vQG38jIrehtJk/J3mNwIg+vShQPcLF/LV7CMnDW6vjj6sfYQ=="],
 
     "react-reconciler/scheduler": ["scheduler@0.26.0", "", {}, "sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA=="],
+
+    "tscircuit/@tscircuit/copper-pour-solver": ["@tscircuit/copper-pour-solver@https://pkg.pr.new/@tscircuit/copper-pour-solver@85", { "dependencies": { "@tscircuit/manifold-2d": "^0.0.6" }, "peerDependencies": { "typescript": "^5" } }],
 
     "tscircuit/@tscircuit/runframe": ["@tscircuit/runframe@0.0.2573", "", { "dependencies": { "@tscircuit/core": "^0.0.1705", "@tscircuit/eval": "^0.0.1291", "@tscircuit/solver-utils": "^0.0.7", "debug": "^4.4.0", "format-si-unit": "^0.0.12" } }, "sha512-qIQzaaZXtCZNJ9xplv30MBuy0WKOMLrOajKdcvJR68atBiMeCdKBPQom42KEZ7egPeQME7BYPyJOvlChWVF7UQ=="],
 
