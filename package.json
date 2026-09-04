@@ -52,7 +52,7 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-typescript": "^12.3.0",
     "@tscircuit/alphabet": "0.0.25",
-    "@tscircuit/capacity-autorouter": "^0.0.851",
+    "@tscircuit/capacity-autorouter": "^0.0.866",
     "@tscircuit/checks": "^0.0.178",
     "@tscircuit/circuit-json-util": "^0.0.106",
     "@tscircuit/cli": "^0.1.2021",
