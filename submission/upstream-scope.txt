@@ -1,0 +1,18 @@
+Files for an autorouting fork PR (apply patch at 02dcdb6):
+- algos/multi-layer-ijump/MultilayerIjump.ts
+- algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts
+- algos/multi-layer-ijump/tests/__snapshots__/forward-after-obstacle.snap.svg
+
+Patch file: .agent-nio/autorouting-92-candidate.patch
+
+Do NOT include from this tscircuit branch in any upstream submission:
+- package.json (test script override is session tooling only)
+- scripts/verify-autorouting-92.sh
+- submission/*
+- .agent-nio/*
+
+Release blockers (need Rowan/Karan before posting):
+- Confirm GitHub posting account (issue #4764 author AMZ92 vs committer karanp0202)
+- Push autorouting branch fix/forward-after-obstacle @ 2a3eb3b to a fork
+- Post submission/issue-4764-reply.txt on tscircuit#4764
+- Algora /attempt on autorouting#92 if maintainers direct (repo archived)

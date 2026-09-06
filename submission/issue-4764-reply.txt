@@ -30,3 +30,5 @@ Two of three targeted cases fail on the original code; all pass with the patch. 
 3. Where should a formal PR go — fork of autorouting, a live successor package, or is this issue comment sufficient?
 
 This targets the archived implementation only, not the replacement autorouter. I have not reproduced the original Wi-Fi-board gallery screenshot.
+
+See submission/upstream-scope.txt for which files belong in a fork PR vs session-only tooling.
