@@ -180,4 +180,6 @@ test-project
 yalc.*
 *.yalc
 
+.agent-nio/
+
 package-libonly.json

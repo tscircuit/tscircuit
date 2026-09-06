@@ -4,6 +4,10 @@ Candidate fix for archived autorouting issue #92 (multi-layer ijump forward dead
 
 In `MultilayerIjump.getNeighbors`, removed the rule that blocked the forward direction when the parent node had `obstacleHit` set. Collision checks from the current point already enforce clearance; the old rule incorrectly dead-ended paths after bypassing a wall.
 
+## Maintainer criteria (autorouting#92)
+
+On the original issue, seveibar noted that the solution should include a simplified reproduction and a debug snapshot test, and that the simplified reproduction qualifies when it includes a snapshot test (see https://github.com/tscircuit/autorouting/issues/92#issuecomment-2466443421). This candidate provides both: a minimized regression that fails on the original implementation and passes with the patch, plus a debug SVG snapshot in the test suite.
+
 ## Patch
 
 Apply at autorouting commit `02dcdb6`:
@@ -12,7 +16,7 @@ Apply at autorouting commit `02dcdb6`:
 git apply autorouting-92-candidate.patch
 ```
 
-The patch is included in this branch at `.agent-nio/autorouting-92-candidate.patch`.
+The patch is included in this branch at `submission/autorouting-92-candidate.patch`.
 
 ## Tests
 
