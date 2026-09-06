@@ -5,6 +5,7 @@ set -eu
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 AUTOROUTING="${AUTOROUTING_DIR:-$ROOT/../autorouting}"
+VENDORED="$ROOT/candidate-fixes/autorouting-92"
 
 if [ -n "${BUN:-}" ] && [ -x "$BUN" ]; then
   BUN_BIN="$BUN"
@@ -33,6 +34,24 @@ fi
 echo "=== deliverable summary ==="
 git log -1 --oneline
 git show --stat HEAD | tail -n +2
+echo ""
+echo "vendored packet in tscircuit branch:"
+find "$VENDORED" -type f | sort | while read -r f; do
+  echo "  ${f#$ROOT/}"
+done
+echo ""
+
+for rel in \
+  algos/multi-layer-ijump/MultilayerIjump.ts \
+  algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts \
+  algos/multi-layer-ijump/tests/__snapshots__/forward-after-obstacle.snap.svg
+do
+  if ! cmp -s "$AUTOROUTING/$rel" "$VENDORED/$rel"; then
+    echo "error: vendored packet out of sync with autorouting tree for $rel" >&2
+    exit 1
+  fi
+done
+echo "vendored packet matches autorouting working tree"
 echo ""
 
 FIXED_FILE="algos/multi-layer-ijump/MultilayerIjump.ts"
