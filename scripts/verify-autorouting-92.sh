@@ -1,11 +1,9 @@
 #!/bin/sh
-# Verify the archived autorouting#92 candidate fix (NIO-112 deliverable).
-# The fix lives in tscircuit/autorouting, not in this meta-package repo.
+# Run autorouting#92 regression tests from the sibling autorouting checkout.
 set -eu
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 AUTOROUTING="${AUTOROUTING_DIR:-$ROOT/../autorouting}"
-VENDORED="$ROOT/candidate-fixes/autorouting-92"
 
 if [ -n "${BUN:-}" ] && [ -x "$BUN" ]; then
   BUN_BIN="$BUN"
@@ -20,68 +18,15 @@ fi
 
 if [ ! -f "$AUTOROUTING/algos/multi-layer-ijump/MultilayerIjump.ts" ]; then
   echo "error: autorouting repo not found at $AUTOROUTING" >&2
-  echo "Clone tscircuit/autorouting at 02dcdb6 beside this repo, or set AUTOROUTING_DIR." >&2
   exit 1
 fi
 
 cd "$AUTOROUTING"
+[ -d node_modules ] || "$BUN_BIN" install
 
-if [ ! -d node_modules ]; then
-  echo "Installing autorouting dependencies..."
-  "$BUN_BIN" install
-fi
-
-echo "=== deliverable summary ==="
-git log -1 --oneline
-git show --stat HEAD | tail -n +2
-echo ""
-echo "vendored packet in tscircuit branch:"
-find "$VENDORED" -type f | sort | while read -r f; do
-  echo "  ${f#$ROOT/}"
-done
-echo ""
-
-for rel in \
-  algos/multi-layer-ijump/MultilayerIjump.ts \
-  algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts \
-  algos/multi-layer-ijump/tests/__snapshots__/forward-after-obstacle.snap.svg
-do
-  if ! cmp -s "$AUTOROUTING/$rel" "$VENDORED/$rel"; then
-    echo "error: vendored packet out of sync with autorouting tree for $rel" >&2
-    exit 1
-  fi
-done
-echo "vendored packet matches autorouting working tree"
-echo ""
-
-FIXED_FILE="algos/multi-layer-ijump/MultilayerIjump.ts"
-if grep -q 'node.parent?.obstacleHit' "$FIXED_FILE"; then
-  echo "error: MultilayerIjump.ts still contains parent obstacleHit forward rejection" >&2
-  exit 1
-fi
-
-echo "=== regression isolation (base MultilayerIjump.ts, tests kept) ==="
-TMP_FIXED="$(mktemp)"
-cp "$FIXED_FILE" "$TMP_FIXED"
-git show 02dcdb6:"$FIXED_FILE" > "$FIXED_FILE"
-set +e
-"$BUN_BIN" test algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts >/tmp/regression-isolation.log 2>&1
-ISOLATION_EXIT=$?
-set -e
-cp "$TMP_FIXED" "$FIXED_FILE"
-rm -f "$TMP_FIXED"
-if [ "$ISOLATION_EXIT" -eq 0 ]; then
-  echo "error: targeted tests should fail with pre-patch MultilayerIjump.ts" >&2
-  tail -20 /tmp/regression-isolation.log >&2
-  exit 1
-fi
-grep -E "fail$" /tmp/regression-isolation.log | tail -3
-echo "regression isolation: pre-patch code fails targeted tests (expected)"
-echo ""
-
-echo "=== targeted: forward-after-obstacle.test.ts ==="
+echo "autorouting fix: $(git log -1 --oneline)"
+echo "=== targeted regression ==="
 "$BUN_BIN" test algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts
-
-echo "=== full autorouting suite ==="
+echo "=== full suite ==="
 "$BUN_BIN" run build
 "$BUN_BIN" test

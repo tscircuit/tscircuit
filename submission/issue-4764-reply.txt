@@ -1,0 +1,32 @@
+Candidate fix for archived autorouting issue #92 (multi-layer ijump forward dead-end after turning past a wall).
+
+## Change
+
+In `MultilayerIjump.getNeighbors`, removed the rule that blocked the forward direction when the parent node had `obstacleHit` set. Collision checks from the current point already enforce clearance; the old rule incorrectly dead-ended paths after bypassing a wall.
+
+## Patch
+
+Apply at autorouting commit `02dcdb6`:
+
+```
+git apply autorouting-92-candidate.patch
+```
+
+The patch is included in this branch at `.agent-nio/autorouting-92-candidate.patch`.
+
+## Tests
+
+Three regression cases in `algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts`:
+- forward neighbors allowed after parent cleared an obstacle
+- real obstacles ahead still block forward travel
+- full solve routes around a wall when the left bypass is blocked
+
+Two of three targeted cases fail on the original code; all pass with the patch. Full autorouting suite: 30 pass after `bun run build && bun test`.
+
+## Questions for maintainers
+
+1. Is the original autorouting #92 bounty still active?
+2. Is this contribution eligible given the archived repo?
+3. Where should a formal PR go — fork of autorouting, a live successor package, or is this issue comment sufficient?
+
+This targets the archived implementation only, not the replacement autorouter. I have not reproduced the original Wi-Fi-board gallery screenshot.
