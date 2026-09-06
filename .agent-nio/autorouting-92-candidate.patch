@@ -1,0 +1,224 @@
+From 2a3eb3b5740debe120ace5c1747cfa8b604609ab Mon Sep 17 00:00:00 2001
+From: Jonah Voss <jonah-voss-1@agent-nio.local>
+Date: Sat, 5 Sep 2026 23:58:07 +0000
+Subject: [PATCH] fix: allow forward travel after parent cleared an obstacle
+
+Remove parent obstacleHit from forward-direction filtering in
+MultilayerIjump.getNeighbors. Collision checks from the current point
+already enforce clearance; the old rule dead-ended paths after turning
+past a wall.
+
+Adds three regression tests: neighbor check, obstacle still blocks
+forward travel, and full solve from start to goal around a wall.
+
+Co-authored-by: Cursor <cursoragent@cursor.com>
+---
+ algos/multi-layer-ijump/MultilayerIjump.ts    |  12 +-
+ .../forward-after-obstacle.snap.svg           |  13 ++
+ .../tests/forward-after-obstacle.test.ts      | 143 ++++++++++++++++++
+ 3 files changed, 159 insertions(+), 9 deletions(-)
+ create mode 100644 algos/multi-layer-ijump/tests/__snapshots__/forward-after-obstacle.snap.svg
+ create mode 100644 algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts
+
+diff --git a/algos/multi-layer-ijump/MultilayerIjump.ts b/algos/multi-layer-ijump/MultilayerIjump.ts
+index 751c3e6..2fda70a 100644
+--- a/algos/multi-layer-ijump/MultilayerIjump.ts
++++ b/algos/multi-layer-ijump/MultilayerIjump.ts
+@@ -310,8 +310,9 @@ export class MultilayerIjump extends GeneralizedAstarAutorouter {
+     }
+ 
+     /**
+-     * Get the possible next directions (excluding backwards direction), and
+-     * excluding the forward direction if we just ran into a wall
++     * Get the possible next directions (excluding backwards direction).
++     * Check collisions from the current point: the parent's obstacle may
++     * already have been cleared, so it must not rule out continuing forward.
+      */
+     const travelDirs1: Array<Direction3d> = [
+       { dx: 0, dy: 1, dl: 0 },
+@@ -347,13 +348,6 @@ export class MultilayerIjump extends GeneralizedAstarAutorouter {
+           dir.dl === forwardDir.dl * -1
+         ) {
+           return false
+-        } else if (
+-          dir.dx === forwardDir.dx &&
+-          dir.dy === forwardDir.dy &&
+-          dir.dl === forwardDir.dl &&
+-          node.parent?.obstacleHit
+-        ) {
+-          return false
+         }
+         return true
+       })
+diff --git a/algos/multi-layer-ijump/tests/__snapshots__/forward-after-obstacle.snap.svg b/algos/multi-layer-ijump/tests/__snapshots__/forward-after-obstacle.snap.svg
+new file mode 100644
+index 0000000..18f94c0
+--- /dev/null
++++ b/algos/multi-layer-ijump/tests/__snapshots__/forward-after-obstacle.snap.svg
+@@ -0,0 +1,13 @@
++<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><style>
++              .boundary { fill: #000; }
++              .pcb-board { fill: none; }
++              .pcb-trace { fill: none; }
++              .pcb-hole-outer { fill: rgb(200, 52, 52); }
++              .pcb-hole-inner { fill: rgb(255, 38, 226); }
++              .pcb-pad { }
++              .pcb-boundary { fill: none; stroke: #fff; stroke-width: 0.3; }
++              .pcb-silkscreen { fill: none; }
++              .pcb-silkscreen-top { stroke: #f2eda1; }
++              .pcb-silkscreen-bottom { stroke: #f2eda1; }
++              .pcb-silkscreen-text { fill: #f2eda1; }
++            </style><rect class="boundary" x="0" y="0" width="800" height="600"/><rect class="pcb-boundary" x="364.7058823529412" y="54.298642533936686" width="70.58823529411762" height="491.4027149321266"/><rect class="pcb-pad" fill="rgb(200, 52, 52)" x="380.9954751131222" y="165.6108597285068" width="108.5972850678733" height="108.5972850678733"/><rect class="pcb-pad" fill="rgb(200, 52, 52)" x="380.9954751131222" y="491.4027149321267" width="108.5972850678733" height="108.5972850678733"/><path class="pcb-fabrication-note-path" stroke="rgba(255,255,255,0.5)" fill="none" d="M 367.420814479638 54.298642533936686 L 370.13574660633486 57.01357466063351 L 367.420814479638 59.72850678733033 L 364.7058823529412 57.01357466063351 Z" stroke-width="0.5429864253393665" data-pcb-component-id="" data-pcb-fabrication-note-path-id="note_path_-1.25_3"/><path class="pcb-fabrication-note-path" stroke="rgba(255,255,255,0.5)" fill="none" d="M 367.420814479638 219.90950226244345 L 367.420814479638 152.03619909502265" stroke-width="0.5429864253393665" data-pcb-component-id="" data-pcb-fabrication-note-path-id="note_path_-1.25_1.25"/><text x="0" y="0" font-family="Arial, sans-serif" font-size="13.574660633484163" text-anchor="middle" dominant-baseline="central" transform="matrix(0.9998476951563913,0.01745240643728351,-0.01745240643728351,0.9998476951563913,367.420814479638,152.03619909502265)" class="pcb-fabrication-note-text" fill="rgba(255,255,255,0.5)">X0</text><text x="0" y="0" font-family="Arial, sans-serif" font-size="1.6289592760180995" text-anchor="middle" dominant-baseline="central" transform="matrix(0.9998476951563913,0.01745240643728351,-0.01745240643728351,0.9998476951563913,367.420814479638,57.01357466063351)" class="pcb-fabrication-note-text" fill="rgba(255,255,255,0.5)">0</text><text x="0" y="0" font-family="Arial, sans-serif" font-size="10.85972850678733" text-anchor="middle" dominant-baseline="central" transform="matrix(0.9998476951563913,0.01745240643728351,-0.01745240643728351,0.9998476951563913,163.80090497737558,219.90950226244345)" class="pcb-fabrication-note-text" fill="rgba(255,255,255,0.5)">t0_iter[-1]</text></svg>
+\ No newline at end of file
+diff --git a/algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts b/algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts
+new file mode 100644
+index 0000000..54c929e
+--- /dev/null
++++ b/algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts
+@@ -0,0 +1,143 @@
++import { expect, test } from "bun:test"
++import type { Obstacle } from "autorouting-dataset/lib/types"
++import { MultilayerIjump } from "../MultilayerIjump"
++import { ObstacleList3d } from "../ObstacleList3d"
++import type { Node3d } from "../types"
++import { getDebugSvg } from "../../infinite-grid-ijump-astar/tests/fixtures/get-debug-svg"
++
++const wall: Obstacle = {
++  type: "rect",
++  center: { x: 0, y: 0 },
++  width: 2,
++  height: 2,
++  layers: ["top"],
++  connectedTo: [],
++}
++
++const nodeAt = (x: number, y: number): Node3d => ({
++  x,
++  y,
++  l: 0,
++  g: 0,
++  h: 0,
++  f: 0,
++  manDistFromParent: 0,
++  nodesInPath: 1,
++  parent: null,
++})
++
++function createRouter(obstacles: Obstacle[]) {
++  const router = new MultilayerIjump({
++    input: {
++      layerCount: 2,
++      minTraceWidth: 0.1,
++      obstacles,
++      connections: [],
++      bounds: { minX: -5, maxX: 5, minY: -5, maxY: 5 },
++    },
++    startNode: nodeAt(-3, 0),
++    goalPoint: { x: -1.25, y: 3 },
++    debug: true,
++  })
++  router.allowLayerChange = false
++  router.obstacles = new ObstacleList3d(2, obstacles)
++  return router
++}
++
++test("continue forward after turning past an obstacle hit by the parent", () => {
++  const router = createRouter([wall])
++  const parent = { ...nodeAt(-1.25, 0), obstacleHit: wall }
++  const current = { ...nodeAt(-1.25, 1.25), parent }
++
++  const neighbors = router.getNeighbors(current)
++
++  expect(neighbors).toContainEqual(
++    expect.objectContaining({ x: -1.25, y: 3, l: 0 }),
++  )
++  expect(neighbors.some((n) => n.x === current.x && n.y < current.y)).toBe(
++    false,
++  )
++
++  // Resume A* from the minimal state that used to incorrectly dead-end.
++  router.openSet = [current]
++  router.solveOneStep()
++  expect(router.solveOneStep().solved).toBe(true)
++  expect(
++    getDebugSvg({
++      inputCircuitJson: [
++        {
++          type: "pcb_smtpad",
++          pcb_smtpad_id: "wall-pad",
++          pcb_component_id: "wall",
++          pcb_port_id: "wall-port",
++          shape: "rect",
++          x: 0,
++          y: 0,
++          width: 2,
++          height: 2,
++          layer: "top",
++        },
++      ],
++      autorouter: router,
++      rowHeight: 6,
++    }),
++  ).toMatchSvgSnapshot(import.meta.path)
++})
++
++test("continuing forward still stops before a real obstacle", () => {
++  const nextWall: Obstacle = {
++    ...wall,
++    center: { x: -1.25, y: 2.5 },
++    width: 1,
++    height: 0.5,
++  }
++  const router = createRouter([wall, nextWall])
++  const parent = { ...nodeAt(-1.25, 0), obstacleHit: wall }
++  const current = { ...nodeAt(-1.25, 1.25), parent }
++
++  const forwardNeighbors = router
++    .getNeighbors(current)
++    .filter((n) => n.x === current.x && n.y > current.y)
++
++  expect(forwardNeighbors.length).toBeGreaterThan(0)
++  for (const neighbor of forwardNeighbors) {
++    expect(neighbor.y).toBeLessThanOrEqual(2.25 - router.OBSTACLE_MARGIN)
++  }
++})
++
++test("full solve routes around wall when left bypass is blocked", () => {
++  const topBlock: Obstacle = {
++    type: "rect",
++    center: { x: -3, y: 2.5 },
++    width: 2,
++    height: 2,
++    layers: ["top"],
++    connectedTo: [],
++  }
++  const router = new MultilayerIjump({
++    input: {
++      layerCount: 2,
++      minTraceWidth: 0.1,
++      obstacles: [wall, topBlock],
++      connections: [
++        {
++          name: "around_wall",
++          pointsToConnect: [
++            { x: -3, y: 0, layer: "top", pcb_port_id: "start" },
++            { x: -1.25, y: 3, layer: "top", pcb_port_id: "goal" },
++          ],
++        },
++      ],
++      bounds: { minX: -5, maxX: 5, minY: -5, maxY: 5 },
++    },
++  })
++  router.allowLayerChange = false
++
++  const [result] = router.solve()
++
++  expect(result.solved).toBe(true)
++  expect(result.route).toContainEqual(
++    expect.objectContaining({ x: -1.25, y: 0, layer: "top" }),
++  )
++  expect(result.route.at(-1)).toMatchObject({ x: -1.25, y: 3, layer: "top" })
++})
+-- 
+2.43.0
+
