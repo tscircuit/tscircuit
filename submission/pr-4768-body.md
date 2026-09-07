@@ -23,4 +23,8 @@ When bun is not on PATH, the test script falls back to the verify script automat
 
 This patch fixes the parent-obstacle forward dead-end regression. It does not claim to resolve every wild jump on the original Wi-Fi board or dataset seed-8 zigzag; see issue #4764 thread for complementary work and AMZ92's validation table.
 
+## Posting coordination
+
+Issue author AMZ92 posted the original narrow candidate on #4764. Contributor 85heisenberg85 published a superset patch (includes this exact parent-obstacleHit removal plus overcome-distance gating) and deferred bounty priority to AMZ92. Before merging or posting, confirm whether karanp0202 acts for AMZ92 or whether this PR should be withdrawn in favor of coordinated submission. See submission/release-checklist.txt.
+
 Fixes #4764

@@ -40,3 +40,4 @@ Two of three targeted cases fail on the original code; all pass with the patch. 
 This targets the archived implementation only, not the replacement autorouter.
 
 See submission/upstream-scope.txt for which files belong in a fork PR vs session-only tooling.
+See submission/release-checklist.txt for push steps and posting-identity reconciliation (AMZ92 / karanp0202 / 85heisenberg85).

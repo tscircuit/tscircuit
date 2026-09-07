@@ -1,0 +1,43 @@
+Release checklist for Karan/Rowan (developer cannot push per ticket policy).
+
+## 1. Push updated PR branch
+
+Local branch head: e887337 (includes iteration 8–9 maintainer-feedback fixes).
+PR #4768 remote head: 2fac6c4 (stale — missing .agent-nio removal, patch relocation, scope docs).
+
+From this checkout, after confirming posting identity (section 2):
+
+  git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti
+
+Update PR #4768 body from submission/pr-4768-body.md.
+
+## 2. Posting identity — BLOCKING, decide before push
+
+| Account | Role |
+| --- | --- |
+| AMZ92 | Opened issue #4764 and posted the original narrow candidate patch |
+| karanp0202 | Opened PR #4768 (submission packet on tscircuit) |
+| 85heisenberg85 | Posted complementary superset patch; explicitly deferred bounty priority to AMZ92 |
+
+Rowan/Karan must confirm one of:
+  A) AMZ92 and karanp0202 are the same contributor → push PR as packet for AMZ92's claim
+  B) Different contributors → do not push duplicate narrow patch; coordinate with AMZ92 or stand down
+  C) Compose with 85heisenberg85/autorouting@fix-issue92-wild-jumps (superset includes our exact parent-obstacleHit removal)
+
+Do not invent policy. Do not post competing claims without reconciliation.
+
+## 3. Autorouting fork PR (narrow fix only)
+
+If maintainers direct a fork PR for the archived repo:
+  Branch: fix/forward-after-obstacle @ 2a3eb3b
+  Files: see submission/upstream-scope.txt (3 files + patch at 02dcdb6)
+  Do NOT include: package.json test fallback, verify script, submission/*, .agent-nio/*
+
+## 4. Issue comment
+
+Post submission/issue-4764-reply.txt on tscircuit#4764 only after identity confirmed.
+Do not duplicate if AMZ92 already posted equivalent content.
+
+## 5. Algora workflow
+
+Autorouting repo is archived. /attempt and /claim deferred until maintainers confirm submission route.

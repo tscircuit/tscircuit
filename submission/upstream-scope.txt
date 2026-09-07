@@ -5,7 +5,8 @@ Files for an autorouting fork PR (apply patch at 02dcdb6):
 
 Patch file: submission/autorouting-92-candidate.patch
 
-Local branch head: 54e16e1 (PR #4768 remote still at 2fac6c4 until Karan pushes)
+Local branch head: e887337
+PR #4768 remote head: 2fac6c4 (stale until Karan pushes — see submission/release-checklist.txt)
 
 Do NOT include from this tscircuit branch in any upstream submission:
 - package.json test fallback (runs bun test when bun is on PATH; session-only when not)
@@ -14,7 +15,8 @@ Do NOT include from this tscircuit branch in any upstream submission:
 - .agent-nio/*
 
 Release blockers (need Rowan/Karan before posting):
-- Confirm GitHub posting account (issue #4764 author AMZ92 vs committer karanp0202)
+- Reconcile posting identity: AMZ92 (issue author) vs karanp0202 (PR author) vs 85heisenberg85 (superset patch) — see submission/release-checklist.txt
+- Push local e887337 to update PR #4768 (remote still at 2fac6c4)
 - Push autorouting branch fix/forward-after-obstacle @ 2a3eb3b to a fork
-- Post submission/issue-4764-reply.txt on tscircuit#4764
+- Post submission/issue-4764-reply.txt on tscircuit#4764 (after identity confirmed)
 - Algora /attempt on autorouting#92 if maintainers direct (repo archived)

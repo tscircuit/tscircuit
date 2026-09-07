@@ -26,6 +26,8 @@ fi
 echo "=== tscircuit branch packet ==="
 cd "$ROOT"
 git diff --stat main...HEAD
+echo "local HEAD: $(git rev-parse --short HEAD)"
+echo "PR #4768 remote (last known): 2fac6c4 — push required before release (see submission/release-checklist.txt)"
 echo ""
 
 if [ ! -f "$AUTOROUTING/algos/multi-layer-ijump/MultilayerIjump.ts" ]; then
