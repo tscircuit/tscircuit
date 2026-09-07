@@ -32,7 +32,6 @@ fi
 
 LOCAL_HEAD="$(git -C "$ROOT" rev-parse --short HEAD)"
 PR_HEAD="$(gh api repos/tscircuit/tscircuit/pulls/4768 --jq '.head.sha[:7]' 2>/dev/null || true)"
-PR_BODY="$(gh api repos/tscircuit/tscircuit/pulls/4768 --jq '.body // ""' 2>/dev/null || true)"
 
 if [ -z "$PR_HEAD" ]; then
   echo "warning: could not read PR #4768 via gh — authenticate and retry"
@@ -48,15 +47,12 @@ if [ "$PR_HEAD" != "$LOCAL_HEAD" ]; then
   NEEDS_ACTION=1
 fi
 
-PR_BODY_FILE="$(mktemp)"
-printf '%s' "$PR_BODY" > "$PR_BODY_FILE"
-if sh "$ROOT/scripts/check-pr-4768-body.sh" "$PR_BODY_FILE"; then
+if sh "$ROOT/scripts/check-live-pr-4768-body.sh"; then
   echo "PR description: matches local packet structure"
 else
   echo "action: run sh submission/update-github-pr-description.sh"
   NEEDS_ACTION=1
 fi
-rm -f "$PR_BODY_FILE"
 
 echo ""
 echo "=== posting identity (blocking) ==="

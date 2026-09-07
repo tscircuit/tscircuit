@@ -65,12 +65,20 @@ if [ ! -x "$ROOT/scripts/check-pr-4768-body.sh" ]; then
   echo "error: missing scripts/check-pr-4768-body.sh" >&2
   exit 1
 fi
-if ! grep -q 'check-pr-4768-body.sh' "$ROOT/submission/release-preflight.sh"; then
-  echo "error: release-preflight.sh must validate live PR body via check-pr-4768-body.sh" >&2
+if [ ! -x "$ROOT/scripts/check-live-pr-4768-body.sh" ]; then
+  echo "error: missing scripts/check-live-pr-4768-body.sh" >&2
+  exit 1
+fi
+if ! grep -q 'check-live-pr-4768-body.sh' "$ROOT/submission/release-preflight.sh"; then
+  echo "error: release-preflight.sh must use check-live-pr-4768-body.sh" >&2
   exit 1
 fi
 if ! grep -q 'check-pr-4768-body.sh' "$ROOT/submission/update-github-pr-description.sh"; then
   echo "error: update-github-pr-description.sh must validate via check-pr-4768-body.sh" >&2
+  exit 1
+fi
+if ! grep -q 'check-live-pr-4768-body.sh' "$ROOT/submission/update-github-pr-description.sh"; then
+  echo "error: update-github-pr-description.sh must use check-live-pr-4768-body.sh for live checks" >&2
   exit 1
 fi
 if ! grep -q '\-\-github-only' "$ROOT/submission/release-preflight.sh"; then

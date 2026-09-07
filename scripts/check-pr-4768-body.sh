@@ -37,6 +37,7 @@ for ref in \
   regenerate-autorouting-patch.sh \
   verify-autorouting-92.sh \
   check-pr-4768-body.sh \
+  check-live-pr-4768-body.sh \
   developer-handoff.txt \
   identity-decision.txt \
   autorouting-92-candidate.patch \

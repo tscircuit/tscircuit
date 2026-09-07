@@ -4,10 +4,11 @@ After Rowan/Karan records one option in submission/identity-decision.txt, follow
 
 1. npm run test
 2. Complete submission/identity-decision.txt (option A)
-3. sh submission/update-github-pr-description.sh
-4. Push if local HEAD differs from PR #4768 head
-5. sh submission/release-preflight.sh (gh auth as karanp0202)
-6. Do not post a duplicate issue comment on #4764 — AMZ92 already posted validation
+3. sh submission/update-github-pr-description.sh --check-live   # optional: confirm live body is stale
+4. sh submission/update-github-pr-description.sh
+5. Push if local HEAD differs from PR #4768 head
+6. sh submission/release-preflight.sh (gh auth as karanp0202)
+7. Do not post a duplicate issue comment on #4764 — AMZ92 already posted validation
 
 ## Option B — different contributors
 

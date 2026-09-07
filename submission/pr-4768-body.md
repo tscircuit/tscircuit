@@ -17,6 +17,7 @@ Submission packet for archived autorouting issue #92. The algorithm fix is a sma
 - `submission/karan-after-identity.txt` — option-specific release paths after identity is recorded
 - `submission/developer-handoff.txt` — developer lane complete vs Karan blockers
 - `scripts/check-pr-4768-body.sh` — validates pr-4768-body.md before GitHub description update
+- `scripts/check-live-pr-4768-body.sh` — fetches live PR #4768 body via gh and runs the same check
 - `scripts/regenerate-autorouting-patch.sh` — refresh submission patch from autorouting `02dcdb6..2a3eb3b`
 - `scripts/verify-autorouting-92.sh` — patch apply/sync check, regression isolation, autorouting suite (session only)
 
