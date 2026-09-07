@@ -1,25 +1,38 @@
-Developer handoff — final state (iteration 20/20).
+Developer handoff — final state (iteration 30/30).
 
 ## Developer lane: COMPLETE
 
-No further developer iterations planned on this packet unless Karan sends specific maintainer feedback. Iterations 21+ are release-loop coordination only (no algorithm changes).
+Algorithm fix frozen at autorouting 2a3eb3b. Iterations 21–30 added release coordination only (no algorithm changes). No further developer work unless Karan receives specific maintainer technical feedback.
 
 Frozen deliverables:
 - Algorithm fix at autorouting commit 2a3eb3b: removes parent obstacleHit forward-direction rejection in MultilayerIjump.getNeighbors
 - Plain patch at submission/autorouting-92-candidate.patch (sync-checked against 02dcdb6..2a3eb3b)
 - Three regression tests plus debug SVG snapshot (forward-after-obstacle.test.ts)
-- npm run test runs scripts/verify-autorouting-92.sh (patch apply, patch sync, regression isolation, full autorouting suite)
-- Ten-file submission packet plus scripts/regenerate-autorouting-patch.sh and scripts/verify-autorouting-92.sh
-- Release tooling: release-preflight.sh (validates live GitHub PR body via check-pr-4768-body.sh), update-github-pr-description.sh, release-checklist quick start, identity-decision.txt template
+- npm run test runs scripts/verify-autorouting-92.sh (patch apply, patch sync, regression isolation, full autorouting suite, live GitHub PR-body warning when API reachable)
+- Twelve-file submission packet (see submission/release-checklist.txt)
+- Scripts: regenerate-autorouting-patch.sh, verify-autorouting-92.sh, check-pr-4768-body.sh, check-live-pr-4768-body.sh
+- Release tooling: release-preflight.sh (--github-only), update-github-pr-description.sh (--dry-run, --check-live, post-edit live validation), release-checklist quick start, identity-decision.txt template
 
 Honest scope: fixes the parent-obstacle forward dead-end regression only. Does not claim seed-8 or Wi-Fi gallery jumps (see submission/thread-context.txt).
 
-## Blocked on Karan/Rowan (release lane only)
+## Karan quick start (release lane only)
 
-1. Update GitHub PR #4768 description from submission/pr-4768-body.md (still iteration-7 text on GitHub)
-2. Complete submission/identity-decision.txt — choose A/B/C for AMZ92 vs karanp0202 vs 85heisenberg85 superset
-3. Run submission/release-preflight.sh with gh auth; push if head lags local
-4. Do not post duplicate issue comments — AMZ92 already posted validation on #4764
+1. npm run test
+2. Complete submission/identity-decision.txt (option A/B/C — Rowan/Karan decision)
+3. sh submission/update-github-pr-description.sh --check-live   # optional: confirm live body is stale
+4. sh submission/update-github-pr-description.sh
+5. git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti   # if PR head lags local
+6. sh submission/release-preflight.sh   # or --github-only after step 1
+7. Do not post duplicate issue comments — AMZ92 already posted validation on #4764
+
+See submission/karan-after-identity.txt for option-specific paths after identity is recorded.
+
+## Blocked on Karan/Rowan
+
+1. Posting identity — record A/B/C in submission/identity-decision.txt (see submission/blocking-gap-race-plan.txt)
+2. GitHub PR #4768 description still stale on GitHub until update-github-pr-description.sh runs
+3. Push local branch if PR head lags (compare via release-preflight.sh; ignore obsolete 2fac6c4 notes)
+4. Do not merge or post competing claims without identity reconciliation (AMZ92 vs karanp0202 vs 85heisenberg85 superset)
 
 ## How maintainers can check locally
 

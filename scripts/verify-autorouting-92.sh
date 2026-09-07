@@ -90,6 +90,18 @@ if ! grep -q '\-\-check-live' "$ROOT/submission/update-github-pr-description.sh"
   exit 1
 fi
 echo "patch tooling: regenerate + pr-body check scripts present"
+if [ ! -f "$ROOT/submission/developer-handoff.txt" ]; then
+  echo "error: missing submission/developer-handoff.txt" >&2
+  exit 1
+fi
+for ref in check-live-pr-4768-body.sh "iteration 30/30" "Twelve-file submission packet"
+do
+  if ! grep -q "$ref" "$ROOT/submission/developer-handoff.txt"; then
+    echo "error: developer-handoff.txt missing final reference: $ref" >&2
+    exit 1
+  fi
+done
+echo "developer handoff: final state ok"
 echo ""
 
 echo "=== pr-4768-body.md structure ==="
@@ -235,4 +247,4 @@ fi
 echo "  - update GitHub PR #4768 description: sh submission/update-github-pr-description.sh"
 echo "  - run sh submission/release-preflight.sh before release (requires gh auth)"
 echo ""
-echo "developer lane: complete (iteration 20/20) — Karan release steps in submission/release-checklist.txt"
+echo "developer lane: complete (iteration 30/30) — final handoff in submission/developer-handoff.txt"
