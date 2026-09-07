@@ -44,6 +44,7 @@ NEEDS_ACTION=0
 echo "PR #4768 head: $PR_HEAD (local: $LOCAL_HEAD)"
 if [ "$PR_HEAD" != "$LOCAL_HEAD" ]; then
   echo "action: push local HEAD — $(sh "$ROOT/scripts/print-karan-push-command.sh")"
+  echo "note: remote branch may predate submission packet fixes — push code, then update PR description"
   NEEDS_ACTION=1
 fi
 

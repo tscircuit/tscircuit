@@ -97,12 +97,23 @@ if ! grep -q 'print-karan-push-command.sh' "$ROOT/submission/release-preflight.s
   echo "error: release-preflight.sh must reference print-karan-push-command.sh" >&2
   exit 1
 fi
+if ! grep -q 'print-karan-push-command.sh' "$ROOT/submission/release-checklist.txt"; then
+  echo "error: release-checklist.txt must reference print-karan-push-command.sh" >&2
+  exit 1
+fi
 echo "patch tooling: regenerate + pr-body check scripts present"
+EXPECTED_PUSH="git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti"
+ACTUAL_PUSH="$(sh "$ROOT/scripts/print-karan-push-command.sh")"
+if [ "$ACTUAL_PUSH" != "$EXPECTED_PUSH" ]; then
+  echo "error: print-karan-push-command.sh output changed unexpectedly" >&2
+  exit 1
+fi
+echo "push-command smoke check: ok"
 if [ ! -f "$ROOT/submission/developer-handoff.txt" ]; then
   echo "error: missing submission/developer-handoff.txt" >&2
   exit 1
 fi
-for ref in check-live-pr-4768-body.sh "iteration 30/30" "Twelve-file submission packet"
+for ref in check-live-pr-4768-body.sh print-karan-push-command.sh "iteration 30/30" "Twelve-file submission packet"
 do
   if ! grep -q "$ref" "$ROOT/submission/developer-handoff.txt"; then
     echo "error: developer-handoff.txt missing final reference: $ref" >&2
@@ -142,6 +153,7 @@ echo "pr-body stale-phrase check: ok"
 echo ""
 
 if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then
+  PR_HEAD_MISMATCH=0
   PR_JSON="$(curl -sS "https://api.github.com/repos/tscircuit/tscircuit/pulls/4768" 2>/dev/null || true)"
   if printf '%s' "$PR_JSON" | grep -qi 'rate limit'; then
     echo "warning: GitHub API rate limited — live PR status skipped"
@@ -154,8 +166,10 @@ if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then
     if [ -n "$PR_HEAD" ]; then
       echo "GitHub PR #4768 head: $PR_HEAD (local: $LOCAL_HEAD)"
       if [ "$PR_HEAD" != "$LOCAL_HEAD" ]; then
+        PR_HEAD_MISMATCH=1
         echo "warning: PR branch differs from local HEAD"
         echo "  action: $(sh "$ROOT/scripts/print-karan-push-command.sh")"
+        echo "  note: remote branch may predate submission packet fixes — push code, then update PR description"
       fi
     fi
     if [ -n "$PR_BODY" ]; then
@@ -254,6 +268,9 @@ if ! grep -qE '^\[x\]|^\[X\]' "$ROOT/submission/identity-decision.txt" 2>/dev/nu
   echo "  - race plan BLOCKING_GAP: see submission/blocking-gap-race-plan.txt (Rowan/Karan)"
 fi
 echo "  - update GitHub PR #4768 description: sh submission/update-github-pr-description.sh"
+if [ "${PR_HEAD_MISMATCH:-0}" -eq 1 ]; then
+  echo "  - push local HEAD: $(sh "$ROOT/scripts/print-karan-push-command.sh")"
+fi
 echo "  - run sh submission/release-preflight.sh before release (requires gh auth)"
 echo ""
 echo "developer lane: complete (iteration 30/30) — final handoff in submission/developer-handoff.txt"
