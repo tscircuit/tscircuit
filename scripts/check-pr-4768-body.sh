@@ -38,6 +38,7 @@ for ref in \
   verify-autorouting-92.sh \
   check-pr-4768-body.sh \
   print-karan-push-command.sh \
+  print-karan-next-steps.sh \
   check-live-pr-4768-body.sh \
   developer-handoff.txt \
   identity-decision.txt \

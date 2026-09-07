@@ -1,8 +1,17 @@
 #!/bin/sh
 # Print Karan's remaining release steps: local packet ok + optional live gh checks.
+# Optional: --local-only skips gh (use when the public API is rate limited).
 set -eu
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+LOCAL_ONLY=0
+NEEDS_ACTION=0
+
+case "${1:-}" in
+  --local-only)
+    LOCAL_ONLY=1
+    ;;
+esac
 
 echo "=== Karan quick start ==="
 sed -n '/^## Karan quick start/,/^## Blocked on Karan/p' "$ROOT/submission/developer-handoff.txt" | sed '$d'
@@ -10,6 +19,12 @@ sed -n '/^## Karan quick start/,/^## Blocked on Karan/p' "$ROOT/submission/devel
 echo ""
 echo "=== local PR body (submission/pr-4768-body.md) ==="
 sh "$ROOT/scripts/check-pr-4768-body.sh"
+
+if [ "$LOCAL_ONLY" -eq 1 ]; then
+  echo ""
+  echo "local-only: skipping live GitHub checks — run without --local-only with gh auth"
+  exit 0
+fi
 
 echo ""
 echo "=== live GitHub PR #4768 (requires gh auth) ==="
@@ -26,9 +41,11 @@ if [ -z "$PR_HEAD" ]; then
 fi
 
 echo "PR head: $PR_HEAD (local: $LOCAL_HEAD)"
+echo "note: ignore obsolete coordination notes citing 2fac6c4 — compare live head above"
 if [ "$PR_HEAD" != "$LOCAL_HEAD" ]; then
   echo "action: $(sh "$ROOT/scripts/print-karan-push-command.sh")"
   echo "note: remote branch may predate submission packet fixes"
+  NEEDS_ACTION=1
 fi
 
 if sh "$ROOT/scripts/check-live-pr-4768-body.sh"; then
@@ -36,6 +53,7 @@ if sh "$ROOT/scripts/check-live-pr-4768-body.sh"; then
 else
   echo "action: sh submission/update-github-pr-description.sh"
   echo "note: git push updates branch code only, not the PR description text"
+  NEEDS_ACTION=1
 fi
 
 echo ""
@@ -45,7 +63,14 @@ if grep -qE '^\[x\]|^\[X\]' "$ROOT/submission/identity-decision.txt" 2>/dev/null
 else
   echo "action: complete submission/identity-decision.txt (options A/B/C)"
   echo "see submission/blocking-gap-race-plan.txt"
+  NEEDS_ACTION=1
 fi
 
 echo ""
-echo "when all above pass: sh submission/release-preflight.sh"
+if [ "$NEEDS_ACTION" -eq 0 ]; then
+  echo "next: sh submission/release-preflight.sh"
+  exit 0
+fi
+
+echo "release not ready — resolve actions above, then run sh submission/release-preflight.sh"
+exit 1

@@ -109,6 +109,10 @@ if ! grep -q 'print-karan-next-steps.sh' "$ROOT/submission/release-checklist.txt
   echo "error: release-checklist.txt must reference print-karan-next-steps.sh" >&2
   exit 1
 fi
+if ! grep -q '\-\-local-only' "$ROOT/submission/print-karan-next-steps.sh"; then
+  echo "error: print-karan-next-steps.sh must support --local-only" >&2
+  exit 1
+fi
 echo "patch tooling: regenerate + pr-body check scripts present"
 EXPECTED_PUSH="git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti"
 ACTUAL_PUSH="$(sh "$ROOT/scripts/print-karan-push-command.sh")"
@@ -121,7 +125,7 @@ if [ ! -f "$ROOT/submission/developer-handoff.txt" ]; then
   echo "error: missing submission/developer-handoff.txt" >&2
   exit 1
 fi
-for ref in check-live-pr-4768-body.sh print-karan-push-command.sh "iteration 30/30" "Twelve-file submission packet"
+for ref in check-live-pr-4768-body.sh print-karan-push-command.sh print-karan-next-steps.sh "iteration 30/30" "Twelve-file submission packet"
 do
   if ! grep -q "$ref" "$ROOT/submission/developer-handoff.txt"; then
     echo "error: developer-handoff.txt missing final reference: $ref" >&2
@@ -129,6 +133,8 @@ do
   fi
 done
 echo "developer handoff: final state ok"
+sh "$ROOT/submission/print-karan-next-steps.sh" --local-only >/dev/null
+echo "print-karan-next-steps local smoke: ok"
 echo ""
 
 echo "=== pr-4768-body.md structure ==="
