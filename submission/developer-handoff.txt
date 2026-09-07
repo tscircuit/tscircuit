@@ -1,0 +1,31 @@
+Developer handoff — iteration 19 packet state.
+
+## Complete in this branch (developer lane)
+
+- Algorithm fix at autorouting commit 2a3eb3b: removes parent obstacleHit forward-direction rejection in MultilayerIjump.getNeighbors
+- Plain patch at submission/autorouting-92-candidate.patch (sync-checked against 02dcdb6..2a3eb3b)
+- Three regression tests plus debug SVG snapshot (forward-after-obstacle.test.ts)
+- npm run test runs scripts/verify-autorouting-92.sh (patch apply, patch sync, regression isolation, full autorouting suite)
+- Submission docs: issue reply draft, thread context, upstream scope, PR body text, identity decision template
+- Release tooling for Karan: release-preflight.sh, update-github-pr-description.sh, release-checklist quick start
+
+## Blocked on Karan/Rowan (cannot complete in developer session)
+
+1. Update GitHub PR #4768 description from submission/pr-4768-body.md (still iteration-7 text on GitHub)
+2. Complete submission/identity-decision.txt — choose A/B/C for AMZ92 vs karanp0202 vs 85heisenberg85 superset
+3. Run submission/release-preflight.sh with gh auth; push if head lags local
+4. Do not post duplicate issue comments — AMZ92 already posted validation on #4764
+
+## How maintainers can check locally
+
+Clone tscircuit/autorouting at 02dcdb6 beside this repo, then:
+
+  npm run test
+
+## Patch maintenance
+
+If the autorouting fix commit changes, regenerate the packet patch:
+
+  sh scripts/regenerate-autorouting-patch.sh
+
+Then re-run npm run test.

@@ -13,7 +13,8 @@ Submission packet for archived autorouting issue #92. The algorithm fix is a sma
 - `submission/update-github-pr-description.sh` — one-command PR description update for release (Karan; supports --dry-run)
 - `submission/release-preflight.sh` — local checks plus live GitHub PR status via gh (Karan; exits 1 if not ready)
 - `submission/identity-decision.txt` — Rowan/Karan record for posting-identity option A/B/C (blocking)
-- `scripts/verify-autorouting-92.sh` — patch apply check, regression isolation, autorouting suite (session only)
+- `submission/developer-handoff.txt` — developer lane complete vs Karan blockers
+- `scripts/verify-autorouting-92.sh` — patch apply/sync check, regression isolation, autorouting suite (session only)
 
 ## How to check
 

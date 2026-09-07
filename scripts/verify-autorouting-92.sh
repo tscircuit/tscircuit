@@ -46,14 +46,15 @@ for f in \
   submission/pr-4768-body.md \
   submission/update-github-pr-description.sh \
   submission/release-preflight.sh \
-  submission/identity-decision.txt
+  submission/identity-decision.txt \
+  submission/developer-handoff.txt
 do
   if [ ! -f "$ROOT/$f" ]; then
     echo "error: missing $f" >&2
     exit 1
   fi
 done
-echo "submission packet: 9 required files present"
+echo "submission packet: 10 required files present"
 echo ""
 
 echo "=== pr-4768-body.md structure ==="
@@ -140,6 +141,7 @@ git diff 02dcdb6..2a3eb3b -- \
   > "$FRESH_PATCH"
 if ! diff -q "$FRESH_PATCH" "$PATCH" >/dev/null 2>&1; then
   echo "error: submission patch differs from autorouting 02dcdb6..2a3eb3b" >&2
+  echo "hint: run sh scripts/regenerate-autorouting-patch.sh" >&2
   rm -f "$FRESH_PATCH"
   exit 1
 fi
