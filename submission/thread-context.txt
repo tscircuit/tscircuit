@@ -37,7 +37,7 @@ seveibar: simplified reproduction with debug snapshot test qualifies (see autoro
 - GitHub PR description: still stale on GitHub — Karan must run update-github-pr-description.sh (pr-4768-body.md now lists full 12-file packet)
 - Posting identity: BLOCKING — Rowan/Karan must record A/B/C in submission/identity-decision.txt
 - npm run test: runs scripts/verify-autorouting-92.sh (includes patch sync vs autorouting 02dcdb6..2a3eb3b)
-- Obsolete refs: ignore any mention of PR remote `2fac6c4`; use release-checklist quick start + preflight
+- Obsolete refs: ignore any mention of PR remote `2fac6c4`; use `sh submission/print-karan-next-steps.sh` or release-checklist quick start + preflight
 - Handoff: see submission/developer-handoff.txt for complete vs blocked items
 - Race plan BLOCKING_GAP: submission/blocking-gap-race-plan.txt (Rowan/Karan; developer cannot decide)
 - Issue thread: AMZ92 validation posted; do not duplicate — see release-checklist section 4

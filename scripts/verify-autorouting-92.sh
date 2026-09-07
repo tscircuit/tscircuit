@@ -117,6 +117,18 @@ if ! grep -q '\-\-local-only' "$ROOT/submission/release-checklist.txt"; then
   echo "error: release-checklist.txt must document print-karan-next-steps --local-only" >&2
   exit 1
 fi
+if ! grep -q 'print-karan-next-steps.sh' "$ROOT/submission/karan-after-identity.txt"; then
+  echo "error: karan-after-identity.txt must reference print-karan-next-steps.sh" >&2
+  exit 1
+fi
+if ! grep -q 'print-karan-next-steps.sh' "$ROOT/submission/blocking-gap-race-plan.txt"; then
+  echo "error: blocking-gap-race-plan.txt must reference print-karan-next-steps.sh" >&2
+  exit 1
+fi
+if ! grep -q 'print-karan-next-steps.sh' "$ROOT/submission/release-preflight.sh"; then
+  echo "error: release-preflight.sh must suggest print-karan-next-steps.sh on failure" >&2
+  exit 1
+fi
 echo "patch tooling: regenerate + pr-body check scripts present"
 EXPECTED_PUSH="git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti"
 ACTUAL_PUSH="$(sh "$ROOT/scripts/print-karan-push-command.sh")"
