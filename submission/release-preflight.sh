@@ -43,7 +43,7 @@ NEEDS_ACTION=0
 
 echo "PR #4768 head: $PR_HEAD (local: $LOCAL_HEAD)"
 if [ "$PR_HEAD" != "$LOCAL_HEAD" ]; then
-  echo "action: push local HEAD before release (see submission/release-checklist.txt section 1)"
+  echo "action: push local HEAD — $(sh "$ROOT/scripts/print-karan-push-command.sh")"
   NEEDS_ACTION=1
 fi
 

@@ -8,9 +8,10 @@ Complete as of iteration 30/30. Algorithm fix frozen at autorouting 2a3eb3b. See
 
 1. From this repo: `npm run test`
 2. Complete submission/identity-decision.txt (check one option A/B/C)
-3. `sh submission/update-github-pr-description.sh` (or paste submission/pr-4768-body.md on GitHub)
-4. If preflight will report head mismatch: `git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti`
-5. `sh submission/release-preflight.sh` (requires gh auth as karanp0202; run after description update)
+3. `sh submission/update-github-pr-description.sh --check-live`   # optional: confirm live body is stale
+4. `sh submission/update-github-pr-description.sh` (or paste submission/pr-4768-body.md on GitHub)
+5. If preflight will report head mismatch: `sh scripts/print-karan-push-command.sh` then run the printed command
+6. `sh submission/release-preflight.sh` (requires gh auth as karanp0202; run after description update)
 
 Note: older coordination notes citing PR remote `2fac6c4` are obsolete — always compare `git rev-parse --short HEAD` to live PR #4768 via preflight. See submission/developer-handoff.txt for full packet state.
 
@@ -19,7 +20,7 @@ Note: older coordination notes citing PR remote `2fac6c4` are obsolete — alway
 Compare local HEAD to PR #4768 branch on GitHub (run `git rev-parse --short HEAD` locally).
 
 If they differ:
-  git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti
+  sh scripts/print-karan-push-command.sh
 
 **Still needed on GitHub:** PR #4768 description still shows iteration-7 text (no scope/posting-coordination sections). Branch code should match local HEAD when last pushed.
 

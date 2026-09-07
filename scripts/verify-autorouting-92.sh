@@ -69,6 +69,10 @@ if [ ! -x "$ROOT/scripts/check-live-pr-4768-body.sh" ]; then
   echo "error: missing scripts/check-live-pr-4768-body.sh" >&2
   exit 1
 fi
+if [ ! -x "$ROOT/scripts/print-karan-push-command.sh" ]; then
+  echo "error: missing scripts/print-karan-push-command.sh" >&2
+  exit 1
+fi
 if ! grep -q 'check-live-pr-4768-body.sh' "$ROOT/submission/release-preflight.sh"; then
   echo "error: release-preflight.sh must use check-live-pr-4768-body.sh" >&2
   exit 1
@@ -87,6 +91,10 @@ if ! grep -q '\-\-github-only' "$ROOT/submission/release-preflight.sh"; then
 fi
 if ! grep -q '\-\-check-live' "$ROOT/submission/update-github-pr-description.sh"; then
   echo "error: update-github-pr-description.sh must support --check-live" >&2
+  exit 1
+fi
+if ! grep -q 'print-karan-push-command.sh' "$ROOT/submission/release-preflight.sh"; then
+  echo "error: release-preflight.sh must reference print-karan-push-command.sh" >&2
   exit 1
 fi
 echo "patch tooling: regenerate + pr-body check scripts present"
@@ -146,7 +154,8 @@ if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then
     if [ -n "$PR_HEAD" ]; then
       echo "GitHub PR #4768 head: $PR_HEAD (local: $LOCAL_HEAD)"
       if [ "$PR_HEAD" != "$LOCAL_HEAD" ]; then
-        echo "warning: PR branch differs from local HEAD — push before release (see release-checklist.txt)"
+        echo "warning: PR branch differs from local HEAD"
+        echo "  action: $(sh "$ROOT/scripts/print-karan-push-command.sh")"
       fi
     fi
     if [ -n "$PR_BODY" ]; then

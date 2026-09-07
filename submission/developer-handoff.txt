@@ -21,7 +21,7 @@ Honest scope: fixes the parent-obstacle forward dead-end regression only. Does n
 2. Complete submission/identity-decision.txt (option A/B/C — Rowan/Karan decision)
 3. sh submission/update-github-pr-description.sh --check-live   # optional: confirm live body is stale
 4. sh submission/update-github-pr-description.sh
-5. git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti   # if PR head lags local
+5. git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti   # if PR head lags local (or run sh scripts/print-karan-push-command.sh)
 6. sh submission/release-preflight.sh   # or --github-only after step 1
 7. Do not post duplicate issue comments — AMZ92 already posted validation on #4764
 
