@@ -9,6 +9,8 @@ Submission packet for archived autorouting issue #92. The algorithm fix is a sma
 - `submission/thread-context.txt` — Sep 2026 issue-thread summary (AMZ92 validation, superset contributor)
 - `submission/release-checklist.txt` — push/identity/compose steps for release
 - `submission/upstream-scope.txt` — fork PR files vs session-only tooling
+- `submission/pr-4768-body.md` — updated PR description text (paste or run `submission/update-github-pr-description.sh`)
+- `submission/update-github-pr-description.sh` — one-command PR description update for release (Karan)
 - `scripts/verify-autorouting-92.sh` — patch apply check, regression isolation, autorouting suite (session only)
 
 ## How to check

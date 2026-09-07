@@ -7,7 +7,12 @@ Compare local HEAD to PR #4768 branch on GitHub (run `git rev-parse --short HEAD
 If they differ:
   git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti
 
-**Still needed on GitHub:** PR #4768 description still shows iteration-7 text (claims test script always runs verify tooling). On GitHub, click Edit on PR #4768 and replace the description with the contents of submission/pr-4768-body.md.
+**Still needed on GitHub:** PR #4768 description still shows iteration-7 text (claims test script always runs verify tooling). Branch code should already match local HEAD.
+
+Option A — from repo root (requires gh auth as karanp0202):
+  sh submission/update-github-pr-description.sh
+
+Option B — on GitHub, click Edit on PR #4768 and paste submission/pr-4768-body.md.
 
 ## 2. Posting identity — BLOCKING, decide before merge or issue comment
 
