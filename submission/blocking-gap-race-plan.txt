@@ -24,6 +24,8 @@ Complete. Algorithm fix frozen at autorouting 2a3eb3b. Packet passes npm run tes
 
 See submission/release-checklist.txt quick start: preflight, PR description update, push if needed.
 
+After identity is recorded, see submission/karan-after-identity.txt for option-specific release paths (A/B/C).
+
 ## Stale coordination note
 
 Any reference to PR remote `2fac6c4` is obsolete. Compare local HEAD to live PR #4768 via submission/release-preflight.sh (gh auth required).

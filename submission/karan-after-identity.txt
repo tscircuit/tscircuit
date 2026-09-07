@@ -1,0 +1,29 @@
+After Rowan/Karan records one option in submission/identity-decision.txt, follow the matching path below.
+
+## Option A — AMZ92 and karanp0202 are the same contributor
+
+1. npm run test
+2. sh submission/release-preflight.sh (gh auth as karanp0202)
+3. sh submission/update-github-pr-description.sh
+4. Push if preflight reports head mismatch
+5. Do not post a duplicate issue comment on #4764 — AMZ92 already posted validation
+
+## Option B — different contributors
+
+1. Do not merge PR #4768 as a duplicate narrow patch
+2. Close or coordinate with AMZ92 before any further posting
+3. Do not post submission/issue-4764-reply.txt without coordination
+
+## Option C — compose with superset patch
+
+1. Coordinate with 85heisenberg85/autorouting@fix-issue92-wild-jumps before merge
+2. Confirm whether this narrow packet stays in PR #4768 or moves to a composed fork PR
+3. Run npm run test after any composed patch change; regenerate submission patch if needed
+
+## All options — common technical check
+
+Clone tscircuit/autorouting at 02dcdb6 beside this repo, then from this repo:
+
+  npm run test
+
+Algorithm fix remains at autorouting 2a3eb3b unless a composed change replaces it.

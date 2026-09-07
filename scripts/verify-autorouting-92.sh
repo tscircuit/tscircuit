@@ -48,14 +48,15 @@ for f in \
   submission/release-preflight.sh \
   submission/identity-decision.txt \
   submission/developer-handoff.txt \
-  submission/blocking-gap-race-plan.txt
+  submission/blocking-gap-race-plan.txt \
+  submission/karan-after-identity.txt
 do
   if [ ! -f "$ROOT/$f" ]; then
     echo "error: missing $f" >&2
     exit 1
   fi
 done
-echo "submission packet: 11 required files present"
+echo "submission packet: 12 required files present"
 if [ ! -x "$ROOT/scripts/regenerate-autorouting-patch.sh" ]; then
   echo "error: missing scripts/regenerate-autorouting-patch.sh" >&2
   exit 1

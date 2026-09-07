@@ -4,6 +4,7 @@
 set -eu
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+IDENTITY="$ROOT/submission/identity-decision.txt"
 
 echo "=== local packet checks ==="
 sh "$ROOT/scripts/verify-autorouting-92.sh"
@@ -43,10 +44,20 @@ fi
 
 echo ""
 echo "=== posting identity (blocking) ==="
-if grep -qE '^\[x\]|^\[X\]' "$ROOT/submission/identity-decision.txt" 2>/dev/null; then
+if grep -qE '^\[x\]|^\[X\]' "$IDENTITY" 2>/dev/null; then
   echo "identity-decision.txt: option recorded"
+  if grep -qiE '^\[x\].*A\)' "$IDENTITY"; then
+    echo "next (option A): follow submission/karan-after-identity.txt — proceed with PR #4768 quick start"
+  elif grep -qiE '^\[x\].*B\)' "$IDENTITY"; then
+    echo "next (option B): follow submission/karan-after-identity.txt — close or coordinate; do not merge duplicate"
+  elif grep -qiE '^\[x\].*C\)' "$IDENTITY"; then
+    echo "next (option C): follow submission/karan-after-identity.txt — compose with superset branch first"
+  else
+    echo "next: see submission/karan-after-identity.txt for option-specific release path"
+  fi
 else
   echo "action: complete submission/identity-decision.txt (options A/B/C)"
+  echo "see submission/blocking-gap-race-plan.txt (Rowan/Karan decision required)"
   NEEDS_ACTION=1
 fi
 
@@ -57,4 +68,4 @@ if [ "$NEEDS_ACTION" -eq 1 ]; then
 fi
 
 echo ""
-echo "preflight: GitHub PR checks passed; identity recorded — ready for Karan release steps"
+echo "preflight: GitHub PR checks passed; identity recorded — see submission/karan-after-identity.txt"
