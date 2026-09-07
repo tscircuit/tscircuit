@@ -47,6 +47,8 @@ Rowan/Karan must confirm one of:
 
 Record the decision in submission/identity-decision.txt before merge or issue comment.
 
+If identity is still unsettled, see submission/blocking-gap-race-plan.txt (BLOCKING_GAP — Rowan/Karan must decide; developer cannot invent policy).
+
 See submission/thread-context.txt for Sep 2026 issue-thread summary.
 
 Do not invent policy. Do not post competing claims without reconciliation.

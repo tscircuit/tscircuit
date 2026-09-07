@@ -2,7 +2,7 @@ Developer handoff — final state (iteration 20/20).
 
 ## Developer lane: COMPLETE
 
-No further developer iterations planned on this packet unless Karan sends specific feedback.
+No further developer iterations planned on this packet unless Karan sends specific maintainer feedback. Iterations 21+ are release-loop coordination only (no algorithm changes).
 
 Frozen deliverables:
 - Algorithm fix at autorouting commit 2a3eb3b: removes parent obstacleHit forward-direction rejection in MultilayerIjump.getNeighbors

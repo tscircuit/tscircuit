@@ -47,14 +47,15 @@ for f in \
   submission/update-github-pr-description.sh \
   submission/release-preflight.sh \
   submission/identity-decision.txt \
-  submission/developer-handoff.txt
+  submission/developer-handoff.txt \
+  submission/blocking-gap-race-plan.txt
 do
   if [ ! -f "$ROOT/$f" ]; then
     echo "error: missing $f" >&2
     exit 1
   fi
 done
-echo "submission packet: 10 required files present"
+echo "submission packet: 11 required files present"
 if [ ! -x "$ROOT/scripts/regenerate-autorouting-patch.sh" ]; then
   echo "error: missing scripts/regenerate-autorouting-patch.sh" >&2
   exit 1
@@ -195,6 +196,7 @@ echo ""
 echo "=== release blockers (Karan/Rowan) ==="
 if ! grep -qE '^\[x\]|^\[X\]' "$ROOT/submission/identity-decision.txt" 2>/dev/null; then
   echo "  - complete submission/identity-decision.txt (options A/B/C)"
+  echo "  - race plan BLOCKING_GAP: see submission/blocking-gap-race-plan.txt (Rowan/Karan)"
 fi
 echo "  - update GitHub PR #4768 description: sh submission/update-github-pr-description.sh"
 echo "  - run sh submission/release-preflight.sh before release (requires gh auth)"

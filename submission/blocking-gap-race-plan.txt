@@ -1,0 +1,29 @@
+BLOCKING_GAP — posting identity (race plan unknown)
+
+Developer cannot resolve this in the developer lane. Rowan/Karan must decide before merge or issue comment on #4764.
+
+## Facts (from issue thread, Sep 2026)
+
+- AMZ92 opened issue #4764 and posted narrow-patch validation
+- 85heisenberg85 posted a complementary superset patch and explicitly deferred priority to AMZ92
+- karanp0202 opened PR #4768 carrying this submission packet
+
+## Options (record one in submission/identity-decision.txt)
+
+A) AMZ92 and karanp0202 are the same contributor — proceed with PR #4768 as AMZ92's packet
+
+B) Different contributors — close or coordinate; do not merge duplicate narrow patch
+
+C) Compose with 85heisenberg85/autorouting@fix-issue92-wild-jumps (superset includes parent-obstacleHit removal)
+
+## Developer lane status
+
+Complete. Algorithm fix frozen at autorouting 2a3eb3b. Packet passes npm run test locally. No further code changes unless Karan assigns specific maintainer feedback.
+
+## Karan release steps (after identity decided)
+
+See submission/release-checklist.txt quick start: preflight, PR description update, push if needed.
+
+## Stale coordination note
+
+Any reference to PR remote `2fac6c4` is obsolete. Compare local HEAD to live PR #4768 via submission/release-preflight.sh (gh auth required).

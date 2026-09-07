@@ -15,7 +15,7 @@ Do NOT include from this tscircuit branch in any upstream submission:
 - .agent-nio/*
 
 Release blockers (need Rowan/Karan before posting):
-- Reconcile posting identity: AMZ92 vs karanp0202 vs 85heisenberg85 — see submission/release-checklist.txt
+- Reconcile posting identity: AMZ92 vs karanp0202 vs 85heisenberg85 — see submission/release-checklist.txt and submission/blocking-gap-race-plan.txt
 - Update PR #4768 GitHub description from submission/pr-4768-body.md (branch synced; body text stale — run submission/release-preflight.sh)
 - Record posting identity in submission/identity-decision.txt before merge or issue comment
 - Push autorouting branch fix/forward-after-obstacle @ 2a3eb3b to a fork if maintainers direct
