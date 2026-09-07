@@ -1,19 +1,15 @@
 Release checklist for Karan/Rowan (developer cannot push per ticket policy).
 
-## 1. Push updated PR branch
+## 1. PR branch status
 
-Run from tscircuit repo root to see current local head:
-  git rev-parse --short HEAD
+Local HEAD and PR #4768 branch are synced at f619fcd (iteration 11 packet: plain patch, thread-context, release docs).
 
-PR #4768 remote head: 2fac6c4 (stale — missing release-checklist, thread context, plain patch).
-
-After confirming posting identity (section 2):
-
+If local HEAD has advanced since last push:
   git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti
 
-Update PR #4768 body from submission/pr-4768-body.md.
+**Still needed on GitHub:** PR #4768 description still shows iteration-7 text (verify-script hijack, no thread-context). Replace with submission/pr-4768-body.md.
 
-## 2. Posting identity — BLOCKING, decide before push
+## 2. Posting identity — BLOCKING, decide before merge or issue comment
 
 | Account | Role |
 | --- | --- |
@@ -22,8 +18,8 @@ Update PR #4768 body from submission/pr-4768-body.md.
 | 85heisenberg85 | Posted complementary superset patch; explicitly deferred bounty priority to AMZ92 |
 
 Rowan/Karan must confirm one of:
-  A) AMZ92 and karanp0202 are the same contributor → push PR as packet for AMZ92's claim
-  B) Different contributors → do not push duplicate narrow patch; coordinate with AMZ92 or stand down
+  A) AMZ92 and karanp0202 are the same contributor → proceed with PR as AMZ92's packet
+  B) Different contributors → close or coordinate; do not merge duplicate narrow patch
   C) Compose with 85heisenberg85/autorouting@fix-issue92-wild-jumps (superset includes our exact parent-obstacleHit removal)
 
 See submission/thread-context.txt for Sep 2026 issue-thread summary.
@@ -35,13 +31,13 @@ Do not invent policy. Do not post competing claims without reconciliation.
 If maintainers direct a fork PR for the archived repo:
   Branch: fix/forward-after-obstacle @ 2a3eb3b
   Files: see submission/upstream-scope.txt (3 files + patch at 02dcdb6)
-  Patch: plain unified diff (no mailbox headers) at submission/autorouting-92-candidate.patch
+  Patch: plain unified diff at submission/autorouting-92-candidate.patch
   Do NOT include: package.json test fallback, verify script, submission/*, .agent-nio/*
 
 ## 4. Issue comment
 
-Post submission/issue-4764-reply.txt on tscircuit#4764 only after identity confirmed.
-AMZ92 already posted validation evidence on the thread — do not duplicate; reference or amend PR instead.
+AMZ92 already posted validation evidence on #4764 — do not duplicate.
+Post submission/issue-4764-reply.txt only if identity confirmed and additional maintainer questions remain unanswered.
 
 ## 5. Algora workflow
 

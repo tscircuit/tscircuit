@@ -4,10 +4,12 @@ Submission packet for archived autorouting issue #92. The algorithm fix is a sma
 
 ## Changes in this branch
 
-- `submission/autorouting-92-candidate.patch` — apply at autorouting `02dcdb6` (3 files: MultilayerIjump.ts, forward-after-obstacle.test.ts, SVG snapshot)
-- `submission/issue-4764-reply.txt` — maintainer-facing summary, scope disclaimer, and open questions
+- `submission/autorouting-92-candidate.patch` — plain unified diff; apply at autorouting `02dcdb6`
+- `submission/issue-4764-reply.txt` — maintainer summary, scope disclaimer, open questions
+- `submission/thread-context.txt` — Sep 2026 issue-thread summary (AMZ92 validation, superset contributor)
+- `submission/release-checklist.txt` — push/identity/compose steps for release
 - `submission/upstream-scope.txt` — fork PR files vs session-only tooling
-- `scripts/verify-autorouting-92.sh` — checks patch applies, confirms regression isolation, runs targeted + full autorouting suite against sibling checkout
+- `scripts/verify-autorouting-92.sh` — patch apply check, regression isolation, autorouting suite (session only)
 
 ## How to check
 
