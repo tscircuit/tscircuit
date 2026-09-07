@@ -44,14 +44,15 @@ for f in \
   submission/release-checklist.txt \
   submission/upstream-scope.txt \
   submission/pr-4768-body.md \
-  submission/update-github-pr-description.sh
+  submission/update-github-pr-description.sh \
+  submission/release-preflight.sh
 do
   if [ ! -f "$ROOT/$f" ]; then
     echo "error: missing $f" >&2
     exit 1
   fi
 done
-echo "submission packet: 7 required files present"
+echo "submission packet: 8 required files present"
 echo ""
 
 echo "=== pr-4768-body.md structure ==="
@@ -76,20 +77,26 @@ echo "pr-4768-body.md: required sections present"
 echo ""
 
 if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then
-  PR_JSON="$(curl -fsS "https://api.github.com/repos/tscircuit/tscircuit/pulls/4768" 2>/dev/null || true)"
-  PR_BODY="$(printf '%s' "$PR_JSON" | python3 -c "import sys,json; print(json.load(sys.stdin).get('body') or '')" 2>/dev/null || true)"
-  PR_HEAD="$(printf '%s' "$PR_JSON" | python3 -c "import sys,json; print(json.load(sys.stdin).get('head',{}).get('sha','')[:7])" 2>/dev/null || true)"
-  LOCAL_HEAD="$(git rev-parse --short HEAD)"
-  if [ -n "$PR_HEAD" ]; then
-    echo "GitHub PR #4768 head: $PR_HEAD (local: $LOCAL_HEAD)"
-    if [ "$PR_HEAD" != "$LOCAL_HEAD" ]; then
-      echo "warning: PR branch differs from local HEAD — push before release (see release-checklist.txt)"
+  PR_JSON="$(curl -sS "https://api.github.com/repos/tscircuit/tscircuit/pulls/4768" 2>/dev/null || true)"
+  if printf '%s' "$PR_JSON" | grep -qi 'rate limit'; then
+    echo "warning: GitHub API rate limited — live PR status skipped"
+    echo "  local HEAD: $(git rev-parse --short HEAD)"
+    echo "  Karan: run submission/release-preflight.sh (with gh auth) before release"
+  else
+    PR_BODY="$(printf '%s' "$PR_JSON" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('body') or '')" 2>/dev/null || true)"
+    PR_HEAD="$(printf '%s' "$PR_JSON" | python3 -c "import sys,json; print(json.load(sys.stdin).get('head',{}).get('sha','')[:7])" 2>/dev/null || true)"
+    LOCAL_HEAD="$(git rev-parse --short HEAD)"
+    if [ -n "$PR_HEAD" ]; then
+      echo "GitHub PR #4768 head: $PR_HEAD (local: $LOCAL_HEAD)"
+      if [ "$PR_HEAD" != "$LOCAL_HEAD" ]; then
+        echo "warning: PR branch differs from local HEAD — push before release (see release-checklist.txt)"
+      fi
     fi
-  fi
-  if [ -n "$PR_BODY" ] && ! printf '%s' "$PR_BODY" | grep -q 'Posting coordination'; then
-    echo "warning: GitHub PR #4768 description still stale — run submission/update-github-pr-description.sh"
-  elif [ -n "$PR_BODY" ]; then
-    echo "GitHub PR #4768 description: looks updated (has posting-coordination section)"
+    if [ -n "$PR_BODY" ] && ! printf '%s' "$PR_BODY" | grep -q 'Posting coordination'; then
+      echo "warning: GitHub PR #4768 description still stale — run submission/update-github-pr-description.sh"
+    elif [ -n "$PR_BODY" ]; then
+      echo "GitHub PR #4768 description: looks updated (has posting-coordination section)"
+    fi
   fi
   echo ""
 fi

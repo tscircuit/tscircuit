@@ -11,6 +11,23 @@ if [ ! -f "$BODY" ]; then
   exit 1
 fi
 
+for heading in "## Summary" "## Posting coordination" "Fixes #4764"; do
+  if ! grep -q "$heading" "$BODY"; then
+    echo "error: $BODY missing section: $heading" >&2
+    exit 1
+  fi
+done
+
+case "${1:-}" in
+  --dry-run|-n)
+    echo "dry-run: would update PR #4768 with $BODY ($(wc -c <"$BODY") bytes)"
+    echo "--- preview ---"
+    sed -n '1,20p' "$BODY"
+    echo "... (see full file in repo)"
+    exit 0
+    ;;
+esac
+
 if ! command -v gh >/dev/null 2>&1; then
   echo "error: gh CLI not found — paste $BODY into PR #4768 manually" >&2
   exit 1
