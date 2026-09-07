@@ -20,13 +20,13 @@ for heading in \
   "Fixes #4764"
 do
   if ! grep -q "$heading" "$BODY"; then
-    echo "error: pr-4768-body.md missing section: $heading" >&2
+    echo "error: PR body missing section: $heading" >&2
     exit 1
   fi
 done
 
 if grep -q 'script runs the verify script' "$BODY"; then
-  echo "error: pr-4768-body.md contains stale iteration-7 phrase" >&2
+  echo "error: PR body contains stale iteration-7 phrase" >&2
   exit 1
 fi
 

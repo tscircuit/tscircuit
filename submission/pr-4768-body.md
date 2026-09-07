@@ -28,7 +28,7 @@ Clone `tscircuit/autorouting` at `02dcdb6` beside this repo (or set `AUTOROUTING
 npm run test
 ```
 
-This runs `scripts/verify-autorouting-92.sh` (patch apply, regression isolation, autorouting suite).
+This runs `scripts/verify-autorouting-92.sh` (patch apply, regression isolation, autorouting suite). When the GitHub API is reachable, it also warns if the live PR #4768 description fails the same body check used by `submission/release-preflight.sh`.
 
 ## Scope note
 

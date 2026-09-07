@@ -65,6 +65,10 @@ if [ ! -x "$ROOT/scripts/check-pr-4768-body.sh" ]; then
   echo "error: missing scripts/check-pr-4768-body.sh" >&2
   exit 1
 fi
+if ! grep -q 'check-pr-4768-body.sh' "$ROOT/submission/release-preflight.sh"; then
+  echo "error: release-preflight.sh must validate live PR body via check-pr-4768-body.sh" >&2
+  exit 1
+fi
 echo "patch tooling: regenerate + pr-body check scripts present"
 echo ""
 
@@ -97,10 +101,15 @@ if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then
         echo "warning: PR branch differs from local HEAD — push before release (see release-checklist.txt)"
       fi
     fi
-    if [ -n "$PR_BODY" ] && ! printf '%s' "$PR_BODY" | grep -q 'Posting coordination'; then
-      echo "warning: GitHub PR #4768 description still stale — run submission/update-github-pr-description.sh"
-    elif [ -n "$PR_BODY" ]; then
-      echo "GitHub PR #4768 description: looks updated (has posting-coordination section)"
+    if [ -n "$PR_BODY" ]; then
+      LIVE_BODY="$(mktemp)"
+      printf '%s' "$PR_BODY" > "$LIVE_BODY"
+      if sh "$ROOT/scripts/check-pr-4768-body.sh" "$LIVE_BODY" >/dev/null 2>&1; then
+        echo "GitHub PR #4768 description: matches local packet structure"
+      else
+        echo "warning: GitHub PR #4768 description stale or incomplete — run submission/update-github-pr-description.sh"
+      fi
+      rm -f "$LIVE_BODY"
     fi
   fi
   echo ""
