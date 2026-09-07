@@ -101,6 +101,14 @@ if ! grep -q 'print-karan-push-command.sh' "$ROOT/submission/release-checklist.t
   echo "error: release-checklist.txt must reference print-karan-push-command.sh" >&2
   exit 1
 fi
+if [ ! -x "$ROOT/submission/print-karan-next-steps.sh" ]; then
+  echo "error: missing submission/print-karan-next-steps.sh" >&2
+  exit 1
+fi
+if ! grep -q 'print-karan-next-steps.sh' "$ROOT/submission/release-checklist.txt"; then
+  echo "error: release-checklist.txt must reference print-karan-next-steps.sh" >&2
+  exit 1
+fi
 echo "patch tooling: regenerate + pr-body check scripts present"
 EXPECTED_PUSH="git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti"
 ACTUAL_PUSH="$(sh "$ROOT/scripts/print-karan-push-command.sh")"
@@ -155,11 +163,13 @@ echo ""
 if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then
   PR_HEAD_MISMATCH=0
   PR_BODY_STALE=0
+  PR_LIVE_STATUS_SKIPPED=0
   PR_JSON="$(curl -sS "https://api.github.com/repos/tscircuit/tscircuit/pulls/4768" 2>/dev/null || true)"
   if printf '%s' "$PR_JSON" | grep -qi 'rate limit'; then
+    PR_LIVE_STATUS_SKIPPED=1
     echo "warning: GitHub API rate limited — live PR status skipped"
     echo "  local HEAD: $(git rev-parse --short HEAD)"
-    echo "  Karan: run submission/release-preflight.sh (with gh auth) before release"
+    echo "  Karan: run sh submission/print-karan-next-steps.sh or release-preflight.sh (with gh auth)"
   else
     PR_BODY="$(printf '%s' "$PR_JSON" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('body') or '')" 2>/dev/null || true)"
     PR_HEAD="$(printf '%s' "$PR_JSON" | python3 -c "import sys,json; print(json.load(sys.stdin).get('head',{}).get('sha','')[:7])" 2>/dev/null || true)"
@@ -276,6 +286,9 @@ if [ "${PR_BODY_STALE:-0}" -eq 1 ]; then
 fi
 if [ "${PR_HEAD_MISMATCH:-0}" -eq 1 ]; then
   echo "  - push local HEAD: $(sh "$ROOT/scripts/print-karan-push-command.sh")"
+fi
+if [ "${PR_LIVE_STATUS_SKIPPED:-0}" -eq 1 ]; then
+  echo "  - live GitHub status skipped (API rate limited) — run sh submission/print-karan-next-steps.sh with gh auth"
 fi
 echo "  - run sh submission/release-preflight.sh before release (requires gh auth)"
 echo ""
