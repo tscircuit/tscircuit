@@ -14,6 +14,7 @@ const DO_NOT_SYNC_PACKAGE = [
   "@tscircuit/bga-fanout-solver",
   "@tscircuit/breakout-point-solver",
   "@tscircuit/implicit-copper-pour-solver",
+  "@tscircuit/via-stitch-solver",
   "@tscircuit/winding-breakout-point-solver",
   "@tscircuit/eecircuit-engine",
   "@types/*",
