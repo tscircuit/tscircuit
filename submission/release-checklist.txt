@@ -1,5 +1,15 @@
 Release checklist for Karan/Rowan (developer cannot push per ticket policy).
 
+## Quick start (Karan)
+
+1. From this repo: `npm run test`
+2. `sh submission/release-preflight.sh` (requires gh auth as karanp0202)
+3. `sh submission/update-github-pr-description.sh` (or paste submission/pr-4768-body.md on GitHub)
+4. Complete submission/identity-decision.txt (check one option A/B/C)
+5. If preflight reports head mismatch: `git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti`
+
+Note: older coordination notes citing PR remote `2fac6c4` are obsolete — always compare `git rev-parse --short HEAD` to live PR #4768 via preflight.
+
 ## 1. PR branch status
 
 Compare local HEAD to PR #4768 branch on GitHub (run `git rev-parse --short HEAD` locally).

@@ -78,6 +78,10 @@ if ! grep -q 'release-preflight.sh' "$ROOT/submission/pr-4768-body.md"; then
   echo "error: pr-4768-body.md missing release-preflight.sh reference" >&2
   exit 1
 fi
+if ! grep -qE '^\[ \] A\)' "$ROOT/submission/identity-decision.txt"; then
+  echo "error: identity-decision.txt missing option A template" >&2
+  exit 1
+fi
 echo "pr-4768-body.md: required sections present"
 echo ""
 
@@ -125,6 +129,22 @@ git archive 02dcdb6 | tar -x -C "$PATCH_CHECK_DIR"
 (cd "$PATCH_CHECK_DIR" && git apply --check "$PATCH")
 rm -rf "$PATCH_CHECK_DIR"
 echo "patch apply check: ok"
+echo ""
+
+echo "=== patch matches autorouting fix commit ==="
+FRESH_PATCH="$(mktemp)"
+git diff 02dcdb6..2a3eb3b -- \
+  algos/multi-layer-ijump/MultilayerIjump.ts \
+  algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts \
+  algos/multi-layer-ijump/tests/__snapshots__/forward-after-obstacle.snap.svg \
+  > "$FRESH_PATCH"
+if ! diff -q "$FRESH_PATCH" "$PATCH" >/dev/null 2>&1; then
+  echo "error: submission patch differs from autorouting 02dcdb6..2a3eb3b" >&2
+  rm -f "$FRESH_PATCH"
+  exit 1
+fi
+rm -f "$FRESH_PATCH"
+echo "patch sync: ok (matches autorouting 02dcdb6..2a3eb3b)"
 echo ""
 
 echo "=== deliverable summary ==="

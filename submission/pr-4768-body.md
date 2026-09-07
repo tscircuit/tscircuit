@@ -7,7 +7,7 @@ Submission packet for archived autorouting issue #92. The algorithm fix is a sma
 - `submission/autorouting-92-candidate.patch` — plain unified diff; apply at autorouting `02dcdb6`
 - `submission/issue-4764-reply.txt` — maintainer summary, scope disclaimer, open questions
 - `submission/thread-context.txt` — Sep 2026 issue-thread summary (AMZ92 validation, superset contributor)
-- `submission/release-checklist.txt` — push/identity/compose steps for release
+- `submission/release-checklist.txt` — push/identity/compose steps for release (includes Karan quick start)
 - `submission/upstream-scope.txt` — fork PR files vs session-only tooling
 - `submission/pr-4768-body.md` — updated PR description text (paste or run `submission/update-github-pr-description.sh`)
 - `submission/update-github-pr-description.sh` — one-command PR description update for release (Karan; supports --dry-run)
