@@ -32,8 +32,25 @@ echo "=== tscircuit branch packet ==="
 cd "$ROOT"
 git diff --stat main...HEAD
 echo "local HEAD: $(git rev-parse --short HEAD)"
-echo "PR #4768 branch: should match local HEAD (last synced f619fcd); update GitHub PR description from submission/pr-4768-body.md if still showing old text"
+echo "PR #4768 branch: should match local HEAD; update GitHub PR description from submission/pr-4768-body.md if still showing old text"
 echo "Posting identity: see submission/release-checklist.txt section 2"
+echo ""
+
+echo "=== submission packet files ==="
+for f in \
+  submission/autorouting-92-candidate.patch \
+  submission/issue-4764-reply.txt \
+  submission/thread-context.txt \
+  submission/release-checklist.txt \
+  submission/upstream-scope.txt \
+  submission/pr-4768-body.md
+do
+  if [ ! -f "$ROOT/$f" ]; then
+    echo "error: missing $f" >&2
+    exit 1
+  fi
+done
+echo "submission packet: 6 required files present"
 echo ""
 
 if [ ! -f "$AUTOROUTING/algos/multi-layer-ijump/MultilayerIjump.ts" ]; then

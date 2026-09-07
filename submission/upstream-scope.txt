@@ -6,7 +6,7 @@ Files for an autorouting fork PR (apply patch at 02dcdb6):
 Patch file: submission/autorouting-92-candidate.patch (plain unified diff, no mailbox headers)
 
 Local branch head: run `git rev-parse --short HEAD` or see verify script output
-PR #4768 branch: synced with local at f619fcd; GitHub PR description may still be stale — update from submission/pr-4768-body.md
+PR #4768 branch: should match local HEAD; GitHub PR description may still be stale — update from submission/pr-4768-body.md (see release-checklist.txt section 1)
 
 Do NOT include from this tscircuit branch in any upstream submission:
 - package.json test fallback (runs bun test when bun is on PATH; session-only when not)

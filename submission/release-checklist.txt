@@ -2,12 +2,12 @@ Release checklist for Karan/Rowan (developer cannot push per ticket policy).
 
 ## 1. PR branch status
 
-Local HEAD and PR #4768 branch are synced at f619fcd (iteration 11 packet: plain patch, thread-context, release docs).
+Compare local HEAD to PR #4768 branch on GitHub (run `git rev-parse --short HEAD` locally).
 
-If local HEAD has advanced since last push:
+If they differ:
   git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti
 
-**Still needed on GitHub:** PR #4768 description still shows iteration-7 text (verify-script hijack, no thread-context). Replace with submission/pr-4768-body.md.
+**Still needed on GitHub:** PR #4768 description still shows iteration-7 text (claims test script always runs verify tooling). On GitHub, click Edit on PR #4768 and replace the description with the contents of submission/pr-4768-body.md.
 
 ## 2. Posting identity — BLOCKING, decide before merge or issue comment
 
