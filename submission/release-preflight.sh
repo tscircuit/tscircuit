@@ -52,6 +52,7 @@ if sh "$ROOT/scripts/check-live-pr-4768-body.sh"; then
   echo "PR description: matches local packet structure"
 else
   echo "action: run sh submission/update-github-pr-description.sh"
+  echo "note: git push updates branch code only, not the PR description text"
   NEEDS_ACTION=1
 fi
 

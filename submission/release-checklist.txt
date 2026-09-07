@@ -13,7 +13,7 @@ Complete as of iteration 30/30. Algorithm fix frozen at autorouting 2a3eb3b. See
 5. If preflight will report head mismatch: `sh scripts/print-karan-push-command.sh` then run the printed command
 6. `sh submission/release-preflight.sh` (requires gh auth as karanp0202; run after description update)
 
-Note: older coordination notes citing PR remote `2fac6c4` are obsolete — always compare `git rev-parse --short HEAD` to live PR #4768 via preflight. See submission/developer-handoff.txt for full packet state.
+Note: older coordination notes citing PR remote `2fac6c4` are obsolete — always compare `git rev-parse --short HEAD` to live PR #4768 via preflight. Git push updates branch code only; PR description text requires `update-github-pr-description.sh`. See submission/developer-handoff.txt for full packet state.
 
 ## 1. PR branch status
 

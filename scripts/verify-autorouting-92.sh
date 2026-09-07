@@ -154,6 +154,7 @@ echo ""
 
 if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then
   PR_HEAD_MISMATCH=0
+  PR_BODY_STALE=0
   PR_JSON="$(curl -sS "https://api.github.com/repos/tscircuit/tscircuit/pulls/4768" 2>/dev/null || true)"
   if printf '%s' "$PR_JSON" | grep -qi 'rate limit'; then
     echo "warning: GitHub API rate limited — live PR status skipped"
@@ -178,7 +179,9 @@ if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then
       if sh "$ROOT/scripts/check-pr-4768-body.sh" "$LIVE_BODY" >/dev/null 2>&1; then
         echo "GitHub PR #4768 description: matches local packet structure"
       else
+        PR_BODY_STALE=1
         echo "warning: GitHub PR #4768 description stale or incomplete — run submission/update-github-pr-description.sh"
+        echo "  note: git push updates branch code only, not the PR description text"
       fi
       rm -f "$LIVE_BODY"
     fi
@@ -268,6 +271,9 @@ if ! grep -qE '^\[x\]|^\[X\]' "$ROOT/submission/identity-decision.txt" 2>/dev/nu
   echo "  - race plan BLOCKING_GAP: see submission/blocking-gap-race-plan.txt (Rowan/Karan)"
 fi
 echo "  - update GitHub PR #4768 description: sh submission/update-github-pr-description.sh"
+if [ "${PR_BODY_STALE:-0}" -eq 1 ]; then
+  echo "  - reminder: git push does not update PR description text"
+fi
 if [ "${PR_HEAD_MISMATCH:-0}" -eq 1 ]; then
   echo "  - push local HEAD: $(sh "$ROOT/scripts/print-karan-push-command.sh")"
 fi

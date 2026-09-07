@@ -30,7 +30,7 @@ See submission/karan-after-identity.txt for option-specific paths after identity
 ## Blocked on Karan/Rowan
 
 1. Posting identity — record A/B/C in submission/identity-decision.txt (see submission/blocking-gap-race-plan.txt)
-2. GitHub PR #4768 description still stale on GitHub until update-github-pr-description.sh runs
+2. GitHub PR #4768 description still stale on GitHub until update-github-pr-description.sh runs (git push does not update description text)
 3. Push local branch if PR head lags (compare via release-preflight.sh; ignore obsolete 2fac6c4 notes)
 4. Do not merge or post competing claims without identity reconciliation (AMZ92 vs karanp0202 vs 85heisenberg85 superset)
 
