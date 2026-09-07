@@ -13,7 +13,10 @@ Submission packet for archived autorouting issue #92. The algorithm fix is a sma
 - `submission/update-github-pr-description.sh` — one-command PR description update for release (Karan; supports --dry-run)
 - `submission/release-preflight.sh` — local checks plus live GitHub PR status via gh (Karan; exits 1 if not ready)
 - `submission/identity-decision.txt` — Rowan/Karan record for posting-identity option A/B/C (blocking)
+- `submission/blocking-gap-race-plan.txt` — posting-identity BLOCKING_GAP for Rowan/Karan (options A/B/C)
+- `submission/karan-after-identity.txt` — option-specific release paths after identity is recorded
 - `submission/developer-handoff.txt` — developer lane complete vs Karan blockers
+- `scripts/regenerate-autorouting-patch.sh` — refresh submission patch from autorouting `02dcdb6..2a3eb3b`
 - `scripts/verify-autorouting-92.sh` — patch apply/sync check, regression isolation, autorouting suite (session only)
 
 ## How to check
@@ -32,7 +35,7 @@ This patch fixes the parent-obstacle forward dead-end regression. It does not cl
 
 ## Posting coordination
 
-Issue author AMZ92 posted validation on the thread (2026-09-07): the narrow patch fixes the intermediate-state regression but does not reduce seed-8 turn count; a complementary superset patch from another contributor addresses that separately. Before merging or posting, confirm whether karanp0202 acts for AMZ92 or whether this PR should be withdrawn in favor of coordinated submission. See submission/thread-context.txt and submission/release-checklist.txt.
+Issue author AMZ92 posted validation on the thread (2026-09-07): the narrow patch fixes the intermediate-state regression but does not reduce seed-8 turn count; a complementary superset patch from another contributor addresses that separately. Before merging or posting, confirm whether karanp0202 acts for AMZ92 or whether this PR should be withdrawn in favor of coordinated submission. See submission/blocking-gap-race-plan.txt, submission/karan-after-identity.txt (after identity is recorded), submission/thread-context.txt, and submission/release-checklist.txt.
 
 ## Note for release (not part of upstream merge)
 

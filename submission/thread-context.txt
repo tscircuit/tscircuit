@@ -34,7 +34,7 @@ seveibar: simplified reproduction with debug snapshot test qualifies (see autoro
 - Developer lane: COMPLETE (iteration 20/20) — see submission/developer-handoff.txt
 - Algorithm fix: autorouting `2a3eb3b` on branch `fix/forward-after-obstacle` (narrow parent-obstacleHit removal)
 - tscircuit PR #4768 branch: should match local HEAD (`git rev-parse --short HEAD` in this repo)
-- GitHub PR description: still stale — Karan runs submission/update-github-pr-description.sh
+- GitHub PR description: still stale on GitHub — Karan must run update-github-pr-description.sh (pr-4768-body.md now lists full 12-file packet)
 - Posting identity: BLOCKING — Rowan/Karan must record A/B/C in submission/identity-decision.txt
 - npm run test: runs scripts/verify-autorouting-92.sh (includes patch sync vs autorouting 02dcdb6..2a3eb3b)
 - Obsolete refs: ignore any mention of PR remote `2fac6c4`; use release-checklist quick start + preflight

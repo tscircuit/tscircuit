@@ -86,6 +86,18 @@ if ! grep -q 'release-preflight.sh' "$ROOT/submission/pr-4768-body.md"; then
   echo "error: pr-4768-body.md missing release-preflight.sh reference" >&2
   exit 1
 fi
+if ! grep -q 'blocking-gap-race-plan.txt' "$ROOT/submission/pr-4768-body.md"; then
+  echo "error: pr-4768-body.md missing blocking-gap-race-plan.txt reference" >&2
+  exit 1
+fi
+if ! grep -q 'karan-after-identity.txt' "$ROOT/submission/pr-4768-body.md"; then
+  echo "error: pr-4768-body.md missing karan-after-identity.txt reference" >&2
+  exit 1
+fi
+if ! grep -q 'regenerate-autorouting-patch.sh' "$ROOT/submission/pr-4768-body.md"; then
+  echo "error: pr-4768-body.md missing regenerate-autorouting-patch.sh reference" >&2
+  exit 1
+fi
 if ! grep -qE '^\[ \] A\)' "$ROOT/submission/identity-decision.txt"; then
   echo "error: identity-decision.txt missing option A template" >&2
   exit 1
