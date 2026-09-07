@@ -11,7 +11,7 @@ Submission packet for archived autorouting issue #92. The algorithm fix is a sma
 - `submission/upstream-scope.txt` — fork PR files vs session-only tooling
 - `submission/pr-4768-body.md` — updated PR description text (paste or run `submission/update-github-pr-description.sh`)
 - `submission/update-github-pr-description.sh` — one-command PR description update for release (Karan; supports --dry-run)
-- `submission/release-preflight.sh` — local checks plus live GitHub PR status via gh (Karan; exits 1 if not ready)
+- `submission/release-preflight.sh` — local checks plus live GitHub PR status via gh (Karan; exits 1 if not ready; `--github-only` after npm run test)
 - `submission/identity-decision.txt` — Rowan/Karan record for posting-identity option A/B/C (blocking)
 - `submission/blocking-gap-race-plan.txt` — posting-identity BLOCKING_GAP for Rowan/Karan (options A/B/C)
 - `submission/karan-after-identity.txt` — option-specific release paths after identity is recorded

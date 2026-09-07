@@ -1,14 +1,27 @@
 #!/bin/sh
 # Karan release preflight: run full local checks, then live GitHub PR status via gh.
 # Exits 1 when GitHub-side release actions are still required.
+# Optional: --github-only skips local verify (use after npm run test).
 set -eu
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 IDENTITY="$ROOT/submission/identity-decision.txt"
+GITHUB_ONLY=0
 
-echo "=== local packet checks ==="
-sh "$ROOT/scripts/verify-autorouting-92.sh"
-echo ""
+case "${1:-}" in
+  --github-only)
+    GITHUB_ONLY=1
+    ;;
+esac
+
+if [ "$GITHUB_ONLY" -eq 0 ]; then
+  echo "=== local packet checks ==="
+  sh "$ROOT/scripts/verify-autorouting-92.sh"
+  echo ""
+else
+  echo "=== local packet checks skipped (--github-only) ==="
+  echo ""
+fi
 
 echo "=== live GitHub PR status (requires gh auth) ==="
 if ! command -v gh >/dev/null 2>&1; then

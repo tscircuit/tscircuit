@@ -7,10 +7,10 @@ Complete as of iteration 20/20. Algorithm fix frozen at autorouting 2a3eb3b. See
 ## Quick start (Karan)
 
 1. From this repo: `npm run test`
-2. `sh submission/release-preflight.sh` (requires gh auth as karanp0202)
+2. Complete submission/identity-decision.txt (check one option A/B/C)
 3. `sh submission/update-github-pr-description.sh` (or paste submission/pr-4768-body.md on GitHub)
-4. Complete submission/identity-decision.txt (check one option A/B/C)
-5. If preflight reports head mismatch: `git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti`
+4. If preflight will report head mismatch: `git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti`
+5. `sh submission/release-preflight.sh` (requires gh auth as karanp0202; run after description update)
 
 Note: older coordination notes citing PR remote `2fac6c4` are obsolete — always compare `git rev-parse --short HEAD` to live PR #4768 via preflight. See submission/developer-handoff.txt for full packet state.
 
@@ -25,6 +25,9 @@ If they differ:
 
 Option A — full preflight (local checks + live PR status via gh; validates GitHub PR body matches packet structure):
   sh submission/release-preflight.sh
+
+Option A2 — GitHub checks only (after npm run test; skips re-running local verify):
+  sh submission/release-preflight.sh --github-only
 
 Option B — update description only (requires gh auth as karanp0202):
   sh submission/update-github-pr-description.sh

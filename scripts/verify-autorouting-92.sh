@@ -69,6 +69,10 @@ if ! grep -q 'check-pr-4768-body.sh' "$ROOT/submission/release-preflight.sh"; th
   echo "error: release-preflight.sh must validate live PR body via check-pr-4768-body.sh" >&2
   exit 1
 fi
+if ! grep -q 'check-pr-4768-body.sh' "$ROOT/submission/update-github-pr-description.sh"; then
+  echo "error: update-github-pr-description.sh must validate via check-pr-4768-body.sh" >&2
+  exit 1
+fi
 echo "patch tooling: regenerate + pr-body check scripts present"
 echo ""
 
@@ -83,6 +87,22 @@ if sh "$ROOT/scripts/check-pr-4768-body.sh" "$BAD_BODY" >/dev/null 2>&1; then
 fi
 rm -f "$BAD_BODY"
 echo "pr-body negative check: ok"
+STALE_BODY="$(mktemp)"
+printf '%s\n' \
+  '## Summary' \
+  '## Changes in this branch' \
+  '## How to check' \
+  '## Scope note' \
+  '## Posting coordination' \
+  'script runs the verify script' \
+  'Fixes #4764' > "$STALE_BODY"
+if sh "$ROOT/scripts/check-pr-4768-body.sh" "$STALE_BODY" >/dev/null 2>&1; then
+  echo "error: check-pr-4768-body.sh should reject stale iteration-7 phrase" >&2
+  rm -f "$STALE_BODY"
+  exit 1
+fi
+rm -f "$STALE_BODY"
+echo "pr-body stale-phrase check: ok"
 echo ""
 
 if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then
