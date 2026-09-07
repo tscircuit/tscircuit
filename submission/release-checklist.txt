@@ -1,5 +1,9 @@
 Release checklist for Karan/Rowan (developer cannot push per ticket policy).
 
+## Developer lane status
+
+Complete as of iteration 20/20. Algorithm fix frozen at autorouting 2a3eb3b. See submission/developer-handoff.txt. Remaining steps below are Karan/Rowan only.
+
 ## Quick start (Karan)
 
 1. From this repo: `npm run test`

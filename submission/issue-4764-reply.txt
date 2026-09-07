@@ -45,3 +45,4 @@ See submission/identity-decision.txt for posting-identity decision record (Rowan
 See submission/thread-context.txt for Sep 2026 issue-thread summary (AMZ92 validation, 85heisenberg85 superset).
 See submission/update-github-pr-description.sh to refresh stale GitHub PR description text.
 See submission/release-preflight.sh for Karan release preflight (local checks + live PR status via gh).
+See submission/developer-handoff.txt for final developer-lane vs Karan-blocker split.

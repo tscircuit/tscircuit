@@ -55,6 +55,11 @@ do
   fi
 done
 echo "submission packet: 10 required files present"
+if [ ! -x "$ROOT/scripts/regenerate-autorouting-patch.sh" ]; then
+  echo "error: missing scripts/regenerate-autorouting-patch.sh" >&2
+  exit 1
+fi
+echo "patch tooling: regenerate script present"
 echo ""
 
 echo "=== pr-4768-body.md structure ==="
@@ -193,3 +198,5 @@ if ! grep -qE '^\[x\]|^\[X\]' "$ROOT/submission/identity-decision.txt" 2>/dev/nu
 fi
 echo "  - update GitHub PR #4768 description: sh submission/update-github-pr-description.sh"
 echo "  - run sh submission/release-preflight.sh before release (requires gh auth)"
+echo ""
+echo "developer lane: complete (iteration 20/20) — Karan release steps in submission/release-checklist.txt"

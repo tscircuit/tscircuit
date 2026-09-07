@@ -31,6 +31,7 @@ seveibar: simplified reproduction with debug snapshot test qualifies (see autoro
 
 ## Release status (developer packet; check HEAD dynamically)
 
+- Developer lane: COMPLETE (iteration 20/20) — see submission/developer-handoff.txt
 - Algorithm fix: autorouting `2a3eb3b` on branch `fix/forward-after-obstacle` (narrow parent-obstacleHit removal)
 - tscircuit PR #4768 branch: should match local HEAD (`git rev-parse --short HEAD` in this repo)
 - GitHub PR description: still stale — Karan runs submission/update-github-pr-description.sh
