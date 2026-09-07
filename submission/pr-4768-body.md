@@ -23,7 +23,7 @@ Clone `tscircuit/autorouting` at `02dcdb6` beside this repo (or set `AUTOROUTING
 npm run test
 ```
 
-When bun is not on PATH, the test script falls back to the verify script automatically.
+This runs `scripts/verify-autorouting-92.sh` (patch apply, regression isolation, autorouting suite).
 
 ## Scope note
 
@@ -35,6 +35,6 @@ Issue author AMZ92 posted validation on the thread (2026-09-07): the narrow patc
 
 ## Note for release (not part of upstream merge)
 
-The `package.json` test script uses bun when available and falls back to session verification tooling only when bun is not on PATH. Do not merge that fallback into upstream tscircuit main; see submission/upstream-scope.txt.
+This branch sets `package.json` `test` to run `scripts/verify-autorouting-92.sh` for the submission packet. Do not merge that change into upstream tscircuit main; see submission/upstream-scope.txt.
 
 Fixes #4764

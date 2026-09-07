@@ -33,6 +33,7 @@ seveibar: simplified reproduction with debug snapshot test qualifies (see autoro
 
 - Algorithm fix: autorouting `2a3eb3b` on branch `fix/forward-after-obstacle` (narrow parent-obstacleHit removal)
 - tscircuit PR #4768 branch: should match local HEAD (`git rev-parse --short HEAD` in this repo)
-- GitHub PR description: still stale as of iteration 16 — missing scope/posting-coordination sections; Karan runs `submission/update-github-pr-description.sh`
+- GitHub PR description: still stale as of iteration 17 — Karan runs submission/update-github-pr-description.sh
 - Posting identity: BLOCKING — Rowan/Karan must record A/B/C in submission/identity-decision.txt
+- npm run test: runs scripts/verify-autorouting-92.sh on this branch (do not merge package.json change upstream)
 - Issue thread: AMZ92 validation posted; do not duplicate — see release-checklist section 4

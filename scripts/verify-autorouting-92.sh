@@ -163,3 +163,11 @@ echo "=== targeted: forward-after-obstacle.test.ts ==="
 echo "=== full autorouting suite ==="
 "$BUN_BIN" run build
 "$BUN_BIN" test
+
+echo ""
+echo "=== release blockers (Karan/Rowan) ==="
+if ! grep -qE '^\[x\]|^\[X\]' "$ROOT/submission/identity-decision.txt" 2>/dev/null; then
+  echo "  - complete submission/identity-decision.txt (options A/B/C)"
+fi
+echo "  - update GitHub PR #4768 description: sh submission/update-github-pr-description.sh"
+echo "  - run sh submission/release-preflight.sh before release (requires gh auth)"

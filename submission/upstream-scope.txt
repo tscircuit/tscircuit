@@ -9,7 +9,7 @@ Local branch head: run `git rev-parse --short HEAD` or see verify script output
 PR #4768 branch: should match local HEAD; GitHub PR description may still be stale — update from submission/pr-4768-body.md (see release-checklist.txt section 1)
 
 Do NOT include from this tscircuit branch in any upstream submission:
-- package.json test fallback (runs bun test when bun is on PATH; session-only when not)
+- package.json test script override (runs scripts/verify-autorouting-92.sh for this packet only)
 - scripts/verify-autorouting-92.sh
 - submission/*
 - .agent-nio/*

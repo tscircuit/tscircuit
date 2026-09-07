@@ -43,7 +43,7 @@ If maintainers direct a fork PR for the archived repo:
   Branch: fix/forward-after-obstacle @ 2a3eb3b
   Files: see submission/upstream-scope.txt (3 files + patch at 02dcdb6)
   Patch: plain unified diff at submission/autorouting-92-candidate.patch
-  Do NOT include: package.json test fallback, verify script, submission/*, .agent-nio/*
+  Do NOT include: package.json test override, verify script, submission/*, .agent-nio/*
 
 ## 4. Issue comment
 
