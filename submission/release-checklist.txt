@@ -30,6 +30,7 @@ Option A2 — GitHub checks only (after npm run test; skips re-running local ver
   sh submission/release-preflight.sh --github-only
 
 Option B — update description only (requires gh auth as karanp0202):
+  sh submission/update-github-pr-description.sh --check-live   # read-only live check
   sh submission/update-github-pr-description.sh
   sh submission/update-github-pr-description.sh --dry-run   # preview only
 

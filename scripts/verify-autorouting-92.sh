@@ -73,6 +73,14 @@ if ! grep -q 'check-pr-4768-body.sh' "$ROOT/submission/update-github-pr-descript
   echo "error: update-github-pr-description.sh must validate via check-pr-4768-body.sh" >&2
   exit 1
 fi
+if ! grep -q '\-\-github-only' "$ROOT/submission/release-preflight.sh"; then
+  echo "error: release-preflight.sh must support --github-only" >&2
+  exit 1
+fi
+if ! grep -q '\-\-check-live' "$ROOT/submission/update-github-pr-description.sh"; then
+  echo "error: update-github-pr-description.sh must support --check-live" >&2
+  exit 1
+fi
 echo "patch tooling: regenerate + pr-body check scripts present"
 echo ""
 
