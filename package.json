@@ -53,7 +53,7 @@
     "@rollup/plugin-typescript": "^12.3.0",
     "@tscircuit/alphabet": "0.0.25",
     "@tscircuit/capacity-autorouter": "^0.0.885",
-    "@tscircuit/checks": "^0.0.183",
+    "@tscircuit/checks": "^0.0.185",
     "@tscircuit/circuit-json-util": "^0.0.106",
     "@tscircuit/cli": "^0.1.2021",
     "@tscircuit/copper-pour-solver": "^0.0.52",
