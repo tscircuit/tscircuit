@@ -45,14 +45,15 @@ for f in \
   submission/upstream-scope.txt \
   submission/pr-4768-body.md \
   submission/update-github-pr-description.sh \
-  submission/release-preflight.sh
+  submission/release-preflight.sh \
+  submission/identity-decision.txt
 do
   if [ ! -f "$ROOT/$f" ]; then
     echo "error: missing $f" >&2
     exit 1
   fi
 done
-echo "submission packet: 8 required files present"
+echo "submission packet: 9 required files present"
 echo ""
 
 echo "=== pr-4768-body.md structure ==="
@@ -71,6 +72,10 @@ do
 done
 if grep -q 'script runs the verify script' "$ROOT/submission/pr-4768-body.md"; then
   echo "error: pr-4768-body.md contains stale iteration-7 phrase" >&2
+  exit 1
+fi
+if ! grep -q 'release-preflight.sh' "$ROOT/submission/pr-4768-body.md"; then
+  echo "error: pr-4768-body.md missing release-preflight.sh reference" >&2
   exit 1
 fi
 echo "pr-4768-body.md: required sections present"

@@ -31,6 +31,8 @@ Rowan/Karan must confirm one of:
   B) Different contributors → close or coordinate; do not merge duplicate narrow patch
   C) Compose with 85heisenberg85/autorouting@fix-issue92-wild-jumps (superset includes our exact parent-obstacleHit removal)
 
+Record the decision in submission/identity-decision.txt before merge or issue comment.
+
 See submission/thread-context.txt for Sep 2026 issue-thread summary.
 
 Do not invent policy. Do not post competing claims without reconciliation.

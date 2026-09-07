@@ -1,0 +1,27 @@
+Posting identity decision record — fill before merge or issue comment on #4764.
+
+Developer cannot complete this; Rowan/Karan must decide. Do not invent policy.
+
+## Choose one
+
+[ ] A) AMZ92 and karanp0202 are the same contributor → proceed with PR #4768 as AMZ92's packet
+
+[ ] B) Different contributors → close or coordinate; do not merge duplicate narrow patch
+
+[ ] C) Compose with 85heisenberg85/autorouting@fix-issue92-wild-jumps (superset includes parent-obstacleHit removal)
+
+## Record
+
+Decided by:
+
+Date:
+
+Notes (optional):
+
+## Context
+
+- AMZ92 opened issue #4764 and posted narrow-candidate validation (see submission/thread-context.txt)
+- 85heisenberg85 deferred bounty priority to AMZ92 and published a complementary superset patch
+- karanp0202 opened PR #4768 with this submission packet
+
+Until this record is completed, treat posting identity as BLOCKING per submission/release-checklist.txt section 2.

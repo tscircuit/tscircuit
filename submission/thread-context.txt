@@ -28,3 +28,11 @@ Conclusion on thread: narrow patch fixes the intermediate-state regression and n
 ## Maintainer criteria (autorouting#92)
 
 seveibar: simplified reproduction with debug snapshot test qualifies (see autorouting#92#issuecomment-2466443421). This packet includes both.
+
+## Release status (developer packet; check HEAD dynamically)
+
+- Algorithm fix: autorouting `2a3eb3b` on branch `fix/forward-after-obstacle` (narrow parent-obstacleHit removal)
+- tscircuit PR #4768 branch: should match local HEAD (`git rev-parse --short HEAD` in this repo)
+- GitHub PR description: still stale as of iteration 16 — missing scope/posting-coordination sections; Karan runs `submission/update-github-pr-description.sh`
+- Posting identity: BLOCKING — Rowan/Karan must record A/B/C in submission/identity-decision.txt
+- Issue thread: AMZ92 validation posted; do not duplicate — see release-checklist section 4
