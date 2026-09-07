@@ -70,6 +70,15 @@ echo ""
 
 echo "=== pr-4768-body.md structure ==="
 sh "$ROOT/scripts/check-pr-4768-body.sh"
+BAD_BODY="$(mktemp)"
+printf '## Summary\nFixes #4764\n' > "$BAD_BODY"
+if sh "$ROOT/scripts/check-pr-4768-body.sh" "$BAD_BODY" >/dev/null 2>&1; then
+  echo "error: check-pr-4768-body.sh should reject incomplete PR body" >&2
+  rm -f "$BAD_BODY"
+  exit 1
+fi
+rm -f "$BAD_BODY"
+echo "pr-body negative check: ok"
 echo ""
 
 if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then

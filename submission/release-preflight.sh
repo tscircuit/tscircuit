@@ -35,12 +35,15 @@ if [ "$PR_HEAD" != "$LOCAL_HEAD" ]; then
   NEEDS_ACTION=1
 fi
 
-if printf '%s' "$PR_BODY" | grep -q 'Posting coordination'; then
-  echo "PR description: updated"
+PR_BODY_FILE="$(mktemp)"
+printf '%s' "$PR_BODY" > "$PR_BODY_FILE"
+if sh "$ROOT/scripts/check-pr-4768-body.sh" "$PR_BODY_FILE"; then
+  echo "PR description: matches local packet structure"
 else
   echo "action: run sh submission/update-github-pr-description.sh"
   NEEDS_ACTION=1
 fi
+rm -f "$PR_BODY_FILE"
 
 echo ""
 echo "=== posting identity (blocking) ==="

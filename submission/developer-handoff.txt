@@ -10,7 +10,7 @@ Frozen deliverables:
 - Three regression tests plus debug SVG snapshot (forward-after-obstacle.test.ts)
 - npm run test runs scripts/verify-autorouting-92.sh (patch apply, patch sync, regression isolation, full autorouting suite)
 - Ten-file submission packet plus scripts/regenerate-autorouting-patch.sh and scripts/verify-autorouting-92.sh
-- Release tooling: release-preflight.sh, update-github-pr-description.sh, release-checklist quick start, identity-decision.txt template
+- Release tooling: release-preflight.sh (validates live GitHub PR body via check-pr-4768-body.sh), update-github-pr-description.sh, release-checklist quick start, identity-decision.txt template
 
 Honest scope: fixes the parent-obstacle forward dead-end regression only. Does not claim seed-8 or Wi-Fi gallery jumps (see submission/thread-context.txt).
 

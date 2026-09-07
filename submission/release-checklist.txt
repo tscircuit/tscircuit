@@ -23,7 +23,7 @@ If they differ:
 
 **Still needed on GitHub:** PR #4768 description still shows iteration-7 text (no scope/posting-coordination sections). Branch code should match local HEAD when last pushed.
 
-Option A — full preflight (local checks + live PR status via gh):
+Option A — full preflight (local checks + live PR status via gh; validates GitHub PR body matches packet structure):
   sh submission/release-preflight.sh
 
 Option B — update description only (requires gh auth as karanp0202):

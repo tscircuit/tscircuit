@@ -1,12 +1,13 @@
 #!/bin/sh
-# Validate submission/pr-4768-body.md before Karan updates GitHub PR #4768.
+# Validate a PR #4768 description body (default: submission/pr-4768-body.md).
+# Optional first argument: path to body file (e.g. live GitHub body in preflight).
 set -eu
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-BODY="$ROOT/submission/pr-4768-body.md"
+BODY="${1:-$ROOT/submission/pr-4768-body.md}"
 
 if [ ! -f "$BODY" ]; then
-  echo "error: missing $BODY" >&2
+  echo "error: missing PR body file: $BODY" >&2
   exit 1
 fi
 
@@ -35,6 +36,7 @@ for ref in \
   karan-after-identity.txt \
   regenerate-autorouting-patch.sh \
   verify-autorouting-92.sh \
+  check-pr-4768-body.sh \
   developer-handoff.txt \
   identity-decision.txt \
   autorouting-92-candidate.patch \
@@ -45,7 +47,7 @@ for ref in \
   update-github-pr-description.sh
 do
   if ! grep -q "$ref" "$BODY"; then
-    echo "error: pr-4768-body.md missing reference: $ref" >&2
+    echo "error: PR body missing reference: $ref" >&2
     exit 1
   fi
 done
@@ -59,4 +61,4 @@ if ! grep -qE '^\[ \] A\)' "$ROOT/submission/identity-decision.txt"; then
   exit 1
 fi
 
-echo "pr-4768-body.md: structure and packet references ok"
+echo "PR body ($BODY): structure and packet references ok"
