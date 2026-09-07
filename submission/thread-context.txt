@@ -1,0 +1,30 @@
+Issue #4764 thread summary (as of 2026-09-07) for release coordination.
+
+## Participants
+
+- **AMZ92** — opened #4764 with the narrow parent-obstacleHit fix and regression tests
+- **85heisenberg85** — posted complementary superset patch on autorouting fork `fix-issue92-wild-jumps`; explicitly deferred bounty priority to AMZ92
+- **antoleod** — noted seveibar's simplified-repro + snapshot criteria on autorouting#92
+- **karanp0202** — opened PR #4768 carrying the submission packet (patch + docs + verify tooling)
+
+## AMZ92 validation (2026-09-07)
+
+AMZ92 reran seed-8 single-trace on base `02dcdb6`, the narrow patch, and 85heisenberg85's broader MultilayerIjump:
+
+| Variant | Direction changes |
+| --- | ---: |
+| Archived base | 9 |
+| Narrow patch (parent obstacleHit fix) | 9 |
+| Broader superset patch | 5 |
+
+Conclusion on thread: narrow patch fixes the intermediate-state regression and neighbor assertions; it does not reduce seed-8 zigzag. AMZ92's submission was deliberately scoped to the parent forward-rejection bug.
+
+## Implications for PR #4768
+
+1. This PR packet documents the **narrow fix only** — honest scope, not a claim to fix seed-8 or Wi-Fi gallery jumps.
+2. If AMZ92 ≠ karanp0202, pushing duplicates AMZ92's work — reconcile before release (see release-checklist.txt options A/B/C).
+3. If maintainers want seed-8 improvement, evaluate 85heisenberg85's superset branch separately or as a composed fork PR.
+
+## Maintainer criteria (autorouting#92)
+
+seveibar: simplified reproduction with debug snapshot test qualifies (see autorouting#92#issuecomment-2466443421). This packet includes both.

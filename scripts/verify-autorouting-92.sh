@@ -23,6 +23,11 @@ if [ ! -f "$PATCH" ]; then
   exit 1
 fi
 
+if grep -qE 'agent-nio\.local|Co-authored-by: Cursor' "$PATCH"; then
+  echo "error: patch contains session/agent metadata — regenerate as plain diff" >&2
+  exit 1
+fi
+
 echo "=== tscircuit branch packet ==="
 cd "$ROOT"
 git diff --stat main...HEAD

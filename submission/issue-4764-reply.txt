@@ -40,4 +40,5 @@ Two of three targeted cases fail on the original code; all pass with the patch. 
 This targets the archived implementation only, not the replacement autorouter.
 
 See submission/upstream-scope.txt for which files belong in a fork PR vs session-only tooling.
-See submission/release-checklist.txt for push steps and posting-identity reconciliation (AMZ92 / karanp0202 / 85heisenberg85).
+See submission/release-checklist.txt for push steps and posting-identity reconciliation.
+See submission/thread-context.txt for Sep 2026 issue-thread summary (AMZ92 validation, 85heisenberg85 superset).

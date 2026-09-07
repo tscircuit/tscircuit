@@ -25,6 +25,6 @@ This patch fixes the parent-obstacle forward dead-end regression. It does not cl
 
 ## Posting coordination
 
-Issue author AMZ92 posted the original narrow candidate on #4764. Contributor 85heisenberg85 published a superset patch (includes this exact parent-obstacleHit removal plus overcome-distance gating) and deferred bounty priority to AMZ92. Before merging or posting, confirm whether karanp0202 acts for AMZ92 or whether this PR should be withdrawn in favor of coordinated submission. See submission/release-checklist.txt.
+Issue author AMZ92 posted validation on the thread (2026-09-07): the narrow patch fixes the intermediate-state regression but does not reduce seed-8 turn count; a complementary superset patch from another contributor addresses that separately. Before merging or posting, confirm whether karanp0202 acts for AMZ92 or whether this PR should be withdrawn in favor of coordinated submission. See submission/thread-context.txt and submission/release-checklist.txt.
 
 Fixes #4764

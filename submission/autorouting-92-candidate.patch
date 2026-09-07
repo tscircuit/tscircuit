@@ -1,25 +1,3 @@
-From 2a3eb3b5740debe120ace5c1747cfa8b604609ab Mon Sep 17 00:00:00 2001
-From: Jonah Voss <jonah-voss-1@agent-nio.local>
-Date: Sat, 5 Sep 2026 23:58:07 +0000
-Subject: [PATCH] fix: allow forward travel after parent cleared an obstacle
-
-Remove parent obstacleHit from forward-direction filtering in
-MultilayerIjump.getNeighbors. Collision checks from the current point
-already enforce clearance; the old rule dead-ended paths after turning
-past a wall.
-
-Adds three regression tests: neighbor check, obstacle still blocks
-forward travel, and full solve from start to goal around a wall.
-
-Co-authored-by: Cursor <cursoragent@cursor.com>
----
- algos/multi-layer-ijump/MultilayerIjump.ts    |  12 +-
- .../forward-after-obstacle.snap.svg           |  13 ++
- .../tests/forward-after-obstacle.test.ts      | 143 ++++++++++++++++++
- 3 files changed, 159 insertions(+), 9 deletions(-)
- create mode 100644 algos/multi-layer-ijump/tests/__snapshots__/forward-after-obstacle.snap.svg
- create mode 100644 algos/multi-layer-ijump/tests/forward-after-obstacle.test.ts
-
 diff --git a/algos/multi-layer-ijump/MultilayerIjump.ts b/algos/multi-layer-ijump/MultilayerIjump.ts
 index 751c3e6..2fda70a 100644
 --- a/algos/multi-layer-ijump/MultilayerIjump.ts
@@ -219,6 +197,3 @@ index 0000000..54c929e
 +  )
 +  expect(result.route.at(-1)).toMatchObject({ x: -1.25, y: 3, layer: "top" })
 +})
--- 
-2.43.0
-

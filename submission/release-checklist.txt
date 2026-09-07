@@ -2,10 +2,12 @@ Release checklist for Karan/Rowan (developer cannot push per ticket policy).
 
 ## 1. Push updated PR branch
 
-Local branch head: e887337 (includes iteration 8–9 maintainer-feedback fixes).
-PR #4768 remote head: 2fac6c4 (stale — missing .agent-nio removal, patch relocation, scope docs).
+Run from tscircuit repo root to see current local head:
+  git rev-parse --short HEAD
 
-From this checkout, after confirming posting identity (section 2):
+PR #4768 remote head: 2fac6c4 (stale — missing release-checklist, thread context, plain patch).
+
+After confirming posting identity (section 2):
 
   git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti
 
@@ -15,7 +17,7 @@ Update PR #4768 body from submission/pr-4768-body.md.
 
 | Account | Role |
 | --- | --- |
-| AMZ92 | Opened issue #4764 and posted the original narrow candidate patch |
+| AMZ92 | Opened issue #4764; posted original narrow candidate; validated narrow vs superset on 2026-09-07 |
 | karanp0202 | Opened PR #4768 (submission packet on tscircuit) |
 | 85heisenberg85 | Posted complementary superset patch; explicitly deferred bounty priority to AMZ92 |
 
@@ -24,6 +26,8 @@ Rowan/Karan must confirm one of:
   B) Different contributors → do not push duplicate narrow patch; coordinate with AMZ92 or stand down
   C) Compose with 85heisenberg85/autorouting@fix-issue92-wild-jumps (superset includes our exact parent-obstacleHit removal)
 
+See submission/thread-context.txt for Sep 2026 issue-thread summary.
+
 Do not invent policy. Do not post competing claims without reconciliation.
 
 ## 3. Autorouting fork PR (narrow fix only)
@@ -31,12 +35,13 @@ Do not invent policy. Do not post competing claims without reconciliation.
 If maintainers direct a fork PR for the archived repo:
   Branch: fix/forward-after-obstacle @ 2a3eb3b
   Files: see submission/upstream-scope.txt (3 files + patch at 02dcdb6)
+  Patch: plain unified diff (no mailbox headers) at submission/autorouting-92-candidate.patch
   Do NOT include: package.json test fallback, verify script, submission/*, .agent-nio/*
 
 ## 4. Issue comment
 
 Post submission/issue-4764-reply.txt on tscircuit#4764 only after identity confirmed.
-Do not duplicate if AMZ92 already posted equivalent content.
+AMZ92 already posted validation evidence on the thread — do not duplicate; reference or amend PR instead.
 
 ## 5. Algora workflow
 
