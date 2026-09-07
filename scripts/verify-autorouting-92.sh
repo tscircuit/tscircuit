@@ -5,6 +5,7 @@ set -eu
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 AUTOROUTING="${AUTOROUTING_DIR:-$ROOT/../autorouting}"
+PATCH="$ROOT/submission/autorouting-92-candidate.patch"
 
 if [ -n "${BUN:-}" ] && [ -x "$BUN" ]; then
   BUN_BIN="$BUN"
@@ -16,6 +17,16 @@ else
   echo "error: bun not found (set BUN or install bun)" >&2
   exit 1
 fi
+
+if [ ! -f "$PATCH" ]; then
+  echo "error: patch not found at $PATCH" >&2
+  exit 1
+fi
+
+echo "=== tscircuit branch packet ==="
+cd "$ROOT"
+git diff --stat main...HEAD
+echo ""
 
 if [ ! -f "$AUTOROUTING/algos/multi-layer-ijump/MultilayerIjump.ts" ]; then
   echo "error: autorouting repo not found at $AUTOROUTING" >&2
@@ -29,6 +40,14 @@ if [ ! -d node_modules ]; then
   echo "Installing autorouting dependencies..."
   "$BUN_BIN" install
 fi
+
+echo "=== patch applies cleanly at 02dcdb6 ==="
+PATCH_CHECK_DIR="$(mktemp -d)"
+git archive 02dcdb6 | tar -x -C "$PATCH_CHECK_DIR"
+(cd "$PATCH_CHECK_DIR" && git apply --check "$PATCH")
+rm -rf "$PATCH_CHECK_DIR"
+echo "patch apply check: ok"
+echo ""
 
 echo "=== deliverable summary ==="
 git log -1 --oneline

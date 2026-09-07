@@ -4,6 +4,10 @@ Candidate fix for archived autorouting issue #92 (multi-layer ijump forward dead
 
 In `MultilayerIjump.getNeighbors`, removed the rule that blocked the forward direction when the parent node had `obstacleHit` set. Collision checks from the current point already enforce clearance; the old rule incorrectly dead-ended paths after bypassing a wall.
 
+## Scope (what this patch does and does not claim)
+
+This patch targets one specific logic error: parent `obstacleHit` incorrectly banning forward travel after the path has already turned past the obstacle. It does **not** claim to fix every wild trace jump on the original Wi-Fi-board gallery or on dataset seed-8 zigzag cases. Issue author AMZ92 confirmed on the thread that this narrower patch fixes the intermediate-state regression but does not reduce seed-8 turn count; a complementary broader fix from another contributor addresses overcome-distance gating separately. Both changes may compose, but this submission stays limited to the parent forward-rejection bug.
+
 ## Maintainer criteria (autorouting#92)
 
 On the original issue, seveibar noted that the solution should include a simplified reproduction and a debug snapshot test, and that the simplified reproduction qualifies when it includes a snapshot test (see https://github.com/tscircuit/autorouting/issues/92#issuecomment-2466443421). This candidate provides both: a minimized regression that fails on the original implementation and passes with the patch, plus a debug SVG snapshot in the test suite.
@@ -33,6 +37,6 @@ Two of three targeted cases fail on the original code; all pass with the patch. 
 2. Is this contribution eligible given the archived repo?
 3. Where should a formal PR go — fork of autorouting, a live successor package, or is this issue comment sufficient?
 
-This targets the archived implementation only, not the replacement autorouter. I have not reproduced the original Wi-Fi-board gallery screenshot.
+This targets the archived implementation only, not the replacement autorouter.
 
 See submission/upstream-scope.txt for which files belong in a fork PR vs session-only tooling.
