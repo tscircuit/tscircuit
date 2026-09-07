@@ -78,6 +78,7 @@ fi
 if [ "$NEEDS_ACTION" -eq 1 ]; then
   echo ""
   echo "preflight: release not ready — resolve actions above"
+  echo "hint: sh submission/print-karan-next-steps.sh for a full live status summary"
   exit 1
 fi
 

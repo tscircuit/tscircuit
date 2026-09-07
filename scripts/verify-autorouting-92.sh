@@ -113,6 +113,10 @@ if ! grep -q '\-\-local-only' "$ROOT/submission/print-karan-next-steps.sh"; then
   echo "error: print-karan-next-steps.sh must support --local-only" >&2
   exit 1
 fi
+if ! grep -q '\-\-local-only' "$ROOT/submission/release-checklist.txt"; then
+  echo "error: release-checklist.txt must document print-karan-next-steps --local-only" >&2
+  exit 1
+fi
 echo "patch tooling: regenerate + pr-body check scripts present"
 EXPECTED_PUSH="git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti"
 ACTUAL_PUSH="$(sh "$ROOT/scripts/print-karan-push-command.sh")"
@@ -295,6 +299,7 @@ if [ "${PR_HEAD_MISMATCH:-0}" -eq 1 ]; then
 fi
 if [ "${PR_LIVE_STATUS_SKIPPED:-0}" -eq 1 ]; then
   echo "  - live GitHub status skipped (API rate limited) — run sh submission/print-karan-next-steps.sh with gh auth"
+  echo "  - local packet ok: sh submission/print-karan-next-steps.sh --local-only"
 fi
 echo "  - run sh submission/release-preflight.sh before release (requires gh auth)"
 echo ""

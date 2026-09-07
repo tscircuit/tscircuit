@@ -18,12 +18,14 @@ Honest scope: fixes the parent-obstacle forward dead-end regression only. Does n
 ## Karan quick start (release lane only)
 
 1. npm run test
-2. Complete submission/identity-decision.txt (option A/B/C — Rowan/Karan decision)
-3. sh submission/update-github-pr-description.sh --check-live   # optional: confirm live body is stale
-4. sh submission/update-github-pr-description.sh
-5. git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti   # if PR head lags local (or run sh scripts/print-karan-push-command.sh)
-6. sh submission/release-preflight.sh   # or --github-only after step 1
-7. Do not post duplicate issue comments — AMZ92 already posted validation on #4764
+2. sh submission/print-karan-next-steps.sh --local-only   # optional: quick local packet check
+3. Complete submission/identity-decision.txt (option A/B/C — Rowan/Karan decision)
+4. sh submission/update-github-pr-description.sh --check-live   # optional: confirm live body is stale
+5. sh submission/update-github-pr-description.sh
+6. git push karanp0202 HEAD:fix/4764-candidate-fix-for-archived-autorouti   # if PR head lags local (or run sh scripts/print-karan-push-command.sh)
+7. sh submission/print-karan-next-steps.sh   # live status via gh (before final preflight)
+8. sh submission/release-preflight.sh   # or --github-only after step 1
+9. Do not post duplicate issue comments — AMZ92 already posted validation on #4764
 
 See submission/karan-after-identity.txt for option-specific paths after identity is recorded.
 

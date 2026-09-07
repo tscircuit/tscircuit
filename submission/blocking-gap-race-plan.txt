@@ -28,4 +28,4 @@ After identity is recorded, see submission/karan-after-identity.txt for option-s
 
 ## Stale coordination note
 
-Any reference to PR remote `2fac6c4` is obsolete. Compare local HEAD to live PR #4768 via submission/release-preflight.sh (gh auth required).
+Any reference to PR remote `2fac6c4` is obsolete. Compare local HEAD to live PR #4768 via `sh submission/print-karan-next-steps.sh` or `submission/release-preflight.sh` (gh auth required).
