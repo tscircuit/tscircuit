@@ -61,48 +61,15 @@ if [ ! -x "$ROOT/scripts/regenerate-autorouting-patch.sh" ]; then
   echo "error: missing scripts/regenerate-autorouting-patch.sh" >&2
   exit 1
 fi
-echo "patch tooling: regenerate script present"
+if [ ! -x "$ROOT/scripts/check-pr-4768-body.sh" ]; then
+  echo "error: missing scripts/check-pr-4768-body.sh" >&2
+  exit 1
+fi
+echo "patch tooling: regenerate + pr-body check scripts present"
 echo ""
 
 echo "=== pr-4768-body.md structure ==="
-for heading in \
-  "## Summary" \
-  "## Changes in this branch" \
-  "## How to check" \
-  "## Scope note" \
-  "## Posting coordination" \
-  "Fixes #4764"
-do
-  if ! grep -q "$heading" "$ROOT/submission/pr-4768-body.md"; then
-    echo "error: pr-4768-body.md missing section: $heading" >&2
-    exit 1
-  fi
-done
-if grep -q 'script runs the verify script' "$ROOT/submission/pr-4768-body.md"; then
-  echo "error: pr-4768-body.md contains stale iteration-7 phrase" >&2
-  exit 1
-fi
-if ! grep -q 'release-preflight.sh' "$ROOT/submission/pr-4768-body.md"; then
-  echo "error: pr-4768-body.md missing release-preflight.sh reference" >&2
-  exit 1
-fi
-if ! grep -q 'blocking-gap-race-plan.txt' "$ROOT/submission/pr-4768-body.md"; then
-  echo "error: pr-4768-body.md missing blocking-gap-race-plan.txt reference" >&2
-  exit 1
-fi
-if ! grep -q 'karan-after-identity.txt' "$ROOT/submission/pr-4768-body.md"; then
-  echo "error: pr-4768-body.md missing karan-after-identity.txt reference" >&2
-  exit 1
-fi
-if ! grep -q 'regenerate-autorouting-patch.sh' "$ROOT/submission/pr-4768-body.md"; then
-  echo "error: pr-4768-body.md missing regenerate-autorouting-patch.sh reference" >&2
-  exit 1
-fi
-if ! grep -qE '^\[ \] A\)' "$ROOT/submission/identity-decision.txt"; then
-  echo "error: identity-decision.txt missing option A template" >&2
-  exit 1
-fi
-echo "pr-4768-body.md: required sections present"
+sh "$ROOT/scripts/check-pr-4768-body.sh"
 echo ""
 
 if command -v curl >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then

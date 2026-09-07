@@ -6,20 +6,9 @@ set -eu
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 BODY="$ROOT/submission/pr-4768-body.md"
 
-if [ ! -f "$BODY" ]; then
-  echo "error: missing $BODY" >&2
-  exit 1
-fi
-
-for heading in "## Summary" "## Posting coordination" "Fixes #4764"; do
-  if ! grep -q "$heading" "$BODY"; then
-    echo "error: $BODY missing section: $heading" >&2
-    exit 1
-  fi
-done
-
 case "${1:-}" in
   --dry-run|-n)
+    sh "$ROOT/scripts/check-pr-4768-body.sh"
     echo "dry-run: would update PR #4768 with $BODY ($(wc -c <"$BODY") bytes)"
     echo "--- preview ---"
     sed -n '1,20p' "$BODY"
@@ -27,6 +16,8 @@ case "${1:-}" in
     exit 0
     ;;
 esac
+
+sh "$ROOT/scripts/check-pr-4768-body.sh"
 
 if ! command -v gh >/dev/null 2>&1; then
   echo "error: gh CLI not found — paste $BODY into PR #4768 manually" >&2
