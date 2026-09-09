@@ -1,5 +1,6 @@
 export * from "@tscircuit/core"
 export * from "@tscircuit/eval"
+export { Fragment } from "react"
 export type { AnyCircuitElement, CircuitJson } from "circuit-json"
 export type { ChipProps, PinLabelsProp, CommonLayoutProps } from "@tscircuit/props"
 export { kicadFootprintStrings } from "@tscircuit/props"
