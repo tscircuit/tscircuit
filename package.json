@@ -85,7 +85,7 @@
     "circuit-json": "^0.0.484",
     "circuit-json-to-bpc": "^0.0.13",
     "circuit-json-to-connectivity-map": "^0.0.30",
-    "circuit-json-to-gltf": "^0.0.118",
+    "circuit-json-to-gltf": "^0.0.124",
     "circuit-json-to-pnp-csv": "^0.0.8",
     "circuit-json-to-simple-3d": "^0.0.9",
     "circuit-json-to-spice": "^0.0.45",
