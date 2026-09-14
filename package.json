@@ -18,7 +18,7 @@
     "build": "tsup-node && bun run copy-runframe-standalone && bun run copy-eval-webworker && cp types/static-assets.d.ts dist/static-assets.d.ts && bun run add-global-types-reference",
     "add-global-types-reference": "echo '/// <reference path=\"../globals.d.ts\" />' | cat - dist/index.d.ts > dist/index.d.ts.tmp && mv dist/index.d.ts.tmp dist/index.d.ts",
     "test": "bun test",
-    "upgrade-deps": "bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval @tscircuit/runframe && bun run copy-core-versions && bun install --ignore-scripts",
+    "upgrade-deps": "bun update --latest circuit-json-to-gltf @tscircuit/core @tscircuit/cli @tscircuit/eval @tscircuit/runframe && bun run copy-core-versions && bun install --ignore-scripts",
     "copy-runframe-standalone": "bun run scripts/copy-runframe-standalone.ts",
     "copy-eval-webworker": "bun run scripts/copy-eval-webworker.ts",
     "copy-core-versions": "bun run scripts/copy-core-versions.ts && bun install --ignore-scripts"
@@ -85,7 +85,7 @@
     "circuit-json": "^0.0.489",
     "circuit-json-to-bpc": "^0.0.13",
     "circuit-json-to-connectivity-map": "^0.0.30",
-    "circuit-json-to-gltf": "^0.0.125",
+    "circuit-json-to-gltf": "^0.0.127",
     "circuit-json-to-pnp-csv": "^0.0.8",
     "circuit-json-to-simple-3d": "^0.0.9",
     "circuit-json-to-spice": "^0.0.45",

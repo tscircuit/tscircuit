@@ -48,6 +48,9 @@ const depsToUpdate: any = {}
 let modifiedDeps = false
 // Update dependencies to match core
 for (const [packageName, currentVersion] of Object.entries(currentDeps)) {
+  // The converter is updated independently; core may still use an older release.
+  if (packageName === "circuit-json-to-gltf") continue
+
   if (packageName in coreDeps && coreDeps[packageName] !== currentVersion) {
     console.log(
       `Updating ${packageName} from ${currentVersion} to ${coreDeps[packageName]}`,
