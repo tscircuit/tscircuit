@@ -3,6 +3,8 @@ import currentPackageJson from "../package.json"
 import { join } from "node:path"
 
 const DO_NOT_SYNC_PACKAGE = [
+  // Core bundles this JSCDN-only package into its JavaScript and declarations.
+  "@tscircuit/flex-utils",
   "@biomejs/biome",
   "@tsci/tscircuit.ti",
   "@tscircuit/import-snippet",
