@@ -15,6 +15,7 @@ const DO_NOT_SYNC_PACKAGE = [
   "@tscircuit/jlcpcb-manufacturing-specs",
   "@tscircuit/bga-fanout-solver",
   "@tscircuit/bus-lanes-solver",
+  "@tscircuit/dogbone-solver",
   "@tscircuit/breakout-point-solver",
   "@tscircuit/implicit-copper-pour-solver",
   "@tscircuit/via-stitch-solver",
