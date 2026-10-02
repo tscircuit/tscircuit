@@ -61,7 +61,7 @@
     "@tscircuit/create-fdm-enclosure": "0.0.4",
     "@tscircuit/eval": "^0.0.1518",
     "@tscircuit/fanout-solver": "0.0.78",
-    "@tscircuit/footprinter": "^0.0.426",
+    "@tscircuit/footprinter": "^0.0.430",
     "@tscircuit/image-utils": "^0.0.8",
     "@tscircuit/infer-cable-insertion-point": "^0.0.4",
     "@tscircuit/infgrid-ijump-astar": "^0.0.35",
