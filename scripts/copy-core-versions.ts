@@ -3,6 +3,7 @@ import currentPackageJson from "../package.json"
 import { join } from "node:path"
 
 const DO_NOT_SYNC_PACKAGE = [
+  "@jscad/modeling",
   // Core bundles these JSCDN-only packages into its JavaScript and declarations.
   "@tscircuit/flex-utils",
   "@tscircuit/schematic-trace-solver",
