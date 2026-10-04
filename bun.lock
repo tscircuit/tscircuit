@@ -43,7 +43,7 @@
         "calculate-cell-boundaries": "^0.0.25",
         "calculate-elbow": "^0.0.12",
         "calculate-packing": "^0.0.90",
-        "circuit-json": "^0.0.514",
+        "circuit-json": "^0.0.515",
         "circuit-json-to-bpc": "^0.0.13",
         "circuit-json-to-connectivity-map": "^0.0.33",
         "circuit-json-to-gltf": "^0.0.143",
@@ -394,7 +394,7 @@
 
     "chownr": ["chownr@1.1.4", "", {}, "sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg=="],
 
-    "circuit-json": ["circuit-json@0.0.514", "", { "peerDependencies": { "format-si-unit": "*" } }, "sha512-arX/OEIOoUET4oqBKIrm8t5Qfm529uYy4iwZ/Wx4aZ8u00kVR3kmXO2cCjMRhXYlC6cUqpgXlKYoLGCR5Rl1mw=="],
+    "circuit-json": ["circuit-json@0.0.515", "", { "peerDependencies": { "format-si-unit": "*" } }, "sha512-XPQJjojUzL1Ug7KHeXI4rk2G1mRkYAt9eWeyGT1BKzaTJyoy9KKJtwJG7Hx2kHTmdJupEhwNq1ValJeX1nR0xA=="],
 
     "circuit-json-to-bpc": ["circuit-json-to-bpc@0.0.13", "", { "peerDependencies": { "bpc-graph": "*", "circuit-json": "*", "typescript": "^5" } }, "sha512-3wSMtPa6tJkiBQN4tsm7f0Mb7Wp90X2c8dNbULoDVE4mGGoFqP1DXqBlyvvZZl+4SjqznzQQ0EioLe2SCQTOcg=="],
 
@@ -968,7 +968,7 @@
 
     "tscircuit/circuit-json-to-gltf/jscad-electronics/@tscircuit/modelprinter": ["@tscircuit/modelprinter@0.0.2", "", { "dependencies": { "@tscircuit/mm": "^0.0.9", "zod": "^4.4.3" } }, "sha512-BdKG3MVo246PfrbErBvpdJeS4x7NTv0C4BW12Ho7q7sQ8C5zGtWFEdee5w4nY/0jvIY2WEcpJ+yT3uYBQkOeDg=="],
 
-    "tscircuit/circuit-json-to-gltf/jscad-electronics/circuit-json": ["circuit-json@0.0.511", "", { "peerDependencies": { "format-si-unit": "*" } }, "sha512-JAsE7kolCYpXWuurkBPHS7dSpgdF8xT0UarA1vOhVZxctlmzTc6EPwlDwV4MYIAaQLXo9fK1/Qia6A8c75DQuA=="],
+    "tscircuit/circuit-json-to-gltf/jscad-electronics/circuit-json": ["circuit-json@0.0.514", "", { "peerDependencies": { "format-si-unit": "*" } }, "sha512-arX/OEIOoUET4oqBKIrm8t5Qfm529uYy4iwZ/Wx4aZ8u00kVR3kmXO2cCjMRhXYlC6cUqpgXlKYoLGCR5Rl1mw=="],
 
     "@tscircuit/pcb-trace-linter/@tscircuit/core/calculate-cell-boundaries/react-dom/scheduler": ["scheduler@0.23.2", "", { "dependencies": { "loose-envify": "^1.1.0" } }, "sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ=="],
 

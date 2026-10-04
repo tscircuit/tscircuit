@@ -82,7 +82,7 @@
     "calculate-cell-boundaries": "^0.0.25",
     "calculate-elbow": "^0.0.12",
     "calculate-packing": "^0.0.90",
-    "circuit-json": "^0.0.514",
+    "circuit-json": "^0.0.515",
     "circuit-json-to-bpc": "^0.0.13",
     "circuit-json-to-connectivity-map": "^0.0.33",
     "circuit-json-to-gltf": "^0.0.143",
