@@ -30,6 +30,8 @@ const DO_NOT_SYNC_PACKAGE = [
   "chokidar-cli",
   "pkg-pr-new",
   "howfat",
+  // Installed transitively through core's runtime dependencies.
+  "gl-matrix",
   "live-server",
   "looks-same",
   "ts-expect",
