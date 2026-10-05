@@ -1,6 +1,6 @@
 import React from "react"
 import { expect, test } from "bun:test"
-import { Circuit, assembly, jscad } from "tscircuit"
+import { Circuit, assembly, jscad } from "../dist"
 
 test("published exports assemble a printed part between a motor and board", () => {
   const circuit = new Circuit()
