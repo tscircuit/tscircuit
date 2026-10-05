@@ -119,6 +119,15 @@ tsci dev
 
 ## More Features!
 
+Import circuit APIs and prop types from `tscircuit`:
+
+```tsx
+import { assembly, jscad, type CommonComponentProps, type ResistorProps } from "tscircuit"
+```
+
+All public prop types and schemas from `@tscircuit/props` are available from
+`tscircuit`, including common layout, component, and assembly props.
+
 - [x] Preview PCBs & Schematics in your browser
 - [x] Use normal Typescript/React tooling
 - [x] Export Gerbers, Pick'n'Place and BOM for manufacturing
