@@ -1,4 +1,5 @@
 export * from "@tscircuit/core"
+export { jscad } from "@tscircuit/core"
 export * from "@tscircuit/eval"
 export { Fragment } from "react"
 export type { AnyCircuitElement, CircuitJson } from "circuit-json"
