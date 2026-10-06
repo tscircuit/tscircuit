@@ -5,6 +5,7 @@ import { join } from "node:path"
 const DO_NOT_SYNC_PACKAGE = [
   "@jscad/modeling",
   // Core bundles these JSCDN-only packages into its JavaScript and declarations.
+  "@tscircuit/cableprinter",
   "@tscircuit/flex-utils",
   "@tscircuit/schematic-trace-solver",
   "@biomejs/biome",
