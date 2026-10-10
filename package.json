@@ -73,7 +73,7 @@
     "@tscircuit/modelprinter": "^0.0.18",
     "@tscircuit/ngspice-spice-engine": "^0.0.20",
     "@tscircuit/props": "^0.0.698",
-    "@tscircuit/runframe": "^0.0.2955",
+    "@tscircuit/runframe": "^0.0.2956",
     "@tscircuit/schematic-match-adapt": "^0.0.18",
     "@tscircuit/simple-3d-svg": "^0.0.41",
     "@tscircuit/solver-utils": "^0.0.16",
