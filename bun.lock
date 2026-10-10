@@ -16,7 +16,7 @@
         "@tscircuit/capacity-autorouter": "^0.0.965",
         "@tscircuit/checks": "^0.0.244",
         "@tscircuit/circuit-json-util": "^0.0.119",
-        "@tscircuit/cli": "^0.1.2289",
+        "@tscircuit/cli": "^0.1.2290",
         "@tscircuit/copper-pour-solver": "^0.0.67",
         "@tscircuit/core": "^0.0.2124",
         "@tscircuit/create-fdm-enclosure": "0.0.4",
@@ -277,7 +277,7 @@
 
     "@tscircuit/circuit-json-util": ["@tscircuit/circuit-json-util@0.0.119", "", { "dependencies": { "@flatten-js/core": "^1.6.14", "parsel-js": "^1.1.2" }, "peerDependencies": { "circuit-json": "*", "transformation-matrix": "*", "zod": "3" } }, "sha512-aOn6El9BbxEFsbl57f8YN/cV2Yl2zp1y2LVN/OIu1bHqVTtWfoa2jWXFvTmoXhzjkUM64EeRvGJbtmhr95unsA=="],
 
-    "@tscircuit/cli": ["@tscircuit/cli@0.1.2289", "", { "peerDependencies": { "@tscircuit/math-utils": "0.0.36", "circuit-json": "^0.0.525", "circuit-to-svg": "^0.0.447", "tscircuit": "*" }, "bin": { "tscircuit-cli": "cli/entrypoint.js" } }, "sha512-bPYqRbt6FW8JBnPjMknBAz3JBjFfov+IyREdJ2DD9ZdpUGqZg5zY3/3aJGBUhjuXLukeMWBBCnlebNLTtP0WIg=="],
+    "@tscircuit/cli": ["@tscircuit/cli@0.1.2290", "", { "peerDependencies": { "@tscircuit/math-utils": "0.0.36", "circuit-json": "^0.0.525", "circuit-to-svg": "^0.0.447", "tscircuit": "*" }, "bin": { "tscircuit-cli": "cli/entrypoint.js" } }, "sha512-DgE4IolU+1ni3sCNNiXeIxsY2l4/1pri1XYfjSakrgZ+8ZSGqXMdmLFpG35hgr/yZg2kp5P8KZeVzx7nnX5jNA=="],
 
     "@tscircuit/copper-pour-solver": ["@tscircuit/copper-pour-solver@0.0.67", "", { "dependencies": { "@tscircuit/manifold-2d": "^0.0.6" }, "peerDependencies": { "typescript": "^5" } }, "sha512-Gs9Ad1nZetkqAgs0BubrzX0UI997WgDuzV6P1NQLwAwWY4j9LgvU2Z7uJ1ykFLOWeZRcM+9KTwaYA7c+PMHN8g=="],
 
