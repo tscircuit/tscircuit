@@ -3,11 +3,6 @@ export { jscad } from "@tscircuit/core"
 export * from "@tscircuit/eval"
 export { Fragment } from "react"
 export type { AnyCircuitElement, CircuitJson } from "circuit-json"
-export type {
-  BoardProps,
-  ChipProps,
-  CommonLayoutProps,
-  ImplicitBreakoutPointSolverFn,
-  PinLabelsProp,
-} from "@tscircuit/props"
+export type * from "@tscircuit/props"
+export type { LocalCacheEngine, SimpleRouteJson } from "@tscircuit/core"
 export { kicadFootprintStrings } from "@tscircuit/props"
