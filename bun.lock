@@ -20,7 +20,7 @@
         "@tscircuit/copper-pour-solver": "^0.0.67",
         "@tscircuit/core": "https://pkg.pr.new/tscircuit/core/@tscircuit/core@409ef29",
         "@tscircuit/create-fdm-enclosure": "0.0.4",
-        "@tscircuit/eval": "https://pkg.pr.new/tscircuit/eval/@tscircuit/eval@f5ed004",
+        "@tscircuit/eval": "https://pkg.pr.new/tscircuit/eval/@tscircuit/eval@35f8351",
         "@tscircuit/fanout-solver": "0.0.78",
         "@tscircuit/footprinter": "^0.0.431",
         "@tscircuit/image-utils": "^0.0.8",
@@ -285,7 +285,7 @@
 
     "@tscircuit/create-fdm-enclosure": ["@tscircuit/create-fdm-enclosure@0.0.4", "", { "dependencies": { "@tscircuit/solver-utils": "^0.0.19", "graphics-debug": "^0.0.96", "jscad-planner": "^0.0.14" }, "peerDependencies": { "typescript": "^5" } }, "sha512-mJzfM2lG7QIJScb2WwzM91mXBMSC5l9hbAKYl5rjnYB+jjQGdjwRPA61SiUUUcixiZ5fcxgY8k/szpOiyAorqg=="],
 
-    "@tscircuit/eval": ["@tscircuit/eval@https://pkg.pr.new/tscircuit/eval/@tscircuit/eval@f5ed004", { "dependencies": { "@tscircuit/core": "https://pkg.pr.new/tscircuit/core/@tscircuit/core@409ef29" }, "peerDependencies": { "@tscircuit/core": ">=0.0.1906", "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-6DN6NtlSeqtwcNblPIpJIU6r7edT5SXBq7xkFqkfCN7KloAaF88RZKsiNaEa+McSd+sPEgrcQMnxnQVdipTzuw=="],
+    "@tscircuit/eval": ["@tscircuit/eval@https://pkg.pr.new/tscircuit/eval/@tscircuit/eval@35f8351", { "dependencies": { "@tscircuit/core": "https://pkg.pr.new/tscircuit/core/@tscircuit/core@409ef29" }, "peerDependencies": { "circuit-json": "*", "typescript": "^5.0.0", "zod": "3" } }, "sha512-ZtE/ZowPq6yPHeoDk8QL5Ys1sAjUYTFiGz2i8KmC4KxQWmY/2BuNia+hwJvhUqDyE30emAtAFbq68J1vPTA3iQ=="],
 
     "@tscircuit/fanout-solver": ["@tscircuit/fanout-solver@0.0.78", "", { "dependencies": { "@tscircuit/capacity-autorouter": "0.0.718", "@tscircuit/solver-utils": "0.0.19", "graphics-debug": "0.0.99" }, "peerDependencies": { "typescript": "^5" } }, "sha512-iYSKgbORYc5LgBjF8vRFdglP1AlCC7dSeU8fJaU81Pk4rBcWaRNAh0IHoCZ05h6JTX+eNvdDmZuBw7usl9iVnw=="],
 
