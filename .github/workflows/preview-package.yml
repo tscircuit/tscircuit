@@ -1,0 +1,19 @@
+name: Preview package
+
+on:
+  push:
+    branches:
+      - preview/demo-teardrop-runtime
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --ignore-scripts
+      - run: bun run build
+      - run: bunx pkg-pr-new@0.0.37 publish --comment=off
