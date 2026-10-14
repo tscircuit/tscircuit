@@ -2,7 +2,7 @@ import corePackageJson from "@tscircuit/core/package.json"
 import currentPackageJson from "../package.json"
 import { join } from "node:path"
 
-const DO_NOT_SYNC_PACKAGE = [
+export const DO_NOT_SYNC_PACKAGE = [
   "@jscad/modeling",
   // Core bundles these JSCDN-only packages into its JavaScript and declarations.
   "@tscircuit/cableprinter",
@@ -16,6 +16,7 @@ const DO_NOT_SYNC_PACKAGE = [
   "@tscircuit/common",
   "@tscircuit/schematic-autolayout",
   "@tscircuit/jlcpcb-manufacturing-specs",
+  "@tscircuit/*-solver",
   "@tscircuit/bga-fanout-solver",
   "@tscircuit/bus-lanes-solver",
   "@tscircuit/dogbone-solver",
@@ -38,8 +39,22 @@ const DO_NOT_SYNC_PACKAGE = [
   "concurrently",
   "nanoid",
   "eecircuit-engine",
-  "stack-svgs"
+  "stack-svgs",
 ]
+
+export function isPackageExcludedFromSync(
+  packageName: string,
+  patterns: string[] = DO_NOT_SYNC_PACKAGE,
+): boolean {
+  return patterns.some((pattern) => {
+    if (pattern === packageName) return true
+    if (pattern.includes("*")) {
+      const regexPattern = `^${pattern.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*")}$`
+      return new RegExp(regexPattern).test(packageName)
+    }
+    return false
+  })
+}
 
 const coreDeps: any = {
   ...corePackageJson.devDependencies,
@@ -67,13 +82,7 @@ for (const [packageName, currentVersion] of Object.entries(currentDeps)) {
 // Check for missing core dependencies
 const missingDeps: string[] = []
 for (const packageName of Object.keys(coreDeps)) {
-  if (
-    DO_NOT_SYNC_PACKAGE.some((dnsp) =>
-      dnsp.includes("*")
-        ? packageName.startsWith(dnsp.replace("*", ""))
-        : packageName === dnsp,
-    )
-  ) {
+  if (isPackageExcludedFromSync(packageName)) {
     continue
   }
   if (!(packageName in currentDeps)) {

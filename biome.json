@@ -11,7 +11,7 @@
     "formatter": {
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
-      "trailingCommas": "all",
+      "trailingComma": "all",
       "semicolons": "asNeeded",
       "arrowParentheses": "always",
       "bracketSpacing": true,
