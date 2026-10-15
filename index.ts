@@ -8,6 +8,12 @@ export type {
   ChipProps,
   CommonLayoutProps,
   ImplicitBreakoutPointSolverFn,
+  PcbCircuitElement,
+  PcbPostRoutingContext,
+  PcbPostRoutingElementInput,
+  PcbPostRoutingFn,
+  PcbPostRoutingRenderFn,
+  PcbPostRoutingStepProps,
   PinLabelsProp,
 } from "@tscircuit/props"
 export { kicadFootprintStrings } from "@tscircuit/props"
