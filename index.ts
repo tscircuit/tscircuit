@@ -9,9 +9,11 @@ export type {
   CommonLayoutProps,
   ImplicitBreakoutPointSolverFn,
   PcbCircuitElement,
-  PcbPostRoutingHook,
-  PcbPostRoutingHookContext,
-  PcbPostRoutingHookElementInput,
+  PcbPostRoutingContext,
+  PcbPostRoutingElementInput,
+  PcbPostRoutingFn,
+  PcbPostRoutingRenderFn,
+  PcbPostRoutingStepProps,
   PinLabelsProp,
 } from "@tscircuit/props"
 export { kicadFootprintStrings } from "@tscircuit/props"
