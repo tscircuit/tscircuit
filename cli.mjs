@@ -23,6 +23,10 @@ if (!process.env.TSCIRCUIT_GLOBAL_STANDALONE_FILE_PATH) {
   );
   if (existsSync(browserBundlePath)) {
     process.env.TSCIRCUIT_GLOBAL_STANDALONE_FILE_PATH = browserBundlePath;
+  } else if (process.env.DEBUG || process.env.NODE_ENV === "development") {
+    console.debug(
+      `[tscircuit] Standalone browser bundle not found at "${browserBundlePath}". Run 'bun run build' to bundle browser preview assets.`,
+    );
   }
 }
 
@@ -30,4 +34,7 @@ async function main() {
   await import("@tscircuit/cli");
 }
 
-main();
+main().catch((error) => {
+  console.error("Failed to execute tscircuit CLI:", error);
+  process.exit(1);
+});
