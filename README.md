@@ -177,7 +177,7 @@ Please [create an issue](https://github.com/tscircuit/tscircuit/issues)!
 
 - [@seveibar](https://x.com/seveibar) is the main author, he tweets about tscircuit and does [development livestreams](https://www.twitch.tv/seveibar)
 - [@tscircuit](https://x.com/tscircuit) for major tscircuit releases, features and discussions
-- [tscircuit discord](https://discord.gg/6X3PYhtj) and [tscircuit campfire](https://tscircuit.com/community/join-redirect)
+- [tscircuit discord](https://tscircuit.com/join) and [tscircuit campfire](https://tscircuit.com/community/join-redirect)
 
 ---
 
