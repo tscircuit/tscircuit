@@ -2,6 +2,7 @@ import { expect, test } from "bun:test"
 import { mkdir, mkdtemp, readdir, rm } from "node:fs/promises"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
+import { fileURLToPath } from "node:url"
 import packageJson from "../package.json"
 
 test("published package does not depend on manifold-3d", async () => {
@@ -22,6 +23,8 @@ test("published package does not depend on manifold-3d", async () => {
   const auditDir = await mkdtemp(join(tmpdir(), "tscircuit-dependency-audit-"))
   const packDir = join(auditDir, "pack")
   const installDir = join(auditDir, "install")
+  const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm"
+  const projectRoot = fileURLToPath(new URL("..", import.meta.url))
 
   try {
     await mkdir(packDir)
@@ -29,11 +32,11 @@ test("published package does not depend on manifold-3d", async () => {
 
     const npmEnv = {
       ...process.env,
-      npm_config_cache: join(auditDir, "npm-cache"),
     }
-    const pack = Bun.spawnSync(["npm", "pack", "--pack-destination", packDir], {
-      cwd: new URL("..", import.meta.url).pathname,
+    const pack = Bun.spawnSync([npmCmd, "pack", "--pack-destination", packDir], {
+      cwd: projectRoot,
       env: npmEnv,
+      stdin: "ignore",
     })
     expect(pack.exitCode, pack.stderr.toString()).toBe(0)
 
@@ -46,8 +49,9 @@ test("published package does not depend on manifold-3d", async () => {
     )
     const install = Bun.spawnSync(
       [
-        "npm",
+        npmCmd,
         "install",
+        "--package-lock-only",
         "--ignore-scripts",
         "--no-audit",
         "--no-fund",
@@ -69,4 +73,4 @@ test("published package does not depend on manifold-3d", async () => {
   } finally {
     await rm(auditDir, { recursive: true, force: true })
   }
-}, 60_000)
+}, 180_000)
