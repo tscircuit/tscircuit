@@ -11,6 +11,13 @@ const require = createRequire(import.meta.url);
 const packageJson = require("./package.json");
 global.TSCIRCUIT_VERSION = packageJson.version;
 
+// Handle fast version check without module import overhead
+const args = process.argv.slice(2);
+if (args.length === 1 && (args[0] === "--version" || args[0] === "-v")) {
+  console.log(packageJson.version);
+  process.exit(0);
+}
+
 // Expose the runframe + eval bundle shipped by this tscircuit version (the one
 // that provides the `tsci` binary) so `tsci dev` can use it when the project has
 // no local tscircuit installed. The CLI prefers a project-local tscircuit over
@@ -27,7 +34,18 @@ if (!process.env.TSCIRCUIT_GLOBAL_STANDALONE_FILE_PATH) {
 }
 
 async function main() {
-  await import("@tscircuit/cli");
+  try {
+    await import("@tscircuit/cli");
+  } catch (error) {
+    console.error(
+      "Failed to execute tscircuit CLI:",
+      error instanceof Error ? error.message : error,
+    );
+    process.exit(1);
+  }
 }
 
-main();
+main().catch((error) => {
+  console.error("Unexpected error in tscircuit CLI:", error);
+  process.exit(1);
+});
