@@ -1,11 +1,26 @@
 # Introduction to tscircuit
 
-This is a placeholder introduction to tscircuit. Sorry!
+tscircuit is an open-source TypeScript and React framework for hardware design. It allows engineers to design schematics, layout printed circuit boards (PCBs), simulate analog behavior, and export manufacturing packages using code.
 
-Try doing `npm install -g tscircuit` then running `tsci dev` inside a directory, that'll
-bootstrap the directory with files you can edit to explore.
+## Quick Start
 
-Also the [two minute introduction](https://www.youtube.com/watch?v=9m-bfswEv2k) could be
-helpful!
+Install the CLI globally:
 
-Give this repo a star to show that someone is looking at this stuff!
+```bash
+npm install -g tscircuit
+```
+
+Initialize and preview a new circuit:
+
+```bash
+mkdir my-circuit && cd my-circuit
+tsci init
+tsci dev
+```
+
+## Learn More
+
+- [Architecture & Pipeline Guide](./architecture.md): Learn how tscircuit compiles React JSX definitions into Circuit JSON and fabrication packages.
+- [Contributor Program](./CONTRIBUTOR_PROGRAM.md): How to contribute and earn bounties.
+- [Two-Minute Video Introduction](https://www.youtube.com/watch?v=9m-bfswEv2k): Quick visual walkthrough.
+- [Manual Installation](./manual-installation.md): Advanced and manual installation notes.
