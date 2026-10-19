@@ -11,3 +11,10 @@ export type {
   PinLabelsProp,
 } from "@tscircuit/props"
 export { kicadFootprintStrings } from "@tscircuit/props"
+export {
+  circuitJsonToPcbSvg,
+  circuitJsonToSchematicSvg,
+  convertCircuitJsonToAssemblySvg,
+  convertCircuitJsonToPcbSvg,
+  convertCircuitJsonToSchematicSvg,
+} from "circuit-to-svg"
