@@ -11,3 +11,17 @@ export type {
   PinLabelsProp,
 } from "@tscircuit/props"
 export { kicadFootprintStrings } from "@tscircuit/props"
+export {
+  applyDfmAndGerberFixes,
+  checkViaAnnularRing,
+  checkAnnularRing,
+  checkMinTraceWidth,
+  checkTraceAcuteAngles,
+  checkSolderMaskBridge,
+  checkSilkscreenOverPads,
+  convertCircuitJsonToGerberFiles,
+  runAllPlacementChecks,
+  runAllRoutingChecks,
+  runAllChecks,
+} from "./src/dfm-checks-and-gerber"
+
