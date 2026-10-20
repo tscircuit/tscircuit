@@ -154,8 +154,8 @@ export function getPcbObstaclesSummary(
         const layer = (elm as any).layer ?? "top"
         const x = (elm as any).x ?? 0
         const y = (elm as any).y ?? 0
-        const w = (elm as any).width ?? (elm as any).radius * 2 ?? 1
-        const h = (elm as any).height ?? (elm as any).radius * 2 ?? 1
+        const w = (elm as any).width ?? ((elm as any).radius !== undefined ? (elm as any).radius * 2 : 1)
+        const h = (elm as any).height ?? ((elm as any).radius !== undefined ? (elm as any).radius * 2 : 1)
 
         addObstacle(layer, {
           type: "pad",
