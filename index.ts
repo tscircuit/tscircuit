@@ -11,3 +11,9 @@ export type {
   PinLabelsProp,
 } from "@tscircuit/props"
 export { kicadFootprintStrings } from "@tscircuit/props"
+export {
+  applyBoardPackPlacementViaFixes,
+  checkViaPadClearance,
+  runAllRoutingChecks,
+  runAllChecks,
+} from "./src/board-pack-placement-via-fixes"
