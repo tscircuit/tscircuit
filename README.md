@@ -113,10 +113,10 @@ export default () => (
   <board width="20mm" height="15mm">
     <resistor name="R1" resistance="10k" footprint="0805" pcbX={-3} />
     <resistor name="R2" resistance="10k" footprint="0805" pcbX={3} />
-    <trace from="net.VCC" to=".R1 > .pin1" />
-    <trace from=".R1 > .pin2" to=".R2 > .pin1" />
-    <trace from=".R2 > .pin1" to="net.OUT" />
-    <trace from=".R2 > .pin2" to="net.GND" />
+    <trace from="net.VCC" to="R1.pin1" />
+    <trace from="R1.pin2" to="R2.pin1" />
+    <trace from="R2.pin1" to="net.OUT" />
+    <trace from="R2.pin2" to="net.GND" />
   </board>
 )
 ```
