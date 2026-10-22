@@ -1,11 +1,12 @@
 # tscircuit - React for Circuits
 
-Make electronics using Typescript, React, and AI tools. Just prompt your agent to "use tscircuit" and 10x its PCB capabilities!
+**Design circuit boards with TypeScript and React.**
 
-tscircuit makes developing electronics like web development. Edit code in your favorite IDE and watch the changes
-create electronics in realtime. When you're done, [export your project and manufacture](https://docs.tscircuit.com/guides/understanding-fabrication-files)!
+tscircuit is an open-source electronics design tool. Describe components and connections in code, preview your schematic and PCB in 2D and 3D, and export manufacturing files to order real boards.
 
-Get started by running `npm install -g tscircuit`! [(CLI quickstart doc)](https://docs.tscircuit.com/intro/quickstart-cli)
+Use your favorite editor and AI coding tools, or [try it in your browser](https://tscircuit.com/playground).
+
+Get started with `npm install -g tscircuit`. [CLI quickstart →](https://docs.tscircuit.com/intro/quickstart-cli)
 
 <div>
 <a href="https://tscircuit.com/join" target="_blank">Discord</a>
@@ -43,22 +44,51 @@ Get started by running `npm install -g tscircuit`! [(CLI quickstart doc)](https:
   <a target="_blank" href="https://github.com/tscircuit/tscircuit/stargazers"><img src="https://img.shields.io/github/stars/tscircuit/tscircuit" alt="GitHub Stars"></a>
 </div>
 
-</div>
+## Example Circuits
 
+From code to hardware: explore the source, schematic, PCB layout, and 3D view of these community projects.
 
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://tscircuit.com/imrishabh18/rp2040-motor-controller#files">
+        <img src="./docs/showcase/rp2040-motor-controller.jpg" width="280" alt="Manufactured RP2040 USB-C motor controller mounted on a stepper motor" />
+      </a>
+      <br />
+      <strong><a href="https://tscircuit.com/imrishabh18/rp2040-motor-controller#files">RP2040 motor controller</a></strong>
+      <br />
+      USB-C motor control · Manufactured board
+      <br />
+      by <a href="https://tscircuit.com/imrishabh18">imrishabh18</a>
+    </td>
+    <td align="center" width="33%">
+      <a href="https://tscircuit.com/imrishabh18/nema-23-stepper-controller#3d">
+        <img src="./docs/showcase/nema-23-stepper-controller.jpg" width="280" alt="3D render of the NEMA 23 stepper controller PCB mounted on a motor" />
+      </a>
+      <br />
+      <strong><a href="https://tscircuit.com/imrishabh18/nema-23-stepper-controller#files">NEMA 23 stepper controller</a></strong>
+      <br />
+      Motor-mounted controller · 3D render
+      <br />
+      by <a href="https://tscircuit.com/imrishabh18">imrishabh18</a>
+    </td>
+    <td align="center" width="33%">
+      <a href="https://tscircuit.com/MustafaMulla29/rp2040-bldc-motor-controller-new#3d">
+        <img src="./docs/showcase/rp2040-bldc-motor-controller.jpg" width="280" alt="3D render of an RP2040 brushless motor controller with USB cables and motor connections" />
+      </a>
+      <br />
+      <strong><a href="https://tscircuit.com/MustafaMulla29/rp2040-bldc-motor-controller-new#files">RP2040 BLDC controller</a></strong>
+      <br />
+      Brushless motor control · 3D render
+      <br />
+      by <a href="https://tscircuit.com/MustafaMulla29">MustafaMulla29</a>
+    </td>
+  </tr>
+</table>
 
+More examples: [ESP32 Wi-Fi breakout](https://tscircuit.com/seveibar/wifi-test-board-1) · [Browse community circuits](https://tscircuit.com)
 
-https://github.com/user-attachments/assets/91218278-2f00-48bf-97a2-53c7652c25e5
-
-
-
-
-https://github.com/user-attachments/assets/e0fc9f05-691f-422e-816a-1854c4ffc02d
-
-
-
-
-1. [What is tscircuit?](#about-tscircuit)
+1. [What is tscircuit?](#what-is-tscircuit)
 2. [Examples](#example-circuits)
 3. [Getting Started](#getting-started)
 4. [Features](#more-features)
@@ -70,38 +100,35 @@ https://github.com/user-attachments/assets/e0fc9f05-691f-422e-816a-1854c4ffc02d
 
 ## What is tscircuit?
 
-`tscircuit` is a library complemented by a registry, package manager, command line tool and AI electronic design suite that makes it easy to create, share, export and manufacture electronic circuits. It uses
-[React Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to render circuits into web pages.
+tscircuit turns TypeScript and React components into schematics, PCB layouts, 3D models, and manufacturing files. Instead of HTML elements like `<div>`, you write circuit elements like `<chip>`, `<resistor>`, and `<trace>`.
 
-Think of tscircuit as "React for Electronics" It allows you to design real-world electronic circuits using Typescript and React. This is what tscircuit code looks like, instead of creating web element like “div”, you create circuit elements like “chip”, “resistor” or “capacitor”, then instead of rendering a website, we render a 3d circuit (that you can actually order!)
+Build reusable circuit components, share them on the [registry](https://tscircuit.com), and use the [`tsci` CLI](https://github.com/tscircuit/cli) to preview and [export your designs for manufacturing](https://docs.tscircuit.com/guides/understanding-fabrication-files).
 
-Using tscircuit, you can design things like a <a target="_blank" href="https://blog.tscircuit.com/p/battling-jlcs-assembly-interface" target="_blank">fully functional keyboard!</a> Once you've completed your design, you can export it to a manufacturer and order a real, functional circuit board!
+### Circuit code
 
-## Example Circuits
-
-- [ESP32 Wifi Breakout Board](https://tscircuit.com/seveibar/wifi-test-board-1)
+A simple voltage divider looks like this:
 
 ```tsx
-const Circuit = () => (
-  <board width="50mm" height="50mm" center_x={0} center_y={0}>
-    <MySubcomponent name="U1" center={[0, 0]} footprint="sot236" />
-    <resistor
-      x={2}
-      y={-0.5}
-      name="R1"
-      resistance="10ohm"
-      footprint="0805"
-      pcb_x="4mm"
-      pcb_y="-1mm"
-    />
-    <ground x={3} y={1} name="GND" />
-    <trace path={[".U1 > .D0", ".R1 > .left"]} />
-    <trace path={[".R1 > .right", ".GND > .gnd"]} />
+export default () => (
+  <board width="20mm" height="15mm">
+    <resistor name="R1" resistance="10k" footprint="0805" pcbX={-3} />
+    <resistor name="R2" resistance="10k" footprint="0805" pcbX={3} />
+    <trace from="net.VCC" to=".R1 > .pin1" />
+    <trace from=".R1 > .pin2" to=".R2 > .pin1" />
+    <trace from=".R2 > .pin1" to="net.OUT" />
+    <trace from=".R2 > .pin2" to="net.GND" />
   </board>
 )
 ```
 
-![Example Circuit Rendering](./docs/example_render.png)
+<details>
+<summary>Watch tscircuit in action</summary>
+
+https://github.com/user-attachments/assets/91218278-2f00-48bf-97a2-53c7652c25e5
+
+https://github.com/user-attachments/assets/e0fc9f05-691f-422e-816a-1854c4ffc02d
+
+</details>
 
 ## Getting Started
 
