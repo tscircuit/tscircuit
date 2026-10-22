@@ -63,7 +63,7 @@ From code to hardware: explore the source, schematic, PCB layout, and 3D view of
     </td>
     <td align="center" width="33%">
       <a href="https://tscircuit.com/imrishabh18/nema-23-stepper-controller#3d">
-        <img src="./docs/showcase/nema-23-stepper-controller.jpg" width="280" alt="3D render of the NEMA 23 stepper controller PCB mounted on a motor" />
+        <img src="./docs/showcase/nema-23-stepper-controller.jpg" width="280" alt="Supersampled 3D render of the NEMA 23 stepper controller PCB and complete motor assembly" />
       </a>
       <br />
       <strong><a href="https://tscircuit.com/imrishabh18/nema-23-stepper-controller#files">NEMA 23 stepper controller</a></strong>
@@ -74,7 +74,7 @@ From code to hardware: explore the source, schematic, PCB layout, and 3D view of
     </td>
     <td align="center" width="33%">
       <a href="https://tscircuit.com/MustafaMulla29/rp2040-bldc-motor-controller-new#3d">
-        <img src="./docs/showcase/rp2040-bldc-motor-controller.jpg" width="280" alt="3D render of an RP2040 brushless motor controller with USB cables and motor connections" />
+        <img src="./docs/showcase/rp2040-bldc-motor-controller.jpg" width="280" alt="Supersampled 3D render of the RP2040 brushless motor controller PCB" />
       </a>
       <br />
       <strong><a href="https://tscircuit.com/MustafaMulla29/rp2040-bldc-motor-controller-new#files">RP2040 BLDC controller</a></strong>
@@ -87,6 +87,22 @@ From code to hardware: explore the source, schematic, PCB layout, and 3D view of
 </table>
 
 More examples: [ESP32 Wi-Fi breakout](https://tscircuit.com/seveibar/wifi-test-board-1) · [Browse community circuits](https://tscircuit.com)
+
+### Schematic and PCB layout
+
+The [RP2040 motor controller](https://tscircuit.com/imrishabh18/rp2040-motor-controller#files) also shows how a real design looks in 2D.
+
+**Schematic:** USB programming, QSPI flash, and 3.3 V power. Click the image to zoom into the vector drawing.
+
+[![RP2040 motor controller schematic showing USB-C programming, QSPI flash, and the 3.3 V supply](./docs/showcase/rp2040-motor-controller-schematic.png)](./docs/showcase/rp2040-motor-controller-schematic.svg)
+
+**PCB layout:** top copper layer, with silkscreen hidden to make the routing easier to see.
+
+<p align="center">
+  <a href="https://tscircuit.com/imrishabh18/rp2040-motor-controller#pcb">
+    <img src="./docs/showcase/rp2040-motor-controller-pcb.png" width="600" alt="RP2040 motor controller top copper layout, showing routed traces, copper pours, pads, vias, and mounting holes" />
+  </a>
+</p>
 
 1. [What is tscircuit?](#what-is-tscircuit)
 2. [Examples](#example-circuits)
@@ -142,7 +158,7 @@ tsci dev
 
 > Open your browser to http://localhost:3020!
 
-> ![tsci Server Preview](./docs/example_preview.png)
+Edit your circuit code and preview the schematic, PCB layout, and 3D model as you work.
 
 ## More Features!
 
