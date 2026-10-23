@@ -1,11 +1,41 @@
 import { expectTypeOf, test } from "bun:test"
-import type {
-  BoardProps as PropsBoardProps,
-  ImplicitBreakoutPointSolverFn as PropsImplicitBreakoutPointSolverFn,
-} from "@tscircuit/props"
-import type { BoardProps, ImplicitBreakoutPointSolverFn } from "../dist"
+import type * as Props from "@tscircuit/props"
+import type * as Tscircuit from "../index"
 
-test("published entry point re-exports the board and breakout solver types", () => {
-  expectTypeOf<BoardProps>().toEqualTypeOf<PropsBoardProps>()
-  expectTypeOf<ImplicitBreakoutPointSolverFn>().toEqualTypeOf<PropsImplicitBreakoutPointSolverFn>()
+test("entry point re-exports standard component prop types", () => {
+  expectTypeOf<Tscircuit.BoardProps>().toEqualTypeOf<Props.BoardProps>()
+  expectTypeOf<Tscircuit.ChipProps>().toEqualTypeOf<Props.ChipProps>()
+  expectTypeOf<Tscircuit.CommonLayoutProps>().toEqualTypeOf<Props.CommonLayoutProps>()
+  expectTypeOf<Tscircuit.ImplicitBreakoutPointSolverFn>().toEqualTypeOf<Props.ImplicitBreakoutPointSolverFn>()
+  expectTypeOf<Tscircuit.PinLabelsProp>().toEqualTypeOf<Props.PinLabelsProp>()
+  expectTypeOf<Tscircuit.ResistorProps>().toEqualTypeOf<Props.ResistorProps>()
+  expectTypeOf<Tscircuit.CapacitorProps>().toEqualTypeOf<Props.CapacitorProps>()
+  expectTypeOf<Tscircuit.InductorProps>().toEqualTypeOf<Props.InductorProps>()
+  expectTypeOf<Tscircuit.DiodeProps>().toEqualTypeOf<Props.DiodeProps>()
+  expectTypeOf<Tscircuit.LedProps>().toEqualTypeOf<Props.LedProps>()
+  expectTypeOf<Tscircuit.TraceProps>().toEqualTypeOf<Props.TraceProps>()
+  expectTypeOf<Tscircuit.ViaProps>().toEqualTypeOf<Props.ViaProps>()
+  expectTypeOf<Tscircuit.HoleProps>().toEqualTypeOf<Props.HoleProps>()
+  expectTypeOf<Tscircuit.PlatedHoleProps>().toEqualTypeOf<Props.PlatedHoleProps>()
+  expectTypeOf<Tscircuit.SmtPadProps>().toEqualTypeOf<Props.SmtPadProps>()
+  expectTypeOf<Tscircuit.GroupProps>().toEqualTypeOf<Props.GroupProps>()
+  expectTypeOf<Tscircuit.SubcircuitProps>().toEqualTypeOf<Props.SubcircuitProps>()
+  expectTypeOf<Tscircuit.CopperPourProps>().toEqualTypeOf<Props.CopperPourProps>()
+  expectTypeOf<Tscircuit.JumperProps>().toEqualTypeOf<Props.JumperProps>()
+  expectTypeOf<Tscircuit.NetProps>().toEqualTypeOf<Props.NetProps>()
+  expectTypeOf<Tscircuit.NetAliasProps>().toEqualTypeOf<Props.NetAliasProps>()
+  expectTypeOf<Tscircuit.NetLabelProps>().toEqualTypeOf<Props.NetLabelProps>()
+  expectTypeOf<Tscircuit.CrystalProps>().toEqualTypeOf<Props.CrystalProps>()
+  expectTypeOf<Tscircuit.PotentiometerProps>().toEqualTypeOf<Props.PotentiometerProps>()
+  expectTypeOf<Tscircuit.BatteryProps>().toEqualTypeOf<Props.BatteryProps>()
+  expectTypeOf<Tscircuit.PushButtonProps>().toEqualTypeOf<Props.PushButtonProps>()
+  expectTypeOf<Tscircuit.SwitchProps>().toEqualTypeOf<Props.SwitchProps>()
+  expectTypeOf<Tscircuit.TransistorProps>().toEqualTypeOf<Props.TransistorProps>()
+  expectTypeOf<Tscircuit.MosfetProps>().toEqualTypeOf<Props.MosfetProps>()
+  expectTypeOf<Tscircuit.OpAmpProps>().toEqualTypeOf<Props.OpAmpProps>()
+  expectTypeOf<Tscircuit.HeaderProps>().toEqualTypeOf<Props.HeaderProps>()
+  expectTypeOf<Tscircuit.PinHeaderProps>().toEqualTypeOf<Props.PinHeaderProps>()
+  expectTypeOf<Tscircuit.TestpointProps>().toEqualTypeOf<Props.TestpointProps>()
+  expectTypeOf<Tscircuit.CutoutProps>().toEqualTypeOf<Props.CutoutProps>()
+  expectTypeOf<Tscircuit.FootprintProps>().toEqualTypeOf<Props.FootprintProps>()
 })
