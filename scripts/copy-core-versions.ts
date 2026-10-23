@@ -2,7 +2,7 @@ import corePackageJson from "@tscircuit/core/package.json"
 import currentPackageJson from "../package.json"
 import { join } from "node:path"
 
-const DO_NOT_SYNC_PACKAGE = [
+export const DO_NOT_SYNC_PACKAGE = [
   "@jscad/modeling",
   // Core bundles these JSCDN-only packages into its JavaScript and declarations.
   "@tscircuit/cableprinter",
@@ -41,6 +41,22 @@ const DO_NOT_SYNC_PACKAGE = [
   "stack-svgs"
 ]
 
+export function shouldSkipPackage(
+  packageName: string,
+  skipList: string[] = DO_NOT_SYNC_PACKAGE,
+): boolean {
+  return skipList.some((pattern) => {
+    if (pattern === packageName) return true
+    if (pattern.includes("*")) {
+      const regex = new RegExp(
+        `^${pattern.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*")}$`,
+      )
+      return regex.test(packageName)
+    }
+    return false
+  })
+}
+
 const coreDeps: any = {
   ...corePackageJson.devDependencies,
   ...corePackageJson.dependencies,
@@ -55,6 +71,7 @@ const depsToUpdate: any = {}
 let modifiedDeps = false
 // Update dependencies to match core
 for (const [packageName, currentVersion] of Object.entries(currentDeps)) {
+  if (shouldSkipPackage(packageName)) continue
   if (packageName in coreDeps && coreDeps[packageName] !== currentVersion) {
     console.log(
       `Updating ${packageName} from ${currentVersion} to ${coreDeps[packageName]}`,
@@ -67,15 +84,7 @@ for (const [packageName, currentVersion] of Object.entries(currentDeps)) {
 // Check for missing core dependencies
 const missingDeps: string[] = []
 for (const packageName of Object.keys(coreDeps)) {
-  if (
-    DO_NOT_SYNC_PACKAGE.some((dnsp) =>
-      dnsp.includes("*")
-        ? packageName.startsWith(dnsp.replace("*", ""))
-        : packageName === dnsp,
-    )
-  ) {
-    continue
-  }
+  if (shouldSkipPackage(packageName)) continue
   if (!(packageName in currentDeps)) {
     missingDeps.push(packageName)
   }
