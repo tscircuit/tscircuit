@@ -146,6 +146,93 @@ https://github.com/user-attachments/assets/e0fc9f05-691f-422e-816a-1854c4ffc02d
 
 </details>
 
+### Programmatic API
+
+You can also construct, simulate, and export circuits programmatically:
+
+```tsx
+import { Circuit } from "tscircuit"
+
+const circuit = new Circuit()
+
+circuit.add(
+  <board width="50mm" height="50mm">
+    <resistor
+      name="R1"
+      resistance="10kohm"
+      footprint="0805"
+      pcbX="10mm"
+      pcbY="10mm"
+    />
+    <capacitor
+      name="C1"
+      capacitance="10uF"
+      footprint="0805"
+      pcbX="25mm"
+      pcbY="10mm"
+    />
+    <trace path={[".R1 > .pin2", ".C1 > .pin1"]} />
+  </board>
+)
+
+circuit.render()
+const circuitJson = circuit.getCircuitJson()
+```
+
+### 3D Assemblies & Printed Parts
+
+tscircuit supports assembling multi-board enclosures, brackets, and 3D printed mechanical parts via JSX-driven JSCAD elements:
+
+```tsx
+import { Circuit, assembly, jscad } from "tscircuit"
+
+const circuit = new Circuit()
+
+circuit.add(
+  <assembly.device>
+    <assembly.motor name="MOTOR" model="nema17_backfaceholes" />
+    <assembly.printedpart
+      name="SPACER"
+      mountedTo="MOTOR.backface"
+      mountFace="motor"
+      jscad={
+        <jscad.union>
+          <jscad.cuboid size={[42, 42, 4]} center={[0, 0, 2]} />
+          <jscad.rotate angles={[0, Math.PI, 0]}>
+            <jscad.rectangle name="motor" size={[42, 42]} reference />
+          </jscad.rotate>
+          <jscad.translate offset={[0, 0, 4]}>
+            <jscad.rectangle name="board" size={[42, 42]} reference />
+          </jscad.translate>
+        </jscad.union>
+      }
+    />
+    <board
+      name="CONTROLLER"
+      width={42}
+      height={42}
+      mountedTo="SPACER.board"
+    />
+  </assembly.device>,
+)
+
+circuit.render()
+```
+
+### Supported CAD & EDA File Imports
+
+Import external CAD and EDA files directly with full TypeScript type safety:
+
+| File Format | Extensions | Imported Type |
+|---|---|---|
+| **3D CAD Models** | `*.step`, `*.stp` | `string` (asset path / URL) |
+| **3D Geometry** | `*.obj`, `*.stl`, `*.glb`, `*.gltf` | `string` (asset path / URL) |
+| **2D CAD Drafts** | `*.dxf` | `string` (asset path / URL) |
+| **KiCad PCB** | `*.kicad_pcb` | `<Board />` component, `AnyCircuitElement[]` |
+| **KiCad Schematic** | `*.kicad_sch` | `AnyCircuitElement[]` |
+| **KiCad Library** | `*.kicad_mod`, `*.kicad_sym` | `string` (asset path / URL) |
+| **Circuit JSON** | `*.circuit.json` | `AnyCircuitElement[]` |
+
 ## Getting Started
 
 You can do everything you need to do with `tscircuit` using the [`tsci`](https://github.com/tscircuit/cli) command line tool.
