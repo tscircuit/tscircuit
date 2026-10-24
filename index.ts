@@ -11,3 +11,5 @@ export type {
   PinLabelsProp,
 } from "@tscircuit/props"
 export { kicadFootprintStrings } from "@tscircuit/props"
+
+export * from "./src/board-dimensions"
