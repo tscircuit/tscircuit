@@ -1,23 +1,33 @@
-import { $ } from "bun";
-import { join } from "path";
-// Ensure we're in the project root
-$.cwd(join(import.meta.dir, ".."))
+import { mkdtemp, rm } from "node:fs/promises"
+import { tmpdir } from "node:os"
+import { join } from "node:path"
 
-// Install the package globally
-await $`npm i -g .`;
+const projectRoot = join(import.meta.dirname, "..")
+const cliPath = join(projectRoot, "cli.mjs")
+const testDir = await mkdtemp(join(tmpdir(), "tscircuit-smoke-init-"))
 
-// Create and navigate to a test project directory
-await $`mkdir -p test-project`;
+try {
+  // Test local CLI execution in isolated directory without polluting global npm
+  const versionProc = Bun.spawnSync([process.execPath, cliPath, "--version"], {
+    cwd: testDir,
+  })
+  if (versionProc.exitCode !== 0) {
+    throw new Error(
+      `CLI --version check failed: ${versionProc.stderr.toString()}`,
+    )
+  }
 
-$.cwd(join(import.meta.dir, "../test-project"))
+  const helpProc = Bun.spawnSync([process.execPath, cliPath, "--help"], {
+    cwd: testDir,
+  })
+  if (helpProc.exitCode !== 0) {
+    throw new Error(`CLI --help check failed: ${helpProc.stderr.toString()}`)
+  }
 
-$`tsci --help`
-
-// // Run tsci init
-// const initResult = await $`npx tsci init`;
-// if (initResult.exitCode !== 0) {
-//   console.error("tsci init failed");
-//   process.exit(1);
-// }
-
-// console.log("Smoke test completed successfully");
+  console.log(
+    "Smoke test completed successfully in isolated directory:",
+    testDir,
+  )
+} finally {
+  await rm(testDir, { recursive: true, force: true })
+}
