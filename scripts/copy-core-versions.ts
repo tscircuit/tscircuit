@@ -6,6 +6,8 @@ const DO_NOT_SYNC_PACKAGE = [
   "@jscad/modeling",
   // Core bundles these JSCDN-only packages into its JavaScript and declarations.
   "@tscircuit/cableprinter",
+  // Drawing export is used only by core visual snapshot tests.
+  "@tscircuit/circuit-json-to-drawing",
   "@tscircuit/flex-utils",
   "@tscircuit/schematic-trace-solver",
   "@biomejs/biome",
