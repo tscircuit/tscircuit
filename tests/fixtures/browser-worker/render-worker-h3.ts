@@ -9,9 +9,9 @@ export function renderWorkerH3(result: WorkerRoutingResult): string {
   const pads = result.originalInput.obstacles.map((obstacle) => {
     const x = obstacle.center.x
     const y = -obstacle.center.y
-    if (obstacle.type === "circle")
+    if (obstacle.type === "circle" || obstacle.shape === "circle")
       return `<circle cx="${x}" cy="${y}" r="${obstacle.width / 2}" fill="#64748b"/>`
-    return `<rect x="${x - obstacle.width / 2}" y="${y - obstacle.height / 2}" width="${obstacle.width}" height="${obstacle.height}" fill="#64748b" transform="rotate(${-(obstacle.rotation ?? 0)} ${x} ${y})"/>`
+    return `<rect x="${x - obstacle.width / 2}" y="${y - obstacle.height / 2}" width="${obstacle.width}" height="${obstacle.height}" fill="#64748b" transform="rotate(${-(obstacle.ccwRotationDegrees ?? 0)} ${x} ${y})"/>`
   }).join("")
   const copper = traces.map((trace, index) => {
     const points = trace.route.map((point) => `${point.x},${-point.y}`).join(" ")
