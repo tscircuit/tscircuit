@@ -1,0 +1,8 @@
+{
+  "source": "https://github.com/hvwyl/allwinner-h3-ddr3-16x1-kicad",
+  "commit": "02e365b21363a17710e0f96072c0844940495567",
+  "inputSha256": "5f157c9638526056eefb3e5dda5e262e71f7c9bfd7baf2c4cd09b6418cea4a11",
+  "description": "The unchanged first 11-signal DDR byte from the real H3 CPU-to-RAM board. All 479 source pads, 22 endpoints, two native layers and source 0.0889 mm clearance are preserved. Original copper was removed. There is no source-authored length-matching limit.",
+  "routingBoundary": "The worker evaluates a seed Circuit solely to enter its normal bus_lanes phase. At Core's synchronous solver:started construction boundary, the seed SRJ is replaced by this exact original input before the native solver is instantiated. This tests the engine actually shipped in the worker; it does not repeat CAD import or claim a complete board.",
+  "relatedFix": "https://github.com/tscircuit/bus-lanes-solver/pull/100"
+}
