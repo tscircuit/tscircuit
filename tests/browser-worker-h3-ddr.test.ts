@@ -16,7 +16,7 @@ beforeAll(async () => {
   expect(svg).toBe(await readFile(snapshot, "utf8"))
 })
 
-test.failing("the shipped worker freshly routes all eleven real H3 DDR signals", () => {
+test("the shipped worker freshly routes all eleven real H3 DDR signals", () => {
   expect(result.error).toBeNull()
   expect(result.outcome).toBe("complete")
   expect(result.output?.traces).toHaveLength(11)
