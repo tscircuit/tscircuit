@@ -24,6 +24,6 @@ test.failing("the shipped worker freshly routes all eleven real H3 DDR signals",
     const trace = result.output?.traces?.find((candidate) => candidate.connection_name === connection.name)
     expect(trace).toBeDefined()
     for (const terminal of connection.pointsToConnect)
-      expect(trace!.route.some((point) => Math.hypot(point.x - terminal.x, point.y - terminal.y) < 1e-6)).toBe(true)
+      expect(trace!.route.some((point) => (point.route_type === "wire" || point.route_type === "via") && Math.hypot(point.x - terminal.x, point.y - terminal.y) < 1e-6)).toBe(true)
   }
 })

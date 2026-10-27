@@ -9,13 +9,20 @@ export function renderWorkerH3(result: WorkerRoutingResult): string {
   const pads = result.originalInput.obstacles.map((obstacle) => {
     const x = obstacle.center.x
     const y = -obstacle.center.y
-    if (obstacle.type === "circle" || obstacle.shape === "circle")
+    if (obstacle.shape === "circle")
       return `<circle cx="${x}" cy="${y}" r="${obstacle.width / 2}" fill="#64748b"/>`
     return `<rect x="${x - obstacle.width / 2}" y="${y - obstacle.height / 2}" width="${obstacle.width}" height="${obstacle.height}" fill="#64748b" transform="rotate(${-(obstacle.ccwRotationDegrees ?? 0)} ${x} ${y})"/>`
   }).join("")
   const copper = traces.map((trace, index) => {
-    const points = trace.route.map((point) => `${point.x},${-point.y}`).join(" ")
-    return `<polyline points="${points}" fill="none" stroke="hsl(${index * 32} 80% 45%)" stroke-width="0.1143" stroke-linecap="round" stroke-linejoin="round"/>`
+    const routePoints = trace.route.filter((point) => point.route_type === "wire" || point.route_type === "via")
+    const firstWire = trace.route.find((point) => point.route_type === "wire")
+    const points = routePoints.map((point) => `${point.x},${-point.y}`).join(" ")
+    const vias = routePoints.filter((point) => point.route_type === "via").map((point) => {
+      const diameter = point.via_diameter ?? result.originalInput.minViaPadDiameter
+      if (diameter === undefined) throw new Error("Via copper diameter is missing from the routing result")
+      return `<circle cx="${point.x}" cy="${-point.y}" r="${diameter / 2}" fill="hsl(${index * 32} 80% 45%)"/>`
+    }).join("")
+    return `<polyline points="${points}" fill="none" stroke="hsl(${index * 32} 80% 45%)" stroke-width="${firstWire?.width ?? result.originalInput.minTraceWidth}" stroke-linecap="round" stroke-linejoin="round"/>${vias}`
   }).join("")
   const status = result.outcome === "complete"
     ? `COMPLETED: ${traces.length}/11 signals routed by the shipped worker`
