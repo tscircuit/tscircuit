@@ -1,9 +1,8 @@
-import { mkdir, copyFile } from 'fs/promises';
-import { join } from 'node:path';
+import { execFileSync } from "node:child_process"
+import { fileURLToPath } from "node:url"
 
-const src = join(import.meta.dirname, '../node_modules/@tscircuit/eval/dist/webworker/entrypoint.js');
-const destDir = join(import.meta.dirname, '../dist');
-const dest = join(destDir, 'webworker.min.js');
-
-await mkdir(destDir, { recursive: true });
-await copyFile(src, dest);
+// Match tsup-node: esbuild's service runs under Node, including Bun releases
+// whose child-process implementation cannot run the installed esbuild version.
+execFileSync("node", [fileURLToPath(new URL("./build-eval-webworker.mjs", import.meta.url))], {
+  stdio: "inherit",
+})
