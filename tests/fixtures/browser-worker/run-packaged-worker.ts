@@ -30,7 +30,7 @@ export async function getPackagedWorkerVersion(): Promise<string> {
     await remote.renderUntilSettled()
     const circuitJson = await remote.getCircuitJson()
     const versionNote = circuitJson.find((element) => element.type === "pcb_note_text")
-    if (versionNote?.type !== "pcb_note_text") throw new Error("Worker did not render the version probe")
+    if (versionNote?.type !== "pcb_note_text" || !versionNote.text) throw new Error("Worker did not render the version probe")
     return versionNote.text
   } finally {
     worker.terminate()
