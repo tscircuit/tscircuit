@@ -3,8 +3,9 @@ import { Circuit } from "../dist"
 
 test("published Circuit uses rectangle-aware connector insertion inference", async () => {
   const circuit = new Circuit()
+  circuit.schematicDisabled = true
   circuit.add(
-    <board width={100} height={80} routingDisabled schDisabled>
+    <board width={100} height={80} routingDisabled>
       <connector
         name="J_USB0"
         pcbX={16}
@@ -14,10 +15,10 @@ test("published Circuit uses rectangle-aware connector insertion inference", asy
         footprint={
           <footprint>
             {[0, 2.5, 4.5, 7].map((x, pin) => (
-              <platedhole key={pin} portHints={[`pin${pin + 1}`]} pcbX={x - 3.5} pcbY={0} shape="circle" holeDiameter={0.92} outerDiameter={1.6} />
+              <platedhole portHints={[`pin${pin + 1}`]} pcbX={x - 3.5} pcbY={0} shape="circle" holeDiameter={0.92} outerDiameter={1.6} />
             ))}
             {[-3.07, 10.07].map((x) => (
-              <platedhole key={x} portHints={["pin5"]} pcbX={x - 3.5} pcbY={-2.71} shape="circle" holeDiameter={2.3} outerDiameter={3} />
+              <platedhole portHints={["pin5"]} pcbX={x - 3.5} pcbY={-2.71} shape="circle" holeDiameter={2.3} outerDiameter={3} />
             ))}
             <silkscreenrect pcbY={-5.74} width={12.5} height={13.5} />
           </footprint>
