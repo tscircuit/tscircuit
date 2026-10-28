@@ -19,6 +19,8 @@ test("core's bundled drawing kernel and snapshot exporter do not block dependenc
     const coreManifest = {
       dependencies: { "circuit-json": "^0.0.534" },
       devDependencies: {
+        "@tscircuit/test-point-rerouter":
+          "github:tscircuit/test-point-rerouter#b0ccfaca75a7e187c55ddb6f2071a1f2084e3167",
         "@tscircuit/jscad": "https://jscdn.tscircuit.com/@tscircuit/jscad/0.0.3.tgz",
         "@tscircuit/circuit-json-to-drawing":
           "https://jscdn.tscircuit.com/@tscircuit/circuit-json-to-drawing/0.0.3.tgz",
@@ -35,6 +37,7 @@ test("core's bundled drawing kernel and snapshot exporter do not block dependenc
     expect(updated.dependencies["circuit-json"]).toBe("^0.0.534")
     expect(updated.dependencies["@tscircuit/circuit-json-to-drawing"]).toBeUndefined()
     expect(updated.dependencies["@tscircuit/jscad"]).toBeUndefined()
+    expect(updated.dependencies["@tscircuit/test-point-rerouter"]).toBeUndefined()
 
     // Unknown runtime dependencies must still stop the updater.
     await writeFile(
