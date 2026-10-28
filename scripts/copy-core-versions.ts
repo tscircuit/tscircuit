@@ -7,6 +7,8 @@ const DO_NOT_SYNC_PACKAGE = [
   // Core bundles these JSCDN-only packages into its JavaScript and declarations.
   "@tscircuit/cableprinter",
   "@tscircuit/jscad",
+  // Core bundles this GitHub-only solver into its JavaScript and declarations.
+  "@tscircuit/test-point-rerouter",
   // Drawing export is used only by core visual snapshot tests.
   "@tscircuit/circuit-json-to-drawing",
   "@tscircuit/flex-utils",
