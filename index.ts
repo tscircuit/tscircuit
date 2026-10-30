@@ -11,3 +11,19 @@ export type {
   PinLabelsProp,
 } from "@tscircuit/props"
 export { kicadFootprintStrings } from "@tscircuit/props"
+export {
+  NetTie,
+  type NetTieProps,
+  type NetTieShape,
+  checkEachPcbTraceNonOverlapping,
+  checkPadPadClearance,
+  checkPadTraceClearance,
+  checkPcbComponentOverlap,
+  filterNetTieDrcErrors,
+  isNetTieDrcError,
+  netTieProps,
+  registerNetTie,
+  runAllPlacementChecks,
+  runAllRoutingChecks,
+  useNetTie,
+} from "./src/net-tie"
