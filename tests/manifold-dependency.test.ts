@@ -4,7 +4,7 @@ import { tmpdir } from "node:os"
 import { join } from "node:path"
 import packageJson from "../package.json"
 
-test("published package does not depend on manifold-3d", async () => {
+test("published package installs without manifold-3d or direct JS CDN dependencies", async () => {
   const manifest = packageJson as unknown as {
     dependencies?: Record<string, string>
     optionalDependencies?: Record<string, string>
@@ -61,6 +61,7 @@ test("published package does not depend on manifold-3d", async () => {
       join(installDir, "package-lock.json"),
     ).text()
     expect(lockfile).not.toContain('"node_modules/manifold-3d"')
+    expect(lockfile).not.toContain("https://jscdn.tscircuit.com/")
     expect(
       await Bun.file(
         join(installDir, "node_modules/manifold-3d/package.json"),
