@@ -12,7 +12,7 @@ const DO_NOT_SYNC_PACKAGE = [
   // Core bundles the collision algorithm and JSCAD adapter. The 3D debugger is
   // used only by its development fixtures; the shared WASM runtime stays synced.
   "@tscircuit/cad-collision-checking",
-  "jscad-to-manifold",
+  "@tscircuit/jscad-to-manifold",
   "@tscircuit/graphics-debug-3d",
   // Drawing export is used only by core visual snapshot tests.
   "@tscircuit/circuit-json-to-drawing",

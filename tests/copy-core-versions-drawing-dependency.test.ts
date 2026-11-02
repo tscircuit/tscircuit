@@ -29,7 +29,8 @@ test("core's bundled geometry tools do not block synchronization of shared runti
         "@tscircuit/manifold-2d": "^0.0.8",
         "@tscircuit/cad-collision-checking":
           "github:tscircuit/cad-collision-checking#8e08164",
-        "jscad-to-manifold": "github:tscircuit/jscad-to-manifold#6db5a7b",
+        "@tscircuit/jscad-to-manifold":
+          "https://jscdn.tscircuit.com/@tscircuit/jscad-to-manifold/0.0.1.tgz",
         "@tscircuit/graphics-debug-3d":
           "https://jscdn.tscircuit.com/@tscircuit/graphics-debug-3d/0.0.1.tgz",
         "@tscircuit/test-point-rerouter":
@@ -65,7 +66,7 @@ test("core's bundled geometry tools do not block synchronization of shared runti
     expect(
       updated.dependencies["@tscircuit/cad-collision-checking"],
     ).toBeUndefined()
-    expect(updated.dependencies["jscad-to-manifold"]).toBeUndefined()
+    expect(updated.dependencies["@tscircuit/jscad-to-manifold"]).toBeUndefined()
     expect(updated.dependencies["@tscircuit/graphics-debug-3d"]).toBeUndefined()
 
     // Unknown runtime dependencies must still stop the updater.
