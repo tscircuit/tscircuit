@@ -28,7 +28,7 @@ test("core's bundled geometry tools do not block synchronization of shared runti
       devDependencies: {
         "@tscircuit/manifold-2d": "^0.0.8",
         "@tscircuit/cad-collision-checking":
-          "github:tscircuit/cad-collision-checking#8e08164",
+          "https://jscdn.tscircuit.com/@tscircuit/cad-collision-checking/0.0.6.tgz",
         "@tscircuit/jscad-to-manifold":
           "https://jscdn.tscircuit.com/@tscircuit/jscad-to-manifold/0.0.1.tgz",
         "@tscircuit/graphics-debug-3d":
