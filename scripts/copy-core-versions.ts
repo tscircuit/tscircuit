@@ -18,6 +18,19 @@ const DO_NOT_SYNC_PACKAGE = [
   "@tscircuit/circuit-json-to-drawing",
   // BOM export is used only by core's assembly tests and smoke tests.
   "circuit-json-to-bom-csv",
+  // Core tracks these CLI-only converter versions in devDependencies.
+  // They are not owned by this package; shared converters stay synchronized.
+  "circuit-json-to-3d-png",
+  "circuit-json-to-altium",
+  "circuit-json-to-fdm-component-box",
+  "circuit-json-to-footprinter",
+  "circuit-json-to-gerber",
+  "circuit-json-to-kicad",
+  "circuit-json-to-readable-netlist",
+  "circuit-json-to-step",
+  "circuit-json-to-tscircuit",
+  "dsn-converter",
+  "easyeda",
   "@tscircuit/flex-utils",
   "@tscircuit/schematic-trace-solver",
   "@biomejs/biome",
