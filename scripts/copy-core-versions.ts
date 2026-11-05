@@ -16,6 +16,8 @@ const DO_NOT_SYNC_PACKAGE = [
   "@tscircuit/graphics-debug-3d",
   // Drawing export is used only by core visual snapshot tests.
   "@tscircuit/circuit-json-to-drawing",
+  // BOM export is used only by core's assembly tests and smoke tests.
+  "circuit-json-to-bom-csv",
   "@tscircuit/flex-utils",
   "@tscircuit/schematic-trace-solver",
   "@biomejs/biome",
