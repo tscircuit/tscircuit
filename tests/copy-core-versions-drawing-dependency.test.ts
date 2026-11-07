@@ -40,6 +40,9 @@ test("core's bundled and CLI-only tools do not block synchronization of shared r
           "https://jscdn.tscircuit.com/@tscircuit/jscad/0.0.3.tgz",
         "@tscircuit/circuit-json-to-drawing":
           "https://jscdn.tscircuit.com/@tscircuit/circuit-json-to-drawing/0.0.3.tgz",
+        // DDR benchmark fixtures are used only by core's benchmark runner.
+        "@tscircuit/core-ddr-benchmark":
+          "github:ShiboSoftwareDev/core-ddr-benchmark#9a7f3b9ff4e37b5d11c8572b75c5b83339a97168",
         // CLI converter version declarations introduced in core 0.0.2279.
         "circuit-json-to-3d-png": "^0.0.6",
         "circuit-json-to-altium":

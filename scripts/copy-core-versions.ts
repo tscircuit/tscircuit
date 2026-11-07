@@ -16,6 +16,8 @@ const DO_NOT_SYNC_PACKAGE = [
   "@tscircuit/graphics-debug-3d",
   // Drawing export is used only by core visual snapshot tests.
   "@tscircuit/circuit-json-to-drawing",
+  // DDR benchmark fixtures are used only by core's benchmark runner.
+  "@tscircuit/core-ddr-benchmark",
   // BOM export is used only by core's assembly tests and smoke tests.
   "circuit-json-to-bom-csv",
   // Core tracks these CLI-only converter versions in devDependencies.
