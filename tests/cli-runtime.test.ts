@@ -5,9 +5,13 @@ import { tmpdir } from "node:os"
 import { join } from "node:path"
 import { fileURLToPath } from "node:url"
 
-for (const runtime of ["node", "bun"]) {
+for (const { runtime, moduleType } of [
+  { runtime: "node", moduleType: "module" },
+  { runtime: "node", moduleType: "commonjs" },
+  { runtime: "bun", moduleType: "module" },
+]) {
   test.skipIf(process.platform === "win32")(
-    `tsci builds a TSX circuit with ${runtime} on PATH`,
+    `tsci builds a ${moduleType} TSX project with ${runtime} on PATH`,
     async () => {
       const node = Bun.which("node")
       if (!node) throw new Error("Node must be installed for this test")
@@ -26,7 +30,10 @@ for (const runtime of ["node", "bun"]) {
           fileURLToPath(new URL("../node_modules", import.meta.url)),
           join(project, "node_modules"),
         )
-        await writeFile(join(project, "package.json"), '{"type":"module"}')
+        await writeFile(
+          join(project, "package.json"),
+          JSON.stringify({ type: moduleType }),
+        )
         await writeFile(
           join(project, "index.circuit.tsx"),
           `import React from "react"
@@ -44,7 +51,7 @@ export default () => <board width="10mm" height="10mm" />
             cwd: project,
             env: { ...process.env, PATH: bin },
             encoding: "utf8",
-            timeout: 15_000,
+            timeout: 30_000,
           },
         )
         if (result.error) throw result.error
@@ -63,6 +70,6 @@ export default () => <board width="10mm" height="10mm" />
         await rm(project, { recursive: true, force: true })
       }
     },
-    20_000,
+    40_000,
   )
 }

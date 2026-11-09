@@ -21,8 +21,7 @@ if (!process.versions.bun) {
   if (error.code !== "ENOENT") throw error;
 
   // The CLI imports user circuits directly, including .circuit.tsx files.
-  const { register } = await import("tsx/esm/api");
-  register();
+  await import("tsx");
 }
 
 const require = createRequire(import.meta.url);
