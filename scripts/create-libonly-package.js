@@ -19,6 +19,7 @@ const libonlyPackage = {
 }
 
 delete libonlyPackage.dependencies['@tscircuit/cli']
+delete libonlyPackage.dependencies.tsx
 delete libonlyPackage.bin
 
 const libonlyPackageJsonPath = path.join(__dirname, '..', 'package-libonly.json')
