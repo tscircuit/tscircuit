@@ -32,7 +32,7 @@ jobs:
           IFS=',' read -ra PACKAGES <<< "${{ env.PACKAGE_NAMES }}"
           for package in "${PACKAGES[@]}"; do
             if [[ -n "$package" ]]; then
-              bun update --latest "$package"
+              bun update --latest --ignore-scripts "$package"
             fi
           done
       - name: Close existing PRs
@@ -42,7 +42,7 @@ jobs:
           GH_TOKEN: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
       - name: Run copy-core-versions script
         run: |
-          bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval @tscircuit/runframe
+          bun update --latest --ignore-scripts @tscircuit/core @tscircuit/cli @tscircuit/eval @tscircuit/runframe
           bun run copy-core-versions
       - name: Create Pull Request
         id: create-pr
