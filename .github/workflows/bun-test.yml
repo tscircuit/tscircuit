@@ -19,8 +19,15 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Install libvips development files
+        run: sudo apt-get update && sudo apt-get install -y libvips-dev
+
       - name: Install dependencies
         run: bun install
+
+      - name: Verify native image encoding
+        run: |
+          node -e 'require("sharp")({ create: { width: 1, height: 1, channels: 3, background: "white" } }).png().toBuffer().then(() => console.log("Native PNG encoding passed"))'
       
       - run: bun run build
 

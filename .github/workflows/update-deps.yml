@@ -24,9 +24,12 @@ jobs:
           git config --global user.name "tscircuitbot"
           git config --global user.email "bot@tscircuit.com"
 
+      - name: Install libvips development files
+        run: sudo apt-get update && sudo apt-get install -y libvips-dev
+
       - name: Update specific dependencies
         run: |
-          bun update --latest --ignore-scripts @tscircuit/core @tscircuit/cli @tscircuit/eval @tscircuit/runframe
+          bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval @tscircuit/runframe
 
       - name: Run copy-core-versions script
         run: bun run copy-core-versions
