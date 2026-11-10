@@ -95,7 +95,7 @@ test("artifact validation rejects missing, non-numeric, and oversized measuremen
   expect(() => readMeasurement(file)).toThrow("Invalid size report file")
 })
 
-function notificationFixture({ regression = true, stale = false, existing = false, fork = false } = {}) {
+function notificationFixture({ regression = true } = {}) {
   const root = temporaryDirectory()
   mkdirSync(join(root, "measurements"))
   const base = measurement()
@@ -107,69 +107,63 @@ function notificationFixture({ regression = true, stale = false, existing = fals
   const calls: { url: string; method: string; body: any; headers: any }[] = []
   const options = {
     repository: "tscircuit/tscircuit",
-    token: "test-token",
     slackWebhook: "https://slack.invalid/incoming",
     slackWorkflowWebhook: "https://slack.invalid/workflow",
     event: { workflow_run: {
-      id: 123, event: "pull_request", head_sha: "abc123",
-      pull_requests: fork ? [] : [{ number: 42 }],
+      id: 123, event: "push", head_branch: "main", head_sha: "abc123",
+      conclusion: "failure",
     } },
     request: async (url: string, init: any) => {
       calls.push({ url, method: init.method, body: init.body && JSON.parse(init.body), headers: init.headers })
-      let data: any = {}
-      if (url.endsWith("/commits/abc123/pulls")) data = [{ number: 42 }]
-      if (url.endsWith("/pulls/42")) data = {
-        number: 42, state: "open", head: { sha: stale ? "newer" : "abc123" },
-        base: { repo: { full_name: "tscircuit/tscircuit" } },
-      }
-      if (url.includes("/comments?")) data = existing ? [{
-        id: 99, user: { login: "github-actions[bot]" },
-        body: "<!-- tscircuit-bundle-size -->\nold report",
-      }] : []
-      return new Response(JSON.stringify(data), { status: 200 })
+      return new Response("ok", { status: 200 })
     },
   }
   return { calls, options }
 }
 
-test("fork PR regression gets a comment and dedicated Slack alert without leaking the token", async () => {
-  const { calls, options } = notificationFixture({ fork: true })
-  await notify(options)
-  expect(calls.some((call) => call.url.endsWith("/commits/abc123/pulls"))).toBe(true)
-  const comment = calls.find((call) => call.method === "POST" && call.url.endsWith("/issues/42/comments"))!
-  expect(comment.body.body).toContain("Production node_modules")
-  expect(comment.body.body).toContain("actions/runs/123")
-  const slack = calls.find((call) => call.url === options.slackWebhook)!
-  expect(slack.body.text).toContain("+6.00 MiB")
-  expect(slack.body.text).toContain("/pull/42")
-  expect(JSON.stringify(slack)).not.toContain(options.token)
-  expect(calls.some((call) => call.url === options.slackWorkflowWebhook)).toBe(false)
-})
-
-test("fixed regressions update the existing comment without alerting Slack", async () => {
-  const { calls, options } = notificationFixture({ regression: false, existing: true })
-  await notify(options)
-  const updates = calls.filter((call) => call.method === "PATCH")
-  expect(updates).toHaveLength(1)
-  expect(updates[0].body.body).toContain("No large size increases")
-  expect(calls.some((call) => call.url.startsWith("https://slack.invalid"))).toBe(false)
-})
-
-test("passing PRs do not create a comment or Slack message", async () => {
-  const { calls, options } = notificationFixture({ regression: false })
-  await notify(options)
-  expect(calls.every((call) => call.method === "GET")).toBe(true)
-})
-
-test("superseded PR runs do not overwrite reports or send alerts", async () => {
-  const { calls, options } = notificationFixture({ stale: true })
+test("main regression sends one dedicated Slack alert with the landed commit", async () => {
+  const { calls, options } = notificationFixture()
   await notify(options)
   expect(calls).toHaveLength(1)
+  expect(calls[0].url).toBe(options.slackWebhook)
+  expect(calls[0].body.text).toContain("on main")
+  expect(calls[0].body.text).toContain("+6.00 MiB")
+  expect(calls[0].body.text).toContain("/commit/abc123")
+  expect(calls[0].body.text).toContain("actions/runs/123")
+  expect(calls[0].headers.Authorization).toBeUndefined()
+})
+
+test("PR runs never notify, even with a size regression", async () => {
+  const { calls, options } = notificationFixture()
+  options.event.workflow_run.event = "pull_request"
+  // The guard must run before even reading PR artifacts.
+  rmSync("measurements", { recursive: true })
+  await notify(options)
+  expect(calls).toHaveLength(0)
+})
+
+test("pushes outside main and cancelled runs never notify", async () => {
+  for (const change of [{ head_branch: "feature" }, { conclusion: "cancelled" }]) {
+    const { calls, options } = notificationFixture()
+    Object.assign(options.event.workflow_run, change)
+    await notify(options)
+    expect(calls).toHaveLength(0)
+  }
+})
+
+test("unchanged, reduced, and below-budget sizes on main do not notify", async () => {
+  for (const delta of [0, -6 * MiB, 1024]) {
+    const { calls, options } = notificationFixture({ regression: false })
+    const head = measurement()
+    head.metrics.productionInstall += delta
+    writeFileSync("measurements/head.json", JSON.stringify(head))
+    await notify(options)
+    expect(calls).toHaveLength(0)
+  }
 })
 
 test("main regressions reuse the existing MESSAGE workflow webhook", async () => {
   const { calls, options } = notificationFixture()
-  options.event.workflow_run.event = "push"
   options.slackWebhook = ""
   await notify(options)
   expect(calls).toHaveLength(1)
@@ -180,7 +174,6 @@ test("main regressions reuse the existing MESSAGE workflow webhook", async () =>
 
 test("Slack HTTP failures fail the notification job", async () => {
   const { options } = notificationFixture()
-  options.event.workflow_run.event = "push"
   options.request = async () => new Response("error", { status: 500 })
   await expect(notify(options)).rejects.toThrow("Slack notification failed (500)")
 })

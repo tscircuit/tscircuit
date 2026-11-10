@@ -38,12 +38,13 @@ push SHA, so it needs no baseline cache or manually maintained size snapshot.
 
 ## Notifications and enforcement
 
-The separate **Bundle Size Notifications** workflow creates one PR comment on
-the first regression and updates that comment on later runs, including when the
-regression is fixed. Slack alerts include the affected metrics, sizes, changes,
-and links to the PR/commit and full report. They apply to all contributors,
-including fork PRs, and direct pushes to `main`. Closed or superseded PR runs
-are ignored. A build failure without size reports remains a failed CI check;
+The separate **Bundle Size Notifications** workflow sends Slack alerts only when
+a completed push to `main` exceeds a size budget. This covers merged PRs and
+direct dependency updates to `main`. Alerts include the affected metrics, sizes,
+changes, and links to the landed commit and full report. Creating or updating a
+PR never sends a Slack alert or posts a PR comment; PR comparisons remain visible
+in the CI job summary. Unchanged sizes, decreases, and increases below the budgets
+do not notify. A build failure without size reports remains a failed CI check;
 it does not produce a misleading size regression alert.
 
 Slack routing uses repository Actions secrets:
@@ -54,10 +55,10 @@ Slack routing uses repository Actions secrets:
   Slack **Incoming Webhook** for that channel. This takes priority and uses the
   standard `text` payload. Do not paste webhook URLs into source control.
 
-Without either secret, CI and PR comments still work and the notification job
+Without either secret, CI comparisons still work and the notification job
 logs a warning. Slack HTTP errors fail the notification job. The notification
 workflow becomes active after these files land on the default branch. It runs
-only trusted default-branch code with a write token and webhook secrets; PR code
+only trusted default-branch code with a read-only token and webhook secrets; PR code
 runs with read-only permissions and never receives them. Downloaded artifacts
 are read as bounded JSON containing positive integer sizes, never executed.
 
