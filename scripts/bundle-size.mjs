@@ -8,7 +8,7 @@ import { join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { gzipSync } from "node:zlib"
 
-export const budgets = JSON.parse(
+export const { maxIncreaseBytes, metrics } = JSON.parse(
   readFileSync(new URL("../bundle-size.config.json", import.meta.url), "utf8"),
 )
 
@@ -66,7 +66,7 @@ export function readMeasurement(path) {
   if (!stat.isFile() || stat.size > 16384) throw new Error("Invalid size report file")
   const data = JSON.parse(readFileSync(path, "utf8"))
   if (data.version !== 1) throw new Error("Unsupported size report version")
-  for (const key of Object.keys(budgets)) {
+  for (const key of Object.keys(metrics)) {
     if (!Number.isSafeInteger(data.metrics?.[key]) || data.metrics[key] <= 0) {
       throw new Error(`Missing or invalid size metric: ${key}`)
     }
@@ -75,24 +75,22 @@ export function readMeasurement(path) {
 }
 
 export function compare(base, head) {
-  return Object.entries(budgets).map(([key, budget]) => {
+  return Object.entries(metrics).map(([key, label]) => {
     const before = base.metrics[key]
     const after = head.metrics[key]
     const delta = after - before
-    const percent = (delta / before) * 100
     return {
-      ...budget, before, after, delta, percent,
-      exceeded: delta >= budget.maxBytes ||
-        (delta >= budget.minBytes && percent >= budget.percent),
+      label, before, after, delta,
+      exceeded: delta > maxIncreaseBytes,
     }
   })
 }
 
 export function formatBytes(bytes) {
   const magnitude = Math.abs(bytes)
-  if (magnitude < 1024) return `${bytes} B`
-  if (magnitude < 1024 ** 2) return `${(bytes / 1024).toFixed(1)} KiB`
-  return `${(bytes / 1024 ** 2).toFixed(2)} MiB`
+  if (magnitude < 1000) return `${bytes} B`
+  if (magnitude < 1000 ** 2) return `${(bytes / 1000).toFixed(1)} kB`
+  return `${(bytes / 1000 ** 2).toFixed(2)} MB`
 }
 
 export function renderReport(rows) {
@@ -105,10 +103,10 @@ export function renderReport(rows) {
     "",
     "| Metric | Base | Head | Change | Result |",
     "| --- | ---: | ---: | ---: | --- |",
-    ...rows.map((row) => `| ${row.label} | ${formatBytes(row.before)} | ${formatBytes(row.after)} | ${row.delta > 0 ? "+" : ""}${formatBytes(row.delta)} (${row.percent > 0 ? "+" : ""}${row.percent.toFixed(2)}%) | ${row.exceeded ? "⚠️ Over budget" : "OK"} |`),
+    ...rows.map((row) => `| ${row.label} | ${formatBytes(row.before)} | ${formatBytes(row.after)} | ${row.delta > 0 ? "+" : ""}${formatBytes(row.delta)} | ${row.exceeded ? "⚠️ Over budget" : "OK"} |`),
     "",
-    "A metric fails when growth reaches **both** its byte and percentage thresholds, " +
-      "or its absolute growth cap. See `bundle-size.config.json` for budgets.",
+    `A metric fails when it grows by **more than ${formatBytes(maxIncreaseBytes)}**. ` +
+      "The same threshold applies to every metric. See `bundle-size.config.json`.",
     "",
     "Production install measures logical file bytes from a clean, frozen Bun production install on Linux x64, with lifecycle scripts disabled. " +
       "It includes runtime/peer dependencies and platform binaries, but excludes build dev dependencies.",

@@ -29,7 +29,7 @@ export async function notify({ event, repository, slackWebhook, request = fetch 
   const message = [
     `Large bundle size increase in ${repository} on main`,
     ...regressions.map((row) =>
-      `${row.label}: ${formatBytes(row.before)} → ${formatBytes(row.after)} (+${formatBytes(row.delta)}, +${row.percent.toFixed(2)}%)`),
+      `${row.label}: ${formatBytes(row.before)} → ${formatBytes(row.after)} (+${formatBytes(row.delta)})`),
     `${repoUrl}/commit/${run.head_sha}`,
     `Full report: ${runUrl}`,
   ].join("\n")

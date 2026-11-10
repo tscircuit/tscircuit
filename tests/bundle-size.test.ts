@@ -3,16 +3,16 @@ import { mkdtempSync, mkdirSync, rmSync, symlinkSync, writeFileSync } from "node
 import { tmpdir } from "node:os"
 import { join } from "node:path"
 import {
-  budgets, compare, directoryBytes, readMeasurement, renderReport,
+  maxIncreaseBytes, metrics, compare, directoryBytes, readMeasurement, renderReport,
 } from "../scripts/bundle-size.mjs"
 import { notify } from "../scripts/notify-bundle-size.mjs"
 
-const MiB = 1024 ** 2
+const MB = 1000 ** 2
 const originalCwd = process.cwd()
 const temporaryDirectories: string[] = []
 const measurement = () => ({
   version: 1,
-  metrics: Object.fromEntries(Object.keys(budgets).map((key) => [key, 100 * MiB])),
+  metrics: Object.fromEntries(Object.keys(metrics).map((key) => [key, 100 * MB])),
 })
 
 function temporaryDirectory() {
@@ -37,35 +37,37 @@ test("unchanged sizes and reductions pass", () => {
   expect(renderReport(compare(base, head))).toContain("No large size increases")
 })
 
-test("relative growth needs both a meaningful byte and percentage increase", () => {
-  const base = measurement()
-  const head = measurement()
-  base.metrics.browser = 1024
-  head.metrics.browser = 2048
-  expect(compare(base, head).find((row) => row.label === "Browser bundle")?.exceeded).toBe(false)
-  base.metrics.browser = 10 * MiB
-  head.metrics.browser = base.metrics.browser + 100 * 1024
-  expect(compare(base, head).find((row) => row.label === "Browser bundle")?.exceeded).toBe(false)
-  head.metrics.browser = base.metrics.browser + 512 * 1024
-  expect(compare(base, head).find((row) => row.label === "Browser bundle")?.exceeded).toBe(true)
+test("growth up to and including 2 MB passes for every metric", () => {
+  for (const key of Object.keys(metrics)) {
+    for (const delta of [maxIncreaseBytes - 1, maxIncreaseBytes]) {
+      const base = measurement()
+      const head = measurement()
+      head.metrics[key] += delta
+      expect(compare(base, head).some((row) => row.exceeded)).toBe(false)
+    }
+  }
 })
 
-test("a tsx/esbuild-sized production addition fails even below five percent", () => {
+test("percentage growth does not affect the fixed threshold", () => {
   const base = measurement()
   const head = measurement()
-  base.metrics.productionInstall = 1024 * MiB
-  head.metrics.productionInstall = base.metrics.productionInstall + 10 * MiB
+  // A large percentage increase below 2 MB stays quiet.
+  base.metrics.browser = 1000
+  head.metrics.browser = base.metrics.browser + MB
+  expect(compare(base, head).some((row) => row.exceeded)).toBe(false)
+  // A small percentage increase above 2 MB triggers, even for a large install.
+  base.metrics.productionInstall = 1000 * MB
+  head.metrics.productionInstall = base.metrics.productionInstall + maxIncreaseBytes + 1
   const row = compare(base, head).find((row) => row.label === "Production node_modules")!
-  expect(row.percent).toBeLessThan(5)
   expect(row.exceeded).toBe(true)
-  expect(renderReport(compare(base, head))).toContain("Over budget")
+  expect(renderReport(compare(base, head))).toContain("more than 2.00 MB")
 })
 
-test("each metric triggers at its absolute growth cap", () => {
-  for (const [key, budget] of Object.entries(budgets)) {
+test("each metric triggers one byte above the shared 2 MB threshold", () => {
+  for (const key of Object.keys(metrics)) {
     const base = measurement()
     const head = measurement()
-    head.metrics[key] += budget.maxBytes
+    head.metrics[key] += maxIncreaseBytes + 1
     expect(compare(base, head).filter((row) => row.exceeded)).toHaveLength(1)
   }
 })
@@ -100,7 +102,7 @@ function notificationFixture({ regression = true } = {}) {
   mkdirSync(join(root, "measurements"))
   const base = measurement()
   const head = measurement()
-  if (regression) head.metrics.productionInstall += 6 * MiB
+  if (regression) head.metrics.productionInstall += 3 * MB
   writeFileSync(join(root, "measurements/base.json"), JSON.stringify(base))
   writeFileSync(join(root, "measurements/head.json"), JSON.stringify(head))
   process.chdir(root)
@@ -126,7 +128,7 @@ test("main regression sends one MESSAGE alert through the existing Slack workflo
   expect(calls).toHaveLength(1)
   expect(calls[0].url).toBe(options.slackWebhook)
   expect(calls[0].body.MESSAGE).toContain("on main")
-  expect(calls[0].body.MESSAGE).toContain("+6.00 MiB")
+  expect(calls[0].body.MESSAGE).toContain("+3.00 MB")
   expect(calls[0].body.MESSAGE).toContain("/commit/abc123")
   expect(calls[0].body.MESSAGE).toContain("actions/runs/123")
   expect(calls[0].body.text).toBeUndefined()
@@ -152,7 +154,7 @@ test("pushes outside main and cancelled runs never notify", async () => {
 })
 
 test("unchanged, reduced, and below-budget sizes on main do not notify", async () => {
-  for (const delta of [0, -6 * MiB, 1024]) {
+  for (const delta of [0, -6 * MB, 1024, maxIncreaseBytes]) {
     const { calls, options } = notificationFixture({ regression: false })
     const head = measurement()
     head.metrics.productionInstall += delta
