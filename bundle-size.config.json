@@ -1,0 +1,9 @@
+{
+  "browser": { "label": "Browser bundle", "minBytes": 102400, "percent": 5, "maxBytes": 1048576 },
+  "browserGzip": { "label": "Browser bundle (gzip)", "minBytes": 25600, "percent": 5, "maxBytes": 262144 },
+  "worker": { "label": "Web worker", "minBytes": 102400, "percent": 5, "maxBytes": 1048576 },
+  "workerGzip": { "label": "Web worker (gzip)", "minBytes": 25600, "percent": 5, "maxBytes": 262144 },
+  "package": { "label": "npm package (tarball)", "minBytes": 102400, "percent": 5, "maxBytes": 1048576 },
+  "packageUnpacked": { "label": "npm package (unpacked)", "minBytes": 1048576, "percent": 5, "maxBytes": 5242880 },
+  "productionInstall": { "label": "Production node_modules", "minBytes": 1048576, "percent": 5, "maxBytes": 5242880 }
+}
