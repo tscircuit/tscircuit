@@ -57,5 +57,4 @@ jobs:
         if: steps.artifacts.outputs.available == 'true'
         run: node scripts/notify-bundle-size.mjs
         env:
-          SLACK_BUNDLE_SIZE_ALERT_WEBHOOK_URL: ${{ secrets.SLACK_BUNDLE_SIZE_ALERT_WEBHOOK_URL }}
           SLACK_AUTOMERGE_ALERT_WEBHOOK_URL: ${{ secrets.SLACK_AUTOMERGE_ALERT_WEBHOOK_URL }}

@@ -107,8 +107,7 @@ function notificationFixture({ regression = true } = {}) {
   const calls: { url: string; method: string; body: any; headers: any }[] = []
   const options = {
     repository: "tscircuit/tscircuit",
-    slackWebhook: "https://slack.invalid/incoming",
-    slackWorkflowWebhook: "https://slack.invalid/workflow",
+    slackWebhook: "https://slack.invalid/workflow",
     event: { workflow_run: {
       id: 123, event: "push", head_branch: "main", head_sha: "abc123",
       conclusion: "failure",
@@ -121,15 +120,16 @@ function notificationFixture({ regression = true } = {}) {
   return { calls, options }
 }
 
-test("main regression sends one dedicated Slack alert with the landed commit", async () => {
+test("main regression sends one MESSAGE alert through the existing Slack workflow", async () => {
   const { calls, options } = notificationFixture()
   await notify(options)
   expect(calls).toHaveLength(1)
   expect(calls[0].url).toBe(options.slackWebhook)
-  expect(calls[0].body.text).toContain("on main")
-  expect(calls[0].body.text).toContain("+6.00 MiB")
-  expect(calls[0].body.text).toContain("/commit/abc123")
-  expect(calls[0].body.text).toContain("actions/runs/123")
+  expect(calls[0].body.MESSAGE).toContain("on main")
+  expect(calls[0].body.MESSAGE).toContain("+6.00 MiB")
+  expect(calls[0].body.MESSAGE).toContain("/commit/abc123")
+  expect(calls[0].body.MESSAGE).toContain("actions/runs/123")
+  expect(calls[0].body.text).toBeUndefined()
   expect(calls[0].headers.Authorization).toBeUndefined()
 })
 
@@ -160,16 +160,6 @@ test("unchanged, reduced, and below-budget sizes on main do not notify", async (
     await notify(options)
     expect(calls).toHaveLength(0)
   }
-})
-
-test("main regressions reuse the existing MESSAGE workflow webhook", async () => {
-  const { calls, options } = notificationFixture()
-  options.slackWebhook = ""
-  await notify(options)
-  expect(calls).toHaveLength(1)
-  expect(calls[0].url).toBe(options.slackWorkflowWebhook)
-  expect(calls[0].body.MESSAGE).toContain("on main")
-  expect(calls[0].body.MESSAGE).toContain("/commit/abc123")
 })
 
 test("Slack HTTP failures fail the notification job", async () => {

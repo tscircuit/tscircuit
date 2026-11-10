@@ -3,7 +3,7 @@ import { resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { compare, formatBytes, readMeasurement, renderReport } from "./bundle-size.mjs"
 
-export async function notify({ event, repository, slackWebhook, slackWorkflowWebhook, request = fetch }) {
+export async function notify({ event, repository, slackWebhook, request = fetch }) {
   const run = event.workflow_run
   if (run.event !== "push" || run.head_branch !== "main" || run.conclusion === "cancelled") {
     console.log("Skipping notification: only completed main-branch pushes can notify.")
@@ -21,9 +21,8 @@ export async function notify({ event, repository, slackWebhook, slackWorkflowWeb
   if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, report)
 
   if (!regressions.length) return
-  const webhook = slackWebhook || slackWorkflowWebhook
-  if (!webhook) {
-    console.log("::warning::Slack alert skipped: configure SLACK_BUNDLE_SIZE_ALERT_WEBHOOK_URL or SLACK_AUTOMERGE_ALERT_WEBHOOK_URL.")
+  if (!slackWebhook) {
+    console.log("::warning::Slack alert skipped: configure SLACK_AUTOMERGE_ALERT_WEBHOOK_URL.")
     return
   }
   // Only fixed labels and validated numbers from artifacts enter the message.
@@ -34,11 +33,11 @@ export async function notify({ event, repository, slackWebhook, slackWorkflowWeb
     `${repoUrl}/commit/${run.head_sha}`,
     `Full report: ${runUrl}`,
   ].join("\n")
-  const response = await request(webhook, {
+  const response = await request(slackWebhook, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     // The existing repo secret is a Slack Workflow webhook with a MESSAGE input.
-    body: JSON.stringify(slackWebhook ? { text: message } : { MESSAGE: message }),
+    body: JSON.stringify({ MESSAGE: message }),
     signal: AbortSignal.timeout(30_000),
   })
   if (!response.ok) throw new Error(`Slack notification failed (${response.status})`)
@@ -49,7 +48,6 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   await notify({
     event: JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")),
     repository: process.env.GITHUB_REPOSITORY,
-    slackWebhook: process.env.SLACK_BUNDLE_SIZE_ALERT_WEBHOOK_URL,
-    slackWorkflowWebhook: process.env.SLACK_AUTOMERGE_ALERT_WEBHOOK_URL,
+    slackWebhook: process.env.SLACK_AUTOMERGE_ALERT_WEBHOOK_URL,
   })
 }
