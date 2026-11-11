@@ -1,7 +1,6 @@
 import { execFileSync } from "node:child_process"
 import {
-  appendFileSync, copyFileSync, lstatSync, mkdtempSync, readFileSync,
-  readdirSync, rmSync, writeFileSync,
+  appendFileSync, lstatSync, mkdtempSync, readFileSync, rmSync, writeFileSync,
 } from "node:fs"
 import { tmpdir } from "node:os"
 import { join, resolve } from "node:path"
@@ -12,18 +11,6 @@ export const { maxIncreaseBytes, metrics } = JSON.parse(
   readFileSync(new URL("../bundle-size.config.json", import.meta.url), "utf8"),
 )
 
-// Logical file bytes, excluding symlinks (e.g. .bin), without double-counting
-// symlink targets or including dev dependencies from the build installation.
-export function directoryBytes(directory) {
-  let bytes = 0
-  for (const entry of readdirSync(directory, { withFileTypes: true })) {
-    const path = join(directory, entry.name)
-    if (entry.isDirectory()) bytes += directoryBytes(path)
-    else if (entry.isFile()) bytes += lstatSync(path).size
-  }
-  return bytes
-}
-
 export function measure(root) {
   const temporary = mkdtempSync(join(tmpdir(), "tscircuit-size-"))
   try {
@@ -32,16 +19,6 @@ export function measure(root) {
     const [packed] = JSON.parse(execFileSync("npm", [
       "pack", "--json", "--ignore-scripts", "--pack-destination", temporary,
     ], { cwd: root, encoding: "utf8" }))
-
-    // A separate, frozen production install catches runtime dependencies such
-    // as tsx/esbuild even when they are external to the generated JS bundles.
-    for (const file of ["package.json", "bun.lock"]) {
-      copyFileSync(join(root, file), join(temporary, file))
-    }
-    execFileSync("bun", [
-      "install", "--production", "--frozen-lockfile", "--ignore-scripts",
-      "--linker=hoisted",
-    ], { cwd: temporary, stdio: "inherit" })
 
     return {
       version: 1,
@@ -52,7 +29,6 @@ export function measure(root) {
         workerGzip: gzipSync(worker, { level: 9 }).length,
         package: packed.size,
         packageUnpacked: packed.unpackedSize,
-        productionInstall: directoryBytes(join(temporary, "node_modules")),
       },
     }
   } finally {
@@ -80,7 +56,7 @@ export function compare(base, head) {
     const after = head.metrics[key]
     const delta = after - before
     return {
-      label, before, after, delta,
+      key, label, before, after, delta,
       exceeded: delta > maxIncreaseBytes,
     }
   })
@@ -107,9 +83,6 @@ export function renderReport(rows) {
     "",
     `A metric fails when it grows by **more than ${formatBytes(maxIncreaseBytes)}**. ` +
       "The same threshold applies to every metric. See `bundle-size.config.json`.",
-    "",
-    "Production install measures logical file bytes from a clean, frozen Bun production install on Linux x64, with lifecycle scripts disabled. " +
-      "It includes runtime/peer dependencies and platform binaries, but excludes build dev dependencies.",
     "",
   ].join("\n")
 }

@@ -6,7 +6,6 @@
     "worker": "Web worker",
     "workerGzip": "Web worker (gzip)",
     "package": "npm package (tarball)",
-    "packageUnpacked": "npm package (unpacked)",
-    "productionInstall": "Production node_modules"
+    "packageUnpacked": "npm package (unpacked)"
   }
 }

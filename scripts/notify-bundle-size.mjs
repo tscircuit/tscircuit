@@ -16,20 +16,19 @@ export async function notify({ event, repository, slackWebhook, request = fetch 
     readMeasurement("measurements/base.json"),
     readMeasurement("measurements/head.json"),
   )
-  const regressions = rows.filter((row) => row.exceeded)
+  const tarball = rows.find((row) => row.key === "package")
   const report = renderReport(rows)
   if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, report)
 
-  if (!regressions.length) return
+  if (!tarball?.exceeded) return
   if (!slackWebhook) {
     console.log("::warning::Slack alert skipped: configure SLACK_AUTOMERGE_ALERT_WEBHOOK_URL.")
     return
   }
   // Only fixed labels and validated numbers from artifacts enter the message.
   const message = [
-    `Large bundle size increase in ${repository} on main`,
-    ...regressions.map((row) =>
-      `${row.label}: ${formatBytes(row.before)} → ${formatBytes(row.after)} (+${formatBytes(row.delta)})`),
+    `Large npm tarball size increase in ${repository} on main`,
+    `${tarball.label}: ${formatBytes(tarball.before)} → ${formatBytes(tarball.after)} (+${formatBytes(tarball.delta)})`,
     `${repoUrl}/commit/${run.head_sha}`,
     `Full report: ${runUrl}`,
   ].join("\n")
@@ -41,7 +40,7 @@ export async function notify({ event, repository, slackWebhook, request = fetch 
     signal: AbortSignal.timeout(30_000),
   })
   if (!response.ok) throw new Error(`Slack notification failed (${response.status})`)
-  console.log("Bundle size alert sent to Slack.")
+  console.log("npm tarball size alert sent to Slack.")
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

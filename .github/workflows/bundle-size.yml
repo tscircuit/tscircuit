@@ -47,7 +47,7 @@ jobs:
           bun install --frozen-lockfile --ignore-scripts --linker=hoisted
           bun run build
 
-      - name: Measure bundles, npm package, and production dependencies
+      - name: Measure bundles and npm package
         env:
           REVISION: ${{ matrix.revision }}
         run: node scripts/bundle-size.mjs measure snapshot "$REVISION.json"

@@ -53,7 +53,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
 
-      - name: Alert Slack on large increases landed on main
+      - name: Alert Slack on large npm tarball increases landed on main
         if: steps.artifacts.outputs.available == 'true'
         run: node scripts/notify-bundle-size.mjs
         env:

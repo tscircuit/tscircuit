@@ -1,9 +1,9 @@
 import { afterEach, expect, test } from "bun:test"
-import { mkdtempSync, mkdirSync, rmSync, symlinkSync, writeFileSync } from "node:fs"
+import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
 import {
-  maxIncreaseBytes, metrics, compare, directoryBytes, readMeasurement, renderReport,
+  maxIncreaseBytes, metrics, compare, readMeasurement, renderReport,
 } from "../scripts/bundle-size.mjs"
 import { notify } from "../scripts/notify-bundle-size.mjs"
 
@@ -55,10 +55,10 @@ test("percentage growth does not affect the fixed threshold", () => {
   base.metrics.browser = 1000
   head.metrics.browser = base.metrics.browser + MB
   expect(compare(base, head).some((row) => row.exceeded)).toBe(false)
-  // A small percentage increase above 2 MB triggers, even for a large install.
-  base.metrics.productionInstall = 1000 * MB
-  head.metrics.productionInstall = base.metrics.productionInstall + maxIncreaseBytes + 1
-  const row = compare(base, head).find((row) => row.label === "Production node_modules")!
+  // A small percentage increase above 2 MB triggers, even for a large tarball.
+  base.metrics.package = 1000 * MB
+  head.metrics.package = base.metrics.package + maxIncreaseBytes + 1
+  const row = compare(base, head).find((row) => row.key === "package")!
   expect(row.exceeded).toBe(true)
   expect(renderReport(compare(base, head))).toContain("more than 2.00 MB")
 })
@@ -70,15 +70,6 @@ test("each metric triggers one byte above the shared 2 MB threshold", () => {
     head.metrics[key] += maxIncreaseBytes + 1
     expect(compare(base, head).filter((row) => row.exceeded)).toHaveLength(1)
   }
-})
-
-test("directory sizing counts nested files but does not follow symlinks", () => {
-  const root = temporaryDirectory()
-  mkdirSync(join(root, "nested"))
-  writeFileSync(join(root, "file"), "hello")
-  writeFileSync(join(root, "nested/other"), "world")
-  symlinkSync(root, join(root, "nested/loop"))
-  expect(directoryBytes(root)).toBe(10)
 })
 
 test("artifact validation rejects missing, non-numeric, and oversized measurements", () => {
@@ -102,7 +93,7 @@ function notificationFixture({ regression = true } = {}) {
   mkdirSync(join(root, "measurements"))
   const base = measurement()
   const head = measurement()
-  if (regression) head.metrics.productionInstall += 3 * MB
+  if (regression) head.metrics.package += 3 * MB
   writeFileSync(join(root, "measurements/base.json"), JSON.stringify(base))
   writeFileSync(join(root, "measurements/head.json"), JSON.stringify(head))
   process.chdir(root)
@@ -122,12 +113,13 @@ function notificationFixture({ regression = true } = {}) {
   return { calls, options }
 }
 
-test("main regression sends one MESSAGE alert through the existing Slack workflow", async () => {
+test("main tarball regression sends one MESSAGE alert through the existing Slack workflow", async () => {
   const { calls, options } = notificationFixture()
   await notify(options)
   expect(calls).toHaveLength(1)
   expect(calls[0].url).toBe(options.slackWebhook)
-  expect(calls[0].body.MESSAGE).toContain("on main")
+  expect(calls[0].body.MESSAGE).toContain("Large npm tarball size increase in tscircuit/tscircuit on main")
+  expect(calls[0].body.MESSAGE).toContain("npm package (tarball)")
   expect(calls[0].body.MESSAGE).toContain("+3.00 MB")
   expect(calls[0].body.MESSAGE).toContain("/commit/abc123")
   expect(calls[0].body.MESSAGE).toContain("actions/runs/123")
@@ -157,11 +149,28 @@ test("unchanged, reduced, and below-budget sizes on main do not notify", async (
   for (const delta of [0, -6 * MB, 1024, maxIncreaseBytes]) {
     const { calls, options } = notificationFixture({ regression: false })
     const head = measurement()
-    head.metrics.productionInstall += delta
+    head.metrics.package += delta
     writeFileSync("measurements/head.json", JSON.stringify(head))
     await notify(options)
     expect(calls).toHaveLength(0)
   }
+})
+
+test("other size regressions on main do not notify Slack", async () => {
+  const { calls, options } = notificationFixture({ regression: false })
+  const base = measurement()
+  const head = measurement()
+  head.metrics.browser += 3 * MB
+  head.metrics.worker += 3 * MB
+  head.metrics.packageUnpacked += 3 * MB
+  // A notification workflow can pick up artifacts produced before this change.
+  base.metrics.productionInstall = 713 * MB
+  head.metrics.productionInstall = 1000 * MB
+  writeFileSync("measurements/base.json", JSON.stringify(base))
+  writeFileSync("measurements/head.json", JSON.stringify(head))
+
+  await notify(options)
+  expect(calls).toHaveLength(0)
 })
 
 test("Slack HTTP failures fail the notification job", async () => {
