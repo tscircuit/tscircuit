@@ -146,7 +146,7 @@ test("pushes outside main and cancelled runs never notify", async () => {
 })
 
 test("unchanged, reduced, and below-budget sizes on main do not notify", async () => {
-  for (const delta of [0, -6 * MB, 1024, maxIncreaseBytes]) {
+  for (const delta of [0, -6 * MB, 1024, MB]) {
     const { calls, options } = notificationFixture({ regression: false })
     const head = measurement()
     head.metrics.package += delta
@@ -154,6 +154,18 @@ test("unchanged, reduced, and below-budget sizes on main do not notify", async (
     await notify(options)
     expect(calls).toHaveLength(0)
   }
+})
+
+test("tarball growth one byte above 1 MB alerts while the CI budget passes", async () => {
+  const { calls, options } = notificationFixture({ regression: false })
+  const base = measurement()
+  const head = measurement()
+  head.metrics.package += MB + 1
+  writeFileSync("measurements/head.json", JSON.stringify(head))
+
+  expect(compare(base, head).some((row) => row.exceeded)).toBe(false)
+  await notify(options)
+  expect(calls).toHaveLength(1)
 })
 
 test("other size regressions on main do not notify Slack", async () => {

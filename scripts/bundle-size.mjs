@@ -7,7 +7,7 @@ import { join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { gzipSync } from "node:zlib"
 
-export const { maxIncreaseBytes, metrics } = JSON.parse(
+export const { maxIncreaseBytes, maxTarballAlertIncreaseBytes, metrics } = JSON.parse(
   readFileSync(new URL("../bundle-size.config.json", import.meta.url), "utf8"),
 )
 

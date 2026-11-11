@@ -1,7 +1,9 @@
 import { appendFileSync, readFileSync } from "node:fs"
 import { resolve } from "node:path"
 import { fileURLToPath } from "node:url"
-import { compare, formatBytes, readMeasurement, renderReport } from "./bundle-size.mjs"
+import {
+  compare, formatBytes, maxTarballAlertIncreaseBytes, readMeasurement, renderReport,
+} from "./bundle-size.mjs"
 
 export async function notify({ event, repository, slackWebhook, request = fetch }) {
   const run = event.workflow_run
@@ -17,10 +19,17 @@ export async function notify({ event, repository, slackWebhook, request = fetch 
     readMeasurement("measurements/head.json"),
   )
   const tarball = rows.find((row) => row.key === "package")
-  const report = renderReport(rows)
-  if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, report)
+  const shouldAlert = tarball !== undefined && tarball.delta > maxTarballAlertIncreaseBytes
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    const status = shouldAlert ? "over threshold" : "within threshold"
+    const threshold = formatBytes(maxTarballAlertIncreaseBytes)
+    appendFileSync(
+      process.env.GITHUB_STEP_SUMMARY,
+      `${renderReport(rows)}\nSlack tarball alert is ${status}. Growth must exceed **${threshold}**.\n`,
+    )
+  }
 
-  if (!tarball?.exceeded) return
+  if (!shouldAlert) return
   if (!slackWebhook) {
     console.log("::warning::Slack alert skipped: configure SLACK_AUTOMERGE_ALERT_WEBHOOK_URL.")
     return

@@ -1,5 +1,6 @@
 {
   "maxIncreaseBytes": 2000000,
+  "maxTarballAlertIncreaseBytes": 1000000,
   "metrics": {
     "browser": "Browser bundle",
     "browserGzip": "Browser bundle (gzip)",
