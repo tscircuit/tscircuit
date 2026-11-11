@@ -1,0 +1,12 @@
+{
+  "maxIncreaseBytes": 2000000,
+  "metrics": {
+    "browser": "Browser bundle",
+    "browserGzip": "Browser bundle (gzip)",
+    "worker": "Web worker",
+    "workerGzip": "Web worker (gzip)",
+    "package": "npm package (tarball)",
+    "packageUnpacked": "npm package (unpacked)",
+    "productionInstall": "Production node_modules"
+  }
+}

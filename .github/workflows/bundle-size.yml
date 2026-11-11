@@ -1,0 +1,90 @@
+name: Bundle Size
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bundle-size-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  measure:
+    # A new branch has no previous revision to compare.
+    if: github.event_name == 'pull_request' || github.event.before != '0000000000000000000000000000000000000000'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        revision: [base, head]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.revision == 'base' && (github.event.pull_request.base.sha || github.event.before) || (github.event.pull_request.head.sha || github.sha) }}
+          path: snapshot
+          persist-credentials: false
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Build revision with locked dependencies
+        working-directory: snapshot
+        run: |
+          bun install --frozen-lockfile --ignore-scripts --linker=hoisted
+          bun run build
+
+      - name: Measure bundles, npm package, and production dependencies
+        env:
+          REVISION: ${{ matrix.revision }}
+        run: node scripts/bundle-size.mjs measure snapshot "$REVISION.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bundle-size-${{ matrix.revision }}
+          path: ${{ matrix.revision }}.json
+          if-no-files-found: error
+          retention-days: 14
+
+  check:
+    name: Bundle size budget
+    if: always() && !cancelled() && needs.measure.result != 'skipped'
+    needs: measure
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require successful measurements
+        if: needs.measure.result != 'success'
+        run: |
+          echo '::error::Bundle size measurement failed. Review the measurement jobs.'
+          exit 1
+
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: bundle-size-*
+          merge-multiple: true
+          path: measurements
+
+      - name: Enforce size budgets and write comparison to job summary
+        run: node scripts/bundle-size.mjs compare measurements/base.json measurements/head.json
