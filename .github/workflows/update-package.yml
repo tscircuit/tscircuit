@@ -1,9 +1,3 @@
-# =============================================================================
-# Do not change anything in this file.
-# This workflow automatically updates @tscircuit packages when triggered by
-# the source repository's trigger-dependent-repo-update.yml workflow.
-# =============================================================================
-
 name: Update @tscircuit Package
 
 on:
@@ -18,6 +12,10 @@ on:
 env:
   PACKAGE_NAMES: ${{ inputs.package_names }}
 
+concurrency:
+  group: dependency-updates
+  cancel-in-progress: false
+
 jobs:
   update-package:
     runs-on: ubuntu-latest
@@ -27,23 +25,13 @@ jobs:
         with:
           token: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
       - uses: oven-sh/setup-bun@v2
-      - name: Update packages
-        run: |
-          IFS=',' read -ra PACKAGES <<< "${{ env.PACKAGE_NAMES }}"
-          for package in "${PACKAGES[@]}"; do
-            if [[ -n "$package" ]]; then
-              bun update --latest "$package"
-            fi
-          done
+      - name: Update packages through the released CLI core contract
+        run: bun run scripts/update-dependencies.ts "$PACKAGE_NAMES"
       - name: Close existing PRs
         run: |
-          gh pr list --repo ${{ github.repository }} --state open --author "tscircuitbot" --json number,title --jq '.[] | select(.title | startswith("chore:")) | .number' | xargs -I{} gh pr close {} --comment "Closing in favor of a new update PR"
+          gh pr list --repo ${{ github.repository }} --state open --author "tscircuitbot" --json number,title --jq '.[] | select(.title | startswith("chore: update packages ")) | .number' | xargs -r -I{} gh pr close {} --comment "Closing in favor of a new update PR"
         env:
           GH_TOKEN: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
-      - name: Run copy-core-versions script
-        run: |
-          bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval @tscircuit/runframe
-          bun run copy-core-versions
       - name: Create Pull Request
         id: create-pr
         uses: peter-evans/create-pull-request@v5

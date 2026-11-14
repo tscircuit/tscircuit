@@ -2,7 +2,23 @@ import corePackageJson from "@tscircuit/core/package.json"
 import currentPackageJson from "../package.json"
 import { join } from "node:path"
 
+import { validateCliCoreAlignment } from "./cli-core-contract"
+
+// Fixtures and legacy CLI releases may not yet advertise the new contract.
+const cliManifestPath = join(
+  import.meta.dirname,
+  "../node_modules/@tscircuit/cli/package.json",
+)
+if (await Bun.file(cliManifestPath).exists()) {
+  validateCliCoreAlignment(
+    currentPackageJson,
+    await Bun.file(cliManifestPath).json(),
+    corePackageJson,
+  )
+}
+
 const DO_NOT_SYNC_PACKAGE = [
+  "@tscircuit/core-ddr-benchmark",
   "@jscad/modeling",
   // Core bundles these JSCDN-only packages into its JavaScript and declarations.
   "@tscircuit/cableprinter",
@@ -22,6 +38,8 @@ const DO_NOT_SYNC_PACKAGE = [
   "circuit-json-to-bom-csv",
   // Core tracks these CLI-only converter versions in devDependencies.
   // They are not owned by this package; shared converters stay synchronized.
+  "circuit-to-canvas",
+  "@tscircuit/circuit-json-to-jlcpcb-quote",
   "circuit-json-to-3d-png",
   "circuit-json-to-altium",
   "circuit-json-to-fdm-component-box",
@@ -65,7 +83,7 @@ const DO_NOT_SYNC_PACKAGE = [
   "concurrently",
   "nanoid",
   "eecircuit-engine",
-  "stack-svgs"
+  "stack-svgs",
 ]
 
 const coreDeps: any = {

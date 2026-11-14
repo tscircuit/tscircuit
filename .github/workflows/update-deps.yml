@@ -5,6 +5,10 @@ on:
     - cron: "0 15 * * *" # 8 AM PT (15:00 UTC)
   workflow_dispatch: # Allow manual triggering
 
+concurrency:
+  group: dependency-updates
+  cancel-in-progress: false
+
 jobs:
   update-deps:
     runs-on: ubuntu-latest
@@ -26,21 +30,20 @@ jobs:
 
       - name: Update specific dependencies
         run: |
-          bun update --latest @tscircuit/core @tscircuit/cli @tscircuit/eval @tscircuit/runframe
-
-      - name: Run copy-core-versions script
-        run: bun run copy-core-versions
+          bun run scripts/update-dependencies.ts
 
       - name: Check for changes
         id: git-check
         run: |
           git diff --exit-code || echo "changes=true" >> $GITHUB_OUTPUT
 
-      - name: Commit and push changes
+      - name: Create dependency update PR
         if: steps.git-check.outputs.changes == 'true'
-        run: |
-          git add .
-          git commit -m "chore: update @tscircuit dependencies
-
-          🤖 Generated with automated dependency updater"
-          git push origin main
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}
+          branch: update-daily-cli-dependencies
+          title: "chore: update dependencies from released CLI"
+          commit-message: "chore: update dependencies from released CLI"
+          body: "Copies the exact core selected by the released CLI, then synchronizes its dependency specs."
+          base: main

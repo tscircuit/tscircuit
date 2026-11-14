@@ -15,6 +15,12 @@ test("core's bundled and CLI-only tools do not block synchronization of shared r
       ),
     )
     await writeFile(
+      join(root, "scripts/cli-core-contract.ts"),
+      await readFile(
+        new URL("../scripts/cli-core-contract.ts", import.meta.url),
+      ),
+    )
+    await writeFile(
       join(root, "package.json"),
       JSON.stringify({
         dependencies: {
@@ -55,7 +61,7 @@ test("core's bundled and CLI-only tools do not block synchronization of shared r
         "circuit-json-to-step": "^0.0.63",
         "circuit-json-to-tscircuit": "^0.0.50",
         "dsn-converter": "^0.0.90",
-        "easyeda": "^0.0.389",
+        easyeda: "^0.0.389",
         "circuit-json-to-pnp-csv": "^0.0.20",
       },
     }
