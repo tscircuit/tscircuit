@@ -6,6 +6,7 @@
     "module": "ESNext",
     "moduleDetection": "force",
     "jsx": "react-jsx",
+    "types": ["@tscircuit/core"],
     "allowJs": true,
     "resolveJsonModule": true,
 
