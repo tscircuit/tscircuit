@@ -1,5 +1,5 @@
 import { join } from "node:path"
-import { getCliCoreVersion } from "./cli-core-contract"
+import { getCliCoreDependencyPins } from "./cli-core-contract"
 
 const root = join(import.meta.dirname, "..")
 function run(...args: string[]) {
@@ -34,9 +34,14 @@ run("update", "--latest", ...packages)
 const cli = await Bun.file(
   join(root, "node_modules/@tscircuit/cli/package.json"),
 ).json()
-const coreVersion = getCliCoreVersion(cli)
-if (coreVersion) {
-  run("add", "--exact", `@tscircuit/core@${coreVersion}`)
+const pins = getCliCoreDependencyPins(cli)
+if (pins) {
+  // Pin both: a CLI range could select a newer core on a later fresh install.
+  run(
+    "add",
+    "--exact",
+    ...Object.entries(pins).map(([name, version]) => `${name}@${version}`),
+  )
 } else {
   console.log(
     "Legacy CLI: preserve current core until a CLI with an exact core contract is released",
