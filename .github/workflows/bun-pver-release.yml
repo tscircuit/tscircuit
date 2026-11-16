@@ -68,14 +68,19 @@ jobs:
         if: env.UPSTREAM_REPOS && env.PACKAGE_NAMES
         run: |
           IFS=',' read -ra REPOS <<< "${{ env.UPSTREAM_REPOS }}"
+          dispatch_failed=0
           for repo in "${REPOS[@]}"; do
             if [[ -n "$repo" ]]; then
               echo "Triggering update for repo: $repo"
-              curl --fail-with-body -X POST \
+              if ! curl --fail-with-body -X POST \
                 -H "Accept: application/vnd.github.v3+json" \
                 -H "Authorization: token ${{ secrets.TSCIRCUIT_BOT_GITHUB_TOKEN }}" \
                 -H "Content-Type: application/json" \
                 "https://api.github.com/repos/tscircuit/$repo/actions/workflows/update-package.yml/dispatches" \
-                -d "{\"ref\":\"main\",\"inputs\":{\"package_names\":\"${{ env.PACKAGE_NAMES }}\"}}"
+                -d "{\"ref\":\"main\",\"inputs\":{\"package_names\":\"${{ env.PACKAGE_NAMES }}\"}}"; then
+                echo "::error::Failed to notify $repo"
+                dispatch_failed=1
+              fi
             fi
           done
+          exit "$dispatch_failed"
