@@ -7,7 +7,7 @@ const dest = join(destDir, 'browser.min.js');
 
 const content = await readFile(src, 'utf-8');
 
-const workerPath = join(import.meta.dirname, '../node_modules/@tscircuit/eval/dist/webworker/entrypoint.js');
+const workerPath = join(import.meta.dirname, '../dist/webworker.min.js');
 const workerJs = await readFile(workerPath, 'utf-8');
 const base64Worker = Buffer.from(workerJs).toString('base64');
 const workerBlobUrl = `URL.createObjectURL(new Blob([atob(\"${base64Worker}\")], { type: 'application/javascript' }))`;
@@ -17,6 +17,10 @@ const modifiedContent = content.replace(
   /"<--INJECT_TSCIRCUIT_EVAL_WEB_WORKER_BLOB_URL-->"/g,
   workerBlobUrl
 );
+
+if (modifiedContent === content) {
+  throw new Error("Runframe standalone is missing the eval worker placeholder");
+}
 
 await mkdir(destDir, { recursive: true });
 await writeFile(dest, modifiedContent);
