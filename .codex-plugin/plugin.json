@@ -1,0 +1,23 @@
+{
+  "name": "tscircuit",
+  "description": "Design circuit boards with TypeScript and React using tscircuit and the tsci CLI.",
+  "author": {
+    "name": "tscircuit",
+    "url": "https://tscircuit.com"
+  },
+  "homepage": "https://docs.tscircuit.com",
+  "repository": "https://github.com/tscircuit/tscircuit",
+  "license": "MIT",
+  "keywords": ["electronics", "pcb", "schematic", "react", "typescript", "eda"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "tscircuit",
+    "shortDescription": "Design circuit boards with TypeScript and React.",
+    "longDescription": "Write circuits as React components, find parts and footprints, build and check them with the tsci CLI, preview schematics and PCBs, and export Gerbers, KiCad files and more.",
+    "category": "Coding",
+    "developerName": "tscircuit",
+    "websiteUrl": "https://tscircuit.com",
+    "logo": "./.claude-plugin/icon.png",
+    "defaultPrompt": ["Design a small USB-C powered LED board with tscircuit"]
+  }
+}

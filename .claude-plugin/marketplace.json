@@ -1,0 +1,14 @@
+{
+  "name": "tscircuit",
+  "owner": {
+    "name": "tscircuit",
+    "url": "https://tscircuit.com"
+  },
+  "plugins": [
+    {
+      "name": "tscircuit",
+      "source": "./",
+      "description": "Design circuit boards with TypeScript and React using tscircuit and the tsci CLI."
+    }
+  ]
+}

@@ -160,6 +160,14 @@ tsci dev
 
 Edit your circuit code and preview the schematic, PCB layout, and 3D model as you work.
 
+## Using tscircuit with coding agents
+
+This repo is an agent plugin marketplace ([`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json)) with a `tscircuit` plugin that teaches your agent to write circuits and drive the `tsci` CLI. Install the CLI first, then:
+
+- **Codex**: `codex plugin marketplace add tscircuit/tscircuit`, then install `tscircuit` from `/plugins`
+- **Claude Code**: `claude plugin marketplace add tscircuit/tscircuit`, then `claude plugin install tscircuit@tscircuit`
+- **Other agents**: `npx skills add tscircuit/skill` installs the full [tscircuit skill](https://github.com/tscircuit/skill). `tsci init` also adds it to new projects.
+
 ## More Features!
 
 - [x] Preview PCBs & Schematics in your browser

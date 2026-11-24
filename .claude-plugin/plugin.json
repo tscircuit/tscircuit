@@ -1,0 +1,12 @@
+{
+  "name": "tscircuit",
+  "description": "Design circuit boards with TypeScript and React using tscircuit and the tsci CLI.",
+  "author": {
+    "name": "tscircuit",
+    "url": "https://tscircuit.com"
+  },
+  "homepage": "https://docs.tscircuit.com",
+  "repository": "https://github.com/tscircuit/tscircuit",
+  "license": "MIT",
+  "keywords": ["electronics", "pcb", "schematic", "react", "typescript", "eda"]
+}
