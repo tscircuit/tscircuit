@@ -1,5 +1,6 @@
 import { mkdir, writeFile, readFile } from 'fs/promises';
 import { join } from 'node:path';
+import { createWorkerBlobUrlExpression } from './create-worker-blob-url-expression';
 
 const src = join(import.meta.dirname, '../node_modules/@tscircuit/runframe/dist/standalone.min.js');
 const destDir = join(import.meta.dirname, '../dist');
@@ -10,7 +11,7 @@ const content = await readFile(src, 'utf-8');
 const workerPath = join(import.meta.dirname, '../dist/webworker.min.js');
 const workerJs = await readFile(workerPath, 'utf-8');
 const base64Worker = Buffer.from(workerJs).toString('base64');
-const workerBlobUrl = `URL.createObjectURL(new Blob([atob(\"${base64Worker}\")], { type: 'application/javascript' }))`;
+const workerBlobUrl = createWorkerBlobUrlExpression(base64Worker);
 
 // Replace the quoted placeholder (including the surrounding quotes) with the JS expression
 const modifiedContent = content.replace(
