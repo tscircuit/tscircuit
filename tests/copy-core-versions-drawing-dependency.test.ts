@@ -27,6 +27,8 @@ test("core's bundled and CLI-only tools do not block synchronization of shared r
     const coreManifest = {
       dependencies: { "circuit-json": "^0.0.534" },
       devDependencies: {
+        "compute-differential-pair-phase-skew":
+          "github:tscircuit/compute-differential-pair-phase-skew#440d4413a1078ece4bae1632a936bc8ff32bd076",
         "@tscircuit/manifold-2d": "^0.0.8",
         "@tscircuit/cad-collision-checking":
           "https://jscdn.tscircuit.com/@tscircuit/cad-collision-checking/0.0.6.tgz",

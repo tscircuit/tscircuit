@@ -9,6 +9,8 @@ const DO_NOT_SYNC_PACKAGE = [
   "@tscircuit/jscad",
   // Core bundles this GitHub-only solver into its JavaScript and declarations.
   "@tscircuit/test-point-rerouter",
+  // Core bundles this GitHub-only helper into its JavaScript and declarations.
+  "compute-differential-pair-phase-skew",
   // Core bundles the collision algorithm and JSCAD adapter. The 3D debugger is
   // used only by its development fixtures; the shared WASM runtime stays synced.
   "@tscircuit/cad-collision-checking",
