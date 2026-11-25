@@ -74,7 +74,7 @@
     "@tscircuit/math-utils": "0.0.39",
     "@tscircuit/miniflex": "^0.0.4",
     "@tscircuit/modelprinter": "^0.0.37",
-    "@tscircuit/ngspice-spice-engine": "^0.0.26",
+    "@tscircuit/ngspice-spice-engine": "^0.0.28",
     "@tscircuit/props": "^0.0.746",
     "@tscircuit/runframe": "^0.0.3334",
     "@tscircuit/schematic-match-adapt": "^0.0.18",
